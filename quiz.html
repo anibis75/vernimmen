@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Vernimmen</title>
+</head>
+<body>
+  <h2>Quiz Chapitre 8 - Trésorerie</h2>
+
+  <label>Ton prénom :</label><br>
+  <input type="text" id="nom"><br><br>
+
+  <p>1. Quels sont les 4 cycles de base de l’entreprise ?</p>
+  <input type="radio" name="q1" value="correct"> Exploitation, investissement, endettement, capitaux propres<br>
+  <input type="radio" name="q1" value="wrong"> R&D, marketing, commercial, social<br><br>
+
+  <p>2. L’excédent de trésorerie d’exploitation traduit-il un gain ?</p>
+  <input type="radio" name="q2" value="wrong"> Oui, car c’est du bénéfice<br>
+  <input type="radio" name="q2" value="correct"> Non, c’est un flux de trésorerie<br><br>
+
+  <button onclick="envoyer()">Soumettre</button>
+
+  <script>
+    async function envoyer() {
+      const nom = document.getElementById('nom').value;
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === 'correct') score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === 'correct') score++;
+
+      const data = {
+        nom: nom,
+        score: score + "/2",
+        date: new Date().toISOString(),
+        sujet: "Chapitre 8"
+      };
+
+      await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      alert("Ton résultat a été envoyé !");
+    }
+  </script>
+</body>
+</html>
