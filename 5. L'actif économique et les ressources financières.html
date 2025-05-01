@@ -3,657 +3,364 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz - 5. L'actif économique et les ressources financières</title>
+  <title>Quiz Final - QCM Plausibles</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-3xl mx-auto py-10 px-4">
-    <h1 class="text-2xl font-bold mb-4 text-center">Quiz - 5. L'actif économique et les ressources financières</h1>
-    <div class="mb-6">
-      <label class="block mb-2 font-semibold">Choisis ton prénom :</label>
-      <select id="nom" class="w-full border border-gray-300 rounded p-2">
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - 5. L'actif économique et les ressources financières</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
         <option value="azad">azad</option>
         <option value="remi">remi</option>
       </select>
     </div>
+    <div id="quiz-container">
+<div class="question-step " id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 25 :<br>À quoi est égale une variation de « stocks » ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> À un actif net.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> À une immobilisation.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> À un flux.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> À un produit d’exploitation.</label>
+</div></div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 25 :<br>À quoi est égal un cumul de flux ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> À un « stock ». </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> À un résultat net.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> À une immobilisation brute.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> À une dépense.</label>
+</div></div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 25 :<br>La société publiant le magazine Tour du monde a-t-elle un besoin en fonds de roulement positif ou négatif ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Positif à cause des charges fixes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Nul car les ventes sont constantes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Positif comme dans la plupart des entreprises.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> Négatif grâce aux abonnements.</label>
+</div></div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 25 :<br>Classez : chiffre d’affaires, compte clients, variation du compte clients, accroissement de dividendes, frais financiers, accroissement du chiffre d’affaires, excédent de trésorerie d’exploitation.</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Stock, flux, stock, flux, variation de flux, stock, stock.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Stock, stock, variation, flux, variation, flux, stock.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Flux, variation, flux, flux, stock, flux, variation.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> Flux, stock, flux, variation de flux, flux, variation de flux, flux.</label>
+</div></div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 25 :<br>Pourquoi les ventes ne figurent-elles pas dans le bilan économique ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Les ventes sont reprises en actif circulant.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Elles sont converties en flux de trésorerie.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Seul le solde net, le résultat, apparaît.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Elles figurent uniquement en annexe.</label>
+</div></div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 25 :<br>Classez : découvert, résultat mis en réserve, marque, dette fiscale, stocks de produits finis, emprunts obligataires, créance de TVA, titres de filiales.</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Capitaux propres, BFR, BFR, immobilisations, endettement net, BFR, BFR, endettement net.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> BFR, immobilisations, BFR, capitaux propres, capitaux propres, endettement net, BFR, BFR.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> Endettement net, capitaux propres, immobilisations, BFR, BFR, endettement net, BFR, immobilisations.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Immobilisations, BFR, endettement net, capitaux propres, BFR, capitaux propres, endettement net, BFR.</label>
+</div></div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 25 :<br>Une entreprise en cessation de paiement est-elle obligatoirement insolvable ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Pas nécessairement, mais souvent oui.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Oui, car elle a déposé le bilan.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Non, car elle est toujours rentable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Oui, dans tous les cas.</label>
+</div></div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 25 :<br>Classez par liquidité décroissante : usine, titres non notés, actions cotées, siège social, navires, traites, stocks MP, produits en cours.</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Produits, siège, traites, MP, navires, usine, titres cotés, non cotés.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Actions cotées, traites, navires, siège, MP, produits, titres non cotés, usine.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Usine, siège, navires, traites, produits, titres cotés, MP, non cotés.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Titres cotés, MP, traites, siège, navires, non cotés, produits, usine.</label>
+</div></div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 25 :<br>Donnez un synonyme d’actif net.</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Bénéfice net.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Cash-flow libre.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Capitaux propres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Immobilisations nettes.</label>
+</div></div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 25 :<br>Quand utiliser le bilan patrimonial vs économique ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Patrimonial pour les besoins, économique pour les dettes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Patrimonial pour les sociétés cotées, économique pour les PME.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Économique en fiscalité, patrimonial pour le marketing.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Patrimonial pour l’inventaire ; économique pour l’analyse fonctionnelle.</label>
+</div></div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 25 :<br>Différence entre engagements et ressources ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Les ressources sont passives, les engagements sont actifs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> Les engagements sont remboursables, les ressources incluent les fonds propres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Les engagements sont volontaires, les ressources sont obligatoires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Les engagements sont du passif long terme, les ressources du court terme.</label>
+</div></div>
+<div class="question-step hidden" id="step12">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 12 / 25 :<br>Approche à adopter : – cession d'entreprise ? – prévision financière ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Bilan économique, bilan de trésorerie.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Compte de résultat, bilan fonctionnel.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Plan de financement, bilan social.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Bilan patrimonial, bilan économique.</label>
+</div></div>
+<div class="question-step hidden" id="step13">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 13 / 25 :<br>Activités à BFR positif ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Boulangerie, télécom, bâtiment, cinéma.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input type="radio" name="q13" value="correct" class="hidden"> Édition, parfumerie, chimie, électroménager…</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Transport ferroviaire, poste, services publics.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Commerce alimentaire, restauration rapide.</label>
+</div></div>
+<div class="question-step hidden" id="step14">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 14 / 25 :<br>Activités à BFR négatif ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Chimie, aéronautique, agriculture.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input type="radio" name="q14" value="correct" class="hidden"> Cinéma, TV payante, boulangerie, bâtiment.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Industrie pharmaceutique, banque, armement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Grande distribution, textile, automobile.</label>
+</div></div>
+<div class="question-step hidden" id="step15">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 15 / 25 :<br>Pourquoi intégrer les effets escomptés non échus ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+<input type="radio" name="q15" value="correct" class="hidden"> Pour mesurer le BFR et l’endettement réels.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Pour les présenter en annexe.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Pour gonfler l’actif économique.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Pour les fiscaliser rapidement.</label>
+</div></div>
+<div class="question-step hidden" id="step16">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 16 / 25 :<br>Lecture économique du bilan : différence dettes > ou < 1 an ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'correct', 16)">
+<input type="radio" name="q16" value="correct" class="hidden"> Non, ce critère est patrimonial, pas économique.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> Oui, si c’est une dette commerciale.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> Oui, toujours en fonction de la durée.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> Oui, sauf en cas d’actifs non liquides.</label>
+</div></div>
+<div class="question-step hidden" id="step17">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 17 / 25 :<br>Pourquoi retrancher le capital souscrit non appelé ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input type="radio" name="q17" value="wrong" class="hidden"> Parce que c’est une perte future.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input type="radio" name="q17" value="wrong" class="hidden"> Parce que c’est une immobilisation.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input type="radio" name="q17" value="wrong" class="hidden"> Parce que c’est une dette.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'correct', 17)">
+<input type="radio" name="q17" value="correct" class="hidden"> Parce que c’est une non-valeur.</label>
+</div></div>
+<div class="question-step hidden" id="step18">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 18 / 25 :<br>Paiement comptant des fournisseurs pour escompte : que faire ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input type="radio" name="q18" value="wrong" class="hidden"> Réduire les stocks.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input type="radio" name="q18" value="wrong" class="hidden"> Réévaluer les immobilisations.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'correct', 18)">
+<input type="radio" name="q18" value="correct" class="hidden"> Augmenter disponibilités et dettes fournisseurs fictives.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input type="radio" name="q18" value="wrong" class="hidden"> Allonger le cycle de production.</label>
+</div></div>
+<div class="question-step hidden" id="step19">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 19 / 25 :<br>Le cycle d’exploitation donne-t-il toujours des créances < 1 an ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q19', 'wrong', 19)">
+<input type="radio" name="q19" value="wrong" class="hidden"> Oui, sauf si l’entreprise est en faillite.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q19', 'wrong', 19)">
+<input type="radio" name="q19" value="wrong" class="hidden"> Oui, par définition du cycle.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q19', 'wrong', 19)">
+<input type="radio" name="q19" value="wrong" class="hidden"> Oui, sauf si les ventes sont différées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q19', 'correct', 19)">
+<input type="radio" name="q19" value="correct" class="hidden"> Non, pas dans certains secteurs (ex. droits audiovisuels).</label>
+</div></div>
+<div class="question-step hidden" id="step20">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 20 / 25 :<br>Un résultat net positif = bonne santé financière ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q20', 'wrong', 20)">
+<input type="radio" name="q20" value="wrong" class="hidden"> Toujours, car cela prouve la rentabilité.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q20', 'correct', 20)">
+<input type="radio" name="q20" value="correct" class="hidden"> Pas nécessairement si BFR ou trésorerie sont dégradés.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q20', 'wrong', 20)">
+<input type="radio" name="q20" value="wrong" class="hidden"> Oui, si les ventes sont aussi élevées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q20', 'wrong', 20)">
+<input type="radio" name="q20" value="wrong" class="hidden"> Oui, s’il est supérieur aux amortissements.</label>
+</div></div>
+<div class="question-step hidden" id="step21">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 21 / 25 :<br>Que comprend l’actif économique ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q21', 'wrong', 21)">
+<input type="radio" name="q21" value="wrong" class="hidden"> Immobilisations + capitaux propres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q21', 'correct', 21)">
+<input type="radio" name="q21" value="correct" class="hidden"> Immobilisations + BFR.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q21', 'wrong', 21)">
+<input type="radio" name="q21" value="wrong" class="hidden"> BFR + disponibilités.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q21', 'wrong', 21)">
+<input type="radio" name="q21" value="wrong" class="hidden"> Immobilisations + dettes.</label>
+</div></div>
+<div class="question-step hidden" id="step22">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 22 / 25 :<br>Pourquoi les capitaux propres ne sont pas exigibles ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q22', 'wrong', 22)">
+<input type="radio" name="q22" value="wrong" class="hidden"> Parce qu’ils financent uniquement l’immatériel.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q22', 'correct', 22)">
+<input type="radio" name="q22" value="correct" class="hidden"> Parce qu’ils ne sont remboursés qu’en cas de liquidation.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q22', 'wrong', 22)">
+<input type="radio" name="q22" value="wrong" class="hidden"> Parce qu’ils sont placés à long terme.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q22', 'wrong', 22)">
+<input type="radio" name="q22" value="wrong" class="hidden"> Parce qu’ils sont toujours négociables.</label>
+</div></div>
+<div class="question-step hidden" id="step23">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 23 / 25 :<br>Définition du free cash-flow ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q23', 'wrong', 23)">
+<input type="radio" name="q23" value="wrong" class="hidden"> Résultat net + amortissements.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q23', 'wrong', 23)">
+<input type="radio" name="q23" value="wrong" class="hidden"> Capacité d’autofinancement disponible.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q23', 'wrong', 23)">
+<input type="radio" name="q23" value="wrong" class="hidden"> Excédent brut d’exploitation net des charges.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q23', 'correct', 23)">
+<input type="radio" name="q23" value="correct" class="hidden"> Trésorerie générée après investissement mais avant rémunération.</label>
+</div></div>
+<div class="question-step hidden" id="step24">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 24 / 25 :<br>Limites de la lecture patrimoniale ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q24', 'wrong', 24)">
+<input type="radio" name="q24" value="wrong" class="hidden"> Elle dépend des taux d’actualisation.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q24', 'wrong', 24)">
+<input type="radio" name="q24" value="wrong" class="hidden"> Elle minimise les stocks.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q24', 'correct', 24)">
+<input type="radio" name="q24" value="correct" class="hidden"> Elle ignore flux, rentabilité future, dynamique économique.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q24', 'wrong', 24)">
+<input type="radio" name="q24" value="wrong" class="hidden"> Elle surestime les immobilisations.</label>
+</div></div>
+<div class="question-step hidden" id="step25">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 25 / 25 :<br>Pourquoi une entreprise rentable peut-elle faire faillite ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q25', 'wrong', 25)">
+<input type="radio" name="q25" value="wrong" class="hidden"> Car elle amortit trop vite.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q25', 'wrong', 25)">
+<input type="radio" name="q25" value="wrong" class="hidden"> Car ses clients changent.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q25', 'wrong', 25)">
+<input type="radio" name="q25" value="wrong" class="hidden"> Car elle n’augmente pas ses ventes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q25', 'correct', 25)">
+<input type="radio" name="q25" value="correct" class="hidden"> Car elle peut manquer de trésorerie pour payer à court terme.</label>
+</div></div>
 
-    <div class="swiper">
-      <div class="swiper-wrapper">
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 1 : À quoi est égale une variation de « stocks » ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q1', 'correct', 1)">
-  <input type="radio" name="q1" value="correct" class="mr-2 hidden"> À un flux.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q1', 'wrong', 1)">
-  <input type="radio" name="q1" value="wrong" class="mr-2 hidden"> Au bilan, c’est le solde de l’activité, le résultat net, qui apparaît, c’est-à-dire les ventes sous déduction des charges supportées pour les réaliser.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q1', 'wrong', 1)">
-  <input type="radio" name="q1" value="wrong" class="mr-2 hidden"> Les ressources comprennent les capitaux propres (qui ne sont pas exigibles) et les engagements, c’est-à-dire des dettes qui doivent tôt ou tard être remboursées.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q1', 'wrong', 1)">
-  <input type="radio" name="q1" value="wrong" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 2 : À quoi est égal un cumul de flux ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q2', 'wrong', 2)">
-  <input type="radio" name="q2" value="wrong" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q2', 'correct', 2)">
-  <input type="radio" name="q2" value="correct" class="mr-2 hidden"> À un « stock ».
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q2', 'wrong', 2)">
-  <input type="radio" name="q2" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q2', 'wrong', 2)">
-  <input type="radio" name="q2" value="wrong" class="mr-2 hidden"> Non, dans certaines industries les clients paient longtemps après la facturation (négoce de droits audiovisuels).
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 3 : La société publiant le magazine Tour du monde du chapitre 3 (exercice 3) a-t-elle un besoin en fonds de roulement positif ou négatif ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q3', 'wrong', 3)">
-  <input type="radio" name="q3" value="wrong" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q3', 'wrong', 3)">
-  <input type="radio" name="q3" value="wrong" class="mr-2 hidden"> Pas nécessairement puisque c’est un problème de liquidité qui l’a conduit à la cessation des paiements. Toutefois, l’immense majorité des entreprises dans cette situation sont aussi insolvables.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q3', 'wrong', 3)">
-  <input type="radio" name="q3" value="wrong" class="mr-2 hidden"> Flux, stock, flux, variation de flux, flux, variation de flux, flux.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q3', 'correct', 3)">
-  <input type="radio" name="q3" value="correct" class="mr-2 hidden"> Négatif grâce aux abonnements.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 4 : Classez les éléments suivants en stock, flux, ou variation de flux : chiffre d’affaires, compte clients, variation du compte clients, accroissement de dividendes, frais financiers, accroissement du chiffre d’affaires, excédent de trésorerie d’exploitation.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q4', 'wrong', 4)">
-  <input type="radio" name="q4" value="wrong" class="mr-2 hidden"> Capitaux propres.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q4', 'wrong', 4)">
-  <input type="radio" name="q4" value="wrong" class="mr-2 hidden"> D’accroître ses disponibilités à l’actif et le poste fournisseur au passif du montant du crédit fournisseur auquel elle renonce afin de reconstituer un besoin en fonds de roulement normal.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q4', 'wrong', 4)">
-  <input type="radio" name="q4" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q4', 'correct', 4)">
-  <input type="radio" name="q4" value="correct" class="mr-2 hidden"> Flux, stock, flux, variation de flux, flux, variation de flux, flux.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 5 : Les ventes de l’entreprise sont indéniablement une ressource. Pourtant, elles n’apparaissent pas dans le bilan économique. Pourquoi ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q5', 'wrong', 5)">
-  <input type="radio" name="q5" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q5', 'wrong', 5)">
-  <input type="radio" name="q5" value="wrong" class="mr-2 hidden"> Les ressources comprennent les capitaux propres (qui ne sont pas exigibles) et les engagements, c’est-à-dire des dettes qui doivent tôt ou tard être remboursées.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q5', 'wrong', 5)">
-  <input type="radio" name="q5" value="wrong" class="mr-2 hidden"> Car c’est une non-valeur totale tant qu’il n’est pas appelé.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q5', 'correct', 5)">
-  <input type="radio" name="q5" value="correct" class="mr-2 hidden"> Au bilan, c’est le solde de l’activité, le résultat net, qui apparaît, c’est-à-dire les ventes sous déduction des charges supportées pour les réaliser.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 6 : Classez en immobilisations, besoin en fonds de roulement, capitaux propres ou endettement net, les postes suivants : découvert, résultat mis en réserve, marque, dette fiscale, stocks de produits finis, emprunts obligataires, créance de TVA, titres de filiales.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q6', 'correct', 6)">
-  <input type="radio" name="q6" value="correct" class="mr-2 hidden"> Endettement net, capitaux propres, immobilisations, BFR, BFR, endettement net, BFR, immobilisations.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q6', 'wrong', 6)">
-  <input type="radio" name="q6" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q6', 'wrong', 6)">
-  <input type="radio" name="q6" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q6', 'wrong', 6)">
-  <input type="radio" name="q6" value="wrong" class="mr-2 hidden"> À un flux.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 7 : Une entreprise en cessation de paiement est-elle obligatoirement insolvable ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q7', 'wrong', 7)">
-  <input type="radio" name="q7" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q7', 'wrong', 7)">
-  <input type="radio" name="q7" value="wrong" class="mr-2 hidden"> D’accroître ses disponibilités à l’actif et le poste fournisseur au passif du montant du crédit fournisseur auquel elle renonce afin de reconstituer un besoin en fonds de roulement normal.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q7', 'wrong', 7)">
-  <input type="radio" name="q7" value="wrong" class="mr-2 hidden"> Non, ceci est un problème de liquidité qui n’est pas le point de vue de la lecture économique du bilan, mais celui de la lecture patrimoniale (ou financière).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q7', 'correct', 7)">
-  <input type="radio" name="q7" value="correct" class="mr-2 hidden"> Pas nécessairement puisque c’est un problème de liquidité qui l’a conduit à la cessation des paiements. Toutefois, l’immense majorité des entreprises dans cette situation sont aussi insolvables.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 8 : Appréciez la liquidité des biens suivants : usine, titres non notés, actions d’une société cotée en Bourse, siège social sis au centre d’une grande ville, navires ou avions, traites commerciales, stocks de matières premières, stocks de produits en cours.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q8', 'wrong', 8)">
-  <input type="radio" name="q8" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q8', 'wrong', 8)">
-  <input type="radio" name="q8" value="wrong" class="mr-2 hidden"> La plupart des activités sont dans cette situation : édition, parfumerie, électroménager, chimie, construction aéronautique…
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q8', 'correct', 8)">
-  <input type="radio" name="q8" value="correct" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q8', 'wrong', 8)">
-  <input type="radio" name="q8" value="wrong" class="mr-2 hidden"> D’accroître ses disponibilités à l’actif et le poste fournisseur au passif du montant du crédit fournisseur auquel elle renonce afin de reconstituer un besoin en fonds de roulement normal.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 9 : Donnez un synonyme d’actif net.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q9', 'correct', 9)">
-  <input type="radio" name="q9" value="correct" class="mr-2 hidden"> Capitaux propres.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q9', 'wrong', 9)">
-  <input type="radio" name="q9" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q9', 'wrong', 9)">
-  <input type="radio" name="q9" value="wrong" class="mr-2 hidden"> À un flux.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q9', 'wrong', 9)">
-  <input type="radio" name="q9" value="wrong" class="mr-2 hidden"> Non, ceci est un problème de liquidité qui n’est pas le point de vue de la lecture économique du bilan, mais celui de la lecture patrimoniale (ou financière).
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 10 : Dans quel cas utilise-t-on le bilan dans une optique patrimoniale ? Le bilan dans une optique économique ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q10', 'correct', 10)">
-  <input type="radio" name="q10" value="correct" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q10', 'wrong', 10)">
-  <input type="radio" name="q10" value="wrong" class="mr-2 hidden"> Endettement net, capitaux propres, immobilisations, BFR, BFR, endettement net, BFR, immobilisations.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q10', 'wrong', 10)">
-  <input type="radio" name="q10" value="wrong" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q10', 'wrong', 10)">
-  <input type="radio" name="q10" value="wrong" class="mr-2 hidden"> À un « stock ».
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 11 : Quelle est la différence entre des engagements et des ressources ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q11', 'correct', 11)">
-  <input type="radio" name="q11" value="correct" class="mr-2 hidden"> Les ressources comprennent les capitaux propres (qui ne sont pas exigibles) et les engagements, c’est-à-dire des dettes qui doivent tôt ou tard être remboursées.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q11', 'wrong', 11)">
-  <input type="radio" name="q11" value="wrong" class="mr-2 hidden"> Pas nécessairement puisque c’est un problème de liquidité qui l’a conduit à la cessation des paiements. Toutefois, l’immense majorité des entreprises dans cette situation sont aussi insolvables.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q11', 'wrong', 11)">
-  <input type="radio" name="q11" value="wrong" class="mr-2 hidden"> Non, dans certaines industries les clients paient longtemps après la facturation (négoce de droits audiovisuels).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q11', 'wrong', 11)">
-  <input type="radio" name="q11" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 12 : Quelle approche du bilan devez-vous adopter : pour garantir le bilan d’une entreprise lors d’une cession ? lors de la prévision des besoins de fonds d’une entreprise ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q12', 'wrong', 12)">
-  <input type="radio" name="q12" value="wrong" class="mr-2 hidden"> Pour donner une bonne mesure du BFR réel de l’entreprise et de son endettement.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q12', 'correct', 12)">
-  <input type="radio" name="q12" value="correct" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q12', 'wrong', 12)">
-  <input type="radio" name="q12" value="wrong" class="mr-2 hidden"> Pas nécessairement puisque c’est un problème de liquidité qui l’a conduit à la cessation des paiements. Toutefois, l’immense majorité des entreprises dans cette situation sont aussi insolvables.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q12', 'wrong', 12)">
-  <input type="radio" name="q12" value="wrong" class="mr-2 hidden"> Endettement net, capitaux propres, immobilisations, BFR, BFR, endettement net, BFR, immobilisations.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 13 : Une entreprise en cessation de paiement est-elle obligatoirement insolvable ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q13', 'wrong', 13)">
-  <input type="radio" name="q13" value="wrong" class="mr-2 hidden"> Capitaux propres.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q13', 'wrong', 13)">
-  <input type="radio" name="q13" value="wrong" class="mr-2 hidden"> Flux, stock, flux, variation de flux, flux, variation de flux, flux.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q13', 'wrong', 13)">
-  <input type="radio" name="q13" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q13', 'correct', 13)">
-  <input type="radio" name="q13" value="correct" class="mr-2 hidden"> Pas nécessairement puisque c’est un problème de liquidité qui l’a conduit à la cessation des paiements. Toutefois, l’immense majorité des entreprises dans cette situation sont aussi insolvables.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 14 : Appréciez la liquidité des biens suivants : usine, titres non notés, actions d’une société cotée en Bourse, siège social sis au centre d’une grande ville, navires ou avions, traites commerciales, stocks de matières premières, stocks de produits en cours.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q14', 'wrong', 14)">
-  <input type="radio" name="q14" value="wrong" class="mr-2 hidden"> Capitaux propres.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q14', 'wrong', 14)">
-  <input type="radio" name="q14" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q14', 'correct', 14)">
-  <input type="radio" name="q14" value="correct" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q14', 'wrong', 14)">
-  <input type="radio" name="q14" value="wrong" class="mr-2 hidden"> La plupart des activités sont dans cette situation : édition, parfumerie, électroménager, chimie, construction aéronautique…
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 15 : Donnez un synonyme d’actif net.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q15', 'correct', 15)">
-  <input type="radio" name="q15" value="correct" class="mr-2 hidden"> Capitaux propres.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q15', 'wrong', 15)">
-  <input type="radio" name="q15" value="wrong" class="mr-2 hidden"> Négatif grâce aux abonnements.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q15', 'wrong', 15)">
-  <input type="radio" name="q15" value="wrong" class="mr-2 hidden"> Au bilan, c’est le solde de l’activité, le résultat net, qui apparaît, c’est-à-dire les ventes sous déduction des charges supportées pour les réaliser.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q15', 'wrong', 15)">
-  <input type="radio" name="q15" value="wrong" class="mr-2 hidden"> Car c’est une non-valeur totale tant qu’il n’est pas appelé.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 16 : Dans quel cas utilise-t-on le bilan dans une optique patrimoniale ? Le bilan dans une optique économique ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q16', 'correct', 16)">
-  <input type="radio" name="q16" value="correct" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q16', 'wrong', 16)">
-  <input type="radio" name="q16" value="wrong" class="mr-2 hidden"> Non, dans certaines industries les clients paient longtemps après la facturation (négoce de droits audiovisuels).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q16', 'wrong', 16)">
-  <input type="radio" name="q16" value="wrong" class="mr-2 hidden"> Les ressources comprennent les capitaux propres (qui ne sont pas exigibles) et les engagements, c’est-à-dire des dettes qui doivent tôt ou tard être remboursées.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q16', 'wrong', 16)">
-  <input type="radio" name="q16" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 17 : Quelle est la différence entre des engagements et des ressources ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q17', 'wrong', 17)">
-  <input type="radio" name="q17" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q17', 'wrong', 17)">
-  <input type="radio" name="q17" value="wrong" class="mr-2 hidden"> Car c’est une non-valeur totale tant qu’il n’est pas appelé.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q17', 'wrong', 17)">
-  <input type="radio" name="q17" value="wrong" class="mr-2 hidden"> À un « stock ».
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q17', 'correct', 17)">
-  <input type="radio" name="q17" value="correct" class="mr-2 hidden"> Les ressources comprennent les capitaux propres (qui ne sont pas exigibles) et les engagements, c’est-à-dire des dettes qui doivent tôt ou tard être remboursées.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 18 : Quelle approche du bilan devez-vous adopter : – pour garantir le bilan d’une entreprise lors d’une cession ? – lors de la prévision des besoins de fonds d’une entreprise ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q18', 'wrong', 18)">
-  <input type="radio" name="q18" value="wrong" class="mr-2 hidden"> Les ressources comprennent les capitaux propres (qui ne sont pas exigibles) et les engagements, c’est-à-dire des dettes qui doivent tôt ou tard être remboursées.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q18', 'wrong', 18)">
-  <input type="radio" name="q18" value="wrong" class="mr-2 hidden"> Pas nécessairement puisque c’est un problème de liquidité qui l’a conduit à la cessation des paiements. Toutefois, l’immense majorité des entreprises dans cette situation sont aussi insolvables.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q18', 'correct', 18)">
-  <input type="radio" name="q18" value="correct" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q18', 'wrong', 18)">
-  <input type="radio" name="q18" value="wrong" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 19 : Citez des activités où le besoin en fonds de roulement est positif.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q19', 'wrong', 19)">
-  <input type="radio" name="q19" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q19', 'wrong', 19)">
-  <input type="radio" name="q19" value="wrong" class="mr-2 hidden"> Non, dans certaines industries les clients paient longtemps après la facturation (négoce de droits audiovisuels).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q19', 'correct', 19)">
-  <input type="radio" name="q19" value="correct" class="mr-2 hidden"> La plupart des activités sont dans cette situation : édition, parfumerie, électroménager, chimie, construction aéronautique…
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q19', 'wrong', 19)">
-  <input type="radio" name="q19" value="wrong" class="mr-2 hidden"> Dans l’ordre décroissant de liquidité : titres cotés, stock de matières premières, traites commerciales, siège social, navires ou avions, titres non cotés, stocks de produits en cours, usine.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 20 : Citez des activités où le besoin en fonds de roulement est négatif.</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q20', 'wrong', 20)">
-  <input type="radio" name="q20" value="wrong" class="mr-2 hidden"> Au bilan, c’est le solde de l’activité, le résultat net, qui apparaît, c’est-à-dire les ventes sous déduction des charges supportées pour les réaliser.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q20', 'correct', 20)">
-  <input type="radio" name="q20" value="correct" class="mr-2 hidden"> Salles de cinéma (pas de stock, clients payant comptant), télévisions payantes (l’abonnement est payé par avance), boulangeries (très peu de stocks au-delà de 24 heures, les clients paient comptant), le bâtiment (avances clients).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q20', 'wrong', 20)">
-  <input type="radio" name="q20" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q20', 'wrong', 20)">
-  <input type="radio" name="q20" value="wrong" class="mr-2 hidden"> Car c’est une non-valeur totale tant qu’il n’est pas appelé.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 21 : Pourquoi les effets escomptés non échus doivent-ils être intégrés dans le bilan en lecture économique ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q21', 'wrong', 21)">
-  <input type="radio" name="q21" value="wrong" class="mr-2 hidden"> Endettement net, capitaux propres, immobilisations, BFR, BFR, endettement net, BFR, immobilisations.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q21', 'wrong', 21)">
-  <input type="radio" name="q21" value="wrong" class="mr-2 hidden"> Dans une optique patrimoniale : pour recenser l’ensemble des actifs et des engagements, pour mesurer la liquidité. Dans une optique économique : pour comprendre les besoins de l’entreprise.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q21', 'correct', 21)">
-  <input type="radio" name="q21" value="correct" class="mr-2 hidden"> Pour donner une bonne mesure du BFR réel de l’entreprise et de son endettement.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q21', 'wrong', 21)">
-  <input type="radio" name="q21" value="wrong" class="mr-2 hidden"> Capitaux propres.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 22 : Le bilan en lecture économique fait-il une différence entre les dettes bancaires à plus d’un an et celles à moins d’un an ? Pourquoi ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q22', 'correct', 22)">
-  <input type="radio" name="q22" value="correct" class="mr-2 hidden"> Non, ceci est un problème de liquidité qui n’est pas le point de vue de la lecture économique du bilan, mais celui de la lecture patrimoniale (ou financière).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q22', 'wrong', 22)">
-  <input type="radio" name="q22" value="wrong" class="mr-2 hidden"> Pour donner une bonne mesure du BFR réel de l’entreprise et de son endettement.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q22', 'wrong', 22)">
-  <input type="radio" name="q22" value="wrong" class="mr-2 hidden"> Non, dans certaines industries les clients paient longtemps après la facturation (négoce de droits audiovisuels).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q22', 'wrong', 22)">
-  <input type="radio" name="q22" value="wrong" class="mr-2 hidden"> D’accroître ses disponibilités à l’actif et le poste fournisseur au passif du montant du crédit fournisseur auquel elle renonce afin de reconstituer un besoin en fonds de roulement normal.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 23 : Pourquoi retrancher le capital souscrit et non appelé de l’actif immobilisé ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q23', 'wrong', 23)">
-  <input type="radio" name="q23" value="wrong" class="mr-2 hidden"> D’accroître ses disponibilités à l’actif et le poste fournisseur au passif du montant du crédit fournisseur auquel elle renonce afin de reconstituer un besoin en fonds de roulement normal.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q23', 'wrong', 23)">
-  <input type="radio" name="q23" value="wrong" class="mr-2 hidden"> Négatif grâce aux abonnements.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q23', 'wrong', 23)">
-  <input type="radio" name="q23" value="wrong" class="mr-2 hidden"> Bilan patrimonial, bilan économique.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q23', 'correct', 23)">
-  <input type="radio" name="q23" value="correct" class="mr-2 hidden"> Car c’est une non-valeur totale tant qu’il n’est pas appelé.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 24 : Au niveau du bilan économique, que convient-il de faire pour une entreprise qui payerait comptant ses fournisseurs afin d’encaisser des escomptes pour paiement rapide ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q24', 'wrong', 24)">
-  <input type="radio" name="q24" value="wrong" class="mr-2 hidden"> Capitaux propres.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q24', 'correct', 24)">
-  <input type="radio" name="q24" value="correct" class="mr-2 hidden"> D’accroître ses disponibilités à l’actif et le poste fournisseur au passif du montant du crédit fournisseur auquel elle renonce afin de reconstituer un besoin en fonds de roulement normal.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q24', 'wrong', 24)">
-  <input type="radio" name="q24" value="wrong" class="mr-2 hidden"> Salles de cinéma (pas de stock, clients payant comptant), télévisions payantes (l’abonnement est payé par avance), boulangeries (très peu de stocks au-delà de 24 heures, les clients paient comptant), le bâtiment (avances clients).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q24', 'wrong', 24)">
-  <input type="radio" name="q24" value="wrong" class="mr-2 hidden"> Car c’est une non-valeur totale tant qu’il n’est pas appelé.
-</label>
-</div>
-<div class="swiper-slide p-4 bg-white rounded shadow-md">
-<p class="mb-4 font-medium">Question 25 : Le cycle d’exploitation donne-t-il toujours naissance à des créances dont le terme est inférieur à un an ?</p>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q25', 'correct', 25)">
-  <input type="radio" name="q25" value="correct" class="mr-2 hidden"> Non, dans certaines industries les clients paient longtemps après la facturation (négoce de droits audiovisuels).
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q25', 'wrong', 25)">
-  <input type="radio" name="q25" value="wrong" class="mr-2 hidden"> Endettement net, capitaux propres, immobilisations, BFR, BFR, endettement net, BFR, immobilisations.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q25', 'wrong', 25)">
-  <input type="radio" name="q25" value="wrong" class="mr-2 hidden"> À un flux.
-</label>
-
-<label class="block mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded transition" onclick="selectionner(this, 'q25', 'wrong', 25)">
-  <input type="radio" name="q25" value="wrong" class="mr-2 hidden"> Pas nécessairement puisque c’est un problème de liquidité qui l’a conduit à la cessation des paiements. Toutefois, l’immense majorité des entreprises dans cette situation sont aussi insolvables.
-</label>
-</div>
-
-      </div>
-      <div class="flex justify-between mt-4">
-        <button id="prevBtn" class="bg-gray-300 text-gray-800 px-4 py-2 rounded">Précédent</button>
-        <button id="nextBtn" class="bg-blue-600 text-white px-4 py-2 rounded">Suivant</button>
-      </div>
-      <div class="text-center mt-6">
-        <button onclick="envoyer()" class="bg-green-600 text-white px-6 py-2 rounded">Soumettre</button>
-      </div>
     </div>
-  </div>
-
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 25.</p>
+    </div>
 <script>
-  const swiper = new Swiper('.swiper', {
-    navigation: false,
-    allowTouchMove: false,
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait) return;
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  if (i === 25) {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  } else {
+    document.getElementById('step' + (i+1)).classList.remove('hidden');
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/25",
+    date: new Date().toISOString(),
+    sujet: "5. L'actif économique et les ressources financières"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
   });
-
-  document.getElementById('nextBtn').addEventListener('click', () => swiper.slideNext());
-  document.getElementById('prevBtn').addEventListener('click', () => swiper.slidePrev());
-
-  function selectionner(label, questionName, value, index) {
-    const input = label.querySelector('input');
-    input.checked = true;
-    if (index === 25) {
-      setTimeout(() => {
-        if (confirm("Voulez-vous envoyer vos réponses ?")) {
-          envoyer();
-        }
-      }, 200);
-    } else {
-      setTimeout(() => swiper.slideNext(), 200);
-    }
-  }
-
-  async function envoyer() {
-    const nom = document.getElementById('nom').value;
-    let score = 0;
-
-    if (document.querySelector('input[name="q1"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q2"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q3"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q4"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q5"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q6"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q7"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q8"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q9"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q10"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q11"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q12"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q13"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q14"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q15"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q16"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q17"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q18"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q19"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q20"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q21"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q22"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q23"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q24"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    if (document.querySelector('input[name="q25"]:checked')?.value === "correct") {
-      score++;
-    }
-
-    const data = {
-      nom: nom,
-      score: score + "/25",
-      date: new Date().toISOString(),
-      sujet: "5. L'actif économique et les ressources financières"
-    };
-
-    await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    alert("Résultat envoyé !");
-  }
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 25";
+}
 </script>
-
+</div>
 </body>
 </html>
