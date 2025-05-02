@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz Final - QCM Plausibles</title>
+  <title>Quiz - L’analyse de la rentabilité comptable</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -17,195 +17,301 @@
       </select>
     </div>
     <div id="quiz-container">
-<div class="question-step " id="step1">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 1 / 14 :<br>Pourquoi l’actif économique est-il égal aux capitaux investis ?</p>
+
+<div class="question-step" id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 14 :<br>Pourquoi l’actif économique est-il égal aux capitaux investis ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+      <input type="radio" name="q1" value="correct" class="hidden"> Par construction comptable, l’actif économique étant financé par les capitaux investis, c’est-à-dire les capitaux propres et l’endettement net.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Parce que les actifs sont toujours égaux aux dettes à long terme.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce que le résultat net le permet</label>
+      <input type="radio" name="q1" value="wrong" class="hidden"> Parce qu’il ne peut pas y avoir de capitaux propres négatifs.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce que c’est imposé par le PCG</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
-<input type="radio" name="q1" value="correct" class="hidden"> Par construction comptable, l’actif économique étant financé par les capitaux investis, c’est-à-dire les capitaux propres et l’endettement net.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce que le passif est toujours supérieur</label>
-</div></div>
+      <input type="radio" name="q1" value="wrong" class="hidden"> Parce que c’est une norme IFRS imposée.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step2">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 2 / 14 :<br>Qu’est-ce que l’effet de levier ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 14 :<br>Qu’est-ce que l’effet de levier ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+      <input type="radio" name="q2" value="correct" class="hidden"> C’est l’écart entre la rentabilité des capitaux propres et la rentabilité après impôt de l’actif économique.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> C’est le ratio entre la dette brute et les capitaux propres.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> C’est le rendement des obligations</label>
+      <input type="radio" name="q2" value="wrong" class="hidden"> C’est le rendement exigé par les actionnaires.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> C’est la différence entre EBITDA et CAF</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
-<input type="radio" name="q2" value="correct" class="hidden"> C’est l’écart entre la rentabilité des capitaux propres et la rentabilité après impôt de l’actif économique.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> C’est l’effet fiscal de la dette</label>
-</div></div>
+      <input type="radio" name="q2" value="wrong" class="hidden"> C’est le taux d’imposition marginal ajusté du coût de la dette.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step3">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 3 / 14 :<br>Comment calculer l’effet de levier ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 14 :<br>Comment calculer l’effet de levier ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+      <input type="radio" name="q3" value="correct" class="hidden"> Effet de levier = (RE - i) × D/CP
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> RE × CP / D
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> ROCE + coût de la dette</label>
+      <input type="radio" name="q3" value="wrong" class="hidden"> i / (RE - CP)
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> CAF / Endettement net</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
-<input type="radio" name="q3" value="correct" class="hidden"> Effet de levier = (Rentabilité économique – Coût de la dette) × Endettement net / Capitaux propres</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> RE – RN / Capitaux propres</label>
-</div></div>
+      <input type="radio" name="q3" value="wrong" class="hidden"> D × CP / (RE + i)
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step4">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 4 / 14 :<br>Pourquoi la formule de l’effet de levier est-elle une tautologie comptable ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
-<input type="radio" name="q4" value="correct" class="hidden"> Car elle repose sur l’égalité total actif = total passif qui est toujours vraie !</label>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 14 :<br>Pourquoi la formule de l’effet de levier est-elle une tautologie comptable ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+      <input type="radio" name="q4" value="correct" class="hidden"> Car elle repose sur l’égalité total actif = total passif qui est toujours vraie !
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Parce qu’elle ne fait intervenir que le capital social.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Car les marges sont fixes</label>
+      <input type="radio" name="q4" value="wrong" class="hidden"> Parce qu’elle dépend uniquement du taux d’imposition.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Car la dette est constante</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Car l’actif est toujours positif</label>
-</div></div>
+      <input type="radio" name="q4" value="wrong" class="hidden"> Parce que les dettes sont éliminées dans le calcul final.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step5">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 5 / 14 :<br>Un accroissement de l’endettement améliore-t-il la rentabilité des capitaux propres ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 14 :<br>Selon la formule de l’effet de levier, pour une rentabilité économique de 10 % et un coût de la dette à 4 %, un accroissement de l’endettement améliore-t-il la rentabilité des fonds propres ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+      <input type="radio" name="q5" value="correct" class="hidden"> Et le risque de l’actionnaire qui s’accroît parallèlement au levier financier ?
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Oui sans limite si l’effet est positif.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> Non car la dette est neutre</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
-<input type="radio" name="q5" value="correct" class="hidden"> Et le risque de l’actionnaire qui s’accroît parallèlement au levier financier ?</label>
+      <input type="radio" name="q5" value="wrong" class="hidden"> Non, car la dette ne joue aucun rôle dans la rentabilité.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> Oui si le ROE est faible</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> Oui sans condition</label>
-</div></div>
+      <input type="radio" name="q5" value="wrong" class="hidden"> Oui, mais uniquement à taux fixes constants.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step6">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 6 / 14 :<br>Pourquoi les dépréciations des goodwills posent-elles un problème dans le calcul de la rentabilité économique ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 14 :<br>Pourquoi les dépréciations des goodwills posent-elles un problème dans le calcul de la rentabilité économique ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+      <input type="radio" name="q6" value="correct" class="hidden"> Elles augmentent artificiellement les rentabilités comptables ; il faut raisonner en brut.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Parce qu’elles augmentent les capitaux propres.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Car elles augmentent le BFR</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
-<input type="radio" name="q6" value="correct" class="hidden"> Car les dépréciations... augmentent artificiellement les rentabilités comptables. Il faut raisonner en brut.</label>
+      <input type="radio" name="q6" value="wrong" class="hidden"> Parce qu’elles réduisent la trésorerie nette.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Car elles réduisent les immobilisations</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Car elles baissent les dividendes</label>
-</div></div>
+      <input type="radio" name="q6" value="wrong" class="hidden"> Parce qu’elles diminuent le chiffre d’affaires.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step7">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 7 / 14 :<br>Quel est l’intérêt de l’effet de levier ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
-<input type="radio" name="q7" value="correct" class="hidden"> Il permet de connaître l’origine d’une bonne rentabilité des capitaux propres, une bonne rentabilité économique ou un effet de levier important.</label>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 14 :<br>Au fond, quel est l’intérêt de l’effet de levier ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+      <input type="radio" name="q7" value="correct" class="hidden"> Connaître si la rentabilité des capitaux propres vient d’une bonne rentabilité économique ou d’un effet de levier important.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> Augmenter le taux d’endettement à tout prix.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Il montre la valeur comptable</label>
+      <input type="radio" name="q7" value="wrong" class="hidden"> Réduire l’impôt sur les sociétés.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Il permet d’optimiser le cash</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Il calcule la dette nette</label>
-</div></div>
+      <input type="radio" name="q7" value="wrong" class="hidden"> Renforcer le contrôle fiscal.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step8">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 8 / 14 :<br>Votre directeur financier vous propose de vous endetter pour augmenter le ROE. Qu’en pensez-vous ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 14 :<br>Votre DAF vous propose d’augmenter l’endettement pour améliorer la rentabilité des fonds propres. Que penser ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+      <input type="radio" name="q8" value="correct" class="hidden"> La rentabilité économique est-elle supérieure au coût de la dette ? Quel est le niveau de risque acceptable ?
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Oui dans tous les cas pour renforcer le ROE.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Il faut refuser pour des raisons fiscales</label>
+      <input type="radio" name="q8" value="wrong" class="hidden"> Non car l’endettement nuit toujours à la solvabilité.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Il faut accepter car cela augmente la valeur</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> C’est toujours une bonne décision</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
-<input type="radio" name="q8" value="correct" class="hidden"> La rentabilité économique est-elle supérieure au coût de la dette ? Quel est le niveau de risque que les actionnaires sont prêts à courir ?</label>
-</div></div>
+      <input type="radio" name="q8" value="wrong" class="hidden"> Il faut obligatoirement augmenter les capitaux propres.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step9">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 9 / 14 :<br>Quel est le principal problème des taux de rentabilité comptables ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
-<input type="radio" name="q9" value="correct" class="hidden"> Ils ne prennent pas en compte le risque.</label>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 14 :<br>Quel est le principal problème des taux de rentabilité comptables ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+      <input type="radio" name="q9" value="correct" class="hidden"> Ils ne prennent pas en compte le risque.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Ils surestiment systématiquement les résultats nets.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Ils sont calculés en brut</label>
+      <input type="radio" name="q9" value="wrong" class="hidden"> Ils sont calculés uniquement sur base consolidée.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Ils incluent les dividendes</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Ils sont toujours négatifs</label>
-</div></div>
+      <input type="radio" name="q9" value="wrong" class="hidden"> Ils sont définis par la fiscalité applicable.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step10">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 10 / 14 :<br>Avec des taux bas et une bonne conjoncture, comment doit évoluer la structure financière ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 14 :<br>Avec des taux bas et une bonne conjoncture, comment la structure financière devrait-elle évoluer ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+      <input type="radio" name="q10" value="correct" class="hidden"> Un accroissement de l’effet de levier mais… attention au risque !
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Réduction immédiate de tout endettement.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Un maintien du ratio de solvabilité</label>
+      <input type="radio" name="q10" value="wrong" class="hidden"> Passage en capitaux propres à 100 %.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Une stabilité du gearing</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
-<input type="radio" name="q10" value="correct" class="hidden"> Un accroissement de l’effet de levier mais… voir la quatrième partie de cet ouvrage !</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Une baisse de l’endettement</label>
-</div></div>
+      <input type="radio" name="q10" value="wrong" class="hidden"> Aucune modification car le marché est stable.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step11">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 11 / 14 :<br>Que penser des secteurs à fortes marges et faible intensité capitalistique ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 14 :<br>Que penser d’un secteur à forte marge et faible intensité capitalistique ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+      <input type="radio" name="q11" value="correct" class="hidden"> C’est le nirvana ! Mais les concurrents vont entrer et rogner la rentabilité à terme.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Ce secteur est condamné à disparaître.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Ils sont en déclin</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
-<input type="radio" name="q11" value="correct" class="hidden"> C’est le nirvana, le paradis sur terre... mais cela attire la concurrence.</label>
+      <input type="radio" name="q11" value="wrong" class="hidden"> Il présente des risques de surendettement importants.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Ils nécessitent des subventions</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Ils sont structurellement déficitaires</label>
-</div></div>
+      <input type="radio" name="q11" value="wrong" class="hidden"> Les marges y sont faibles donc il faut éviter d’y investir.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step12">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 12 / 14 :<br>Que penser des secteurs à faibles marges et forte intensité capitalistique ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
-<input type="radio" name="q12" value="correct" class="hidden"> Ils sont mûrs pour une restructuration... et si endettés, à des faillites.</label>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 14 :<br>Et d’un secteur à faible marge et forte intensité capitalistique ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+      <input type="radio" name="q12" value="correct" class="hidden"> Il est mûr pour une restructuration ; faible rentabilité, risque de faillite en cas d’endettement.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Ce secteur est extrêmement rentable à long terme.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Ils ont une forte valeur d’actif</label>
+      <input type="radio" name="q12" value="wrong" class="hidden"> Il génère du goodwill automatique.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Ils attirent les fonds de pension</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Ils sont très attractifs</label>
-</div></div>
+      <input type="radio" name="q12" value="wrong" class="hidden"> Les taux de marge compensent toujours le capital.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step13">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 13 / 14 :<br>Citez deux cas d’entreprises avec RE > ROE. Laquelle est la plus risquée ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 14 :<br>Donnez deux configurations avec une rentabilité économique > rentabilité des capitaux propres. Laquelle est la plus risquée ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+      <input type="radio" name="q13" value="correct" class="hidden"> Une entreprise en dette nette négative (Hermès) ou une entreprise surendettée à rentabilité faible. La seconde est la plus risquée.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> Toutes deux sont sans risque si ROE est positif.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> Deux entreprises non endettées</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
-<input type="radio" name="q13" value="correct" class="hidden"> Une entreprise en dette nette négative... La seconde qui est endettée et qui a une faible rentabilité économique.</label>
+      <input type="radio" name="q13" value="wrong" class="hidden"> L’entreprise non endettée est plus risquée.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> Deux entreprises sans goodwill</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> Deux entreprises très rentables</label>
-</div></div>
+      <input type="radio" name="q13" value="wrong" class="hidden"> Cela dépend uniquement de la fiscalité.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step14">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 14 / 14 :<br>Citez deux cas d’entreprises avec RE = ROE. Laquelle est la plus risquée ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 14 / 14 :<br>Donnez deux configurations avec rentabilité économique = rentabilité des fonds propres. Laquelle est la plus risquée ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+      <input type="radio" name="q14" value="correct" class="hidden"> Une entreprise sans dette ou une entreprise endettée à taux d’intérêt égal à sa rentabilité. La seconde est plus risquée.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> Elles sont équivalentes.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Deux entreprises avec même secteur</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
-<input type="radio" name="q14" value="correct" class="hidden"> Une entreprise à l’endettement net nul. Une entreprise endettée à un taux égal à sa (faible) rentabilité économique. La seconde est la plus risquée.</label>
+      <input type="radio" name="q14" value="wrong" class="hidden"> La première est plus risquée à cause du cash.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Deux entreprises sans dette</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Deux entreprises très peu risquées</label>
-</div></div>
+      <input type="radio" name="q14" value="wrong" class="hidden"> Cela dépend du chiffre d’affaires.
+    </label>
+  </div>
+</div>
 
     </div>
     <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
       <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
       <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 14.</p>
     </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : Pourquoi l’actif économique est-il égal aux capitaux investis ?</p><p class='text-green-700'>✔ Par construction comptable, l’actif économique étant financé par les capitaux investis, c’est-à-dire les capitaux propres et l’endettement net.</p></li>
+<li><p class='font-semibold'>Question 2 : Qu’est-ce que l’effet de levier ?</p><p class='text-green-700'>✔ C’est l’écart entre la rentabilité des capitaux propres et la rentabilité après impôt de l’actif économique.</p></li>
+<li><p class='font-semibold'>Question 3 : Comment calculer l’effet de levier ?</p><p class='text-green-700'>✔ Effet de levier = (RE - i) × D/CP</p></li>
+<li><p class='font-semibold'>Question 4 : Pourquoi la formule de l’effet de levier est-elle une tautologie comptable ?</p><p class='text-green-700'>✔ Car elle repose sur l’égalité total actif = total passif qui est toujours vraie !</p></li>
+<li><p class='font-semibold'>Question 5 : Selon la formule de l’effet de levier, pour une rentabilité économique de 10 % et un coût de la dette à 4 %, un accroissement de l’endettement améliore-t-il la rentabilité des fonds propres ?</p><p class='text-green-700'>✔ Et le risque de l’actionnaire qui s’accroît parallèlement au levier financier ?</p></li>
+<li><p class='font-semibold'>Question 6 : Pourquoi les dépréciations des goodwills posent-elles un problème dans le calcul de la rentabilité économique ?</p><p class='text-green-700'>✔ Elles augmentent artificiellement les rentabilités comptables ; il faut raisonner en brut.</p></li>
+<li><p class='font-semibold'>Question 7 : Au fond, quel est l’intérêt de l’effet de levier ?</p><p class='text-green-700'>✔ Connaître si la rentabilité des capitaux propres vient d’une bonne rentabilité économique ou d’un effet de levier important.</p></li>
+<li><p class='font-semibold'>Question 8 : Votre DAF vous propose d’augmenter l’endettement pour améliorer la rentabilité des fonds propres. Que penser ?</p><p class='text-green-700'>✔ La rentabilité économique est-elle supérieure au coût de la dette ? Quel est le niveau de risque acceptable ?</p></li>
+<li><p class='font-semibold'>Question 9 : Quel est le principal problème des taux de rentabilité comptables ?</p><p class='text-green-700'>✔ Ils ne prennent pas en compte le risque.</p></li>
+<li><p class='font-semibold'>Question 10 : Avec des taux bas et une bonne conjoncture, comment la structure financière devrait-elle évoluer ?</p><p class='text-green-700'>✔ Un accroissement de l’effet de levier mais… attention au risque !</p></li>
+<li><p class='font-semibold'>Question 11 : Que penser d’un secteur à forte marge et faible intensité capitalistique ?</p><p class='text-green-700'>✔ C’est le nirvana ! Mais les concurrents vont entrer et rogner la rentabilité à terme.</p></li>
+<li><p class='font-semibold'>Question 12 : Et d’un secteur à faible marge et forte intensité capitalistique ?</p><p class='text-green-700'>✔ Il est mûr pour une restructuration ; faible rentabilité, risque de faillite en cas d’endettement.</p></li>
+<li><p class='font-semibold'>Question 13 : Donnez deux configurations avec une rentabilité économique > rentabilité des capitaux propres. Laquelle est la plus risquée ?</p><p class='text-green-700'>✔ Une entreprise en dette nette négative (Hermès) ou une entreprise surendettée à rentabilité faible. La seconde est la plus risquée.</p></li>
+<li><p class='font-semibold'>Question 14 : Donnez deux configurations avec rentabilité économique = rentabilité des fonds propres. Laquelle est la plus risquée ?</p><p class='text-green-700'>✔ Une entreprise sans dette ou une entreprise endettée à taux d’intérêt égal à sa rentabilité. La seconde est plus risquée.</p></li>
+
+      </ul>
+    </div>
 <script>
 let score = 0;
 let envoiFait = false;
 
 function repondre(label, q, val, i) {
-  if (envoiFait) return;
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
   if (val === 'correct') score++;
   document.getElementById('step' + i).classList.add('hidden');
-  if (i === 14) {
-    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && i === 14 && confirm("Envoyer tes réponses ?")) {
       envoiFait = true;
       envoyer();
     }
-  } else {
-    document.getElementById('step' + (i+1)).classList.remove('hidden');
   }
 }
 
@@ -226,6 +332,7 @@ async function envoyer() {
   document.getElementById('resultat').classList.remove('hidden');
   document.getElementById('prenomResultat').textContent = nom;
   document.getElementById('scoreFinal').textContent = score + " / 14";
+  document.getElementById('corrections').classList.remove('hidden');
 }
 </script>
 </div>
