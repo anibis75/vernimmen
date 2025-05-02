@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - La solidité des digues</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+<div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+<h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - C’est quand la marée monte que l’on mesure la solidité des digues</h1>
+<div class="mb-6 text-center">
+<label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+<select id="nom" class="border border-gray-300 rounded px-4 py-2">
+<option value="azad">azad</option>
+<option value="remi">remi</option>
+</select>
+</div>
+<div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 14 :<br>L’annonce d’une hausse des taux non anticipée doit-elle, au moins mécaniquement, conduire à une baisse de l’indice boursier ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Non, si le marché est haussier sur les matières premières.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Oui, mais seulement sur les actions à dividende élevé.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Non, cela stimule toujours les investissements.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> Mécaniquement, oui, car les valeurs varient en sens inverse des taux d’intérêt.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 14 :<br>Si cette annonce était prévue par le marché, votre réponse serait-elle modifiée ? Quel est l’élément important dans toute évaluation de titres ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> Oui, la réponse serait alors non. L’élément important dans toute évaluation de titre, ce sont les anticipations.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Oui, à condition qu’une récession soit probable.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Non, car les marchés sont toujours irrationnels.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Oui, mais uniquement si la BCE réagit.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 14 :<br>Outre le mot « marché », quel est, selon vous, le maître mot en finance ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> La vitesse.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> La monnaie.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> La fiscalité.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> La valeur.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 14 :<br>Qu’est-ce que peut faire un actionnaire qui n’est pas d’accord avec la politique de RSE d’une entreprise ? Et l’effet sur son coût de financement ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Lancer une OPA.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Demander un crédit à la banque centrale.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> Voter contre ou vendre ses actions. Si beaucoup le font, le cours baisse et le coût de financement augmente.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Imposer une nouvelle stratégie au PDG.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 14 :<br>Comment comparer un prêt à 3,5 % sans garantie et un à 3 % avec garantie ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Prendre le prêt sans garantie, toujours plus sûr.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Choisir toujours celui avec le taux le plus bas.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Comparer les TRI des actionnaires.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Gagner 0,5 % par an vaut-il la peine d’accorder une garantie qui réduit la marge de manœuvre ?
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 14 :<br>Que peut faire un étudiant qui n’approuve pas la politique RSE d’une entreprise ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Demander une subvention publique.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> Refuser l’offre, alerter, ou tenter de changer l’entreprise de l’intérieur.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Attaquer l’entreprise en justice.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Racheter des parts de l’entreprise.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 14 :<br>Dans l’exemple Rexel, qui supporte la réduction de 0,10 % du taux d’intérêt et pourquoi ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> L'État qui garantit l'emprunt.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Les investisseurs acceptent une rentabilité moindre pour inciter aux efforts climatiques.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Les banques qui baissent leurs marges.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> La BCE dans le cadre du green QE.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 14 :<br>Raisonner en offre/demande de titres est-il plus important pour actions, obligations, crédit syndiqué, ou crédit bancaire ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Plus important pour les crédits que pour les obligations.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Uniquement important pour les actions.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Égal pour tous ces produits.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Ordre d’importance : actions > obligations = crédit syndiqué > crédit bancaire.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 14 :<br>À quoi faut-il penser immédiatement quand on dit « rentabilité » ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Dividendes.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Durée.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Effet de levier.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Risque, les deux sont indissociables.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 14 :<br>Et quand on dit « risque » ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Résultat net.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Marge brute.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Rentabilité, les deux sont indissociables.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Valeur liquidative.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 14 :<br>Quels sont les deux défauts typiques des mauvais financiers d’entreprise ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> La rigueur et l’intransigeance.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> La myopie et l’incompétence en marketing.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> La lenteur et l’orgueil.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> L’optimisme et le conformisme.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step12">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 12 / 14 :<br>Pourquoi les dirigeants font-ils des roadshows avant des placements ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Pour jouer le rôle de vendeur et expliquer l’activité sous-jacente aux titres.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Pour influencer la BCE.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Pour négocier le cours avec les bourses.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Pour maximiser les dividendes.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step13">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 13 / 14 :<br>Quel est l’intérêt et le risque d’un endettement très court pour financer un investissement ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Protège du risque de marché.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Permet une rentabilité illimitée.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Aucun avantage, juste un risque.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'correct', 13)">
+<input type="radio" name="q13" value="correct" class="hidden"> Taux plus faible, mais risque de liquidité si le refinancement échoue.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step14">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 14 / 14 :<br>Si on vous propose un placement au-dessus du taux du marché, que faire ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Le refuser systématiquement.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Demander une garantie publique.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'correct', 14)">
+<input type="radio" name="q14" value="correct" class="hidden"> Vérifier la contrepartie : souvent un risque accru. Ex : subprimes.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Accepter sans hésiter.
+</label>
+</div>
+</div>
+
+</div>
+<div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+<h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+<p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 14.</p>
+</div>
+<div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+<h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+<ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : L’annonce d’une hausse des taux non anticipée doit-elle, au moins mécaniquement, conduire à une baisse de l’indice boursier ?</p><p class='text-green-700'>✔ Mécaniquement, oui, car les valeurs varient en sens inverse des taux d’intérêt.</p></li>
+<li><p class='font-semibold'>Question 2 : Si cette annonce était prévue par le marché, votre réponse serait-elle modifiée ? Quel est l’élément important dans toute évaluation de titres ?</p><p class='text-green-700'>✔ Oui, la réponse serait alors non. L’élément important dans toute évaluation de titre, ce sont les anticipations.</p></li>
+<li><p class='font-semibold'>Question 3 : Outre le mot « marché », quel est, selon vous, le maître mot en finance ?</p><p class='text-green-700'>✔ La valeur.</p></li>
+<li><p class='font-semibold'>Question 4 : Qu’est-ce que peut faire un actionnaire qui n’est pas d’accord avec la politique de RSE d’une entreprise ? Et l’effet sur son coût de financement ?</p><p class='text-green-700'>✔ Voter contre ou vendre ses actions. Si beaucoup le font, le cours baisse et le coût de financement augmente.</p></li>
+<li><p class='font-semibold'>Question 5 : Comment comparer un prêt à 3,5 % sans garantie et un à 3 % avec garantie ?</p><p class='text-green-700'>✔ Gagner 0,5 % par an vaut-il la peine d’accorder une garantie qui réduit la marge de manœuvre ?</p></li>
+<li><p class='font-semibold'>Question 6 : Que peut faire un étudiant qui n’approuve pas la politique RSE d’une entreprise ?</p><p class='text-green-700'>✔ Refuser l’offre, alerter, ou tenter de changer l’entreprise de l’intérieur.</p></li>
+<li><p class='font-semibold'>Question 7 : Dans l’exemple Rexel, qui supporte la réduction de 0,10 % du taux d’intérêt et pourquoi ?</p><p class='text-green-700'>✔ Les investisseurs acceptent une rentabilité moindre pour inciter aux efforts climatiques.</p></li>
+<li><p class='font-semibold'>Question 8 : Raisonner en offre/demande de titres est-il plus important pour actions, obligations, crédit syndiqué, ou crédit bancaire ?</p><p class='text-green-700'>✔ Ordre d’importance : actions > obligations = crédit syndiqué > crédit bancaire.</p></li>
+<li><p class='font-semibold'>Question 9 : À quoi faut-il penser immédiatement quand on dit « rentabilité » ?</p><p class='text-green-700'>✔ Risque, les deux sont indissociables.</p></li>
+<li><p class='font-semibold'>Question 10 : Et quand on dit « risque » ?</p><p class='text-green-700'>✔ Rentabilité, les deux sont indissociables.</p></li>
+<li><p class='font-semibold'>Question 11 : Quels sont les deux défauts typiques des mauvais financiers d’entreprise ?</p><p class='text-green-700'>✔ La myopie et l’incompétence en marketing.</p></li>
+<li><p class='font-semibold'>Question 12 : Pourquoi les dirigeants font-ils des roadshows avant des placements ?</p><p class='text-green-700'>✔ Pour jouer le rôle de vendeur et expliquer l’activité sous-jacente aux titres.</p></li>
+<li><p class='font-semibold'>Question 13 : Quel est l’intérêt et le risque d’un endettement très court pour financer un investissement ?</p><p class='text-green-700'>✔ Taux plus faible, mais risque de liquidité si le refinancement échoue.</p></li>
+<li><p class='font-semibold'>Question 14 : Si on vous propose un placement au-dessus du taux du marché, que faire ?</p><p class='text-green-700'>✔ Vérifier la contrepartie : souvent un risque accru. Ex : subprimes.</p></li>
+
+</ul>
+</div>
+<script>
+let score = 0;
+let envoiFait = false;
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "C’est quand la marée monte que l’on mesure la solidité des digues"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 14";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>
