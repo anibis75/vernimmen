@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - La gestion de trésorerie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - La gestion de trésorerie</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 16 :<br>Quels sont les trois objectifs principaux d’un trésorier ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> Réduire au minimum les fonds dormants, optimiser le coût du financement et du placement, optimiser le coût de la gestion du risque.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Optimiser le chiffre d’affaires, gérer la communication financière, réduire les dividendes.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Fixer les taux d’intérêt, négocier les contrats de travail, gérer les fusions.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Assurer la conformité réglementaire, superviser l’audit interne, gérer les stocks.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 16 :<br>Quelles sont les trois situations de la trésorerie de l’entreprise ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Liquidités, créances, amortissements.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Bénéfice net, EBITDA, résultat d’exploitation.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Flux d’investissement, flux de financement, charges non décaissées.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> Comptes en dates de valeur ; états comptables ; comptes bancaires de l’entreprise.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 16 :<br>Qu’est-ce qu’une date de valeur ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> C’est la date du paiement du salaire.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> C’est la date d’émission d’une facture fournisseur.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> C’est la date de fin d’un exercice comptable.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> C’est la date à partir de laquelle une somme créditée porte intérêts et une somme débitée cesse de porter intérêts.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 16 :<br>Qu’est-ce qu’un compte pivot ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Un compte de résultat intermédiaire.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Un compte clôturé chaque fin de mois.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> C’est un compte qui sert à équilibrer les positions de trésorerie.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Un compte utilisé uniquement pour les paiements à l’étranger.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 16 :<br>Différence entre centralisation nationale et internationale ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> La méthode de conversion comptable.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Le traitement des salaires.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Les règles de TVA appliquées.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Un niveau de centralisation.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 16 :<br>Équilibrage quotidien vs fusion d’échelles d’intérêt : plus ou moins de frais ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Plus de frais dans l’équilibrage quotidien.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> Dans les deux cas : aucun frais financier puisque les comptes sont équilibrés.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Aucun effet sur les frais financiers.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Plus de frais dans la fusion d’échelles.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 16 :<br>Le risque de faillite d’une filiale est-il un obstacle à la centralisation ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Oui, toujours.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Oui, sauf si elle est déficitaire.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Non, car des garanties croisées peuvent être mises en place entre filiales.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Uniquement si la filiale est cotée.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 16 :<br>Quel argument peut être opposé à la centralisation intégrale de la trésorerie ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Trop forte présence des banques centrales.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Manque de compétences du trésorier groupe.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Hausse des taux d’intérêt.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Déresponsabilisation des filiales dans la gestion de leurs liquidités.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 16 :<br>Organisation de trésorerie adaptée à un groupe très décentralisé ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Utilisation du pool de trésorerie à la demande.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Gestion externalisée à la BCE.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Gestion par dérivés uniquement.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Centralisation intégrale avec SWIFT.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 16 :<br>Sur quoi repose le principe des dates de valeur ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Le calcul du BFR.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> La compensation des chèques.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> La valeur liquidative du portefeuille.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Le règlement-livraison D+2.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 16 :<br>Un placement liquide sur un marché secondaire est-il sans risque ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Oui, c’est garanti par l’État.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> Non, la liquidité ne fait pas disparaître le risque de valeur ni celui de crédit.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Oui, car les ETF sont transparents.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Oui, s’il est en euros.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step12">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 12 / 16 :<br>Un placement peut-il être plus rentable qu’un emprunt ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Oui, si le placement est plus risqué ou si la dette est à taux fixe bas.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Oui, toujours.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Non, sauf en période de récession.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Non, c’est impossible par construction.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step13">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 13 / 16 :<br>Pourquoi éviter de placer les liquidités en actions ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'correct', 13)">
+<input type="radio" name="q13" value="correct" class="hidden"> Risque de moins-value à court terme.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Parce qu’elles sont peu rémunératrices.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Parce qu’elles sont interdites aux trésoriers.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Parce qu’elles sont taxées plus fortement.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step14">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 14 / 16 :<br>Que penser du CPDO inventé par ABN Amro en 2006, noté AAA ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'correct', 14)">
+<input type="radio" name="q14" value="correct" class="hidden"> Produit au risque sous-estimé. Il valait 30 % du nominal en 2009.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Produit garanti par l’État néerlandais.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Excellente opportunité sécurisée.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Produit de trésorerie classique.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step15">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 15 / 16 :<br>Trésorier de Monheim, placez-vous chez Greensill Bank à 0 % ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Oui, car la rentabilité est élevée.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Oui, car c’est la seule à ne pas facturer les dépôts.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Oui, car la banque est européenne.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q15', 'correct', 15)">
+<input type="radio" name="q15" value="correct" class="hidden"> Non : risque sous-estimé. Greensill a fait faillite en mars 2021.
+</label>
+</div>
+</div>
+<div class="question-step hidden" id="step16">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 16 / 16 :<br>Que peut être tenté de faire un trésorier avec des taux très bas après impôt ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> S’endetter davantage.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> Éviter de diversifier.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> Augmenter les dividendes.
+</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded"
+onclick="repondre(this, 'q16', 'correct', 16)">
+<input type="radio" name="q16" value="correct" class="hidden"> Prendre plus de risque avec des produits à maturité plus longue et moins liquides.
+</label>
+</div>
+</div>
+
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 16.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : Quels sont les trois objectifs principaux d’un trésorier ?</p><p class='text-green-700'>✔ Réduire au minimum les fonds dormants, optimiser le coût du financement et du placement, optimiser le coût de la gestion du risque.</p></li>
+<li><p class='font-semibold'>Question 2 : Quelles sont les trois situations de la trésorerie de l’entreprise ?</p><p class='text-green-700'>✔ Comptes en dates de valeur ; états comptables ; comptes bancaires de l’entreprise.</p></li>
+<li><p class='font-semibold'>Question 3 : Qu’est-ce qu’une date de valeur ?</p><p class='text-green-700'>✔ C’est la date à partir de laquelle une somme créditée porte intérêts et une somme débitée cesse de porter intérêts.</p></li>
+<li><p class='font-semibold'>Question 4 : Qu’est-ce qu’un compte pivot ?</p><p class='text-green-700'>✔ C’est un compte qui sert à équilibrer les positions de trésorerie.</p></li>
+<li><p class='font-semibold'>Question 5 : Différence entre centralisation nationale et internationale ?</p><p class='text-green-700'>✔ Un niveau de centralisation.</p></li>
+<li><p class='font-semibold'>Question 6 : Équilibrage quotidien vs fusion d’échelles d’intérêt : plus ou moins de frais ?</p><p class='text-green-700'>✔ Dans les deux cas : aucun frais financier puisque les comptes sont équilibrés.</p></li>
+<li><p class='font-semibold'>Question 7 : Le risque de faillite d’une filiale est-il un obstacle à la centralisation ?</p><p class='text-green-700'>✔ Non, car des garanties croisées peuvent être mises en place entre filiales.</p></li>
+<li><p class='font-semibold'>Question 8 : Quel argument peut être opposé à la centralisation intégrale de la trésorerie ?</p><p class='text-green-700'>✔ Déresponsabilisation des filiales dans la gestion de leurs liquidités.</p></li>
+<li><p class='font-semibold'>Question 9 : Organisation de trésorerie adaptée à un groupe très décentralisé ?</p><p class='text-green-700'>✔ Utilisation du pool de trésorerie à la demande.</p></li>
+<li><p class='font-semibold'>Question 10 : Sur quoi repose le principe des dates de valeur ?</p><p class='text-green-700'>✔ La compensation des chèques.</p></li>
+<li><p class='font-semibold'>Question 11 : Un placement liquide sur un marché secondaire est-il sans risque ?</p><p class='text-green-700'>✔ Non, la liquidité ne fait pas disparaître le risque de valeur ni celui de crédit.</p></li>
+<li><p class='font-semibold'>Question 12 : Un placement peut-il être plus rentable qu’un emprunt ?</p><p class='text-green-700'>✔ Oui, si le placement est plus risqué ou si la dette est à taux fixe bas.</p></li>
+<li><p class='font-semibold'>Question 13 : Pourquoi éviter de placer les liquidités en actions ?</p><p class='text-green-700'>✔ Risque de moins-value à court terme.</p></li>
+<li><p class='font-semibold'>Question 14 : Que penser du CPDO inventé par ABN Amro en 2006, noté AAA ?</p><p class='text-green-700'>✔ Produit au risque sous-estimé. Il valait 30 % du nominal en 2009.</p></li>
+<li><p class='font-semibold'>Question 15 : Trésorier de Monheim, placez-vous chez Greensill Bank à 0 % ?</p><p class='text-green-700'>✔ Non : risque sous-estimé. Greensill a fait faillite en mars 2021.</p></li>
+<li><p class='font-semibold'>Question 16 : Que peut être tenté de faire un trésorier avec des taux très bas après impôt ?</p><p class='text-green-700'>✔ Prendre plus de risque avec des produits à maturité plus longue et moins liquides.</p></li>
+
+      </ul>
+    </div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/16",
+    date: new Date().toISOString(),
+    sujet: "La gestion de trésorerie"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 16";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>
