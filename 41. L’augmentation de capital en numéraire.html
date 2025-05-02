@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Quiz Final - QCM Plausibles</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+<div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+<h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’augmentation de capital en numéraire</h1>
+<div class="mb-6 text-center">
+<label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+<select class="border border-gray-300 rounded px-4 py-2" id="nom">
+<option value="azad">azad</option>
+<option value="remi">remi</option>
+</select>
+</div>
+<div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 14 :<br/>Le prix d’émission des actions nouvelles est-il important lors d’une augmentation de capital où chaque actionnaire souscrit à hauteur de sa part ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input class="hidden" name="q1" type="radio" value="correct"/> Non, car quel que soit le prix d’émission, l’actionnariat n’est pas modifié.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Oui, car cela détermine la valeur de marché de l’entreprise.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Oui, car cela modifie la répartition des bénéfices futurs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Oui, car cela change la valeur comptable des capitaux propres.</label>
+</div></div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 14 :<br/>À quoi correspond la dilution du contrôle ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> À la perte de rentabilité des capitaux propres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> À l’augmentation de la dette dans la structure financière.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input class="hidden" name="q2" type="radio" value="correct"/> À la réduction du pourcentage de détention d’un actionnaire qui ne retire aucun fonds ni ne remet aucun fonds dans l’augmentation de capital.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> À la baisse du cours de l’action suite à une augmentation de capital.</label>
+</div></div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 14 :<br/>Pourquoi utilise-t-on le droit de souscription ? Quelle est sa valeur théorique ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input class="hidden" name="q3" type="radio" value="correct"/> Le droit de souscription permet aux anciens actionnaires de participer en priorité à une augmentation de capital.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Pour faciliter l'entrée de nouveaux actionnaires majoritaires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Pour permettre une augmentation de capital sans autorisation.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Pour réduire la valeur nominale des actions anciennes.</label>
+</div></div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 14 :<br/>À quel prix se fait une augmentation de capital avec droit de souscription ? Sans droit de souscription ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Avec DPS : au nominal ; sans DPS : au prix de marché.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Avec DPS : selon le cours moyen ; sans DPS : selon la valeur comptable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Avec DPS : à un prix majoré ; sans DPS : à un prix libre.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input class="hidden" name="q4" type="radio" value="correct"/> Avec DPS : à une valeur incluant le DPS ; sans DPS : avec une légère décote.</label>
+</div></div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 14 :<br/>Comment, grâce à une augmentation de capital, une entreprise peut-elle être vendue ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> En distribuant des dividendes élevés avant l’opération.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> En rachetant toutes les dettes de l’entreprise.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> En convertissant les actions en obligations.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input class="hidden" name="q5" type="radio" value="correct"/> En faisant une très forte augmentation de capital à bas prix impliquant l’émission d’un grand nombre d’actions.</label>
+</div></div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 14 :<br/>Quelle est la conséquence d’une augmentation de capital sur le BPA, à court terme ? à long terme ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Le BPA est toujours multiplié par le nombre d’actions.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input class="hidden" name="q6" type="radio" value="correct"/> Généralement une dilution à court terme ; effet variable à long terme selon la rentabilité des investissements.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Toujours une amélioration du BPA à court terme.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Le BPA reste inchangé car la structure du capital est la même.</label>
+</div></div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 14 :<br/>La dilution du BPA est-elle égale à celle du contrôle ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Oui, car elles sont calculées selon la même formule.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input class="hidden" name="q7" type="radio" value="correct"/> Elles n’ont rien à voir et c’est un pur hasard si elles sont égales.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Oui, car elles dépendent toutes deux du nombre d’actions émises.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Oui, car elles sont proportionnelles à la valeur de marché.</label>
+</div></div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 14 :<br/>Faut-il procéder à une augmentation de capital lorsque le cours est surévalué ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Oui, systématiquement, même sans projet.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input class="hidden" name="q8" type="radio" value="correct"/> Théoriquement oui, mais cela nécessite un projet convainquant.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Non, car cela fait fuir les investisseurs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Non, car cela baisse le taux de distribution.</label>
+</div></div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 14 :<br/>Pourquoi est-ce l’entreprise la plus rentable qui a le plus intérêt à procéder à une augmentation de capital ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Pour compenser la faible rentabilité de ses investissements.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Parce qu’elle distribue peu de dividendes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Car sa dette est trop élevée.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input class="hidden" name="q9" type="radio" value="correct"/> Cercle vertueux : faible dilution et facilité de financement futur.</label>
+</div></div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 14 :<br/>Quelle sanction apporte une augmentation de capital à une entreprise dont la rentabilité est inférieure dans la durée à son coût du capital ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Amélioration automatique du retour sur investissement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input class="hidden" name="q10" type="radio" value="correct"/> Forte dilution car la valeur réelle est inférieure à la valeur comptable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Hausse du cours de Bourse immédiate.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Réduction de la part des actionnaires majoritaires uniquement.</label>
+</div></div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 14 :<br/>Que peut-il se passer si le DPS cote nettement en dessous de sa valeur théorique ? Quelle en est la limite ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Une transformation du DPS en action gratuite.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input class="hidden" name="q11" type="radio" value="correct"/> Des arbitrages apparaissent et l’illiquidité du marché peut l’expliquer.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Une interdiction de coter les actions nouvelles.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> La suppression immédiate du DPS par l’AMF.</label>
+</div></div>
+<div class="question-step hidden" id="step12">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 12 / 14 :<br/>Pourquoi l’augmentation de capital est-elle souvent une décision difficile à prendre pour les entreprises familiales ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Parce que cela implique une fusion automatique.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Parce que le DPS est interdit dans ce cas.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input class="hidden" name="q12" type="radio" value="correct"/> Car elle peut entraîner une perte de contrôle si les familles ne souscrivent pas.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Parce que cela entraîne une baisse du capital social.</label>
+</div></div>
+<div class="question-step hidden" id="step13">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 13 / 14 :<br/>Finalement, qu’est-ce qui est le plus important dans une augmentation de capital ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Le niveau d’endettement actuel.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Le dividende distribué l’année précédente.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Le nombre d’actions anciennes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input class="hidden" name="q13" type="radio" value="correct"/> La rentabilité des investissements ainsi financés.</label>
+</div></div>
+<div class="question-step hidden" id="step14">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 14 / 14 :<br/>En présence de DPS, quelle est la dilution du contrôle la plus pertinente ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input class="hidden" name="q14" type="radio" value="correct"/> La dilution réelle, qui tient compte du produit de la vente des DPS.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> La dilution fiscale utilisée pour les déclarations.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> La dilution comptable basée sur le nominal.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> La dilution apparente sans prise en compte des DPS.</label>
+</div></div></div>
+<div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+<h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+<p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 14.</p>
+<div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+<h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+<ul class="space-y-6 text-left">
+<li><p class="font-semibold">Question 1 : Le prix d’émission des actions nouvelles est-il important lors d’une augmentation de capital où chaque actionnaire souscrit à hauteur de sa part ?</p><p class="text-green-700">✔ Non, car quel que soit le prix d’émission, l’actionnariat n’est pas modifié.</p></li>
+<li><p class="font-semibold">Question 2 : À quoi correspond la dilution du contrôle ?</p><p class="text-green-700">✔ À la réduction du pourcentage de détention d’un actionnaire qui ne retire aucun fonds ni ne remet aucun fonds dans l’augmentation de capital.</p></li>
+<li><p class="font-semibold">Question 3 : Pourquoi utilise-t-on le droit de souscription ? Quelle est sa valeur théorique ?</p><p class="text-green-700">✔ Le droit de souscription permet aux anciens actionnaires de participer en priorité à une augmentation de capital, voir le paragraphe 27.29.</p></li>
+<li><p class="font-semibold">Question 4 : À quel prix se fait une augmentation de capital avec droit de souscription ? Sans droit de souscription ?</p><p class="text-green-700">✔ Avec DPS car le prix de revient de l’investisseur doit inclure les DPS acquis. Sans DPS car la décote, par rapport à la valeur, est le plus souvent très faible.</p></li>
+<li><p class="font-semibold">Question 5 : Comment, grâce à une augmentation de capital, une entreprise peut-elle être vendue ?</p><p class="text-green-700">✔ En faisant une très forte augmentation de capital avec un très faible prix d’émission impliquant l’émission d’un grand nombre d’actions et une valeur très forte du DPS.</p></li>
+<li><p class="font-semibold">Question 6 : Quelle est la conséquence d’une augmentation de capital sur le BPA, à court terme ? à long terme ?</p><p class="text-green-700">✔ Généralement une dilution car à court terme les fonds levés n’ont pas le temps d’être investis autrement que dans des actifs sans risque rapportant rien ou très peu. Cela dépend du taux de rentabilité des projets financés.</p></li>
+<li><p class="font-semibold">Question 7 : La dilution du BPA est-elle égale à celle du contrôle ?</p><p class="text-green-700">✔ Elles n’ont rien à voir et c’est un pur hasard si elles sont égales.</p></li>
+<li><p class="font-semibold">Question 8 : Faut-il procéder à une augmentation de capital lorsque le cours est surévalué ?</p><p class="text-green-700">✔ Théoriquement oui. En pratique ce sera difficile si l’entreprise n’a pas de projet d’investissement convainquant.</p></li>
+<li><p class="font-semibold">Question 9 : Pourquoi est-ce l’entreprise la plus rentable qui a le plus intérêt à procéder à une augmentation de capital ?</p><p class="text-green-700">✔ C’est le cercle vertueux de l’augmentation de capital qui entraîne une faible dilution et permet de trouver plus facilement des fonds pour financer de nouveaux investissements.</p></li>
+<li><p class="font-semibold">Question 10 : Quelle sanction apporte une augmentation de capital à une entreprise dont la rentabilité est inférieure dans la durée à son coût du capital ?</p><p class="text-green-700">✔ Une dilution forte de ses actionnaires actuels car la valeur de ses capitaux propres est bien inférieure à leur montant comptable, ce qui maximise la dilution de leur contrôle.</p></li>
+<li><p class="font-semibold">Question 11 : Que peut-il se passer si le DPS cote nettement en dessous de sa valeur théorique ? Quelle en est la limite ?</p><p class="text-green-700">✔ Des arbitrages : achat des droits et vente à découvert d’actions... L’illiquidité du marché explique probablement la décote du DPS.</p></li>
+<li><p class="font-semibold">Question 12 : Pourquoi l’augmentation de capital est-elle souvent une décision difficile à prendre pour les entreprises familiales ?</p><p class="text-green-700">✔ Car elle peut entraîner une modification de l’actionnariat de l’entreprise puisque les actionnaires familiaux peuvent ne pas avoir les moyens financiers de souscrire à hauteur de leurs droits.</p></li>
+<li><p class="font-semibold">Question 13 : Finalement, qu’est-ce qui est le plus important dans une augmentation de capital ?</p><p class="text-green-700">✔ La rentabilité des investissements ainsi financés.</p></li>
+<li><p class="font-semibold">Question 14 : En présence de DPS, quelle est la dilution du contrôle la plus pertinente ?</p><p class="text-green-700">✔ La dilution réelle, car elle tient compte du produit de la vente des DPS contrairement à la dilution apparente.</p></li>
+</ul></div></div>
+<script>
+
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector('#step' + i + ' p').innerText;
+  const bonne = document.querySelector('input[name="' + q + '"][value="correct"]').parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "L’augmentation de capital en numéraire"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 14";
+  const recap = document.getElementById('corrections');
+  recap.classList.remove('hidden');
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const alreadyAnswered = document.querySelectorAll('input[name="q' + i + '"]:checked').length > 0;
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i+1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "L’augmentation de capital en numéraire"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 14";
+  
+document.getElementById('corrections').classList.remove('hidden');
+
+}
+</script>
+</div>
+</body>
+</html>

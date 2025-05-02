@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - La politique financière</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - La politique financière</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+      
+<div class="question-step " id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 15 :<br>À quoi le coût du capital est-il égal ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Cela dépend de la trésorerie excédentaire.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> À la moyenne du coût des capitaux propres et du coût de l’endettement net pondérés par leurs valeurs respectives.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Une notion strictement fiscale liée aux intérêts d’emprunt.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> C’est le taux d’imposition applicable aux dividendes.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 15 :<br>Pourquoi le coût des capitaux propres à endettement nul est-il égal au coût moyen pondéré du capital ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> Parce que les capitaux propres supportent seuls le risque de l’actif économique puisque l’entreprise n’est pas endettée.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Les actionnaires minoritaires dans les sociétés cotées.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Parce qu’il diminue le coût des capitaux propres.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Le seuil de rentabilité de la structure opérationnelle.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 15 :<br>Quels sont les deux risques que court un actionnaire d’une entreprise endettée ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Une norme IFRS de provisionnement du goodwill.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Parce que cela reflète une rentabilité accrue des immobilisations.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> Le risque de l’actif économique et le risque de la structure financière.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Une variable comptable ajustée des stocks.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 15 :<br>Quelle est, de ces décisions, la plus importante : celle d’investissement ou celle de financement ? Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Une notion strictement fiscale liée aux intérêts d’emprunt.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Les banques centrales en tant qu’acteurs de marché.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> L’investissement car il est plus facile de créer de la valeur en faisant un bon investissement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Le seuil de rentabilité de la structure opérationnelle.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 15 :<br>Expliquez l’impact d’un accroissement de l’endettement sur le β des actions.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Une dette à long terme calculée en valeur nette.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> L’endettement, en augmentant le risque des actions, en augmente le β.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Une norme IFRS de provisionnement du goodwill.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> C’est le taux d’imposition applicable aux dividendes.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 15 :<br>Quel est le fondement du raisonnement de F. Modigliani et M. Miller ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> L’arbitrage, car les investisseurs peuvent dupliquer à leur niveau personnel la structure financière des entreprises incorrectement évaluées.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> C’est le taux d’imposition applicable aux dividendes.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> La volatilité des flux de trésorerie bruts.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Les coûts fixes rapportés au chiffre d’affaires.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 15 :<br>Pourquoi le fait que la rentabilité anticipée par les actionnaires augmente avec le niveau d’endettement n’est-il pas contradictoire avec l’approche de F. Modigliani et M. Miller ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Une notion strictement fiscale liée aux intérêts d’emprunt.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Parce qu’il diminue le coût des capitaux propres.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Les banques centrales en tant qu’acteurs de marché.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Le risque augmente aussi.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 15 :<br>Le coût du capital est-il une notion comptable ou financière ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Une norme IFRS de provisionnement du goodwill.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Financière, car seules les valeurs de marché entrent dans son calcul.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Les actionnaires minoritaires dans les sociétés cotées.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Une variable comptable ajustée des stocks.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 15 :<br>Pourquoi peut-il être dangereux d’utiliser un tableur pour faire des simulations de coût du capital ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Car on oublie que les coûts des ressources varient avec leur poids relatif.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Parce que cela reflète une rentabilité accrue des immobilisations.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Le seuil de rentabilité de la structure opérationnelle.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> La volatilité des flux de trésorerie bruts.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 15 :<br>Peut-on créer de la valeur en s’endettant ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Une variable comptable ajustée des stocks.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> La volatilité des flux de trésorerie bruts.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Non, cela se saurait et toutes les entreprises seraient très endettées.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> C’est le taux d’imposition applicable aux dividendes.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 15 :<br>À quoi le coût de l’endettement net d’une société qui n’a plus de capitaux propres est-il égal ? Et son coût du capital ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Une variable comptable ajustée des stocks.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Le taux de rentabilité interne des projets passés.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Une notion strictement fiscale liée aux intérêts d’emprunt.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> Au coût des capitaux propres d’une entreprise non endettée du même secteur.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 15 :<br>Qu’oublie-t-on lorsque l’on affirme que l’effet de levier de l’endettement, en augmentant la rentabilité des capitaux propres, ne peut qu’augmenter leur valeur ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Le risque des capitaux propres augmente, ce qui compense l’effet de levier.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Une variable comptable ajustée des stocks.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Un indicateur comptable calculé sur la base des amortissements.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Le taux de rentabilité interne des projets passés.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step13">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 15 :<br>Vrai ou faux ? « En réduisant le levier financier on réduit le coût de la dette et le coût des capitaux propres, et donc le coût moyen pondéré des capitaux ». Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Parce que cela reflète une rentabilité accrue des immobilisations.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input type="radio" name="q13" value="correct" class="hidden"> Faux. Le CMPC reste constant à cause de l’effet de pondération.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Le taux de rentabilité interne des projets passés.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Une norme IFRS de provisionnement du goodwill.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step14">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 14 / 15 :<br>Vrai ou faux ? « Plus nous nous endettons, plus le taux d’intérêt qui nous est facturé est élevé... ». Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input type="radio" name="q14" value="correct" class="hidden"> Faux. Le CMPC reste constant à cause de l’effet de pondération.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Une dette à long terme calculée en valeur nette.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> La volatilité des flux de trésorerie bruts.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Les banques centrales en tant qu’acteurs de marché.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step15">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 15 / 15 :<br>Quel type d’investisseurs procèdent aux arbitrages décrits par F. Modigliani et M. Miller ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+<input type="radio" name="q15" value="correct" class="hidden"> Typiquement les hedge funds.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Parce qu’il diminue le coût des capitaux propres.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Une norme IFRS de provisionnement du goodwill.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Un indicateur comptable calculé sur la base des amortissements.</label>
+  </div>
+</div>
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 15.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : À quoi le coût du capital est-il égal ?</p><p class='text-green-700'>✔ À la moyenne du coût des capitaux propres et du coût de l’endettement net pondérés par leurs valeurs respectives.</p></li>
+<li><p class='font-semibold'>Question 2 : Pourquoi le coût des capitaux propres à endettement nul est-il égal au coût moyen pondéré du capital ?</p><p class='text-green-700'>✔ Parce que les capitaux propres supportent seuls le risque de l’actif économique puisque l’entreprise n’est pas endettée.</p></li>
+<li><p class='font-semibold'>Question 3 : Quels sont les deux risques que court un actionnaire d’une entreprise endettée ?</p><p class='text-green-700'>✔ Le risque de l’actif économique et le risque de la structure financière.</p></li>
+<li><p class='font-semibold'>Question 4 : Quelle est, de ces décisions, la plus importante : celle d’investissement ou celle de financement ? Pourquoi ?</p><p class='text-green-700'>✔ L’investissement car il est plus facile de créer de la valeur en faisant un bon investissement.</p></li>
+<li><p class='font-semibold'>Question 5 : Expliquez l’impact d’un accroissement de l’endettement sur le β des actions.</p><p class='text-green-700'>✔ L’endettement, en augmentant le risque des actions, en augmente le β.</p></li>
+<li><p class='font-semibold'>Question 6 : Quel est le fondement du raisonnement de F. Modigliani et M. Miller ?</p><p class='text-green-700'>✔ L’arbitrage, car les investisseurs peuvent dupliquer à leur niveau personnel la structure financière des entreprises incorrectement évaluées.</p></li>
+<li><p class='font-semibold'>Question 7 : Pourquoi le fait que la rentabilité anticipée par les actionnaires augmente avec le niveau d’endettement n’est-il pas contradictoire avec l’approche de F. Modigliani et M. Miller ?</p><p class='text-green-700'>✔ Le risque augmente aussi.</p></li>
+<li><p class='font-semibold'>Question 8 : Le coût du capital est-il une notion comptable ou financière ?</p><p class='text-green-700'>✔ Financière, car seules les valeurs de marché entrent dans son calcul.</p></li>
+<li><p class='font-semibold'>Question 9 : Pourquoi peut-il être dangereux d’utiliser un tableur pour faire des simulations de coût du capital ?</p><p class='text-green-700'>✔ Car on oublie que les coûts des ressources varient avec leur poids relatif.</p></li>
+<li><p class='font-semibold'>Question 10 : Peut-on créer de la valeur en s’endettant ?</p><p class='text-green-700'>✔ Non, cela se saurait et toutes les entreprises seraient très endettées.</p></li>
+<li><p class='font-semibold'>Question 11 : À quoi le coût de l’endettement net d’une société qui n’a plus de capitaux propres est-il égal ? Et son coût du capital ?</p><p class='text-green-700'>✔ Au coût des capitaux propres d’une entreprise non endettée du même secteur.</p></li>
+<li><p class='font-semibold'>Question 12 : Qu’oublie-t-on lorsque l’on affirme que l’effet de levier de l’endettement, en augmentant la rentabilité des capitaux propres, ne peut qu’augmenter leur valeur ?</p><p class='text-green-700'>✔ Le risque des capitaux propres augmente, ce qui compense l’effet de levier.</p></li>
+<li><p class='font-semibold'>Question 13 : Vrai ou faux ? « En réduisant le levier financier on réduit le coût de la dette et le coût des capitaux propres, et donc le coût moyen pondéré des capitaux ». Pourquoi ?</p><p class='text-green-700'>✔ Faux. Le CMPC reste constant à cause de l’effet de pondération.</p></li>
+<li><p class='font-semibold'>Question 14 : Vrai ou faux ? « Plus nous nous endettons, plus le taux d’intérêt qui nous est facturé est élevé... ». Pourquoi ?</p><p class='text-green-700'>✔ Faux. Le CMPC reste constant à cause de l’effet de pondération.</p></li>
+<li><p class='font-semibold'>Question 15 : Quel type d’investisseurs procèdent aux arbitrages décrits par F. Modigliani et M. Miller ?</p><p class='text-green-700'>✔ Typiquement les hedge funds.</p></li>
+</ul></div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/15",
+    date: new Date().toISOString(),
+    sujet: "La politique financière"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 15";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

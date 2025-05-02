@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Risque et portefeuille</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Risque et portefeuille</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+
+<div class="question-step" id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 15 :<br>Est-il indispensable que les valeurs de deux actifs financiers fluctuent en sens inverse pour que le risque soit réduit ? Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+      <input type="radio" name="q1" value="correct" class="hidden"> Non, il suffit que la corrélation ne soit pas égale à 1.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Non, uniquement si les actifs sont identiques.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Oui, sauf si les rendements sont constants.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Oui, sinon le portefeuille devient plus risqué.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 15 :<br>À quelle autre relation vous fait songer l’équation de la capital market line ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> À la règle des 3 sigmas.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+      <input type="radio" name="q2" value="correct" class="hidden"> À la formule de l’effet de levier du paragraphe 14.10.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> À la formule de l’actualisation continue.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> À l’équation du PER.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 15 :<br>Pourquoi le portefeuille de marché est-il composé de tous les actifs risqués ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Pour garantir un rendement fixe.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Parce qu’il maximise la volatilité.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+      <input type="radio" name="q3" value="correct" class="hidden"> Par définition puisque le portefeuille de marché englobe tous les titres existants.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Car il est imposé par la régulation européenne.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 15 :<br>Entre deux titres A et B, l’un peu risqué, l’autre très risqué, que faut-il faire pour minimiser le risque ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Prendre uniquement le titre A.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Éviter de les combiner.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+      <input type="radio" name="q4" value="correct" class="hidden"> Une combinaison de A et de B et non pas uniquement le titre A tant que ρ ≠ 1.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Prendre uniquement le titre B.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 15 :<br>L’évolution du coefficient de corrélation entre actions françaises et européennes condamne-t-elle la diversification ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+      <input type="radio" name="q5" value="correct" class="hidden"> Non, mais elle la réduit. Depuis 2009, les corrélations ont baissé entre pays européens.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Oui, car les marchés sont maintenant identiques.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Oui, cela rend les ETF inefficaces.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Non, car la diversification géographique est illimitée.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 15 :<br>Quel secteur a le mieux contribué à réduire le risque d’un portefeuille selon le paragraphe 20.6 ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> L’immobilier en temps de bulle.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Les utilities en période électorale.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+      <input type="radio" name="q6" value="correct" class="hidden"> Le secteur de l'énergie s'est révélé très peu corrélé aux autres secteurs sur la période.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Le secteur bancaire en période de crise.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 15 :<br>Quel est le seul actif qui permette de doser précisément le niveau de risque d’un portefeuille ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> Les obligations high-yield.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> Les devises étrangères faiblement corrélées.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> L’action la moins risquée du portefeuille.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+      <input type="radio" name="q7" value="correct" class="hidden"> L’actif sans risque, car plus sa part est importante, plus le risque est faible.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 15 :<br>Un actif sans risque est-il vraiment sans risque ? Donnez un exemple.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Oui, s’il est émis par la BCE.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+      <input type="radio" name="q8" value="correct" class="hidden"> Non. Une OAT indexée inflation reste sensible avant échéance. Seul un bon du Trésor à court terme élimine le risque.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Oui, s’il est coté sur Euronext.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Oui, toujours.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 15 :<br>Pourquoi le portefeuille de marché est-il sur la capital market line ET la frontière efficiente ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Parce que c’est une hypothèse du modèle CAPM.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+      <input type="radio" name="q9" value="correct" class="hidden"> Car il est construit avec l’actif sans risque. Et très diversifié, donc optimal en rendement/risque.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Parce qu’il a le même rendement que le marché.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Parce qu’il est composé uniquement d’ETF.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 15 :<br>Pourquoi la gestion collective s’est-elle développée avec ces concepts ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Pour garantir une rentabilité annuelle constante.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Pour contourner les règles IFRS.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Pour améliorer la fiscalité des dividendes.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+      <input type="radio" name="q10" value="correct" class="hidden"> Parce qu’une SICAV est un modèle réduit du portefeuille de marché, difficile à atteindre pour un individu seul.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 15 :<br>Le risque d’un portefeuille peut-il être supérieur au risque de chaque actif le composant ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Non, par construction.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Oui, sauf si l’actif est liquide.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+      <input type="radio" name="q11" value="correct" class="hidden"> Oui, s’il est financé par endettement.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Non, sauf en cas de faillite.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 15 :<br>Quand le risque d’un portefeuille peut-il être inférieur à celui de tous ses actifs sauf un ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Si le portefeuille est composé uniquement d’actions.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> S’il contient plus de 50 titres.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Uniquement avec des produits dérivés.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+      <input type="radio" name="q12" value="correct" class="hidden"> S’il inclut une forte proportion d’actif sans risque.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step13">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 15 :<br>Plus le portefeuille contient d’actions, plus la contribution marginale d’un titre est faible. Vrai ou faux ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+      <input type="radio" name="q13" value="correct" class="hidden"> Vrai, car le portefeuille est déjà très diversifié.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> Faux, la diversification ne réduit pas le risque marginal.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> Faux, elle reste constante.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> Faux, elle augmente.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step14">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 14 / 15 :<br>Une diversification très poussée élimine-t-elle le risque spécifique ? Et le risque de marché ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> Non pour le spécifique, oui pour le marché.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+      <input type="radio" name="q14" value="correct" class="hidden"> Oui pour le spécifique. Non pour le risque de marché.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> Non pour les deux.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> Oui pour les deux.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step15">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 15 / 15 :<br>Pourquoi les gérants actifs battent plus souvent les passifs sur les petites valeurs que sur les grandes ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+      <input type="radio" name="q15" value="wrong" class="hidden"> Car la régulation est plus stricte sur les grandes entreprises.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+      <input type="radio" name="q15" value="wrong" class="hidden"> Car les petites valeurs sont plus liquides.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+      <input type="radio" name="q15" value="wrong" class="hidden"> Car les gérants actifs ont plus d’informations publiques.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+      <input type="radio" name="q15" value="correct" class="hidden"> Car le marché est moins efficient sur les petites entreprises, laissant place à des arbitrages.
+    </label>
+  </div>
+</div>
+
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 15.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : Est-il indispensable que les valeurs de deux actifs financiers fluctuent en sens inverse pour que le risque soit réduit ? Pourquoi ?</p><p class='text-green-700'>✔ Non, il suffit que la corrélation ne soit pas égale à 1.</p></li>
+<li><p class='font-semibold'>Question 2 : À quelle autre relation vous fait songer l’équation de la capital market line ?</p><p class='text-green-700'>✔ À la formule de l’effet de levier du paragraphe 14.10.</p></li>
+<li><p class='font-semibold'>Question 3 : Pourquoi le portefeuille de marché est-il composé de tous les actifs risqués ?</p><p class='text-green-700'>✔ Par définition puisque le portefeuille de marché englobe tous les titres existants.</p></li>
+<li><p class='font-semibold'>Question 4 : Entre deux titres A et B, l’un peu risqué, l’autre très risqué, que faut-il faire pour minimiser le risque ?</p><p class='text-green-700'>✔ Une combinaison de A et de B et non pas uniquement le titre A tant que ρ ≠ 1.</p></li>
+<li><p class='font-semibold'>Question 5 : L’évolution du coefficient de corrélation entre actions françaises et européennes condamne-t-elle la diversification ?</p><p class='text-green-700'>✔ Non, mais elle la réduit. Depuis 2009, les corrélations ont baissé entre pays européens.</p></li>
+<li><p class='font-semibold'>Question 6 : Quel secteur a le mieux contribué à réduire le risque d’un portefeuille selon le paragraphe 20.6 ?</p><p class='text-green-700'>✔ Le secteur de l'énergie s'est révélé très peu corrélé aux autres secteurs sur la période.</p></li>
+<li><p class='font-semibold'>Question 7 : Quel est le seul actif qui permette de doser précisément le niveau de risque d’un portefeuille ?</p><p class='text-green-700'>✔ L’actif sans risque, car plus sa part est importante, plus le risque est faible.</p></li>
+<li><p class='font-semibold'>Question 8 : Un actif sans risque est-il vraiment sans risque ? Donnez un exemple.</p><p class='text-green-700'>✔ Non. Une OAT indexée inflation reste sensible avant échéance. Seul un bon du Trésor à court terme élimine le risque.</p></li>
+<li><p class='font-semibold'>Question 9 : Pourquoi le portefeuille de marché est-il sur la capital market line ET la frontière efficiente ?</p><p class='text-green-700'>✔ Car il est construit avec l’actif sans risque. Et très diversifié, donc optimal en rendement/risque.</p></li>
+<li><p class='font-semibold'>Question 10 : Pourquoi la gestion collective s’est-elle développée avec ces concepts ?</p><p class='text-green-700'>✔ Parce qu’une SICAV est un modèle réduit du portefeuille de marché, difficile à atteindre pour un individu seul.</p></li>
+<li><p class='font-semibold'>Question 11 : Le risque d’un portefeuille peut-il être supérieur au risque de chaque actif le composant ?</p><p class='text-green-700'>✔ Oui, s’il est financé par endettement.</p></li>
+<li><p class='font-semibold'>Question 12 : Quand le risque d’un portefeuille peut-il être inférieur à celui de tous ses actifs sauf un ?</p><p class='text-green-700'>✔ S’il inclut une forte proportion d’actif sans risque.</p></li>
+<li><p class='font-semibold'>Question 13 : Plus le portefeuille contient d’actions, plus la contribution marginale d’un titre est faible. Vrai ou faux ?</p><p class='text-green-700'>✔ Vrai, car le portefeuille est déjà très diversifié.</p></li>
+<li><p class='font-semibold'>Question 14 : Une diversification très poussée élimine-t-elle le risque spécifique ? Et le risque de marché ?</p><p class='text-green-700'>✔ Oui pour le spécifique. Non pour le risque de marché.</p></li>
+<li><p class='font-semibold'>Question 15 : Pourquoi les gérants actifs battent plus souvent les passifs sur les petites valeurs que sur les grandes ?</p><p class='text-green-700'>✔ Car le marché est moins efficient sur les petites entreprises, laissant place à des arbitrages.</p></li>
+
+      </ul>
+    </div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && i === 15 && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/15",
+    date: new Date().toISOString(),
+    sujet: "Risque et portefeuille"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 15";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Quiz Final - QCM Plausibles</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+<div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+<h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’introduction en Bourse</h1>
+<div class="mb-6 text-center">
+<label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+<select class="border border-gray-300 rounded px-4 py-2" id="nom">
+<option value="azad">azad</option>
+<option value="remi">remi</option>
+</select>
+</div>
+<div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 11 :<br/>Pourquoi un actionnaire majoritaire peut-il vouloir céder sa participation au travers d’une introduction en Bourse plutôt que par cession à un investisseur ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input class="hidden" name="q1" type="radio" value="correct"/> Cela permet à l’actionnaire de ne vendre qu’une minorité et donc de conserver un certain degré de contrôle tout en monétisant une partie de ses titres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce que les valorisations en Bourse sont toujours plus élevées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce que la Bourse est toujours plus liquide qu’un fonds d’investissement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce que c’est obligatoire pour les sociétés dépassant un certain chiffre d’affaires.</label>
+</div></div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 11 :<br/>Pourquoi une entreprise qui possède 85 % d’une filiale lancerait-elle une offre publique sur le solde ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Pour éviter de publier des comptes consolidés.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Pour faciliter une future cession à un tiers.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Pour émettre plus facilement de la dette.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input class="hidden" name="q2" type="radio" value="correct"/> Pour éliminer les actionnaires minoritaires et organiser des synergies avec le reste du groupe.</label>
+</div></div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 11 :<br/>Pourquoi une société qui s’introduit en Bourse doit-elle le plus souvent modifier sa gouvernance ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Parce que l’AMF exige un changement automatique de direction.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Parce que les banques l’exigent en contrepartie des levées de fonds.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input class="hidden" name="q3" type="radio" value="correct"/> Car il y a dorénavant des actionnaires tiers, et une obligation plus ou moins forte de suivre les règles qu’appliquent les sociétés cotées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Parce que le code de commerce impose un nouveau président.</label>
+</div></div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 11 :<br/>Pourquoi est-il difficile pour un actionnaire unique de vendre 100 % de ses actions lors de l’introduction en Bourse de l’entreprise ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input class="hidden" name="q4" type="radio" value="correct"/> À cause du signal très négatif qu’il donnerait ainsi sur le niveau de valorisation et les perspectives de l’entreprise.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Parce que l’AMF interdit ce type d’opération.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Parce que les banques imposent un lock-up de 5 ans minimum.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Parce que le marché ne permet pas techniquement de vendre autant.</label>
+</div></div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 11 :<br/>De quoi témoigne l’échange entre Hermès et l’analyste financier sur la stratégie financière ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> D’un désintérêt total pour la rentabilité financière.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> D’un refus de se conformer aux règles de marché.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> D’une volonté de retirer la société de la cote rapidement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input class="hidden" name="q5" type="radio" value="correct"/> Le conflit entre une logique financière des actionnaires minoritaires et une logique plus large des dirigeants actionnaires familiaux visant le long terme.</label>
+</div></div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 11 :<br/>À quoi s’exposerait une entreprise qui s’introduirait en Bourse parce que c’est la mode ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> À une obligation de fusion dans les 5 ans.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> À une mise sous tutelle de la gouvernance par les régulateurs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> À une amende de la Banque de France.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input class="hidden" name="q6" type="radio" value="correct"/> À des déconvenues car elle n’aurait aucun avantage à mettre en face des contraintes de la cotation.</label>
+</div></div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 11 :<br/>Quels sont les risques de l’introduction en Bourse ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input class="hidden" name="q7" type="radio" value="correct"/> À court terme, l’échec du processus si le marché baisse ; à long terme, modification culturelle et risque d’OPA.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Un rachat automatique par une entreprise du CAC40.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Une suppression des dividendes obligatoires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Une interdiction de recourir à l’endettement bancaire.</label>
+</div></div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 11 :<br/>Que devra faire tôt ou tard une entreprise aux nombreux actionnaires qui ne veulent pas l’introduire en Bourse ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input class="hidden" name="q8" type="radio" value="correct"/> Se vendre ou organiser une Bourse interne pour donner de la liquidité aux actionnaires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Créer une fondation pour détenir les titres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Réduire son capital de moitié.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Procéder à une scission du groupe.</label>
+</div></div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 11 :<br/>Pourquoi l’introduction en Bourse de Verallia pouvait-elle prendre intégralement la forme d’un placement secondaire ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Parce que Verallia avait déjà cédé son activité principale.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Parce que le marché impose le placement secondaire pour les LBO.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input class="hidden" name="q9" type="radio" value="correct"/> Parce que son niveau d’endettement était élevé mais soutenable, et Apollo souhaitait céder une partie.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Parce que les fonds propres étaient négatifs.</label>
+</div></div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 11 :<br/>Quel est l’impact de l’introduction en Bourse de Verallia sur son compte de résultat ? Sur son bilan ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Elle a doublé les capitaux propres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Elle a généré un produit exceptionnel dans le compte de résultat.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Elle a réduit le niveau d’endettement de 50 %.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input class="hidden" name="q10" type="radio" value="correct"/> Aucun (hors frais), car il n’y a pas eu d’augmentation de capital.</label>
+</div></div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 11 :<br/>Est-il surprenant que le cours de bourse de Verallia soit resté stable après son introduction alors qu’Apollo a gardé 62 % ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Oui, car le flottant dépasse 50 %.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Oui, car le marché attend toujours une forte volatilité post-IPO.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input class="hidden" name="q11" type="radio" value="correct"/> Non, car Apollo a intérêt à ne pas surévaluer l’entreprise s’il veut céder le solde plus tard.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Oui, car la part cédée était trop faible pour stabiliser le cours.</label>
+</div></div></div>
+<div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+<h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+<p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 11.</p>
+
+<div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+<h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+<ul class="space-y-6 text-left">
+<li><p class="font-semibold">Question 1 : Pourquoi un actionnaire majoritaire peut-il vouloir céder sa participation au travers d’une introduction en Bourse plutôt que par cession à un investisseur ?</p><p class="text-green-700">✔ Cela permet à l’actionnaire de ne vendre qu’une minorité et donc de conserver un certain degré de contrôle tout en monétisant une partie de ses titres.</p></li>
+<li><p class="font-semibold">Question 2 : Pourquoi une entreprise qui possède 85 % d’une filiale lancerait-elle une offre publique sur le solde ?</p><p class="text-green-700">✔ Pour éliminer les actionnaires minoritaires et organiser des synergies avec le reste du groupe.</p></li>
+<li><p class="font-semibold">Question 3 : Pourquoi une société qui s’introduit en Bourse doit-elle le plus souvent modifier sa gouvernance ?</p><p class="text-green-700">✔ Car il y a dorénavant des actionnaires tiers, et une obligation plus ou moins forte de suivre les règles qu’appliquent les sociétés cotées.</p></li>
+<li><p class="font-semibold">Question 4 : Pourquoi est-il difficile pour un actionnaire unique de vendre 100 % de ses actions lors de l’introduction en Bourse de l’entreprise ?</p><p class="text-green-700">✔ À cause du signal très négatif qu’il donnerait ainsi sur le niveau de valorisation et les perspectives de l’entreprise.</p></li>
+<li><p class="font-semibold">Question 5 : De quoi témoigne l’échange entre Hermès et l’analyste financier sur la stratégie financière ?</p><p class="text-green-700">✔ Le conflit entre une logique financière des actionnaires minoritaires et une logique plus large des dirigeants actionnaires familiaux visant le long terme.</p></li>
+<li><p class="font-semibold">Question 6 : À quoi s’exposerait une entreprise qui s’introduirait en Bourse parce que c’est la mode ?</p><p class="text-green-700">✔ À des déconvenues car elle n’aurait aucun avantage à mettre en face des contraintes de la cotation.</p></li>
+<li><p class="font-semibold">Question 7 : Quels sont les risques de l’introduction en Bourse ?</p><p class="text-green-700">✔ À court terme, l’échec du processus si le marché baisse ; à long terme, modification culturelle et risque d’OPA.</p></li>
+<li><p class="font-semibold">Question 8 : Que devra faire tôt ou tard une entreprise aux nombreux actionnaires qui ne veulent pas l’introduire en Bourse ?</p><p class="text-green-700">✔ Se vendre ou organiser une Bourse interne pour donner de la liquidité aux actionnaires.</p></li>
+<li><p class="font-semibold">Question 9 : Pourquoi l’introduction en Bourse de Verallia pouvait-elle prendre intégralement la forme d’un placement secondaire ?</p><p class="text-green-700">✔ Parce que son niveau d’endettement était élevé mais soutenable, et Apollo souhaitait céder une partie.</p></li>
+<li><p class="font-semibold">Question 10 : Quel est l’impact de l’introduction en Bourse de Verallia sur son compte de résultat ? Sur son bilan ?</p><p class="text-green-700">✔ Aucun (hors frais), car il n’y a pas eu d’augmentation de capital.</p></li>
+<li><p class="font-semibold">Question 11 : Est-il surprenant que le cours de bourse de Verallia soit resté stable après son introduction alors qu’Apollo a gardé 62 % ?</p><p class="text-green-700">✔ Non, car Apollo a intérêt à ne pas surévaluer l’entreprise s’il veut céder le solde plus tard.</p></li>
+</ul></div></div>
+<script>
+
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector('#step' + i + ' p').innerText;
+  const bonne = document.querySelector('input[name="' + q + '"][value="correct"]').parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "L’introduction en Bourse"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 11";
+  const recap = document.getElementById('corrections');
+  recap.classList.remove('hidden');
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const alreadyAnswered = document.querySelectorAll('input[name="q' + i + '"]:checked').length > 0;
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i+1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "L’introduction en Bourse"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 11";
+  
+document.getElementById('corrections').classList.remove('hidden');
+
+}
+</script>
+</div>
+</body>
+</html>

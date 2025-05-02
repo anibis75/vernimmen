@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Les fusions et les scissions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Les fusions et les scissions</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+      
+<div class="question-step " id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 15 :<br>En quoi la fusion diffère-t-elle fondamentalement de la cession : – pour l’actionnaire de la société absorbée ; – pour la société absorbante ; – pour l’actionnaire de la société absorbante ; – pour la société absorbée ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Car les créanciers exigent une réévaluation.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Pour améliorer la rentabilité immédiate.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> L’actionnaire de la société absorbée reçoit des titres au lieu de liquidités ; la société absorbante émet des titres au lieu de réduire ses liquidités ou de s’endetter, son actionnariat est donc modifié ; le contrôle de l’actionnaire de la société absorbante est dilué, mais il partage le risque du rapprochement avec les actionnaires de la société absorbée ; la société absorbée disparaît juridiquement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Car l’ANR devient nulle.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 15 :<br>À la différence d’une cession, lors d’une fusion, les capitaux propres s’ajoutent. Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Pour améliorer la rentabilité immédiate.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Parce que l’endettement diminue.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Parce que le goodwill est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> Puisque l’on émet des actions nouvelles pour rémunérer l’apport des capitaux propres de la société absorbée, les capitaux propres de la société absorbante augmentent d’autant.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 15 :<br>Quelles sont, à votre avis, les motivations possibles pour une fusion ? Pour une scission ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Parce que les synergies détruisent de la valeur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Parce que le goodwill est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> Synergies. Décote de conglomérat, recentrage stratégique, défense contre des menaces.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Parce que cela permet de lisser le PER.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 15 :<br>Indépendamment des conséquences fiscales, un actionnaire qui contrôle 51 % d’une société préférera-t-il que celle-ci achète une autre société ou qu’elle fusionne avec elle ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Pour récompenser les dirigeants par stock-options.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> Il préférera faire acheter pour ne pas perdre son contrôle qui est juste au-dessus de la majorité de 50 %.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Parce que l'endettement est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Pour se refinancer directement sur les marchés.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 15 :<br>La dilution des BPA après une fusion est-elle a priori plus forte ou plus faible que celle qui suit une augmentation de capital classique ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Pour récompenser les dirigeants par stock-options.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Parce que les synergies détruisent de la valeur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Faux problème. Ce qui compte est de savoir si la fusion créera de la valeur et non s’il y aura une dilution du BPA.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Car elle implique des pertes comptables massives.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 15 :<br>Pourquoi la détermination de la parité est-elle importante ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Parce que l’endettement diminue.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Car elle implique des pertes comptables massives.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> Parce qu’elle détermine le partage du pouvoir et de la création de valeur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Pour améliorer la rentabilité immédiate.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 15 :<br>Quelle est la différence entre le poids relatif et la parité ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Parce que l'endettement est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Pour éviter une restructuration de la dette.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Le poids relatif est la valeur de l’une des sociétés par rapport à l’autre. La parité est le nombre d’actions de l’absorbante pour une action de l’absorbée.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Pour améliorer la rentabilité immédiate.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 15 :<br>Dans une négociation, se met-on d’abord d’accord sur les poids relatifs ou sur leur mode de calcul ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Car elle implique des pertes comptables massives.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Pour échapper à une fusion amicale.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Sur le poids relatif et ensuite sur le mode de calcul qui permet de trouver le poids relatif convenu ; en apparence, c’est l’inverse qui prévaut.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Pour améliorer la rentabilité immédiate.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 15 :<br>Pourquoi les actionnaires d’une société absorbée acceptent-ils d’être dilués à l’issue de la fusion ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Car l’ANR devient nulle.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Pour éviter une restructuration de la dette.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Parce qu’ils font partie d’un ensemble plus grand susceptible de générer des synergies et que la fusion peut entraîner la revalorisation du PER du nouvel ensemble.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Parce que l'endettement est transféré.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 15 :<br>Où se situe la création de valeur dans une fusion ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Au niveau des synergies créées par le rapprochement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Parce que cela permet de lisser le PER.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Parce que le goodwill est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Pour améliorer la rentabilité immédiate.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 15 :<br>Pourquoi la procédure juridique est-elle si lourde lors d’une fusion ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Pour récompenser les dirigeants par stock-options.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Car les créanciers exigent une réévaluation.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> Pour que l’égalité entre les actionnaires soit respectée et que certains ne soient pas lésés.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Parce que l’endettement diminue.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 15 :<br>Dans quels cas une scission peut-elle permettre une création de valeur pour les actionnaires ? Pour les créanciers ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Lorsqu’il y a une décote de conglomérat ou qu’un actif est mal valorisé. Pour l’ensemble des créanciers, très rarement car il n’y a plus de mise en commun des actifs et de leurs flux pour faire face aux dettes.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Parce que le goodwill est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Parce que l'endettement est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Pour se refinancer directement sur les marchés.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step13">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 15 :<br>Peut-on juger du succès d’une fusion en comparant l’évolution boursière du nouvel ensemble à celle de l’indice de référence ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Parce que les synergies détruisent de la valeur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Parce que le goodwill est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input type="radio" name="q13" value="correct" class="hidden"> Seulement après avoir pris en compte le bêta du groupe qui peut être différent de 1.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Car l’ANR devient nulle.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step14">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 14 / 15 :<br>Peut-on juger du succès d’une fusion en considérant l’évolution des cours de Bourse des sociétés lors de l’annonce de la fusion ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input type="radio" name="q14" value="correct" class="hidden"> Oui si les marchés sont à l’équilibre et si l’information n’a pas fuité préalablement à l’annonce.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Parce que l'endettement est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Parce que l’endettement diminue.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Car elle implique des pertes comptables massives.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step15">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 15 / 15 :<br>Pourquoi est-il important que les fusions et les scissions soient fiscalement neutres ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+<input type="radio" name="q15" value="correct" class="hidden"> Car ce sont des opérations qui, n’entraînant aucun versement de liquidités contrairement à une cession, rendraient difficile le paiement d’impôts dus à cette occasion.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Pour récompenser les dirigeants par stock-options.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Parce que le goodwill est transféré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Car elle implique des pertes comptables massives.</label>
+  </div>
+</div>
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 15.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'><li><p class='font-semibold'>Question 1 : En quoi la fusion diffère-t-elle fondamentalement de la cession : – pour l’actionnaire de la société absorbée ; – pour la société absorbante ; – pour l’actionnaire de la société absorbante ; – pour la société absorbée ?</p><p class='text-green-700'>✔ L’actionnaire de la société absorbée reçoit des titres au lieu de liquidités ; la société absorbante émet des titres au lieu de réduire ses liquidités ou de s’endetter, son actionnariat est donc modifié ; le contrôle de l’actionnaire de la société absorbante est dilué, mais il partage le risque du rapprochement avec les actionnaires de la société absorbée ; la société absorbée disparaît juridiquement.</p></li>
+<li><p class='font-semibold'>Question 2 : À la différence d’une cession, lors d’une fusion, les capitaux propres s’ajoutent. Pourquoi ?</p><p class='text-green-700'>✔ Puisque l’on émet des actions nouvelles pour rémunérer l’apport des capitaux propres de la société absorbée, les capitaux propres de la société absorbante augmentent d’autant.</p></li>
+<li><p class='font-semibold'>Question 3 : Quelles sont, à votre avis, les motivations possibles pour une fusion ? Pour une scission ?</p><p class='text-green-700'>✔ Synergies. Décote de conglomérat, recentrage stratégique, défense contre des menaces.</p></li>
+<li><p class='font-semibold'>Question 4 : Indépendamment des conséquences fiscales, un actionnaire qui contrôle 51 % d’une société préférera-t-il que celle-ci achète une autre société ou qu’elle fusionne avec elle ?</p><p class='text-green-700'>✔ Il préférera faire acheter pour ne pas perdre son contrôle qui est juste au-dessus de la majorité de 50 %.</p></li>
+<li><p class='font-semibold'>Question 5 : La dilution des BPA après une fusion est-elle a priori plus forte ou plus faible que celle qui suit une augmentation de capital classique ?</p><p class='text-green-700'>✔ Faux problème. Ce qui compte est de savoir si la fusion créera de la valeur et non s’il y aura une dilution du BPA.</p></li>
+<li><p class='font-semibold'>Question 6 : Pourquoi la détermination de la parité est-elle importante ?</p><p class='text-green-700'>✔ Parce qu’elle détermine le partage du pouvoir et de la création de valeur.</p></li>
+<li><p class='font-semibold'>Question 7 : Quelle est la différence entre le poids relatif et la parité ?</p><p class='text-green-700'>✔ Le poids relatif est la valeur de l’une des sociétés par rapport à l’autre. La parité est le nombre d’actions de l’absorbante pour une action de l’absorbée.</p></li>
+<li><p class='font-semibold'>Question 8 : Dans une négociation, se met-on d’abord d’accord sur les poids relatifs ou sur leur mode de calcul ?</p><p class='text-green-700'>✔ Sur le poids relatif et ensuite sur le mode de calcul qui permet de trouver le poids relatif convenu ; en apparence, c’est l’inverse qui prévaut.</p></li>
+<li><p class='font-semibold'>Question 9 : Pourquoi les actionnaires d’une société absorbée acceptent-ils d’être dilués à l’issue de la fusion ?</p><p class='text-green-700'>✔ Parce qu’ils font partie d’un ensemble plus grand susceptible de générer des synergies et que la fusion peut entraîner la revalorisation du PER du nouvel ensemble.</p></li>
+<li><p class='font-semibold'>Question 10 : Où se situe la création de valeur dans une fusion ?</p><p class='text-green-700'>✔ Au niveau des synergies créées par le rapprochement.</p></li>
+<li><p class='font-semibold'>Question 11 : Pourquoi la procédure juridique est-elle si lourde lors d’une fusion ?</p><p class='text-green-700'>✔ Pour que l’égalité entre les actionnaires soit respectée et que certains ne soient pas lésés.</p></li>
+<li><p class='font-semibold'>Question 12 : Dans quels cas une scission peut-elle permettre une création de valeur pour les actionnaires ? Pour les créanciers ?</p><p class='text-green-700'>✔ Lorsqu’il y a une décote de conglomérat ou qu’un actif est mal valorisé. Pour l’ensemble des créanciers, très rarement car il n’y a plus de mise en commun des actifs et de leurs flux pour faire face aux dettes.</p></li>
+<li><p class='font-semibold'>Question 13 : Peut-on juger du succès d’une fusion en comparant l’évolution boursière du nouvel ensemble à celle de l’indice de référence ?</p><p class='text-green-700'>✔ Seulement après avoir pris en compte le bêta du groupe qui peut être différent de 1.</p></li>
+<li><p class='font-semibold'>Question 14 : Peut-on juger du succès d’une fusion en considérant l’évolution des cours de Bourse des sociétés lors de l’annonce de la fusion ?</p><p class='text-green-700'>✔ Oui si les marchés sont à l’équilibre et si l’information n’a pas fuité préalablement à l’annonce.</p></li>
+<li><p class='font-semibold'>Question 15 : Pourquoi est-il important que les fusions et les scissions soient fiscalement neutres ?</p><p class='text-green-700'>✔ Car ce sont des opérations qui, n’entraînant aucun versement de liquidités contrairement à une cession, rendraient difficile le paiement d’impôts dus à cette occasion.</p></li>
+</ul></div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/15",
+    date: new Date().toISOString(),
+    sujet: "Les fusions et les scissions"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 15";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

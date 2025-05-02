@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Les mécanismes financiers fondamentaux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Les mécanismes financiers fondamentaux</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+
+<div class="question-step" id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 12 :<br>Quels sont les 4 cycles de base de l’entreprise ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+      <input type="radio" name="q1" value="correct" class="hidden"> Exploitation, investissement, endettement, capitaux propres.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Résultat, trésorerie, dividende, marge brute.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Production, marketing, distribution, fiscalité.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Clients, fournisseurs, salariés, État.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 12 :<br>Pourquoi dit-on que les flux de financement sont la contrepartie des flux économiques ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+      <input type="radio" name="q2" value="correct" class="hidden"> Car les flux économiques (exploitation, investissement) engendrent des besoins ou des excédents que viennent combler les flux de financement (capitaux propres, emprunts).
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Car ils permettent d’éviter la faillite en période de croissance.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Parce que les flux de trésorerie ne reflètent pas toujours l’activité réelle.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Car ils sont calculés à partir de la valeur de marché de l’entreprise.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 12 :<br>Définissez l’excédent de trésorerie d’exploitation. Peut-il être librement utilisé ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+      <input type="radio" name="q3" value="correct" class="hidden"> C’est le solde du cycle d’exploitation. Non, car elle doit faire face à des dépenses obligatoires liées à l’investissement et au financement.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Oui, il peut être librement distribué sous forme de dividendes.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> C’est un indicateur comptable non lié à la trésorerie réelle.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Il est toujours réinjecté dans la production.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 12 :<br>L’excédent de trésorerie d’exploitation traduit-il un gain ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+      <input type="radio" name="q4" value="correct" class="hidden"> Non, c’est un flux de trésorerie, pas un profit comptable.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Oui, il représente le bénéfice net.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Oui, c’est un dividende potentiel.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Non, c’est une perte financière enregistrée.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 12 :<br>Pourquoi l’excédent de trésorerie d’exploitation doit-il généralement être positif ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+      <input type="radio" name="q5" value="correct" class="hidden"> Il reflète la capacité de l’exploitation à générer des flux positifs ; en cas contraire l’entreprise est en danger.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Parce que cela augmente l’endettement.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Pour éviter la dilution des actionnaires.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Pour lisser les flux de dividendes.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 12 :<br>Les flux de trésorerie disponible peuvent-ils être négatifs ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+      <input type="radio" name="q6" value="correct" class="hidden"> Oui, surtout au début : l’investissement est élevé et les flux générés sont encore faibles.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Non, un projet est toujours rentable dès le début.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Oui, mais seulement en cas de faillite.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Non, sauf si l’entreprise licencie massivement.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 12 :<br>Quels flux reviennent à la fois aux actionnaires et aux créanciers ? Qui est prioritaire ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+      <input type="radio" name="q7" value="correct" class="hidden"> Les flux de trésorerie disponible. Les créanciers sont prioritaires car la dette est contractuelle.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> Les dividendes. Les actionnaires sont prioritaires en raison du risque pris.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> L’EBITDA. Il est distribué aux actionnaires d’abord.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> Les flux d’investissement. Ils vont uniquement aux créanciers.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 12 :<br>Le cycle d’exploitation d’un hypermarché génère-t-il un besoin ou un excédent de fonds ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+      <input type="radio" name="q8" value="correct" class="hidden"> Un excédent de fonds : les clients paient comptant et les fournisseurs sont payés tard.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Un besoin de fonds en raison des faibles marges.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Un besoin de fonds car le crédit client est important.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Un excédent, mais uniquement grâce à des subventions.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 12 :<br>Dans une optique de trésorerie, les frais de lancement d’un parfum sont-ils des dépenses d’investissement ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+      <input type="radio" name="q9" value="correct" class="hidden"> Oui, car ils produisent des effets sur plusieurs exercices.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Non, ce sont des charges d’exploitation immédiates.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Oui, car ils sont liés aux ventes court terme.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Non, ils sont passés en charges exceptionnelles.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 12 :<br>Comment s’analyse une décision d’investissement en trésorerie ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+      <input type="radio" name="q10" value="correct" class="hidden"> Comme une dépense entraînant des recettes futures sur plusieurs périodes.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Comme une sortie de dividendes.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Comme une réduction des capitaux propres.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Comme une charge unique sans retour.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 12 :<br>Qu’est-ce qu’un dépôt de bilan ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+      <input type="radio" name="q11" value="correct" class="hidden"> L’impossibilité de trouver une ressource supplémentaire pour faire face aux engagements.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Le refus de payer ses fournisseurs volontairement.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Une décision stratégique de changement de marché.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Une opération de défiscalisation.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 12 :<br>Les emprunts sont-ils sans risque pour les prêteurs ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+      <input type="radio" name="q12" value="correct" class="hidden"> Non. Le risque est le non-respect du contrat de remboursement, faute de flux disponibles.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Oui, car les entreprises ont des garanties.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Oui, car le prêt est toujours couvert par l'État.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Non, mais uniquement en cas de faillite générale.
+    </label>
+  </div>
+</div>
+
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 12.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : Quels sont les 4 cycles de base de l’entreprise ?</p><p class='text-green-700'>✔ Exploitation, investissement, endettement, capitaux propres.</p></li>
+<li><p class='font-semibold'>Question 2 : Pourquoi dit-on que les flux de financement sont la contrepartie des flux économiques ?</p><p class='text-green-700'>✔ Car les flux économiques (exploitation, investissement) engendrent des besoins ou des excédents que viennent combler les flux de financement (capitaux propres, emprunts).</p></li>
+<li><p class='font-semibold'>Question 3 : Définissez l’excédent de trésorerie d’exploitation. Peut-il être librement utilisé ?</p><p class='text-green-700'>✔ C’est le solde du cycle d’exploitation. Non, car elle doit faire face à des dépenses obligatoires liées à l’investissement et au financement.</p></li>
+<li><p class='font-semibold'>Question 4 : L’excédent de trésorerie d’exploitation traduit-il un gain ?</p><p class='text-green-700'>✔ Non, c’est un flux de trésorerie, pas un profit comptable.</p></li>
+<li><p class='font-semibold'>Question 5 : Pourquoi l’excédent de trésorerie d’exploitation doit-il généralement être positif ?</p><p class='text-green-700'>✔ Il reflète la capacité de l’exploitation à générer des flux positifs ; en cas contraire l’entreprise est en danger.</p></li>
+<li><p class='font-semibold'>Question 6 : Les flux de trésorerie disponible peuvent-ils être négatifs ?</p><p class='text-green-700'>✔ Oui, surtout au début : l’investissement est élevé et les flux générés sont encore faibles.</p></li>
+<li><p class='font-semibold'>Question 7 : Quels flux reviennent à la fois aux actionnaires et aux créanciers ? Qui est prioritaire ?</p><p class='text-green-700'>✔ Les flux de trésorerie disponible. Les créanciers sont prioritaires car la dette est contractuelle.</p></li>
+<li><p class='font-semibold'>Question 8 : Le cycle d’exploitation d’un hypermarché génère-t-il un besoin ou un excédent de fonds ?</p><p class='text-green-700'>✔ Un excédent de fonds : les clients paient comptant et les fournisseurs sont payés tard.</p></li>
+<li><p class='font-semibold'>Question 9 : Dans une optique de trésorerie, les frais de lancement d’un parfum sont-ils des dépenses d’investissement ?</p><p class='text-green-700'>✔ Oui, car ils produisent des effets sur plusieurs exercices.</p></li>
+<li><p class='font-semibold'>Question 10 : Comment s’analyse une décision d’investissement en trésorerie ?</p><p class='text-green-700'>✔ Comme une dépense entraînant des recettes futures sur plusieurs périodes.</p></li>
+<li><p class='font-semibold'>Question 11 : Qu’est-ce qu’un dépôt de bilan ?</p><p class='text-green-700'>✔ L’impossibilité de trouver une ressource supplémentaire pour faire face aux engagements.</p></li>
+<li><p class='font-semibold'>Question 12 : Les emprunts sont-ils sans risque pour les prêteurs ?</p><p class='text-green-700'>✔ Non. Le risque est le non-respect du contrat de remboursement, faute de flux disponibles.</p></li>
+
+      </ul>
+    </div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && i === 12 && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/12",
+    date: new Date().toISOString(),
+    sujet: "Les mécanismes financiers fondamentaux"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 12";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

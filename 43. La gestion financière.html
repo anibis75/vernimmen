@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Quiz Final - QCM Plausibles</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+<div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+<h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - La gestion financière</h1>
+<div class="mb-6 text-center">
+<label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+<select class="border border-gray-300 rounded px-4 py-2" id="nom">
+<option value="azad">azad</option>
+<option value="remi">remi</option>
+</select>
+</div>
+<div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 14 :<br/>Comment finance-t-on une start-up des objets connectés ? Et l’embryon d’une chaîne de pizza à la découpe ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Grâce à des avances fournisseurs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Uniquement par dette bancaire garantie.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input class="hidden" name="q1" type="radio" value="correct"/> Par capitaux propres compte tenu de son risque. Un peu de dette à moyen terme est possible car l’entreprise dispose d’actifs ayant une valeur indépendante.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Via des prêts à taux zéro de la BPI.</label>
+</div></div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 14 :<br/>Qu’est-ce qu’un entrepreneur optimiste ? Quelles conséquences en tirer ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Quelqu’un qui prévoit toujours un retour sur investissement rapide.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input class="hidden" name="q2" type="radio" value="correct"/> Un pléonasme. Le plan d’affaires est la version la plus favorable, donc difficilement utilisable pour valoriser.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Un entrepreneur confiant mais prudent dans ses projections.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> C’est celui qui se base uniquement sur ses intuitions.</label>
+</div></div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 14 :<br/>Quelle est la contrepartie d’un goodwill à l’entrée pour une start-up ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Un effet de levier fiscal avantageux.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Une prime de contrôle remboursable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input class="hidden" name="q3" type="radio" value="correct"/> Un risque accru pour l’entrepreneur et des clauses de liquidité préférentielle pour les investisseurs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Un amortissement comptable accéléré.</label>
+</div></div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 14 :<br/>Quels sont les avantages de la méthode du venture capital pour valoriser une jeune pousse ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input class="hidden" name="q4" type="radio" value="correct"/> Facile à comprendre, adaptée à l’optimisme des fondateurs, évite les débats sur les hypothèses.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Utilise des comparables de marché sans ajustement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Suit une norme IFRS adaptée aux PME.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Permet d’actualiser les flux de l’ensemble du secteur.</label>
+</div></div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 14 :<br/>Quels sont les inconvénients de la méthode du venture capital pour valoriser une entreprise qui se crée ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input class="hidden" name="q5" type="radio" value="correct"/> Elle est simpliste et accepte un plan d’affaires sans version critique.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Elle est trop conservatrice dans les estimations.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Elle ne s’applique qu’aux entreprises cotées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Elle nécessite un marché secondaire actif.</label>
+</div></div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 14 :<br/>Pourquoi les taux d’actualisation requis par les investisseurs dans les start-up sont-ils aussi élevés ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Parce que l'inflation le justifie.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input class="hidden" name="q6" type="radio" value="correct"/> Parce qu’ils ne tiennent pas compte de la forte probabilité d’échec, les plans étant irréalistes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Parce que la fiscalité l’impose.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Parce qu’ils sont fixés par la BCE.</label>
+</div></div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 14 :<br/>Pourquoi les taux d’actualisation requis par les investisseurs dans les start-up ne sont-ils que rarement atteints ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input class="hidden" name="q7" type="radio" value="correct"/> Car les plans sont rarement réalisés à temps ou comme prévu.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que les investisseurs retirent leurs fonds avant terme.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> À cause de l’intervention des régulateurs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Car les projections sont trop conservatrices.</label>
+</div></div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 14 :<br/>Pourquoi les entrepreneurs acceptent-ils les taux de rentabilité très élevés exigés par les investisseurs ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Car cela permet d’émettre à taux fixe.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input class="hidden" name="q8" type="radio" value="correct"/> Car ils savent que leur plan est incertain et que les investisseurs sont protégés par clauses.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Parce qu’ils n’ont pas d’autre source de financement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Car les fonds sont généralement garantis.</label>
+</div></div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 14 :<br/>Qu’est-ce qu’un plan d’affaires réalisé en temps et en heure ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Un jalon obligatoire pour valider le business model.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input class="hidden" name="q9" type="radio" value="correct"/> Un miracle !</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Une condition pour éviter les pénalités fiscales.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Une exigence réglementaire pour les levées de fonds.</label>
+</div></div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 14 :<br/>De combien de mois de survie dispose une entreprise avec 450 000 € de trésorerie et 90 000 € de cash burn mensuel ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input class="hidden" name="q10" type="radio" value="correct"/> 5 mois. Il faut lever maintenant, voire c’est déjà trop tard.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> 10 mois. Elle a encore de la marge.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> 3 mois. Le cash burn est surestimé.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> 7 mois. Il y a un décalage de recettes.</label>
+</div></div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 14 :<br/>Pourquoi la sensibilité des investisseurs à la valeur des start-up est-elle relativement faible ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Parce que la valorisation est dictée par la Banque centrale.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Parce que les investisseurs sont systématiquement couverts par assurance.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input class="hidden" name="q11" type="radio" value="correct"/> Car le risque principal est l’échec, pas la survalorisation, et les gains potentiels compensent.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Parce que la fiscalité compense les pertes.</label>
+</div></div>
+<div class="question-step hidden" id="step12">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 12 / 14 :<br/>Quel est le sens de l’expression « c’est la queue qui fait remuer le chien » dans la valorisation des start-up ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> La queue = les dividendes qui génèrent la valeur.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> C’est la valorisation qui dicte le besoin de levée.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> C’est une formule liée à la duration.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input class="hidden" name="q12" type="radio" value="correct"/> C’est le montant à lever qui détermine la valorisation, pas l’inverse.</label>
+</div></div>
+<div class="question-step hidden" id="step13">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 13 / 14 :<br/>Une clause de liquidité préférentielle ne donne-t-elle qu’une liquidité préférentielle aux investisseurs ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Oui, à condition de faire une augmentation de capital.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Oui, tant que la société est cotée.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input class="hidden" name="q13" type="radio" value="correct"/> Non, elle donne un prix par action plus élevé aux investisseurs qui en bénéficient.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Oui, mais uniquement après 5 ans.</label>
+</div></div>
+<div class="question-step hidden" id="step14">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 14 / 14 :<br/>Une obligation convertible émise par une start-up représente-t-elle des dettes ou des capitaux propres ? Pourquoi ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input class="hidden" name="q14" type="radio" value="correct"/> C’est une ORA donc considéré comme des capitaux propres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Un emprunt obligataire garanti.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Une dette indexée sur le chiffre d’affaires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Une dette amortissable à taux variable.</label>
+</div></div></div>
+<div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+<h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+<p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 14.</p>
+
+<div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+<h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+<ul class="space-y-6 text-left">
+<li><p class="font-semibold">Question 1 : Comment finance-t-on une start-up des objets connectés ? Et l’embryon d’une chaîne de pizza à la découpe ?</p><p class="text-green-700">✔ Par capitaux propres compte tenu de son risque. Un peu de dette à moyen terme est possible car l’entreprise dispose d’actifs ayant une valeur indépendante.</p></li>
+<li><p class="font-semibold">Question 2 : Qu’est-ce qu’un entrepreneur optimiste ? Quelles conséquences en tirer ?</p><p class="text-green-700">✔ Un pléonasme. Le plan d’affaires est la version la plus favorable, donc difficilement utilisable pour valoriser.</p></li>
+<li><p class="font-semibold">Question 3 : Quelle est la contrepartie d’un goodwill à l’entrée pour une start-up ?</p><p class="text-green-700">✔ Un risque accru pour l’entrepreneur et des clauses de liquidité préférentielle pour les investisseurs.</p></li>
+<li><p class="font-semibold">Question 4 : Quels sont les avantages de la méthode du venture capital pour valoriser une jeune pousse ?</p><p class="text-green-700">✔ Facile à comprendre, adaptée à l’optimisme des fondateurs, évite les débats sur les hypothèses.</p></li>
+<li><p class="font-semibold">Question 5 : Quels sont les inconvénients de la méthode du venture capital pour valoriser une entreprise qui se crée ?</p><p class="text-green-700">✔ Elle est simpliste et accepte un plan d’affaires sans version critique.</p></li>
+<li><p class="font-semibold">Question 6 : Pourquoi les taux d’actualisation requis par les investisseurs dans les start-up sont-ils aussi élevés ?</p><p class="text-green-700">✔ Parce qu’ils ne tiennent pas compte de la forte probabilité d’échec, les plans étant irréalistes.</p></li>
+<li><p class="font-semibold">Question 7 : Pourquoi les taux d’actualisation requis par les investisseurs dans les start-up ne sont-ils que rarement atteints ?</p><p class="text-green-700">✔ Car les plans sont rarement réalisés à temps ou comme prévu.</p></li>
+<li><p class="font-semibold">Question 8 : Pourquoi les entrepreneurs acceptent-ils les taux de rentabilité très élevés exigés par les investisseurs ?</p><p class="text-green-700">✔ Car ils savent que leur plan est incertain et que les investisseurs sont protégés par clauses.</p></li>
+<li><p class="font-semibold">Question 9 : Qu’est-ce qu’un plan d’affaires réalisé en temps et en heure ?</p><p class="text-green-700">✔ Un miracle !</p></li>
+<li><p class="font-semibold">Question 10 : De combien de mois de survie dispose une entreprise avec 450 000 € de trésorerie et 90 000 € de cash burn mensuel ?</p><p class="text-green-700">✔ 5 mois. Il faut lever maintenant, voire c’est déjà trop tard.</p></li>
+<li><p class="font-semibold">Question 11 : Pourquoi la sensibilité des investisseurs à la valeur des start-up est-elle relativement faible ?</p><p class="text-green-700">✔ Car le risque principal est l’échec, pas la survalorisation, et les gains potentiels compensent.</p></li>
+<li><p class="font-semibold">Question 12 : Quel est le sens de l’expression « c’est la queue qui fait remuer le chien » dans la valorisation des start-up ?</p><p class="text-green-700">✔ C’est le montant à lever qui détermine la valorisation, pas l’inverse.</p></li>
+<li><p class="font-semibold">Question 13 : Une clause de liquidité préférentielle ne donne-t-elle qu’une liquidité préférentielle aux investisseurs ?</p><p class="text-green-700">✔ Non, elle donne un prix par action plus élevé aux investisseurs qui en bénéficient.</p></li>
+<li><p class="font-semibold">Question 14 : Une obligation convertible émise par une start-up représente-t-elle des dettes ou des capitaux propres ? Pourquoi ?</p><p class="text-green-700">✔ C’est une ORA donc considéré comme des capitaux propres.</p></li>
+</ul></div></div>
+<script>
+
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector('#step' + i + ' p').innerText;
+  const bonne = document.querySelector('input[name="' + q + '"][value="correct"]').parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "La gestion financière"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 14";
+  const recap = document.getElementById('corrections');
+  recap.classList.remove('hidden');
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const alreadyAnswered = document.querySelectorAll('input[name="q' + i + '"]:checked').length > 0;
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i+1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "La gestion financière"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 14";
+  
+document.getElementById('corrections').classList.remove('hidden');
+
+}
+</script>
+</div>
+</body>
+</html>

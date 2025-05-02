@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Les principaux titres financiers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Les principaux titres financiers</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+
+<div class="question-step" id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 12 :<br>Qu’est-ce que la valeur faciale d’un titre à revenu fixe ? À quoi sert-elle ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> C’est la valeur de marché du titre. Elle sert à fixer le prix d’achat.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+      <input type="radio" name="q1" value="correct" class="hidden"> C’est la valeur nominale. À calculer le montant des intérêts et le montant qui sera remboursé.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> C’est le prix payé à l’émission. Elle ne sert qu’à l’enregistrement comptable.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> C’est le montant net après fiscalité. Elle est utilisée en comptabilité.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 12 :<br>Quelle différence existe-t-il entre durée de vie et duration d’une obligation ? Pour quel type de titre ces deux notions sont-elles équivalentes ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> La duration est plus courte que la durée de vie pour toutes les obligations.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Elles sont toujours équivalentes, peu importe le titre.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+      <input type="radio" name="q2" value="correct" class="hidden"> La duration est une sorte de durée de vie actualisée (intérêts financiers inclus). Elles sont équivalentes pour un coupon zéro.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> La duration correspond à l’échéance fiscale, la durée de vie à l’échéance économique.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 12 :<br>Qu’est-ce que le taux de rentabilité actuariel d’une obligation ? Comment le calcule-t-on ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Taux fixé par la Banque Centrale à l’émission.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Taux obtenu en divisant le coupon annuel par le nominal.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Taux appliqué sur la valeur de remboursement pour obtenir l’intérêt brut.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+      <input type="radio" name="q3" value="correct" class="hidden"> Taux qui égalise la valeur actuelle des flux (intérêts et remboursement) avec la valeur de marché.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 12 :<br>Un titre de dette est-il plus volatil le jour de son émission ou le jour de son remboursement ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Le jour du remboursement car le risque de défaut est maximal.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Les deux jours sont équivalents car la valeur nominale ne change pas.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+      <input type="radio" name="q4" value="correct" class="hidden"> Le jour de son émission car le jour de son remboursement il vaut le prix de son remboursement et la volatilité est devenue nulle.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Le titre est plus volatil en période de croissance.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 12 :<br>La valeur d’un titre de dette à taux variable est-elle à tout moment égale à 100 % du nominal ? Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Non, sauf si la dette est à long terme.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Oui, car le taux est ajusté en permanence.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Oui, car le nominal est garanti à l’échéance.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+      <input type="radio" name="q5" value="correct" class="hidden"> Non. À cause des intérêts qui s’accumulent prorata temporis.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 12 :<br>Qu’est-ce qu’un taux variable ? Un taux indexé ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Un taux variable est fixe à court terme, indexé à long terme.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Ils désignent tous deux un taux défini par l’émetteur sans évolution.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> Un taux variable change en fonction du budget de l’État, un taux indexé reste fixe.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+      <input type="radio" name="q6" value="correct" class="hidden"> Voir paragraphes 22.17 et 22.19.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 12 :<br>Vous anticipez une baisse des taux. Classez ces obligations par préférence décroissante.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> a) b) c) d) e) f).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> b) a) f) e) d) c).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> f) e) d) c) b) a).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+      <input type="radio" name="q7" value="correct" class="hidden"> c) d) e) f), a) et b) ex aequo.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 12 :<br>Pourquoi le taux de rendement actuariel d’un emprunt émis à 99 % du pair est-il supérieur au taux facial ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Car l’émetteur anticipe une hausse des taux.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Car les intérêts sont fiscalement déductibles.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Car l’obligation est indexée sur l’inflation.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+      <input type="radio" name="q8" value="correct" class="hidden"> Car le prix d’émission est inférieur au nominal sur lequel sont calculés les intérêts.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 12 :<br>Vrai ou faux ? a) Si les taux d’intérêt montent, le cours des obligations à taux fixe baisse. b) Si le taux du coupon est plus fort que le taux de rentabilité actuariel, l’obligation cote moins de 100 % du nominal. c) Une obligation à fort coupon vaut moins cher qu’une obligation à faible coupon. d) Plus la duration d’une obligation est forte, plus son cours est élevé.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Faux : a). Vrai : b) c) d).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+      <input type="radio" name="q9" value="correct" class="hidden"> Vrai : a). Faux : b) c) d).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Faux : tous.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Vrai : tous.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 12 :<br>Le taux de rentabilité requis d’une dette augmente-t-il avec : a) le taux d’inflation ; b) la part des dettes ; c) l’échéance ; d) le taux des OAT ; e) le risque économique ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Faux : tous.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Vrai : uniquement a) et e).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Vrai : a) b). Faux : c) d) e).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+      <input type="radio" name="q10" value="correct" class="hidden"> Vrai : a) b) c) d) e).
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 12 :<br>L’écart entre le prix d’une OAT et celle d’une entreprise privée correspond à la valeur d’une option. Quelles sont ses caractéristiques ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> C’est une couverture contre le risque de liquidité.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+      <input type="radio" name="q11" value="correct" class="hidden"> C’est la valeur d’une option de vente de l’actif économique aux créanciers que les actionnaires exercent si la valeur de l’actif est inférieure aux dettes (voir paragraphe 36.3).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> C’est une clause de remboursement anticipé intégrée au contrat.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> C’est une option d’achat au bénéfice des actionnaires.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 12 :<br>Dans quelle condition un emprunt à taux variable peut-il coter largement moins que 100 % ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Lorsque les obligations sont arrivées à échéance.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> En cas de forte inflation seulement.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+      <input type="radio" name="q12" value="correct" class="hidden"> Si la solvabilité de l’émetteur est fortement dégradée.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Si les taux sont historiquement bas.
+    </label>
+  </div>
+</div>
+
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 12.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : Qu’est-ce que la valeur faciale d’un titre à revenu fixe ? À quoi sert-elle ?</p><p class='text-green-700'>✔ C’est la valeur nominale. À calculer le montant des intérêts et le montant qui sera remboursé.</p></li>
+<li><p class='font-semibold'>Question 2 : Quelle différence existe-t-il entre durée de vie et duration d’une obligation ? Pour quel type de titre ces deux notions sont-elles équivalentes ?</p><p class='text-green-700'>✔ La duration est une sorte de durée de vie actualisée (intérêts financiers inclus). Elles sont équivalentes pour un coupon zéro.</p></li>
+<li><p class='font-semibold'>Question 3 : Qu’est-ce que le taux de rentabilité actuariel d’une obligation ? Comment le calcule-t-on ?</p><p class='text-green-700'>✔ Taux qui égalise la valeur actuelle des flux (intérêts et remboursement) avec la valeur de marché.</p></li>
+<li><p class='font-semibold'>Question 4 : Un titre de dette est-il plus volatil le jour de son émission ou le jour de son remboursement ?</p><p class='text-green-700'>✔ Le jour de son émission car le jour de son remboursement il vaut le prix de son remboursement et la volatilité est devenue nulle.</p></li>
+<li><p class='font-semibold'>Question 5 : La valeur d’un titre de dette à taux variable est-elle à tout moment égale à 100 % du nominal ? Pourquoi ?</p><p class='text-green-700'>✔ Non. À cause des intérêts qui s’accumulent prorata temporis.</p></li>
+<li><p class='font-semibold'>Question 6 : Qu’est-ce qu’un taux variable ? Un taux indexé ?</p><p class='text-green-700'>✔ Voir paragraphes 22.17 et 22.19.</p></li>
+<li><p class='font-semibold'>Question 7 : Vous anticipez une baisse des taux. Classez ces obligations par préférence décroissante.</p><p class='text-green-700'>✔ c) d) e) f), a) et b) ex aequo.</p></li>
+<li><p class='font-semibold'>Question 8 : Pourquoi le taux de rendement actuariel d’un emprunt émis à 99 % du pair est-il supérieur au taux facial ?</p><p class='text-green-700'>✔ Car le prix d’émission est inférieur au nominal sur lequel sont calculés les intérêts.</p></li>
+<li><p class='font-semibold'>Question 9 : Vrai ou faux ? a) Si les taux d’intérêt montent, le cours des obligations à taux fixe baisse. b) Si le taux du coupon est plus fort que le taux de rentabilité actuariel, l’obligation cote moins de 100 % du nominal. c) Une obligation à fort coupon vaut moins cher qu’une obligation à faible coupon. d) Plus la duration d’une obligation est forte, plus son cours est élevé.</p><p class='text-green-700'>✔ Vrai : a). Faux : b) c) d).</p></li>
+<li><p class='font-semibold'>Question 10 : Le taux de rentabilité requis d’une dette augmente-t-il avec : a) le taux d’inflation ; b) la part des dettes ; c) l’échéance ; d) le taux des OAT ; e) le risque économique ?</p><p class='text-green-700'>✔ Vrai : a) b) c) d) e).</p></li>
+<li><p class='font-semibold'>Question 11 : L’écart entre le prix d’une OAT et celle d’une entreprise privée correspond à la valeur d’une option. Quelles sont ses caractéristiques ?</p><p class='text-green-700'>✔ C’est la valeur d’une option de vente de l’actif économique aux créanciers que les actionnaires exercent si la valeur de l’actif est inférieure aux dettes (voir paragraphe 36.3).</p></li>
+<li><p class='font-semibold'>Question 12 : Dans quelle condition un emprunt à taux variable peut-il coter largement moins que 100 % ?</p><p class='text-green-700'>✔ Si la solvabilité de l’émetteur est fortement dégradée.</p></li>
+
+      </ul>
+    </div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && i === 12 && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/12",
+    date: new Date().toISOString(),
+    sujet: "Les principaux titres financiers"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 12";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

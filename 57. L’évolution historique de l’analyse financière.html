@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Quiz Final - QCM Plausibles</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+<div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+<h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’évolution historique de l’analyse financière</h1>
+<div class="mb-6 text-center">
+<label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+<select class="border border-gray-300 rounded px-4 py-2" id="nom">
+<option value="azad">azad</option>
+<option value="remi">remi</option>
+</select>
+</div>
+<div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 10 :<br/>On a pu dire que la « fuite en avant » était une stratégie à succès dans les années 1960 et 1970, et que la rigueur de gestion était la stratégie type des années 1980 et 1990. Pourquoi ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce que la fiscalité encourageait la distribution de dividendes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce que les banques centrales interdisaient l’endettement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce que les entreprises préféraient émettre des actions qu’emprunter.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input class="hidden" name="q1" type="radio" value="correct"/> À cause de l’inflation et de la croissance. Dans les décennies 1960 et 1970, la croissance est forte et est financée par l’endettement dont le taux d’intérêt après inflation est nul ou négatif à cause de la progression constante de celle-ci. Dans les décennies 1980 et 1990, la croissance est faible et les taux d’intérêt après inflation (redevenue faible) positifs poussant au désendettement et donc à la rigueur de gestion.</label>
+</div></div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 10 :<br/>Comment ce chapitre éclaire-t-il les concepts présentés dans les chapitres précédents ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Parce qu’ils sont déconnectés de la réalité financière.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Parce qu’ils relèvent de la seule analyse comptable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Parce qu’ils sont tous obsolètes aujourd’hui.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input class="hidden" name="q2" type="radio" value="correct"/> On voit que leur développement est lié à l’évolution de l’environnement économique.</label>
+</div></div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 10 :<br/>Quelles sont les limites des techniques d’analyse financière ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input class="hidden" name="q3" type="radio" value="correct"/> Elles ont des objectifs bien précis dans un contexte donné.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Elles sont toutes basées sur les normes IFRS.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Elles ne s’appliquent qu’aux entreprises cotées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Elles ne peuvent être utilisées que par des auditeurs.</label>
+</div></div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 10 :<br/>Quel rôle joue la structure financière dans le mécanisme d’une crise de trésorerie ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Elle n’a aucun impact car la trésorerie est autonome.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input class="hidden" name="q4" type="radio" value="correct"/> Un amplificateur pour les entreprises endettées et un atténuateur pour les autres.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Elle garantit toujours la solvabilité de l’entreprise.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Elle permet de supprimer les charges d’intérêt.</label>
+</div></div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 10 :<br/>Pourquoi l’analyse financière est-elle nécessairement comparative ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input class="hidden" name="q5" type="radio" value="correct"/> Parce qu’il n’y a pas de norme absolue.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Parce que les régulateurs l’imposent depuis 2008.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Parce qu’elle repose uniquement sur la valeur de marché.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Parce que toutes les entreprises publient les mêmes ratios.</label>
+</div></div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 10 :<br/>Qu’apporte l’analyse financière de l’entreprise en très bonne santé ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Elle identifie automatiquement les faiblesses du bilan.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Elle révèle toujours des fraudes potentielles.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input class="hidden" name="q6" type="radio" value="correct"/> La compréhension de la pérennité de sa rentabilité et donc de sa valeur.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Elle évite les audits externes obligatoires.</label>
+</div></div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 10 :<br/>Pourquoi le raisonnement en valeur se développe-t-il à partir des années 1990 ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Car la comptabilité est devenue inutile.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que les entreprises ont abandonné la rentabilité.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input class="hidden" name="q7" type="radio" value="correct"/> En raison de l’essor des marchés de capitaux.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que les banques ont cessé de financer les entreprises.</label>
+</div></div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 10 :<br/>Qui de nos jours utilise la notion de flux de trésorerie disponible ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input class="hidden" name="q8" type="radio" value="correct"/> Tout le monde : le créancier, l’investisseur, l’industriel qui fait un choix d’investissement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Uniquement les fiscalistes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Uniquement les banques d’affaires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Uniquement les agences de notation.</label>
+</div></div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 10 :<br/>Pourquoi la capacité d’autofinancement a-t-elle survécu à l’essor des marchés de capitaux ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Parce qu’elle remplace le résultat net.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Parce qu’elle est imposée par la BCE.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input class="hidden" name="q9" type="radio" value="correct"/> À cause du flux de trésorerie provenant de l’exploitation qui lui a donné un coup de jeune et qui est égal à CAF – variation du BFR.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Parce qu’elle supprime le besoin d’emprunt.</label>
+</div></div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 10 :<br/>Pourquoi la notation financière s’est-elle développée ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Parce qu’elle reflète le montant du chiffre d’affaires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input class="hidden" name="q10" type="radio" value="correct"/> Car c’est une appréciation extérieure du risque de l’entreprise qui permet de comparer les entreprises entre elles mais aussi grâce au développement des marchés de capitaux.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Parce qu’elle est requise pour toute levée de fonds.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Parce qu’elle détermine le montant des dividendes.</label>
+</div></div></div>
+<div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+<h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+<p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 10.</p>
+
+<div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+<h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+<ul class="space-y-6 text-left">
+<li><p class="font-semibold">Question 1 : On a pu dire que la « fuite en avant » était une stratégie à succès dans les années 1960 et 1970, et que la rigueur de gestion était la stratégie type des années 1980 et 1990. Pourquoi ?</p><p class="text-green-700">✔ À cause de l’inflation et de la croissance. Dans les décennies 1960 et 1970, la croissance est forte et est financée par l’endettement dont le taux d’intérêt après inflation est nul ou négatif à cause de la progression constante de celle-ci. Dans les décennies 1980 et 1990, la croissance est faible et les taux d’intérêt après inflation (redevenue faible) positifs poussant au désendettement et donc à la rigueur de gestion.</p></li>
+<li><p class="font-semibold">Question 2 : Comment ce chapitre éclaire-t-il les concepts présentés dans les chapitres précédents ?</p><p class="text-green-700">✔ On voit que leur développement est lié à l’évolution de l’environnement économique.</p></li>
+<li><p class="font-semibold">Question 3 : Quelles sont les limites des techniques d’analyse financière ?</p><p class="text-green-700">✔ Elles ont des objectifs bien précis dans un contexte donné.</p></li>
+<li><p class="font-semibold">Question 4 : Quel rôle joue la structure financière dans le mécanisme d’une crise de trésorerie ?</p><p class="text-green-700">✔ Un amplificateur pour les entreprises endettées et un atténuateur pour les autres.</p></li>
+<li><p class="font-semibold">Question 5 : Pourquoi l’analyse financière est-elle nécessairement comparative ?</p><p class="text-green-700">✔ Parce qu’il n’y a pas de norme absolue.</p></li>
+<li><p class="font-semibold">Question 6 : Qu’apporte l’analyse financière de l’entreprise en très bonne santé ?</p><p class="text-green-700">✔ La compréhension de la pérennité de sa rentabilité et donc de sa valeur.</p></li>
+<li><p class="font-semibold">Question 7 : Pourquoi le raisonnement en valeur se développe-t-il à partir des années 1990 ?</p><p class="text-green-700">✔ En raison de l’essor des marchés de capitaux.</p></li>
+<li><p class="font-semibold">Question 8 : Qui de nos jours utilise la notion de flux de trésorerie disponible ?</p><p class="text-green-700">✔ Tout le monde : le créancier, l’investisseur, l’industriel qui fait un choix d’investissement.</p></li>
+<li><p class="font-semibold">Question 9 : Pourquoi la capacité d’autofinancement a-t-elle survécu à l’essor des marchés de capitaux ?</p><p class="text-green-700">✔ À cause du flux de trésorerie provenant de l’exploitation qui lui a donné un coup de jeune et qui est égal à CAF – variation du BFR.</p></li>
+<li><p class="font-semibold">Question 10 : Pourquoi la notation financière s’est-elle développée ?</p><p class="text-green-700">✔ Car c’est une appréciation extérieure du risque de l’entreprise qui permet de comparer les entreprises entre elles mais aussi grâce au développement des marchés de capitaux.</p></li>
+</ul></div></div>
+<script>
+
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector('#step' + i + ' p').innerText;
+  const bonne = document.querySelector('input[name="' + q + '"][value="correct"]').parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/10",
+    date: new Date().toISOString(),
+    sujet: "L’évolution historique de l’analyse financière"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 10";
+  const recap = document.getElementById('corrections');
+  recap.classList.remove('hidden');
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const alreadyAnswered = document.querySelectorAll('input[name="q' + i + '"]:checked').length > 0;
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i+1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/10",
+    date: new Date().toISOString(),
+    sujet: "L’évolution historique de l’analyse financière1"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 10";
+  
+document.getElementById('corrections').classList.remove('hidden');
+
+}
+</script>
+</div>
+</body>
+</html>

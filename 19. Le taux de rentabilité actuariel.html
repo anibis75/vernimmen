@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Le taux de rentabilité actuariel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Le taux de rentabilité actuariel</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+      
+<div class="question-step " id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 12 :<br>Pourquoi le critère du taux de rentabilité actuariel ne peut-il pas être utilisé pour choisir entre deux investissements ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Il suppose un taux nul pour les réinvestissements intermédiaires.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> Car il ne mesure pas la valeur créée qui est l'objectif premier de l'investisseur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Il peut y avoir plusieurs taux selon le profil des flux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Ce sont des taux qui ne tiennent pas compte de la durée.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 12 :<br>Le taux de rentabilité actuariel dépend-il du mode de remboursement d’un prêt ou d’un placement ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Annuités constantes, car elles augmentent les intérêts totaux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Annuités constantes pour rembourser plus rapidement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> Non, car il s’applique à tout moment au capital restant à rembourser.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Ce sont des taux qui ne tiennent pas compte de la durée.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 12 :<br>Le taux de rentabilité actuariel dépend-il de l’échéancier des flux ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Annuités constantes, car elles augmentent les intérêts totaux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Ce sont des taux utilisés uniquement en comptabilité.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Vrai, car un rendement fort est toujours meilleur à court terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> Oui, car si les flux sont repoussés dans le temps, le taux de rentabilité actuariel baisse.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 12 :<br>Que sont les taux proportionnels ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Parce qu’il surestime les flux futurs.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> Ce sont des taux qui sont dans le même rapport de proportionnalité que les périodes auxquelles ils se rapportent.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Un gros pourcentage sur une petite masse, c’est plus rentable.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Ce sont des taux utilisés uniquement en comptabilité.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 12 :<br>Que sont les taux équivalents ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Il peut y avoir plusieurs taux selon le profil des flux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Ce sont des taux qui s’appliquent à des périodes différentes mais qui transforment identiquement la même somme sur une même période.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Ce sont des taux qui ne tiennent pas compte de la durée.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Vrai, car un rendement fort est toujours meilleur à court terme.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 12 :<br>Quelle est l’utilité des taux proportionnels ? Des taux équivalents ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Oui, il dépend directement du type d’amortissement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> Calculer les intérêts à verser/recevoir. Calculer le taux actuariel.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Il peut y avoir plusieurs taux selon le profil des flux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Il suppose un taux nul pour les réinvestissements intermédiaires.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 12 :<br>Pour un même emprunt, le montant total des intérêts est-il plus important si l’emprunt est remboursé par annuité constante, par amortissement constant ou in fine ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Il suppose un taux nul pour les réinvestissements intermédiaires.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Un gros pourcentage sur une petite masse, c’est plus rentable.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> In fine car le capital est intégralement prêté sur toute la période et donne lieu à des intérêts plus longtemps.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Annuités constantes pour rembourser plus rapidement.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 12 :<br>Si vous pensez en tant qu’emprunteur que les taux d’intérêt vont monter, avez-vous intérêt à choisir des emprunts remboursables in fine ou par annuités constantes ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Il suppose un taux nul pour les réinvestissements intermédiaires.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Oui, il dépend directement du type d’amortissement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> In fine pour bénéficier le plus longtemps possible d’un taux bas sur un capital non remboursé maximum.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Parce qu’il surestime les flux futurs.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 12 :<br>Montrer que si le prix d’achat d’un titre est positif et que les flux ultérieurs de trésorerie sont tous positifs, il ne peut y avoir au maximum qu’un seul taux de rentabilité actuariel.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Au taux d’actualisation égal au taux de rentabilité actuariel, la valeur actuelle des flux futurs est égale au prix d’achat du titre. Si l’on augmente le taux d’actualisation, cette valeur actuelle va diminuer et n’égalera plus jamais le prix du titre. Si l’on réduit le taux d’actualisation, elle va croître et n’égalera plus jamais le prix du titre. Donc il n’y a, dans ce cas, qu’un seul taux de rentabilité actuariel.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Oui, il dépend directement du type d’amortissement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Non, il est indépendant de la structure temporelle des flux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Annuités constantes, car elles augmentent les intérêts totaux.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 12 :<br>Vaut-il mieux gagner un petit pourcentage sur une très grosse masse ou un gros pourcentage sur une petite masse ? Cela vous rappelle-t-il une règle de ce chapitre ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Il suppose un taux nul pour les réinvestissements intermédiaires.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Un gros pourcentage sur une petite masse, c’est plus rentable.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Parce qu’il surestime les flux futurs.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Un petit pourcentage sur une très grosse somme. VAN préférable au taux de rentabilité actuariel.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 12 :<br>Un taux de rentabilité actuariel très élevé pendant une très courte durée est préférable à un taux de rentabilité actuariel supérieur de 2 % au taux de rentabilité exigé pendant 10 ans. Vrai ou faux ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Annuités constantes pour rembourser plus rapidement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Annuités constantes, car elles augmentent les intérêts totaux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> Faux, car un titre avec un taux de rentabilité actuariel correct sur une longue durée crée plus de valeur qu’un titre avec un très fort taux de rentabilité actuariel mais qui est peu significatif compte tenu de la faible durée de vie de ce titre.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Un gros pourcentage sur une petite masse, c’est plus rentable.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 12 :<br>Montrez que le calcul du taux de rentabilité actuariel suppose le réinvestissement des flux intermédiaires de cet investissement à ce taux.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Vrai, car un rendement fort est toujours meilleur à court terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Parce qu’il surestime les flux futurs.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Soit une obligation de 100 de nominal rapportant du 8 % par an et remboursée au nominal au bout de 3 ans. Par définition du TRI, on a 100 = 8 / (1 + TRI) + 8 / (1+ TRI)^2 + 108 / (1+TRI)^3. Multipliez chacun des termes de l’équation par (1 + TRI)^3. D’où : 100 x (1 + TRI)^3= 8 x (1 + TRI)^2 + 8 x (1 + TRI) + 108.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Il suppose un taux nul pour les réinvestissements intermédiaires.</label>
+  </div>
+</div>
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 12.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'><li><p class='font-semibold'>Question 1 : Pourquoi le critère du taux de rentabilité actuariel ne peut-il pas être utilisé pour choisir entre deux investissements ?</p><p class='text-green-700'>✔ Car il ne mesure pas la valeur créée qui est l'objectif premier de l'investisseur.</p></li>
+<li><p class='font-semibold'>Question 2 : Le taux de rentabilité actuariel dépend-il du mode de remboursement d’un prêt ou d’un placement ?</p><p class='text-green-700'>✔ Non, car il s’applique à tout moment au capital restant à rembourser.</p></li>
+<li><p class='font-semibold'>Question 3 : Le taux de rentabilité actuariel dépend-il de l’échéancier des flux ?</p><p class='text-green-700'>✔ Oui, car si les flux sont repoussés dans le temps, le taux de rentabilité actuariel baisse.</p></li>
+<li><p class='font-semibold'>Question 4 : Que sont les taux proportionnels ?</p><p class='text-green-700'>✔ Ce sont des taux qui sont dans le même rapport de proportionnalité que les périodes auxquelles ils se rapportent.</p></li>
+<li><p class='font-semibold'>Question 5 : Que sont les taux équivalents ?</p><p class='text-green-700'>✔ Ce sont des taux qui s’appliquent à des périodes différentes mais qui transforment identiquement la même somme sur une même période.</p></li>
+<li><p class='font-semibold'>Question 6 : Quelle est l’utilité des taux proportionnels ? Des taux équivalents ?</p><p class='text-green-700'>✔ Calculer les intérêts à verser/recevoir. Calculer le taux actuariel.</p></li>
+<li><p class='font-semibold'>Question 7 : Pour un même emprunt, le montant total des intérêts est-il plus important si l’emprunt est remboursé par annuité constante, par amortissement constant ou in fine ?</p><p class='text-green-700'>✔ In fine car le capital est intégralement prêté sur toute la période et donne lieu à des intérêts plus longtemps.</p></li>
+<li><p class='font-semibold'>Question 8 : Si vous pensez en tant qu’emprunteur que les taux d’intérêt vont monter, avez-vous intérêt à choisir des emprunts remboursables in fine ou par annuités constantes ?</p><p class='text-green-700'>✔ In fine pour bénéficier le plus longtemps possible d’un taux bas sur un capital non remboursé maximum.</p></li>
+<li><p class='font-semibold'>Question 9 : Montrer que si le prix d’achat d’un titre est positif et que les flux ultérieurs de trésorerie sont tous positifs, il ne peut y avoir au maximum qu’un seul taux de rentabilité actuariel.</p><p class='text-green-700'>✔ Au taux d’actualisation égal au taux de rentabilité actuariel, la valeur actuelle des flux futurs est égale au prix d’achat du titre. Si l’on augmente le taux d’actualisation, cette valeur actuelle va diminuer et n’égalera plus jamais le prix du titre. Si l’on réduit le taux d’actualisation, elle va croître et n’égalera plus jamais le prix du titre. Donc il n’y a, dans ce cas, qu’un seul taux de rentabilité actuariel.</p></li>
+<li><p class='font-semibold'>Question 10 : Vaut-il mieux gagner un petit pourcentage sur une très grosse masse ou un gros pourcentage sur une petite masse ? Cela vous rappelle-t-il une règle de ce chapitre ?</p><p class='text-green-700'>✔ Un petit pourcentage sur une très grosse somme. VAN préférable au taux de rentabilité actuariel.</p></li>
+<li><p class='font-semibold'>Question 11 : Un taux de rentabilité actuariel très élevé pendant une très courte durée est préférable à un taux de rentabilité actuariel supérieur de 2 % au taux de rentabilité exigé pendant 10 ans. Vrai ou faux ?</p><p class='text-green-700'>✔ Faux, car un titre avec un taux de rentabilité actuariel correct sur une longue durée crée plus de valeur qu’un titre avec un très fort taux de rentabilité actuariel mais qui est peu significatif compte tenu de la faible durée de vie de ce titre.</p></li>
+<li><p class='font-semibold'>Question 12 : Montrez que le calcul du taux de rentabilité actuariel suppose le réinvestissement des flux intermédiaires de cet investissement à ce taux.</p><p class='text-green-700'>✔ Soit une obligation de 100 de nominal rapportant du 8 % par an et remboursée au nominal au bout de 3 ans. Par définition du TRI, on a 100 = 8 / (1 + TRI) + 8 / (1+ TRI)^2 + 108 / (1+TRI)^3. Multipliez chacun des termes de l’équation par (1 + TRI)^3. D’où : 100 x (1 + TRI)^3= 8 x (1 + TRI)^2 + 8 x (1 + TRI) + 108.</p></li>
+</ul></div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/12",
+    date: new Date().toISOString(),
+    sujet: "Le taux de rentabilité actuariel"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 12";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

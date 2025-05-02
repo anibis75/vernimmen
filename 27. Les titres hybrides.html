@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Les titres hybrides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Les titres hybrides</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+
+<div class="question-step" id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 14 :<br>Un produit financier peut-il permettre d’obtenir des ressources à un coût inférieur à celui du marché ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Oui, pour les actions privilégiées.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Oui, si l’émetteur est bien noté.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Non, car le coût est toujours identique au taux du marché.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+      <input type="radio" name="q1" value="correct" class="hidden"> En aucune manière il n’est possible d’affirmer cela ou son contraire.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 14 :<br>Définissez l'obligation convertible, l'OBSA, l'action de préférence et l'ORA.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Ce sont toutes des formes de dettes non remboursables.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+      <input type="radio" name="q2" value="correct" class="hidden"> a) OC : dette avec option de conversion. b) OBSA : dette + bon. c) Action de préférence : actions à droits spéciaux. d) ORA : dette remboursée en actions.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Ce sont des actions à droit de vote prioritaire.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Elles sont toutes convertibles automatiquement en actions.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 14 :<br>Le taux de marché est de 3 %. Une entreprise émet une OBSA avec TRA brut de 1 % si les bons ne sont pas exercés. Quel est le coût du produit ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Il est nul car les bons compensent l’intérêt.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+      <input type="radio" name="q3" value="correct" class="hidden"> Le coût est composé du rendement brut plus la valeur du bon ; inférieur à celui d’une obligation classique.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Il est toujours égal à 3 %, comme le marché.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Il est fixe indépendamment des options incluses.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 14 :<br>Une obligation convertible est-elle plus coûteuse pour l’entreprise qu’une OBSA ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Non, les deux coûtent exactement la même chose.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Non, car l’OC a un taux plus bas.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+      <input type="radio" name="q4" value="correct" class="hidden"> Oui, car la dilution potentielle est plus grande.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Oui, car l’OBSA est une dette perpétuelle.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 14 :<br>Quel produit est le plus adapté dans chaque cas : a) contrôle instable, b) forte volatilité, c) sortie de crise risquée ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> a) OC ; b) OBSA ; c) action de préférence.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> a) Action ordinaire ; b) OBSA ; c) action privilégiée.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+      <input type="radio" name="q5" value="correct" class="hidden"> a) Action de préférence sans vote ; b) OC ; c) OC.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> a) OBSA ; b) action ordinaire ; c) ORA.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 14 :<br>Classez les produits selon : a) dilution ; b) rendement ; c) plus-value ; d) coût entreprise.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> a) OBSA > OC > AO > AP ; b) AP > AO > OBSA > OC ; c) OC > OBSA > AO > AP ; d) AO > AP > OC > OBSA.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+      <input type="radio" name="q6" value="correct" class="hidden"> a) AP > AO > OC > OBSA ; b) OC ≈ OBSA > AP > AO ; c) AO > AP > OBSA > OC ; d) AP > AO > OC > OBSA.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> a) AO > OBSA > AP > OC ; b) OBSA > OC > AP > AO ; c) AO > OBSA > OC > AP ; d) OC > OBSA > AO > AP.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> a) AO > OC > OBSA > AP ; b) OBSA > OC > AO > AP ; c) AO > AP > OC > OBSA ; d) AP > OBSA > AO > OC.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 14 :<br>Quel produit correspond à l’effet 'pile je gagne, face tu perds' ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> L’ORA.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+      <input type="radio" name="q7" value="correct" class="hidden"> L’obligation convertible.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> L’action de préférence.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> L’OBSA.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 14 :<br>Si les dirigeants pensent que l’action est sous-évaluée, quel produit privilégier ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> L’OC, car elle garantit un prix de conversion bas.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> L’action de préférence, car elle est moins risquée.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+      <input type="radio" name="q8" value="correct" class="hidden"> L’OBSA ou augmentation classique (éviter OC pour ne pas diluer trop bas).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> L’ORA, car elle ne dilue pas.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 14 :<br>Si les dirigeants pensent que l’action est surévaluée, quel produit privilégier ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> L’action de préférence, pour ne pas décevoir les marchés.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+      <input type="radio" name="q9" value="correct" class="hidden"> L’obligation convertible, en profitant d’un prix de conversion élevé.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> L’ORA, car elle évite les actions.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> L’augmentation de capital, car elle est rapide.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 14 :<br>Pourquoi les OC existent malgré les arguments précédents ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Car elles ne nécessitent pas l’approbation des actionnaires.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Car c’est le seul produit autorisé par le droit boursier.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+      <input type="radio" name="q10" value="correct" class="hidden"> À cause du signal de confiance et de la préférence de certains investisseurs spécialisés.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Car elles garantissent un rendement fixe.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 14 :<br>Vrai ou faux ? a) Prime élevée = rendement élevé ; b) Volatilité ↑ → prime ↑ ; c) Taux distribution ↑ → conversion ↑ ; d) OC protège à la baisse.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Vrai : tous.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+      <input type="radio" name="q11" value="correct" class="hidden"> Vrai : a) b) d). Faux : c).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Vrai : a) c) d). Faux : b).
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Faux : tous.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 14 :<br>Pourquoi l’ORA n’est-elle pas attractive pour les investisseurs ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+      <input type="radio" name="q12" value="correct" class="hidden"> Car c’est simplement un achat à terme d’action, payé immédiatement.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Car elle est trop liquide.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Car elle est réservée aux institutionnels.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Car elle ne donne pas droit aux dividendes.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step13">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 14 :<br>Pourquoi les actions privilégiées valent souvent moins que les actions ordinaires ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+      <input type="radio" name="q13" value="correct" class="hidden"> À cause de leur faible liquidité.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> Parce qu’elles donnent trop de droits de vote.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> À cause de leur taux de rendement élevé.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> Parce qu’elles sont remboursables.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step14">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 14 / 14 :<br>Pourquoi les actions de préférence sont fréquentes pour les entreprises non cotées mais pas pour les cotées ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> Parce que seules les cotées peuvent en émettre.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> Parce que les cotées préfèrent émettre des dettes senior.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+      <input type="radio" name="q14" value="correct" class="hidden"> Non cotées : grande souplesse. Cotées : manque de liquidité, préférence pour la simplicité.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> Parce que les non cotées ne peuvent pas faire d’augmentation classique.
+    </label>
+  </div>
+</div>
+
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 14.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : Un produit financier peut-il permettre d’obtenir des ressources à un coût inférieur à celui du marché ?</p><p class='text-green-700'>✔ En aucune manière il n’est possible d’affirmer cela ou son contraire.</p></li>
+<li><p class='font-semibold'>Question 2 : Définissez l'obligation convertible, l'OBSA, l'action de préférence et l'ORA.</p><p class='text-green-700'>✔ a) OC : dette avec option de conversion. b) OBSA : dette + bon. c) Action de préférence : actions à droits spéciaux. d) ORA : dette remboursée en actions.</p></li>
+<li><p class='font-semibold'>Question 3 : Le taux de marché est de 3 %. Une entreprise émet une OBSA avec TRA brut de 1 % si les bons ne sont pas exercés. Quel est le coût du produit ?</p><p class='text-green-700'>✔ Le coût est composé du rendement brut plus la valeur du bon ; inférieur à celui d’une obligation classique.</p></li>
+<li><p class='font-semibold'>Question 4 : Une obligation convertible est-elle plus coûteuse pour l’entreprise qu’une OBSA ?</p><p class='text-green-700'>✔ Oui, car la dilution potentielle est plus grande.</p></li>
+<li><p class='font-semibold'>Question 5 : Quel produit est le plus adapté dans chaque cas : a) contrôle instable, b) forte volatilité, c) sortie de crise risquée ?</p><p class='text-green-700'>✔ a) Action de préférence sans vote ; b) OC ; c) OC.</p></li>
+<li><p class='font-semibold'>Question 6 : Classez les produits selon : a) dilution ; b) rendement ; c) plus-value ; d) coût entreprise.</p><p class='text-green-700'>✔ a) AP > AO > OC > OBSA ; b) OC ≈ OBSA > AP > AO ; c) AO > AP > OBSA > OC ; d) AP > AO > OC > OBSA.</p></li>
+<li><p class='font-semibold'>Question 7 : Quel produit correspond à l’effet 'pile je gagne, face tu perds' ?</p><p class='text-green-700'>✔ L’obligation convertible.</p></li>
+<li><p class='font-semibold'>Question 8 : Si les dirigeants pensent que l’action est sous-évaluée, quel produit privilégier ?</p><p class='text-green-700'>✔ L’OBSA ou augmentation classique (éviter OC pour ne pas diluer trop bas).</p></li>
+<li><p class='font-semibold'>Question 9 : Si les dirigeants pensent que l’action est surévaluée, quel produit privilégier ?</p><p class='text-green-700'>✔ L’obligation convertible, en profitant d’un prix de conversion élevé.</p></li>
+<li><p class='font-semibold'>Question 10 : Pourquoi les OC existent malgré les arguments précédents ?</p><p class='text-green-700'>✔ À cause du signal de confiance et de la préférence de certains investisseurs spécialisés.</p></li>
+<li><p class='font-semibold'>Question 11 : Vrai ou faux ? a) Prime élevée = rendement élevé ; b) Volatilité ↑ → prime ↑ ; c) Taux distribution ↑ → conversion ↑ ; d) OC protège à la baisse.</p><p class='text-green-700'>✔ Vrai : a) b) d). Faux : c).</p></li>
+<li><p class='font-semibold'>Question 12 : Pourquoi l’ORA n’est-elle pas attractive pour les investisseurs ?</p><p class='text-green-700'>✔ Car c’est simplement un achat à terme d’action, payé immédiatement.</p></li>
+<li><p class='font-semibold'>Question 13 : Pourquoi les actions privilégiées valent souvent moins que les actions ordinaires ?</p><p class='text-green-700'>✔ À cause de leur faible liquidité.</p></li>
+<li><p class='font-semibold'>Question 14 : Pourquoi les actions de préférence sont fréquentes pour les entreprises non cotées mais pas pour les cotées ?</p><p class='text-green-700'>✔ Non cotées : grande souplesse. Cotées : manque de liquidité, préférence pour la simplicité.</p></li>
+
+      </ul>
+    </div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && i === 14 && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "Les titres hybrides"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 14";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

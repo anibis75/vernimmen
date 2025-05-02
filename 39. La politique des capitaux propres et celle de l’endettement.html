@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>La politique des capitaux propres et celle de l’endettement</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+<div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+<h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - La politique des capitaux propres et celle de l’endettement</h1>
+<div class="mb-6 text-center">
+<label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+<select class="border border-gray-300 rounded px-4 py-2" id="nom">
+<option value="azad">azad</option>
+<option value="remi">remi</option>
+</select>
+</div>
+<div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 18 :<br/>Pourquoi l’autofinancement a-t-il une très bonne image ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input class="hidden" name="q1" type="radio" value="correct"/> Car il réduit le risque du créancier, génère des plus-values et accroît la valeur des stock-options.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce qu’il annule les impôts sur les bénéfices.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce qu’il augmente automatiquement le ROE.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Parce qu’il maximise le levier financier.</label>
+</div></div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 18 :<br/>Pourquoi une politique d’autofinancement à outrance n’est-elle pas saine ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input class="hidden" name="q2" type="radio" value="correct"/> Elle isole l’entreprise des marchés et retarde une sanction en cas de mauvaise rentabilité.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Elle augmente trop vite le taux de distribution.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Elle expose l’entreprise à la spéculation.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Elle réduit artificiellement la volatilité du titre.</label>
+</div></div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 18 :<br/>De quoi dépend le taux de croissance des moyens financiers de l’entreprise ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Uniquement du résultat net réinvesti.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> De la part de capital détenue par l'État.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Du taux de change et du cash-flow opérationnel.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input class="hidden" name="q3" type="radio" value="correct"/> Du taux de rentabilité économique, de la structure financière et du taux de distribution.</label>
+</div></div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 18 :<br/>Que doit faire une entreprise dont la rentabilité des bénéfices investis est inférieure au coût du capital ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Changer de secteur d’activité.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Réduire son endettement à zéro.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Augmenter son capital immédiatement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input class="hidden" name="q4" type="radio" value="correct"/> Distribuer tous ses bénéfices.</label>
+</div></div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 18 :<br/>Quelle est la sanction d’un autofinancement excessif ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Une baisse automatique du BPA.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input class="hidden" name="q5" type="radio" value="correct"/> L’arrivée d’actionnaires activistes ou une OPA hostile.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Un retrait obligatoire de la cote.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Une hausse du taux de distribution.</label>
+</div></div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 18 :<br/>Quelle est la meilleure théorie qui explique l’intérêt de l’autofinancement ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> La théorie du marché efficient.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> La théorie de la neutralité de Modigliani-Miller.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> La théorie du cycle de vie de l’entreprise.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input class="hidden" name="q6" type="radio" value="correct"/> La théorie de l’agence.</label>
+</div></div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 18 :<br/>Montrez que l’autofinancement est gratuit pour un détenteur d’options d’achat.</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que l’option permet de toucher un dividende.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Car l’autofinancement augmente la duration.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que l’entreprise rachète ses actions.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input class="hidden" name="q7" type="radio" value="correct"/> Il ne touche pas le dividende mais bénéficie de la hausse de valeur de l’action.</label>
+</div></div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 18 :<br/>En fonction de quels critères une politique d’autofinancement doit-elle être jugée ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Du taux d’endettement cible.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> De la valorisation en Bourse.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input class="hidden" name="q8" type="radio" value="correct"/> Du taux de rentabilité marginale des investissements.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> De la part de capital flottant.</label>
+</div></div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 18 :<br/>Quel type d’entreprise pratique un fort autofinancement, un faible autofinancement ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Forte : start-up. Faible : sociétés cotées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Forte : biotech. Faible : utilities.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input class="hidden" name="q9" type="radio" value="correct"/> Forte : entreprise à maturité. Faible : entreprise en croissance.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Forte : entreprises déficitaires. Faible : banques.</label>
+</div></div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 18 :<br/>L’autofinancement permet-il de faire baisser le coût du capital ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Oui, s’il est supérieur à 20 %. </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Non, sauf s’il augmente le PER.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Oui, car il remplace les dividendes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input class="hidden" name="q10" type="radio" value="correct"/> Non, sauf s’il modifie le risque de l’actif économique.</label>
+</div></div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 18 :<br/>Quels sont les avantages et les inconvénients de l’autofinancement intégral pour l’actionnaire familial ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Avantage : plus de liquidité. Inconvénient : dilution du contrôle.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Avantage : meilleure gouvernance. Inconvénient : pression fiscale.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input class="hidden" name="q11" type="radio" value="correct"/> Avantage : pas de dilution. Inconvénient : peu de dividendes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> Avantage : meilleure valorisation. Inconvénient : risque d’OPA.</label>
+</div></div>
+<div class="question-step hidden" id="step12">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 12 / 18 :<br/>Pourquoi l’autofinancement est-il la ressource au coût de mise en œuvre le plus faible ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input class="hidden" name="q12" type="radio" value="correct"/> Parce qu’il n’a pas besoin d’autorisation externe.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Parce qu’il est comptabilisé hors-bilan.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Car il permet de réduire la TVA.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Car il ne nécessite pas d’amortissement.</label>
+</div></div>
+<div class="question-step hidden" id="step13">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 13 / 18 :<br/>Dans quelle condition le taux de croissance des dividendes peut-il être supérieur à celui des flux de trésorerie disponible ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Si la dette est remboursée entièrement.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input class="hidden" name="q13" type="radio" value="correct"/> Si le taux de rentabilité marginal est supérieur au coût du capital.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Si les CAPEX sont plus élevés que le BFR.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> En période de croissance du chiffre d’affaires.</label>
+</div></div>
+<div class="question-step hidden" id="step14">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 14 / 18 :<br/>Le jour du paiement du dividende, l’actionnaire s’est-il appauvri ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input class="hidden" name="q14" type="radio" value="correct"/> Non, la baisse de l’action est compensée par le cash reçu.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Oui, car la valeur de l’action baisse.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Non, si l’action monte ensuite.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Oui, sauf si les dividendes sont réinvestis.</label>
+</div></div>
+<div class="question-step hidden" id="step15">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 15 / 18 :<br/>À quelle condition pouvez-vous accepter qu’une société ne verse aucun dividende ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input class="hidden" name="q15" type="radio" value="wrong"/> Si elle est cotée au CAC 40.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input class="hidden" name="q15" type="radio" value="wrong"/> Si elle a un endettement net nul.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+<input class="hidden" name="q15" type="radio" value="correct"/> Si sa rentabilité marginale est supérieure au coût moyen pondéré du capital.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input class="hidden" name="q15" type="radio" value="wrong"/> Si son PER est supérieur à 20.</label>
+</div></div>
+<div class="question-step hidden" id="step16">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 16 / 18 :<br/>Que signifie l’annonce d’un premier dividende dans les différentes théories ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input class="hidden" name="q16" type="radio" value="wrong"/> Effet dilutif sur les actifs nets.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'correct', 16)">
+<input class="hidden" name="q16" type="radio" value="correct"/> Indifférence (marché), discipline (agence), signal positif (signal).</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input class="hidden" name="q16" type="radio" value="wrong"/> Signal de surévaluation du cours.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input class="hidden" name="q16" type="radio" value="wrong"/> Réaction positive dans tous les cas.</label>
+</div></div>
+<div class="question-step hidden" id="step17">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 17 / 18 :<br/>Pourquoi les groupes de tabac ont-ils un taux de distribution élevé ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'correct', 17)">
+<input class="hidden" name="q17" type="radio" value="correct"/> Faibles perspectives de croissance.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input class="hidden" name="q17" type="radio" value="wrong"/> Optimisation fiscale sur les dividendes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input class="hidden" name="q17" type="radio" value="wrong"/> Exigence des fonds ESG.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input class="hidden" name="q17" type="radio" value="wrong"/> Protection contre l’OPA.</label>
+</div></div>
+<div class="question-step hidden" id="step18">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 18 / 18 :<br/>Que montre l’exemple Phildar → Auchan → Voltalia ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input class="hidden" name="q18" type="radio" value="wrong"/> L’effet du LBO sur la création de valeur.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'correct', 18)">
+<input class="hidden" name="q18" type="radio" value="correct"/> Les dividendes permettent la réallocation de capitaux entre secteurs.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input class="hidden" name="q18" type="radio" value="wrong"/> La croissance endogène par effet boule de neige.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input class="hidden" name="q18" type="radio" value="wrong"/> L’importance du goodwill dans la stratégie.</label>
+</div></div>
+</div>
+<div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+<h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+<p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 18.</p>
+</div><div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+<h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+<ul class="space-y-6 text-left">
+<li><p class="font-semibold">Question 1 : Pourquoi l’autofinancement a-t-il une très bonne image ?</p><p class="text-green-700">✔ Car il réduit le risque du créancier, génère des plus-values et accroît la valeur des stock-options.</p></li>
+<li><p class="font-semibold">Question 2 : Pourquoi une politique d’autofinancement à outrance n’est-elle pas saine ?</p><p class="text-green-700">✔ Elle isole l’entreprise des marchés et retarde une sanction en cas de mauvaise rentabilité.</p></li>
+<li><p class="font-semibold">Question 3 : De quoi dépend le taux de croissance des moyens financiers de l’entreprise ?</p><p class="text-green-700">✔ Du taux de rentabilité économique, de la structure financière et du taux de distribution.</p></li>
+<li><p class="font-semibold">Question 4 : Que doit faire une entreprise dont la rentabilité des bénéfices investis est inférieure au coût du capital ?</p><p class="text-green-700">✔ Distribuer tous ses bénéfices.</p></li>
+<li><p class="font-semibold">Question 5 : Quelle est la sanction d’un autofinancement excessif ?</p><p class="text-green-700">✔ L’arrivée d’actionnaires activistes ou une OPA hostile.</p></li>
+<li><p class="font-semibold">Question 6 : Quelle est la meilleure théorie qui explique l’intérêt de l’autofinancement ?</p><p class="text-green-700">✔ La théorie de l’agence.</p></li>
+<li><p class="font-semibold">Question 7 : Montrez que l’autofinancement est gratuit pour un détenteur d’options d’achat.</p><p class="text-green-700">✔ Il ne touche pas le dividende mais bénéficie de la hausse de valeur de l’action.</p></li>
+<li><p class="font-semibold">Question 8 : En fonction de quels critères une politique d’autofinancement doit-elle être jugée ?</p><p class="text-green-700">✔ Du taux de rentabilité marginale des investissements.</p></li>
+<li><p class="font-semibold">Question 9 : Quel type d’entreprise pratique un fort autofinancement, un faible autofinancement ?</p><p class="text-green-700">✔ Forte : entreprise à maturité. Faible : entreprise en croissance.</p></li>
+<li><p class="font-semibold">Question 10 : L’autofinancement permet-il de faire baisser le coût du capital ?</p><p class="text-green-700">✔ Non, sauf s’il modifie le risque de l’actif économique.</p></li>
+<li><p class="font-semibold">Question 11 : Quels sont les avantages et les inconvénients de l’autofinancement intégral pour l’actionnaire familial ?</p><p class="text-green-700">✔ Avantage : pas de dilution. Inconvénient : peu de dividendes.</p></li>
+<li><p class="font-semibold">Question 12 : Pourquoi l’autofinancement est-il la ressource au coût de mise en œuvre le plus faible ?</p><p class="text-green-700">✔ Parce qu’il n’a pas besoin d’autorisation externe.</p></li>
+<li><p class="font-semibold">Question 13 : Dans quelle condition le taux de croissance des dividendes peut-il être supérieur à celui des flux de trésorerie disponible ?</p><p class="text-green-700">✔ Si le taux de rentabilité marginal est supérieur au coût du capital.</p></li>
+<li><p class="font-semibold">Question 14 : Le jour du paiement du dividende, l’actionnaire s’est-il appauvri ?</p><p class="text-green-700">✔ Non, la baisse de l’action est compensée par le cash reçu.</p></li>
+<li><p class="font-semibold">Question 15 : À quelle condition pouvez-vous accepter qu’une société ne verse aucun dividende ?</p><p class="text-green-700">✔ Si sa rentabilité marginale est supérieure au coût moyen pondéré du capital.</p></li>
+<li><p class="font-semibold">Question 16 : Que signifie l’annonce d’un premier dividende dans les différentes théories ?</p><p class="text-green-700">✔ Indifférence (marché), discipline (agence), signal positif (signal).</p></li>
+<li><p class="font-semibold">Question 17 : Pourquoi les groupes de tabac ont-ils un taux de distribution élevé ?</p><p class="text-green-700">✔ Faibles perspectives de croissance.</p></li>
+<li><p class="font-semibold">Question 18 : Que montre l’exemple Phildar → Auchan → Voltalia ?</p><p class="text-green-700">✔ Les dividendes permettent la réallocation de capitaux entre secteurs.</p></li>
+</ul></div>
+
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait) return;
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  if (i === 18) {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  } else {
+    document.getElementById('step' + (i+1)).classList.remove('hidden');
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/18",
+    date: new Date().toISOString(),
+    sujet: "La politique des capitaux propres et celle de l’endettement"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 18";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div></body></html>

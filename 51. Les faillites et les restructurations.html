@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Les faillites et les restructurations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Les faillites et les restructurations</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+      
+<div class="question-step " id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 12 :<br>Pourquoi une société fait-elle faillite ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> Parce que sa rentabilité économique est trop faible.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Pour satisfaire aux normes IFRS.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Parce qu'elle n'a pas été cotée depuis plus de 12 mois.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Pour alléger la fiscalité à court terme.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 12 :<br>Quels sont les objectifs d’une procédure collective ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> En France, le maintien de l’emploi, au moins à court terme, l’a emporté sur la sauvegarde de l’entreprise et l’apurement du passif.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Elle permet d’augmenter les dividendes versés.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Les créanciers deviennent automatiquement actionnaires.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Pour éviter une augmentation de capital.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 12 :<br>Quel risque prenez-vous si vous rachetez la filiale d’un groupe que vous savez être en difficulté ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Pour satisfaire aux normes IFRS.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Pour réduire les obligations comptables à venir.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> Risque que la cession soit déclarée nulle parce qu’elle a été conclue pendant la période suspecte précédant le dépôt de bilan.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Pour accroître le nombre d’emplois dans le secteur public.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 12 :<br>Y a-t-il le même type de conflits en cas de faillite d’une société en nom collectif (SNC) et d’une société anonyme ? Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Pour éviter une augmentation de capital.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> Non car dans une SNC la responsabilité des associés n’est pas limitée à leurs apports.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Les créanciers deviennent automatiquement actionnaires.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Parce qu'elle n'a pas été cotée depuis plus de 12 mois.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 12 :<br>En quoi la faillite peut-elle contribuer à la survie de l’entreprise ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Elle permet une « remise à plat » de l’ensemble des contrats et un plan de remboursement des dettes sur 10 ans.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Pour éviter une augmentation de capital.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Les créanciers deviennent automatiquement actionnaires.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Parce qu'elle n'a pas été cotée depuis plus de 12 mois.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 12 :<br>En quoi l’existence de coûts de faillite vient-elle limiter l’avantage fiscal attribué à l’endettement ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Car elle a fusionné avec un concurrent plus petit.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> La valeur actuelle des coûts de faillite vient en diminution de la valeur de l’actif économique. Plus l’entreprise est endettée, plus les coûts de faillite seront élevés.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Pour éviter une augmentation de capital.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Pour satisfaire aux normes IFRS.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 12 :<br>Pourquoi les entreprises qui sortent d’une procédure de faillite peuvent-elles être de redoutables concurrents ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Car le marché des actions est saturé.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Parce que les actionnaires sont prioritaires sur les créanciers.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Pour alléger la fiscalité à court terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Parce qu’une partie de leurs charges peut avoir été renégociée à la baisse (loyers, frais de personnel, contraintes diverses).</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 12 :<br>Pourquoi, en France, les entreprises qui sortent d’une procédure de faillite sont-elles rarement de redoutables concurrents ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Pour satisfaire aux normes IFRS.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Parce que la préoccupation des pouvoirs publics est la sauvegarde de l’emploi et que le plan de continuation qui propose de reprendre le plus d’emplois a de très bonnes chances d’être le plan retenu, même s’il condamne de ce fait l’entreprise à terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Car elle a fusionné avec un concurrent plus petit.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Pour éviter une augmentation de capital.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 12 :<br>Une entreprise qui n’a pas de dettes peut-elle faire faillite ? Peut-elle détruire de la valeur ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Parce que les actionnaires sont prioritaires sur les créanciers.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Pour alléger la fiscalité à court terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Elle permet d’augmenter les dividendes versés.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Non puisqu’elle ne doit rien (ou presque). Oui si elle investit à un taux de rentabilité inférieur à celui demandé par les actionnaires.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 12 :<br>Pourquoi une entreprise en période d’observation retrouve-t-elle une aisance financière ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Parce que le remboursement des anciennes dettes est gelé et que les clients continuent normalement de payer.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Car les flux de trésorerie sont trop réguliers.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Car le marché des actions est saturé.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Car elle a trop de trésorerie immobilisée.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 12 :<br>Pourquoi des créanciers peuvent-ils accepter de prêter à une entreprise en période d’observation ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> Parce que leurs nouvelles dettes seront remboursées avant les anciennes dettes en cas de liquidation de l’entreprise.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Car les flux de trésorerie sont trop réguliers.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Pour accroître le nombre d’emplois dans le secteur public.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Parce que les actionnaires sont prioritaires sur les créanciers.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 12 :<br>Quel est l’inconvénient de rendre publique une procédure de sauvegarde ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Car elle a fusionné avec un concurrent plus petit.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Parce que les actionnaires sont prioritaires sur les créanciers.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Le risque que les assureurs-crédit suspendent alors leurs garanties et que les fournisseurs exigent d’être payés comptant, ce qui accroît les difficultés de l’entreprise.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Parce qu’elle dispose d’un fonds de roulement négatif structurel.</label>
+  </div>
+</div>
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 12.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'><li><p class='font-semibold'>Question 1 : Pourquoi une société fait-elle faillite ?</p><p class='text-green-700'>✔ Parce que sa rentabilité économique est trop faible.</p></li>
+<li><p class='font-semibold'>Question 2 : Quels sont les objectifs d’une procédure collective ?</p><p class='text-green-700'>✔ En France, le maintien de l’emploi, au moins à court terme, l’a emporté sur la sauvegarde de l’entreprise et l’apurement du passif.</p></li>
+<li><p class='font-semibold'>Question 3 : Quel risque prenez-vous si vous rachetez la filiale d’un groupe que vous savez être en difficulté ?</p><p class='text-green-700'>✔ Risque que la cession soit déclarée nulle parce qu’elle a été conclue pendant la période suspecte précédant le dépôt de bilan.</p></li>
+<li><p class='font-semibold'>Question 4 : Y a-t-il le même type de conflits en cas de faillite d’une société en nom collectif (SNC) et d’une société anonyme ? Pourquoi ?</p><p class='text-green-700'>✔ Non car dans une SNC la responsabilité des associés n’est pas limitée à leurs apports.</p></li>
+<li><p class='font-semibold'>Question 5 : En quoi la faillite peut-elle contribuer à la survie de l’entreprise ?</p><p class='text-green-700'>✔ Elle permet une « remise à plat » de l’ensemble des contrats et un plan de remboursement des dettes sur 10 ans.</p></li>
+<li><p class='font-semibold'>Question 6 : En quoi l’existence de coûts de faillite vient-elle limiter l’avantage fiscal attribué à l’endettement ?</p><p class='text-green-700'>✔ La valeur actuelle des coûts de faillite vient en diminution de la valeur de l’actif économique. Plus l’entreprise est endettée, plus les coûts de faillite seront élevés.</p></li>
+<li><p class='font-semibold'>Question 7 : Pourquoi les entreprises qui sortent d’une procédure de faillite peuvent-elles être de redoutables concurrents ?</p><p class='text-green-700'>✔ Parce qu’une partie de leurs charges peut avoir été renégociée à la baisse (loyers, frais de personnel, contraintes diverses).</p></li>
+<li><p class='font-semibold'>Question 8 : Pourquoi, en France, les entreprises qui sortent d’une procédure de faillite sont-elles rarement de redoutables concurrents ?</p><p class='text-green-700'>✔ Parce que la préoccupation des pouvoirs publics est la sauvegarde de l’emploi et que le plan de continuation qui propose de reprendre le plus d’emplois a de très bonnes chances d’être le plan retenu, même s’il condamne de ce fait l’entreprise à terme.</p></li>
+<li><p class='font-semibold'>Question 9 : Une entreprise qui n’a pas de dettes peut-elle faire faillite ? Peut-elle détruire de la valeur ?</p><p class='text-green-700'>✔ Non puisqu’elle ne doit rien (ou presque). Oui si elle investit à un taux de rentabilité inférieur à celui demandé par les actionnaires.</p></li>
+<li><p class='font-semibold'>Question 10 : Pourquoi une entreprise en période d’observation retrouve-t-elle une aisance financière ?</p><p class='text-green-700'>✔ Parce que le remboursement des anciennes dettes est gelé et que les clients continuent normalement de payer.</p></li>
+<li><p class='font-semibold'>Question 11 : Pourquoi des créanciers peuvent-ils accepter de prêter à une entreprise en période d’observation ?</p><p class='text-green-700'>✔ Parce que leurs nouvelles dettes seront remboursées avant les anciennes dettes en cas de liquidation de l’entreprise.</p></li>
+<li><p class='font-semibold'>Question 12 : Quel est l’inconvénient de rendre publique une procédure de sauvegarde ?</p><p class='text-green-700'>✔ Le risque que les assureurs-crédit suspendent alors leurs garanties et que les fournisseurs exigent d’être payés comptant, ce qui accroît les difficultés de l’entreprise.</p></li>
+</ul></div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/12",
+    date: new Date().toISOString(),
+    sujet: "Les faillites et les restructurations"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 12";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

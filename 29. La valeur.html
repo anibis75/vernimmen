@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - La valeur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - La valeur</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+      
+<div class="question-step " id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 18 :<br>Vous proposez à des investisseurs un investissement de 100 financé uniquement par des actions. Dans un monde sans fiscalité, il est prévu 25 de bénéfices annuels constants à l’infini. a) Quel est le taux de rentabilité exigé par le marché de cet investissement ? b) Il s’avère que cet investissement ne rapporte que 10 par an ; si le taux exigé par le marché n’est pas modifié, quelle sera la valeur ? c) Même question si l’investissement rapporte 50 par an. Si le bénéfice est nul. d) Quelle est la conséquence de tous ces schémas sur la trésorerie de l’entreprise ? e) Peut-on établir une règle simple sur la création ou la destruction de valeur ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Une stratégie fondée uniquement sur l’autofinancement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Un taux d’imposition supérieur à la moyenne du secteur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> a) 25 %. b) 40. c) 200 ; 0. d) Aucune. e) Création si rentabilité > taux exigé ; destruction sinon.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> La mise en œuvre d’un plan de continuation.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 18 :<br>Que signifie qu’une source de financement est bon marché ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Une augmentation des frais généraux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Une dette amortissable sur 30 ans.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> La capacité à reporter des pertes fiscales.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> Quand le risque est sous-estimé par les pourvoyeurs de fonds.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 18 :<br>Quand crée-t-on de la valeur : – dans le choix d’investissement, – dans le choix du financement ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Un excédent de fonds propres à court terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> Investissement : quand rentabilité > taux exigé ; Financement : quand taux < taux normalement exigé.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> La baisse des taux de change sur les marchés internationaux.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 18 :<br>Décision : Transfert de valeur des clients vers les actionnaires. Création de valeur ou non ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> Création de valeur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> La mise en œuvre d’un plan de continuation.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> La non-conformité IFRS d’un poste de bilan.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> La valorisation en coût historique des immobilisations.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 18 :<br>Décision : Transfert de valeur des créanciers vers les actionnaires. Création de valeur ou non ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Un excédent de fonds propres à court terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Création de valeur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Une dette amortissable sur 30 ans.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Un placement obligataire assorti d’un dividende variable.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 18 :<br>Décision : Signal : Négatif. Neutre. Neutre. Négatif. Positif. Positif. Positif. Neutre.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> La non-conformité IFRS d’un poste de bilan.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Un PER supérieur à 100 pendant 3 ans.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> Négatif. Neutre. Neutre. Négatif. Positif. Positif. Positif. Neutre.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 18 :<br>Qu’est-ce que la synergie ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Réduction des charges ou progression du CA après rapprochement. Valeur du tout > somme des parties.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Une augmentation des frais généraux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Un PER supérieur à 100 pendant 3 ans.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 18 :<br>Peut-on parler de synergie financière ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> La dilution du capital par émission d'obligations convertibles.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Non. Voir paragraphe 28.10.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Une augmentation des frais généraux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> La valorisation en coût historique des immobilisations.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 18 :<br>Qu’est-ce que la décote de conglomérat ? Comment l’éviter ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> C’est quand un conglomérat vaut moins que ses parties. Pour l’éviter : démantèlement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Une erreur dans le calcul du goodwill consolidé.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> La non-conformité IFRS d’un poste de bilan.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 18 :<br>Montrez qu’une entreprise très rentable peut voir son cours baisser.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> La mise en œuvre d’un plan de continuation.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Erreur d’anticipation à l’origine, trop optimiste.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> La valorisation en coût historique des immobilisations.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Un PER supérieur à 100 pendant 3 ans.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 18 :<br>Relisez le chapitre 24 à la lumière de la politique d’investissement...</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> Voir le chapitre 24.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Un placement obligataire assorti d’un dividende variable.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Un PER supérieur à 100 pendant 3 ans.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 18 :<br>Est-il normal qu’un investissement ait un taux de rentabilité espéré supérieur au taux exigé ? Y a-t-il toujours création de valeur ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Un taux d’imposition supérieur à la moyenne du secteur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> La baisse des taux de change sur les marchés internationaux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> Oui c’est normal, mais globalement pas toujours création de valeur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Une augmentation des frais généraux.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step13">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 18 :<br>Montrez que la décote de conglomérat conduit à renchérir le coût des capitaux propres.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Une augmentation des frais généraux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> La non-conformité IFRS d’un poste de bilan.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> La mise en œuvre d’un plan de continuation.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input type="radio" name="q13" value="correct" class="hidden"> Une levée de 100 avec décote 25 % = valeur 75 ; dilution => coût plus élevé.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step14">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 14 / 18 :<br>Peut-il y avoir signal sans flux de cash ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Un placement obligataire assorti d’un dividende variable.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input type="radio" name="q14" value="correct" class="hidden"> Non, un vrai signal suppose un coût si le signal est faux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input type="radio" name="q14" value="wrong" class="hidden"> Une erreur dans le calcul du goodwill consolidé.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step15">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 15 / 18 :<br>Qu’est-ce qu’une rente économique ? Quel est son fondement ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Une erreur dans le calcul du goodwill consolidé.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+<input type="radio" name="q15" value="correct" class="hidden"> Rente = rentabilité > exigée grâce à avantage stratégique. Fondement = déséquilibre marché.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Un excédent de fonds propres à court terme.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input type="radio" name="q15" value="wrong" class="hidden"> Un placement obligataire assorti d’un dividende variable.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step16">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 16 / 18 :<br>Une entreprise au bord du dépôt de bilan procède à une augmentation de capital. Est-ce un signal ? Pourquoi ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'correct', 16)">
+<input type="radio" name="q16" value="correct" class="hidden"> Ce n’est pas un vrai signal. L’entreprise n’a pas le choix. Un vrai signal suppose alternative.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> La mise en œuvre d’un plan de continuation.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> Un taux d’imposition supérieur à la moyenne du secteur.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input type="radio" name="q16" value="wrong" class="hidden"> Une erreur dans le calcul du goodwill consolidé.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step17">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 17 / 18 :<br>Pourquoi les grands groupes incitent leurs dirigeants à investir dans les actions du groupe ? Quelle théorie explique cela ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input type="radio" name="q17" value="wrong" class="hidden"> Une stratégie fondée uniquement sur l’autofinancement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input type="radio" name="q17" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+<input type="radio" name="q17" value="wrong" class="hidden"> La non-conformité IFRS d’un poste de bilan.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'correct', 17)">
+<input type="radio" name="q17" value="correct" class="hidden"> Théorie de l’agence. Pour aligner les intérêts des dirigeants et actionnaires.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step18">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 18 / 18 :<br>Pourquoi ce comportement peut-il inciter à diversifier les activités ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input type="radio" name="q18" value="wrong" class="hidden"> La dilution du capital par émission d'obligations convertibles.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'correct', 18)">
+<input type="radio" name="q18" value="correct" class="hidden"> Car cela limite leur diversification personnelle, donc incitation à diversifier le groupe.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input type="radio" name="q18" value="wrong" class="hidden"> La baisse des taux de change sur les marchés internationaux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q18', 'wrong', 18)">
+<input type="radio" name="q18" value="wrong" class="hidden"> Une trésorerie disponible non utilisée.</label>
+  </div>
+</div>
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 18.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'><li><p class='font-semibold'>Question 1 : Vous proposez à des investisseurs un investissement de 100 financé uniquement par des actions. Dans un monde sans fiscalité, il est prévu 25 de bénéfices annuels constants à l’infini. a) Quel est le taux de rentabilité exigé par le marché de cet investissement ? b) Il s’avère que cet investissement ne rapporte que 10 par an ; si le taux exigé par le marché n’est pas modifié, quelle sera la valeur ? c) Même question si l’investissement rapporte 50 par an. Si le bénéfice est nul. d) Quelle est la conséquence de tous ces schémas sur la trésorerie de l’entreprise ? e) Peut-on établir une règle simple sur la création ou la destruction de valeur ?</p><p class='text-green-700'>✔ a) 25 %. b) 40. c) 200 ; 0. d) Aucune. e) Création si rentabilité > taux exigé ; destruction sinon.</p></li>
+<li><p class='font-semibold'>Question 2 : Que signifie qu’une source de financement est bon marché ?</p><p class='text-green-700'>✔ Quand le risque est sous-estimé par les pourvoyeurs de fonds.</p></li>
+<li><p class='font-semibold'>Question 3 : Quand crée-t-on de la valeur : – dans le choix d’investissement, – dans le choix du financement ?</p><p class='text-green-700'>✔ Investissement : quand rentabilité > taux exigé ; Financement : quand taux < taux normalement exigé.</p></li>
+<li><p class='font-semibold'>Question 4 : Décision : Transfert de valeur des clients vers les actionnaires. Création de valeur ou non ?</p><p class='text-green-700'>✔ Création de valeur.</p></li>
+<li><p class='font-semibold'>Question 5 : Décision : Transfert de valeur des créanciers vers les actionnaires. Création de valeur ou non ?</p><p class='text-green-700'>✔ Création de valeur.</p></li>
+<li><p class='font-semibold'>Question 6 : Décision : Signal : Négatif. Neutre. Neutre. Négatif. Positif. Positif. Positif. Neutre.</p><p class='text-green-700'>✔ Négatif. Neutre. Neutre. Négatif. Positif. Positif. Positif. Neutre.</p></li>
+<li><p class='font-semibold'>Question 7 : Qu’est-ce que la synergie ?</p><p class='text-green-700'>✔ Réduction des charges ou progression du CA après rapprochement. Valeur du tout > somme des parties.</p></li>
+<li><p class='font-semibold'>Question 8 : Peut-on parler de synergie financière ?</p><p class='text-green-700'>✔ Non. Voir paragraphe 28.10.</p></li>
+<li><p class='font-semibold'>Question 9 : Qu’est-ce que la décote de conglomérat ? Comment l’éviter ?</p><p class='text-green-700'>✔ C’est quand un conglomérat vaut moins que ses parties. Pour l’éviter : démantèlement.</p></li>
+<li><p class='font-semibold'>Question 10 : Montrez qu’une entreprise très rentable peut voir son cours baisser.</p><p class='text-green-700'>✔ Erreur d’anticipation à l’origine, trop optimiste.</p></li>
+<li><p class='font-semibold'>Question 11 : Relisez le chapitre 24 à la lumière de la politique d’investissement...</p><p class='text-green-700'>✔ Voir le chapitre 24.</p></li>
+<li><p class='font-semibold'>Question 12 : Est-il normal qu’un investissement ait un taux de rentabilité espéré supérieur au taux exigé ? Y a-t-il toujours création de valeur ?</p><p class='text-green-700'>✔ Oui c’est normal, mais globalement pas toujours création de valeur.</p></li>
+<li><p class='font-semibold'>Question 13 : Montrez que la décote de conglomérat conduit à renchérir le coût des capitaux propres.</p><p class='text-green-700'>✔ Une levée de 100 avec décote 25 % = valeur 75 ; dilution => coût plus élevé.</p></li>
+<li><p class='font-semibold'>Question 14 : Peut-il y avoir signal sans flux de cash ?</p><p class='text-green-700'>✔ Non, un vrai signal suppose un coût si le signal est faux.</p></li>
+<li><p class='font-semibold'>Question 15 : Qu’est-ce qu’une rente économique ? Quel est son fondement ?</p><p class='text-green-700'>✔ Rente = rentabilité > exigée grâce à avantage stratégique. Fondement = déséquilibre marché.</p></li>
+<li><p class='font-semibold'>Question 16 : Une entreprise au bord du dépôt de bilan procède à une augmentation de capital. Est-ce un signal ? Pourquoi ?</p><p class='text-green-700'>✔ Ce n’est pas un vrai signal. L’entreprise n’a pas le choix. Un vrai signal suppose alternative.</p></li>
+<li><p class='font-semibold'>Question 17 : Pourquoi les grands groupes incitent leurs dirigeants à investir dans les actions du groupe ? Quelle théorie explique cela ?</p><p class='text-green-700'>✔ Théorie de l’agence. Pour aligner les intérêts des dirigeants et actionnaires.</p></li>
+<li><p class='font-semibold'>Question 18 : Pourquoi ce comportement peut-il inciter à diversifier les activités ?</p><p class='text-green-700'>✔ Car cela limite leur diversification personnelle, donc incitation à diversifier le groupe.</p></li>
+</ul></div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/18",
+    date: new Date().toISOString(),
+    sujet: "La valeur"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 18";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

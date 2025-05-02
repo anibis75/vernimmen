@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Le risque dans l’investissement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - Le risque dans l’investissement</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container">
+      
+<div class="question-step " id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 13 :<br>En quoi l’utilisation de scénarios diffère-t-elle de la simple actualisation des flux ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Une entreprise qui fait faillite après 10 ans.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> Elle réduit la durée de l’investissement initial.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input type="radio" name="q1" value="correct" class="hidden"> Les hypothèses sont apparentes.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input type="radio" name="q1" value="wrong" class="hidden"> C’est une erreur stratégique évidente.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step2">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 13 :<br>Sous une forme simplifiée, la méthode de Monte Carlo peut-elle être mise en œuvre sans ordinateur ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Oui, les deux sont incompatibles en théorie financière.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Oui, avec quelques calculs manuels simples.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input type="radio" name="q2" value="wrong" class="hidden"> Oui, toutes permettent de prendre en compte les risques implicites.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input type="radio" name="q2" value="correct" class="hidden"> Non, ou alors bon courage ! Il faut faire des milliers de calculs.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step3">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 13 :<br>Quel est l’intérêt de la méthode de l’équivalent certain ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> L’absence de fiscalité dans l’analyse.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input type="radio" name="q3" value="correct" class="hidden"> Les coefficients d’équivalents certains varient selon l’échéance des flux.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Les gens se classent aléatoirement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input type="radio" name="q3" value="wrong" class="hidden"> Oui, toutes permettent de prendre en compte les risques implicites.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step4">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 13 :<br>Qu’est-ce que la théorie des options apporte à la valorisation d’un investissement ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Elle réduit la durée de l’investissement initial.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Acheter moins de machines pour limiter les pertes.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input type="radio" name="q4" value="wrong" class="hidden"> Oui, toutes permettent de prendre en compte les risques implicites.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input type="radio" name="q4" value="correct" class="hidden"> La valorisation de la marge de manœuvre du management.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step5">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 13 :<br>La théorie des options réelles s’oppose-t-elle à la théorie des marchés en équilibre ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Elle permet de supprimer le risque opérationnel.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input type="radio" name="q5" value="correct" class="hidden"> Non, elle affine simplement l’analyse avec la flexibilité future.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> Elle réduit la durée de l’investissement initial.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input type="radio" name="q5" value="wrong" class="hidden"> C’est une erreur stratégique évidente.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step6">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 13 :<br>Un projet comportant des options réelles significatives peut-il être évalué correctement grâce à la VAN, aux scénarios, à Monte Carlo ou à l’équivalent certain ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input type="radio" name="q6" value="correct" class="hidden"> Non. Non. Non. Non, car aucune ne valorise la flexibilité, seules les options réelles le font.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Les gens se classent aléatoirement.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> 50 %, c’est la limite rationnelle.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input type="radio" name="q6" value="wrong" class="hidden"> Oui, les deux sont incompatibles en théorie financière.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step7">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 13 :<br>Donnez un exemple de projet dans lequel on trouve une option d’abandon.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Elle élimine toute incertitude du projet.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> Une entreprise qui fait faillite après 10 ans.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input type="radio" name="q7" value="wrong" class="hidden"> C’est une erreur stratégique évidente.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input type="radio" name="q7" value="correct" class="hidden"> Desserte d’une ville par autocar avec clause de résiliation.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step8">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 13 :<br>Donnez un exemple de projet dans lequel on trouve une option d’expansion.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Oui, toutes permettent de prendre en compte les risques implicites.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input type="radio" name="q8" value="correct" class="hidden"> Acheter un terrain surdimensionné en vue d’un marché grandissant.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Oui, avec quelques calculs manuels simples.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input type="radio" name="q8" value="wrong" class="hidden"> Elle réduit la durée de l’investissement initial.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step9">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 13 :<br>En pratique, quelle est la plus grande difficulté occasionnée par les options réelles ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input type="radio" name="q9" value="correct" class="hidden"> Évaluation des alternatives.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> 50 %, c’est la limite rationnelle.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Elle élimine toute incertitude du projet.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input type="radio" name="q9" value="wrong" class="hidden"> Oui, avec quelques calculs manuels simples.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step10">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 13 :<br>En quoi l’apport des options réelles est-il intéressant pour les dirigeants opérationnels ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Elle réduit la durée de l’investissement initial.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> Elle repose sur l’analyse du coût moyen pondéré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input type="radio" name="q10" value="correct" class="hidden"> Elle permet de mettre en avant la flexibilité du management.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input type="radio" name="q10" value="wrong" class="hidden"> C’est une erreur stratégique évidente.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step11">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 13 :<br>Que pensez-vous de l’achat par EDF de terrains jouxtant les centrales nucléaires de British Energy ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Oui, avec quelques calculs manuels simples.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Elle permet de supprimer le risque opérationnel.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input type="radio" name="q11" value="wrong" class="hidden"> Acheter moins de machines pour limiter les pertes.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input type="radio" name="q11" value="correct" class="hidden"> C’est une option gagnante à tous les coups pour EDF.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step12">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 13 :<br>Un investissement de 100 M€ laisse espérer soit 400 M€, soit 0. Quelle probabilité max du second cas permet encore d'investir ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Elle réduit la durée de l’investissement initial.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> C’est une erreur stratégique évidente.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input type="radio" name="q12" value="wrong" class="hidden"> Elle repose sur l’analyse du coût moyen pondéré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input type="radio" name="q12" value="correct" class="hidden"> 75 %, car la VAN devient alors nulle : –100 + 25 % × 400 + 75 % × 0 = 0.</label>
+  </div>
+</div>
+<div class="question-step hidden" id="step13">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 13 :<br>Par rapport à la médiane des conducteurs, êtes-vous dans les 50 % meilleurs ou moins bons ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Elle repose sur l’analyse du coût moyen pondéré.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input type="radio" name="q13" value="correct" class="hidden"> Plus de 90 % se placent dans les 50 % meilleurs : biais d’excès de confiance.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Elle permet de supprimer le risque opérationnel.</label><label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input type="radio" name="q13" value="wrong" class="hidden"> Une entreprise qui fait faillite après 10 ans.</label>
+  </div>
+</div>
+    </div>
+    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 13.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'><li><p class='font-semibold'>Question 1 : En quoi l’utilisation de scénarios diffère-t-elle de la simple actualisation des flux ?</p><p class='text-green-700'>✔ Les hypothèses sont apparentes.</p></li>
+<li><p class='font-semibold'>Question 2 : Sous une forme simplifiée, la méthode de Monte Carlo peut-elle être mise en œuvre sans ordinateur ?</p><p class='text-green-700'>✔ Non, ou alors bon courage ! Il faut faire des milliers de calculs.</p></li>
+<li><p class='font-semibold'>Question 3 : Quel est l’intérêt de la méthode de l’équivalent certain ?</p><p class='text-green-700'>✔ Les coefficients d’équivalents certains varient selon l’échéance des flux.</p></li>
+<li><p class='font-semibold'>Question 4 : Qu’est-ce que la théorie des options apporte à la valorisation d’un investissement ?</p><p class='text-green-700'>✔ La valorisation de la marge de manœuvre du management.</p></li>
+<li><p class='font-semibold'>Question 5 : La théorie des options réelles s’oppose-t-elle à la théorie des marchés en équilibre ?</p><p class='text-green-700'>✔ Non, elle affine simplement l’analyse avec la flexibilité future.</p></li>
+<li><p class='font-semibold'>Question 6 : Un projet comportant des options réelles significatives peut-il être évalué correctement grâce à la VAN, aux scénarios, à Monte Carlo ou à l’équivalent certain ?</p><p class='text-green-700'>✔ Non. Non. Non. Non, car aucune ne valorise la flexibilité, seules les options réelles le font.</p></li>
+<li><p class='font-semibold'>Question 7 : Donnez un exemple de projet dans lequel on trouve une option d’abandon.</p><p class='text-green-700'>✔ Desserte d’une ville par autocar avec clause de résiliation.</p></li>
+<li><p class='font-semibold'>Question 8 : Donnez un exemple de projet dans lequel on trouve une option d’expansion.</p><p class='text-green-700'>✔ Acheter un terrain surdimensionné en vue d’un marché grandissant.</p></li>
+<li><p class='font-semibold'>Question 9 : En pratique, quelle est la plus grande difficulté occasionnée par les options réelles ?</p><p class='text-green-700'>✔ Évaluation des alternatives.</p></li>
+<li><p class='font-semibold'>Question 10 : En quoi l’apport des options réelles est-il intéressant pour les dirigeants opérationnels ?</p><p class='text-green-700'>✔ Elle permet de mettre en avant la flexibilité du management.</p></li>
+<li><p class='font-semibold'>Question 11 : Que pensez-vous de l’achat par EDF de terrains jouxtant les centrales nucléaires de British Energy ?</p><p class='text-green-700'>✔ C’est une option gagnante à tous les coups pour EDF.</p></li>
+<li><p class='font-semibold'>Question 12 : Un investissement de 100 M€ laisse espérer soit 400 M€, soit 0. Quelle probabilité max du second cas permet encore d'investir ?</p><p class='text-green-700'>✔ 75 %, car la VAN devient alors nulle : –100 + 25 % × 400 + 75 % × 0 = 0.</p></li>
+<li><p class='font-semibold'>Question 13 : Par rapport à la médiane des conducteurs, êtes-vous dans les 50 % meilleurs ou moins bons ?</p><p class='text-green-700'>✔ Plus de 90 % se placent dans les 50 % meilleurs : biais d’excès de confiance.</p></li>
+</ul></div>
+<script>
+let score = 0;
+let envoiFait = false;
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/13",
+    date: new Date().toISOString(),
+    sujet: "Le risque dans l’investissement"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 13";
+  document.getElementById('corrections').classList.remove('hidden');
+}
+</script>
+</div>
+</body>
+</html>

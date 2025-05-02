@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Quiz Final - QCM Plausibles</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+<div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+<h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’organisation d’un groupe</h1>
+<div class="mb-6 text-center">
+<label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+<select class="border border-gray-300 rounded px-4 py-2" id="nom">
+<option value="azad">azad</option>
+<option value="remi">remi</option>
+</select>
+</div>
+<div id="quiz-container">
+<div class="question-step" id="step1">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 1 / 16 :<br/>Quelles sont les raisons pour une société de s’introduire en Bourse ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Imposer une nouvelle gouvernance à ses filiales.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Réduire ses obligations de transparence.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+<input class="hidden" name="q1" type="radio" value="correct"/> Accéder à de nouvelles sources de financement. Augmenter sa visibilité pour ses clients, ses fournisseurs, ses employés. Faciliter l’intéressement des employés et du management. Offrir une liquidité à ses actionnaires (en particulier s’il y a des actionnaires minoritaires).</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+<input class="hidden" name="q1" type="radio" value="wrong"/> Obtenir une garantie publique de ses résultats financiers.</label>
+</div></div>
+<div class="question-step hidden" id="step2">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 2 / 16 :<br/>Quels sont les investisseurs gagnants de la diversification d’un groupe ? Et les perdants ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Les clients car ils accèdent à plus de services.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Les filiales car elles deviennent plus indépendantes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+<input class="hidden" name="q2" type="radio" value="correct"/> Les prêteurs car leur risque est ainsi réduit. Les actionnaires le plus souvent car un groupe diversifié est plus difficile à gérer et est rarement plus efficace qu’un groupe monométier.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+<input class="hidden" name="q2" type="radio" value="wrong"/> Les actionnaires car la diversification garantit la performance.</label>
+</div></div>
+<div class="question-step hidden" id="step3">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 3 / 16 :<br/>La diversification est-elle plus fréquente dans les pays à économie d’endettement ou à économie de marchés financiers ? Pourquoi ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Dans les économies de marchés financiers, car la Bourse favorise la diversification.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Dans toutes les économies de manière égale.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+<input class="hidden" name="q3" type="radio" value="wrong"/> Dans les économies émergentes car la fiscalité y est favorable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+<input class="hidden" name="q3" type="radio" value="correct"/> Dans les économies d’endettement où les marchés financiers étant peu développés, les grands groupes en place en sont un substitut.</label>
+</div></div>
+<div class="question-step hidden" id="step4">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 4 / 16 :<br/>Quel est l’intérêt d’une « clause hollandaise » ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+<input class="hidden" name="q4" type="radio" value="correct"/> Limiter par la dissuasion les divergences stratégiques entre actionnaires et en cas de divorce obtenir un prix équitable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Permettre aux actionnaires minoritaires de bloquer les décisions du conseil.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Faciliter le transfert des actions sans notification.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+<input class="hidden" name="q4" type="radio" value="wrong"/> Réduire les dividendes versés.</label>
+</div></div>
+<div class="question-step hidden" id="step5">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 5 / 16 :<br/>Qu’est-ce que les investisseurs peuvent craindre dans un conglomérat ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Une volatilité accrue du chiffre d’affaires.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Une interdiction d’OPA.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+<input class="hidden" name="q5" type="radio" value="wrong"/> Un endettement systématiquement élevé.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+<input class="hidden" name="q5" type="radio" value="correct"/> Une mauvaise allocation des fonds au profit des divisions les moins performantes et au détriment des meilleures.</label>
+</div></div>
+<div class="question-step hidden" id="step6">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 6 / 16 :<br/>Est-ce la même chose d’avoir un actionnaire minoritaire financier ou industriel ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+<input class="hidden" name="q6" type="radio" value="correct"/> Non, l’investisseur industriel peut apporter des synergies mais vouloir acquérir à terme le contrôle ; l’investisseur financier voudra tôt ou tard sortir pour acter d’une plus-value.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Oui, car leurs objectifs sont toujours alignés.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Oui, car ils détiennent tous deux le même droit de vote.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+<input class="hidden" name="q6" type="radio" value="wrong"/> Oui, car les statuts les traitent de la même façon.</label>
+</div></div>
+<div class="question-step hidden" id="step7">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 7 / 16 :<br/>Pourquoi certains conglomérats subsistent-ils, en dépit de la perte de valeur qu’ils engendrent ? Cette situation est-elle durable ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que la loi empêche les fusions en cas de conglomérat.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+<input class="hidden" name="q7" type="radio" value="correct"/> Intérêt des dirigeants : pouvoir, prestige. Non, car tôt ou tard la pression des actionnaires se fera sentir si la performance n’est pas au rendez-vous, cf. Lagardère.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que les actionnaires sont toujours très fidèles.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+<input class="hidden" name="q7" type="radio" value="wrong"/> Parce que les dirigeants refusent les restructurations.</label>
+</div></div>
+<div class="question-step hidden" id="step8">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 8 / 16 :<br/>Quel est l’avantage des structures en cascades pour l’actionnaire majoritaire ? Pour les autres ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+<input class="hidden" name="q8" type="radio" value="correct"/> Sécuriser un contrôle avec des moyens limités. Choisir les actifs dont on est actionnaire.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Éviter de payer l’impôt sur les sociétés.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Éviter les audits annuels.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+<input class="hidden" name="q8" type="radio" value="wrong"/> Réduire les exigences de reporting.</label>
+</div></div>
+<div class="question-step hidden" id="step9">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 9 / 16 :<br/>Quelle est la différence entre décote de holding et décote de conglomérat ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+<input class="hidden" name="q9" type="radio" value="correct"/> La décote de holding reflète le coût de structure + manque de liquidité ; celle du conglomérat reflète une mauvaise allocation du capital.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> Aucune, ce sont des synonymes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> La décote de conglomérat concerne uniquement les sociétés cotées.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+<input class="hidden" name="q9" type="radio" value="wrong"/> La décote de holding est imposée par l’AMF.</label>
+</div></div>
+<div class="question-step hidden" id="step10">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 10 / 16 :<br/>Une co-entreprise est-elle pérenne at vitam æternam ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Oui, sauf si elle génère trop de bénéfices.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+<input class="hidden" name="q10" type="radio" value="correct"/> Rarement. Soit elle réussit et dans ce cas l’un des partenaires voudra acheter la part de l’autre. Soit, elle échoue ou vivote et l’un des partenaires voudra sortir.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Oui, sauf si elle dépasse une taille critique.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+<input class="hidden" name="q10" type="radio" value="wrong"/> Oui, si elle est constituée à parts égales.</label>
+</div></div>
+<div class="question-step hidden" id="step11">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 11 / 16 :<br/>Qu’est-ce qui protège la valeur d’une participation minoritaire pour un groupe ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> La clause de non-concurrence.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> L’interdiction des dividendes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+<input class="hidden" name="q11" type="radio" value="correct"/> Un pacte d’actionnaires avec le majoritaire, un poste au conseil d’administration. La réglementation sur les OPA si la société est cotée.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+<input class="hidden" name="q11" type="radio" value="wrong"/> L’absence d’endettement de la filiale.</label>
+</div></div>
+<div class="question-step hidden" id="step12">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 12 / 16 :<br/>En quoi la manipulation des prix de cession interne est-elle une réponse à un contrôle des dividendes dans certains pays émergents ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+<input class="hidden" name="q12" type="radio" value="correct"/> En transférant hors du pays la marge réalisée grâce aux prix de transfert, il n’y a plus de résultat significatif à rapatrier en dividende.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Elle permet de gonfler artificiellement les réserves.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Elle réduit les coûts de production globaux.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+<input class="hidden" name="q12" type="radio" value="wrong"/> Elle augmente le chiffre d’affaires consolidé.</label>
+</div></div>
+<div class="question-step hidden" id="step13">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 13 / 16 :<br/>La décote de holding est-elle une fatalité ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Oui car elle est imposée par le code monétaire.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Non, car toutes les holdings sont valorisées à leur valeur comptable.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+<input class="hidden" name="q13" type="radio" value="correct"/> Oui car presque seule la holding de W. Buffett cote la plupart du temps avec une prime sur son actif net réévalué.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+<input class="hidden" name="q13" type="radio" value="wrong"/> Oui, sauf pour les holdings non cotées.</label>
+</div></div>
+<div class="question-step hidden" id="step14">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 14 / 16 :<br/>Une société-mère peu endettée en net est-elle antinomique d’une société mère qui emprunte pour le compte de ses filiales ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Oui, sauf si elle est une société européenne.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+<input class="hidden" name="q14" type="radio" value="correct"/> Non, car si elle emprunte pour reprêter à ses filiales, en net, son endettement peut être faible.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Oui, car elle ne peut plus consolider ses résultats.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+<input class="hidden" name="q14" type="radio" value="wrong"/> Oui, car cela fausse les comptes annuels.</label>
+</div></div>
+<div class="question-step hidden" id="step15">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 15 / 16 :<br/>Que fait souvent un groupe coté aux flux de trésorerie disponible devenus copieux après des années de vaches maigres pendant lesquelles il a ouvert le capital de ses filiales à des actionnaires minoritaires ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input class="hidden" name="q15" type="radio" value="wrong"/> Il ferme les filiales les moins rentables.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input class="hidden" name="q15" type="radio" value="wrong"/> Il distribue tous les résultats en dividendes.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+<input class="hidden" name="q15" type="radio" value="wrong"/> Il quitte la Bourse pour redevenir privé.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+<input class="hidden" name="q15" type="radio" value="correct"/> Il rachète les actionnaires minoritaires pour monter à 100 % au capital de ses filiales.</label>
+</div></div>
+<div class="question-step hidden" id="step16">
+<div class="bg-white shadow p-4 mb-4 rounded">
+<p class="mb-4 font-medium">Question 16 / 16 :<br/>Quel est le pourcentage d’intérêt d’un actionnaire dans un actif qu’il détient à 51 % à travers quatre sociétés holdings successives ayant toutes des actionnaires minoritaires à 49 % ?</p>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'correct', 16)">
+<input class="hidden" name="q16" type="radio" value="correct"/> (51%)^5 = 3,5 %. À chaque fois que la valeur de l’actif s’accroît de 100 grâce à sa bonne gestion, il ne s’enrichit que de 3,5. Il travaille donc pour les autres investisseurs plus que pour lui !</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input class="hidden" name="q16" type="radio" value="wrong"/> 25 %, car chaque niveau retire 25 % du contrôle.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input class="hidden" name="q16" type="radio" value="wrong"/> 10 %, car la dilution est linéaire.</label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+<input class="hidden" name="q16" type="radio" value="wrong"/> 49 %, car il contrôle indirectement chaque filiale.</label>
+</div></div></div>
+<div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+<h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+<p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 16.</p>
+
+<div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+<h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+<ul class="space-y-6 text-left">
+<li><p class="font-semibold">Question 1 : Quelles sont les raisons pour une société de s’introduire en Bourse ?</p><p class="text-green-700">✔ Accéder à de nouvelles sources de financement. Augmenter sa visibilité pour ses clients, ses fournisseurs, ses employés. Faciliter l’intéressement des employés et du management. Offrir une liquidité à ses actionnaires (en particulier s’il y a des actionnaires minoritaires).</p></li>
+<li><p class="font-semibold">Question 2 : Quels sont les investisseurs gagnants de la diversification d’un groupe ? Et les perdants ?</p><p class="text-green-700">✔ Les prêteurs car leur risque est ainsi réduit. Les actionnaires le plus souvent car un groupe diversifié est plus difficile à gérer et est rarement plus efficace qu’un groupe monométier.</p></li>
+<li><p class="font-semibold">Question 3 : La diversification est-elle plus fréquente dans les pays à économie d’endettement ou à économie de marchés financiers ? Pourquoi ?</p><p class="text-green-700">✔ Dans les économies d’endettement où les marchés financiers étant peu développés, les grands groupes en place en sont un substitut.</p></li>
+<li><p class="font-semibold">Question 4 : Quel est l’intérêt d’une « clause hollandaise » ?</p><p class="text-green-700">✔ Limiter par la dissuasion les divergences stratégiques entre actionnaires et en cas de divorce obtenir un prix équitable.</p></li>
+<li><p class="font-semibold">Question 5 : Qu’est-ce que les investisseurs peuvent craindre dans un conglomérat ?</p><p class="text-green-700">✔ Une mauvaise allocation des fonds au profit des divisions les moins performantes et au détriment des meilleures.</p></li>
+<li><p class="font-semibold">Question 6 : Est-ce la même chose d’avoir un actionnaire minoritaire financier ou industriel ?</p><p class="text-green-700">✔ Non, l’investisseur industriel peut apporter des synergies mais vouloir acquérir à terme le contrôle ; l’investisseur financier voudra tôt ou tard sortir pour acter d’une plus-value.</p></li>
+<li><p class="font-semibold">Question 7 : Pourquoi certains conglomérats subsistent-ils, en dépit de la perte de valeur qu’ils engendrent ? Cette situation est-elle durable ?</p><p class="text-green-700">✔ Intérêt des dirigeants : pouvoir, prestige. Non, car tôt ou tard la pression des actionnaires se fera sentir si la performance n’est pas au rendez-vous, cf. Lagardère.</p></li>
+<li><p class="font-semibold">Question 8 : Quel est l’avantage des structures en cascades pour l’actionnaire majoritaire ? Pour les autres ?</p><p class="text-green-700">✔ Sécuriser un contrôle avec des moyens limités. Choisir les actifs dont on est actionnaire.</p></li>
+<li><p class="font-semibold">Question 9 : Quelle est la différence entre décote de holding et décote de conglomérat ?</p><p class="text-green-700">✔ La décote de holding reflète le coût de structure + manque de liquidité ; celle du conglomérat reflète une mauvaise allocation du capital.</p></li>
+<li><p class="font-semibold">Question 10 : Une co-entreprise est-elle pérenne at vitam æternam ?</p><p class="text-green-700">✔ Rarement. Soit elle réussit et dans ce cas l’un des partenaires voudra acheter la part de l’autre. Soit, elle échoue ou vivote et l’un des partenaires voudra sortir.</p></li>
+<li><p class="font-semibold">Question 11 : Qu’est-ce qui protège la valeur d’une participation minoritaire pour un groupe ?</p><p class="text-green-700">✔ Un pacte d’actionnaires avec le majoritaire, un poste au conseil d’administration. La réglementation sur les OPA si la société est cotée.</p></li>
+<li><p class="font-semibold">Question 12 : En quoi la manipulation des prix de cession interne est-elle une réponse à un contrôle des dividendes dans certains pays émergents ?</p><p class="text-green-700">✔ En transférant hors du pays la marge réalisée grâce aux prix de transfert, il n’y a plus de résultat significatif à rapatrier en dividende.</p></li>
+<li><p class="font-semibold">Question 13 : La décote de holding est-elle une fatalité ?</p><p class="text-green-700">✔ Oui car presque seule la holding de W. Buffett cote la plupart du temps avec une prime sur son actif net réévalué.</p></li>
+<li><p class="font-semibold">Question 14 : Une société-mère peu endettée en net est-elle antinomique d’une société mère qui emprunte pour le compte de ses filiales ?</p><p class="text-green-700">✔ Non, car si elle emprunte pour reprêter à ses filiales, en net, son endettement peut être faible.</p></li>
+<li><p class="font-semibold">Question 15 : Que fait souvent un groupe coté aux flux de trésorerie disponible devenus copieux après des années de vaches maigres pendant lesquelles il a ouvert le capital de ses filiales à des actionnaires minoritaires ?</p><p class="text-green-700">✔ Il rachète les actionnaires minoritaires pour monter à 100 % au capital de ses filiales.</p></li>
+<li><p class="font-semibold">Question 16 : Quel est le pourcentage d’intérêt d’un actionnaire dans un actif qu’il détient à 51 % à travers quatre sociétés holdings successives ayant toutes des actionnaires minoritaires à 49 % ?</p><p class="text-green-700">✔ (51%)^5 = 3,5 %. À chaque fois que la valeur de l’actif s’accroît de 100 grâce à sa bonne gestion, il ne s’enrichit que de 3,5. Il travaille donc pour les autres investisseurs plus que pour lui !</p></li>
+</ul></div></div>
+<script>
+
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector('#step' + i + ' p').innerText;
+  const bonne = document.querySelector('input[name="' + q + '"][value="correct"]').parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "L’organisation d’un groupe"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 16";
+  const recap = document.getElementById('corrections');
+  recap.classList.remove('hidden');
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const alreadyAnswered = document.querySelectorAll('input[name="q' + i + '"]:checked').length > 0;
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i+1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+async function envoyer() {
+  const nom = document.getElementById('nom').value;
+  const data = {
+    nom: nom,
+    score: score + "/14",
+    date: new Date().toISOString(),
+    sujet: "L’organisation d’un groupe"
+  };
+  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / 16";
+  
+document.getElementById('corrections').classList.remove('hidden');
+
+}
+</script>
+</div>
+</body>
+</html>
