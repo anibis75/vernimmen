@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz Final - QCM Plausibles</title>
+  <title>Quiz - L’analyse des marges</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
   <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
-    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’analyse des marges structure</h1>
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’analyse des marges</h1>
     <div class="mb-6 text-center">
       <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
       <select id="nom" class="border border-gray-300 rounded px-4 py-2">
@@ -17,203 +17,340 @@
       </select>
     </div>
     <div id="quiz-container">
-<div class="question-step " id="step1">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 1 / 16 :<br>Pourquoi le concept de production n’est-il pas satisfaisant ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
-<input type="radio" name="q1" value="correct" class="hidden"> Il ajoute des produits évalués au prix de vente (chiffre d’affaires) et des produits évalués au prix de revient (production stockée et immobilisée).</label>
+
+<div class="question-step" id="step1">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 1 / 17 :<br>Pourquoi le concept de production n’est-il pas satisfaisant ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
+      <input type="radio" name="q1" value="correct" class="hidden"> Il ajoute des produits évalués au prix de vente (chiffre d’affaires) et des produits évalués au prix de revient (production stockée et immobilisée).
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
+      <input type="radio" name="q1" value="wrong" class="hidden"> Il ne prend en compte que les immobilisations incorporelles.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce qu’il exclut les coûts indirects</label>
+      <input type="radio" name="q1" value="wrong" class="hidden"> Il exclut systématiquement les produits exceptionnels.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce qu’il est trop simple</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce qu’il ne reflète pas la marge brute</label>
-</div></div>
+      <input type="radio" name="q1" value="wrong" class="hidden"> Il ne distingue pas les activités industrielles des services.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step2">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 2 / 16 :<br>Pourquoi le résultat d’exploitation est-il au centre de la lecture du compte de résultat ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 2 / 17 :<br>Pourquoi le résultat d’exploitation est-il au centre de la lecture du compte de résultat ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
+      <input type="radio" name="q2" value="correct" class="hidden"> Il mesure la richesse produite par l’actif économique.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
+      <input type="radio" name="q2" value="wrong" class="hidden"> Il reflète la rentabilité nette des capitaux propres.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> Il reflète le cash-flow</label>
+      <input type="radio" name="q2" value="wrong" class="hidden"> Il isole les effets fiscaux sur le chiffre d’affaires.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> Il inclut les charges financières</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> Il donne la valeur ajoutée nette</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
-<input type="radio" name="q2" value="correct" class="hidden"> Il mesure la richesse produite par l’actif économique.</label>
-</div></div>
+      <input type="radio" name="q2" value="wrong" class="hidden"> Il montre le taux d’endettement de l’entreprise.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step3">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 3 / 16 :<br>Montrez les limites du concept de valeur ajoutée.</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 3 / 17 :<br>Montrez les limites du concept de valeur ajoutée.</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
+      <input type="radio" name="q3" value="correct" class="hidden"> C’est un concept macroéconomique, peu pertinent en cas d’externalisation massive.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
+      <input type="radio" name="q3" value="wrong" class="hidden"> Il surestime toujours les charges de personnel.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> Elle exclut les amortissements</label>
+      <input type="radio" name="q3" value="wrong" class="hidden"> Il s’applique uniquement aux sociétés cotées.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> Elle n’intègre pas le BFR</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> Elle surestime la trésorerie</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
-<input type="radio" name="q3" value="correct" class="hidden"> C’est un concept plus macroéconomique... et qui perd son reste de pertinence quand l’externalisation est significative.</label>
-</div></div>
+      <input type="radio" name="q3" value="wrong" class="hidden"> Il varie fortement selon les normes IFRS.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step4">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 4 / 16 :<br>Vous analysez les comptes sociaux d’un holding industriel. Quel résultat privilégiez-vous ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
-<input type="radio" name="q4" value="correct" class="hidden"> Le résultat financier. Les frais administratifs et l’impôt. Non, ils reflètent surtout le cumul de l’état de santé des différentes participations.</label>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 4 / 17 :<br>Vous analysez les comptes d’un holding industriel. Quel résultat privilégier et que valent les comptes consolidés ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
+      <input type="radio" name="q4" value="correct" class="hidden"> Le résultat financier ; comptes consolidés peu lisibles car reflètent divers secteurs.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
+      <input type="radio" name="q4" value="wrong" class="hidden"> Le chiffre d’affaires consolidé, qui donne une image fiable.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Le résultat d’exploitation uniquement</label>
+      <input type="radio" name="q4" value="wrong" class="hidden"> Le résultat d’exploitation, car il est toujours prédominant.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Le chiffre d’affaires consolidé</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Le résultat net seul</label>
-</div></div>
+      <input type="radio" name="q4" value="wrong" class="hidden"> L’EBITDA, car il exclut les variations sectorielles.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step5">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 5 / 16 :<br>L’entreprise Heems affiche un résultat net formé à 80 % du résultat exceptionnel. Qu’en pensez-vous ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 5 / 17 :<br>Heems affiche un résultat net formé à 80 % du résultat exceptionnel. Qu’en penser ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
+      <input type="radio" name="q5" value="correct" class="hidden"> Bien comprendre la nature du résultat exceptionnel ; une telle situation n’est pas durable.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
+      <input type="radio" name="q5" value="wrong" class="hidden"> Cela prouve une excellente gestion financière.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> C’est bon signe</label>
+      <input type="radio" name="q5" value="wrong" class="hidden"> C’est un signe de stabilité à long terme.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> Cela indique une forte croissance</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> C’est toujours favorable</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
-<input type="radio" name="q5" value="correct" class="hidden"> Bien comprendre la nature du résultat exceptionnel (récurrence éventuelle ?), car a priori une telle situation n’est pas durable.</label>
-</div></div>
+      <input type="radio" name="q5" value="wrong" class="hidden"> Cela montre un bon contrôle des charges fixes.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step6">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 6 / 16 :<br>L’entreprise Vandamme affiche un résultat net formé à 80 % du résultat financier. Qu’en pensez-vous ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 6 / 17 :<br>Vandamme affiche 80 % de son résultat net en résultat financier. Qu’en penser ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
+      <input type="radio" name="q6" value="correct" class="hidden"> Comprendre la nature réelle du résultat financier : trésorerie, provisions, gains de change ?
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
+      <input type="radio" name="q6" value="wrong" class="hidden"> C’est un indicateur d’endettement maîtrisé.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Cela reflète un effet volume</label>
+      <input type="radio" name="q6" value="wrong" class="hidden"> Cela reflète une forte capacité de production.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Cela montre une bonne gestion des stocks</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
-<input type="radio" name="q6" value="correct" class="hidden"> Bien comprendre la nature du résultat financier. Est-ce lié à trésorerie, provisions, change, etc. ?</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Cela indique une bonne exploitation</label>
-</div></div>
+      <input type="radio" name="q6" value="wrong" class="hidden"> C’est un effet direct de la politique de R&D.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step7">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 7 / 16 :<br>L’entreprise Bonnefoy affiche un résultat net formé à 80 % de la mise en équivalence. Qu’en pensez-vous ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 7 / 17 :<br>Bonnefoy affiche un résultat net dominé par la mise en équivalence. Que faire ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
+      <input type="radio" name="q7" value="correct" class="hidden"> Éclater la quote-part en résultat exploitation, financier et non récurrent ; ou analyse séparée.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
+      <input type="radio" name="q7" value="wrong" class="hidden"> Réévaluer l’actif économique.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Analyser seulement le résultat net</label>
+      <input type="radio" name="q7" value="wrong" class="hidden"> Ne rien faire, c’est toujours pertinent.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Ignorer la MEE</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
-<input type="radio" name="q7" value="correct" class="hidden"> Éclater la quote-part MEE en exploitation, financier et non récurrent ; ou analyser séparément la participation.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Accepter sans ajustement</label>
-</div></div>
+      <input type="radio" name="q7" value="wrong" class="hidden"> Comparer avec les résultats passés uniquement.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step8">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 8 / 16 :<br>Les charges d’intéressement et de participation doivent-elles être incluses dans l’EBE ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 8 / 17 :<br>Les charges d’intéressement et de participation doivent-elles être incluses dans l’EBE ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
+      <input type="radio" name="q8" value="correct" class="hidden"> Oui, ce sont des frais de personnel variables.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
+      <input type="radio" name="q8" value="wrong" class="hidden"> Non, elles sont toujours exceptionnelles.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Non, car elles sont exceptionnelles</label>
+      <input type="radio" name="q8" value="wrong" class="hidden"> Non, elles relèvent des charges financières.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Non, car elles sont liées au capital</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Oui, mais uniquement pour les dirigeants</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
-<input type="radio" name="q8" value="correct" class="hidden"> Oui, car il s’agit de frais de personnel variables.</label>
-</div></div>
+      <input type="radio" name="q8" value="wrong" class="hidden"> Oui, mais seulement dans les groupes cotés.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step9">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 9 / 16 :<br>Pourquoi ne peut-on pas relier directement un coût de production en hausse et une baisse de bénéfice ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 9 / 17 :<br>Pourquoi ne peut-on pas relier directement une hausse des coûts à une baisse du bénéfice ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
+      <input type="radio" name="q9" value="correct" class="hidden"> À cause d’effets secondaires complexes qu’il faut analyser.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
+      <input type="radio" name="q9" value="wrong" class="hidden"> Parce que les charges sont fixes sur plusieurs années.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Parce que les clients répercutent le prix</label>
+      <input type="radio" name="q9" value="wrong" class="hidden"> Car les prix de vente s’ajustent automatiquement.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Parce que le volume compense toujours</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
-<input type="radio" name="q9" value="correct" class="hidden"> En raison d’effets beaucoup plus compliqués, y compris secondaires, qu’il faut étudier.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Parce que les charges fixes augmentent aussi</label>
-</div></div>
+      <input type="radio" name="q9" value="wrong" class="hidden"> Parce que cela dépend de la fiscalité applicable.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step10">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 10 / 16 :<br>Quelles mesures peuvent remédier à un effet ciseau négatif ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 10 / 17 :<br>Quelles mesures prendre face à un effet ciseau négatif ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
+      <input type="radio" name="q10" value="correct" class="hidden"> Être flexible : sous-traiter, innover, monter en gamme.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
+      <input type="radio" name="q10" value="wrong" class="hidden"> Augmenter les charges fixes durablement.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Négocier la dette</label>
+      <input type="radio" name="q10" value="wrong" class="hidden"> Réduire le chiffre d’affaires à court terme.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Augmenter les stocks</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
-<input type="radio" name="q10" value="correct" class="hidden"> Être flexible : sous-traiter, travail intérimaire ; monter en gamme ; innover pour sortir du prix comme variable clef.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Réduire le CA</label>
-</div></div>
+      <input type="radio" name="q10" value="wrong" class="hidden"> Racheter des concurrents pour augmenter les volumes.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step11">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 11 / 16 :<br>Parmi ces entreprises, lesquelles sont une « marge entre deux marchés » ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 11 / 17 :<br>Lesquelles de ces entreprises sont une marge entre un marché final et un marché amont ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
+      <input type="radio" name="q11" value="correct" class="hidden"> Intérim, abattoir, meubles : marge entre amont et aval ; entrepôt et hyper : marge sur volume.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
+      <input type="radio" name="q11" value="wrong" class="hidden"> Toutes, car elles dépendent du prix des matières premières.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Seul l’intérim et l’abattoir</label>
+      <input type="radio" name="q11" value="wrong" class="hidden"> Aucune, car elles produisent toutes en interne.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Seul l’hypermarché</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Aucune</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
-<input type="radio" name="q11" value="correct" class="hidden"> Intérim, entrepôt, abattoir, meuble, hypermarché : toutes ont une logique de marge entre deux marchés ou activité cyclique.</label>
-</div></div>
+      <input type="radio" name="q11" value="wrong" class="hidden"> Seuls les hypermarchés et entrepôts, à cause du BFR.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step12">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 12 / 16 :<br>De quoi dépend la stabilité du bénéfice net d’une entreprise ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
-<input type="radio" name="q12" value="correct" class="hidden"> Du caractère cyclique du CA, de la flexibilité (frais fixes/variables) et de la marge absolue.</label>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 12 / 17 :<br>De quoi dépend la stabilité du bénéfice net ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
+      <input type="radio" name="q12" value="correct" class="hidden"> Du caractère cyclique du CA, de la flexibilité et de la marge absolue.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
+      <input type="radio" name="q12" value="wrong" class="hidden"> Uniquement du taux d’imposition.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Des clients principaux</label>
+      <input type="radio" name="q12" value="wrong" class="hidden"> Du niveau des dividendes distribués.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Des dividendes</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Du taux d’impôt</label>
-</div></div>
+      <input type="radio" name="q12" value="wrong" class="hidden"> De l’amortissement des goodwill uniquement.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step13">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 13 / 16 :<br>L’entreprise Lecointre a un EBE en croissance mais un REX négatif. Qu’en pensez-vous ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 13 / 17 :<br>EBE en croissance mais résultat d’exploitation négatif chez Lecointre. Que faire ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
+      <input type="radio" name="q13" value="correct" class="hidden"> Analyser les investissements, amortissements et provisions d’actifs.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
+      <input type="radio" name="q13" value="wrong" class="hidden"> Vérifier les résultats consolidés.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> C’est normal</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
-<input type="radio" name="q13" value="correct" class="hidden"> Analyser investissements, amortissements, provisions pour dépréciation.</label>
+      <input type="radio" name="q13" value="wrong" class="hidden"> Supprimer les charges variables.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> C’est bon signe</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> Cela prouve une bonne gestion RH</label>
-</div></div>
+      <input type="radio" name="q13" value="wrong" class="hidden"> Réduire la fiscalité sur les dividendes.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step14">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 14 / 16 :<br>CA en hausse via baisse de prix et effet volume. Qu’en penser ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 14 / 17 :<br>CA en hausse via forte baisse de prix et effet volume : bon ou mauvais ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
+      <input type="radio" name="q14" value="correct" class="hidden"> Analyser l’impact sur les marges et la rentabilité : prudence nécessaire.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
+      <input type="radio" name="q14" value="wrong" class="hidden"> C’est toujours favorable pour la trésorerie.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Le résultat net explose</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
-<input type="radio" name="q14" value="correct" class="hidden"> Quelle est l’incidence sur le résultat d’exploitation ?</label>
+      <input type="radio" name="q14" value="wrong" class="hidden"> C’est le signe d’une politique RH efficace.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Indique une forte rentabilité</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Toujours positif</label>
-</div></div>
+      <input type="radio" name="q14" value="wrong" class="hidden"> Cela garantit une hausse du résultat net.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step15">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 15 / 16 :<br>Pourquoi étudier les intérêts minoritaires dans le CR consolidé ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
-<input type="radio" name="q15" value="correct" class="hidden"> Pour comprendre dans quelle entité du groupe se fait le résultat.</label>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 15 / 17 :<br>Pourquoi analyser les intérêts minoritaires dans le compte consolidé ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
+      <input type="radio" name="q15" value="correct" class="hidden"> Pour comprendre dans quelle entité du groupe se fait le résultat.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
+      <input type="radio" name="q15" value="wrong" class="hidden"> Pour ajuster l’impôt différé.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
-<input type="radio" name="q15" value="wrong" class="hidden"> Pour consolider le capital</label>
+      <input type="radio" name="q15" value="wrong" class="hidden"> Pour mesurer le goodwill.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
-<input type="radio" name="q15" value="wrong" class="hidden"> Pour calculer l’EBE exact</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
-<input type="radio" name="q15" value="wrong" class="hidden"> Pour valoriser les filiales</label>
-</div></div>
+      <input type="radio" name="q15" value="wrong" class="hidden"> Pour estimer la dette senior nette.
+    </label>
+  </div>
+</div>
+
 <div class="question-step hidden" id="step16">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 16 / 16 :<br>Pourquoi ventiler la MEE entre exploitation, financier et non récurrent ?</p>
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 16 / 17 :<br>Pourquoi ventiler les mises en équivalence ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'correct', 16)">
+      <input type="radio" name="q16" value="correct" class="hidden"> Pour affiner le résultat entre exploitation, financier et non récurrent.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
+      <input type="radio" name="q16" value="wrong" class="hidden"> Pour lisser l’EBITDA.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
-<input type="radio" name="q16" value="wrong" class="hidden"> Pour valoriser le goodwill</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'correct', 16)">
-<input type="radio" name="q16" value="correct" class="hidden"> Pour avoir une vision plus fine de l’ensemble du compte de résultat et notamment du résultat d’exploitation.</label>
+      <input type="radio" name="q16" value="wrong" class="hidden"> Pour valoriser les stocks.
+    </label>
 <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
-<input type="radio" name="q16" value="wrong" class="hidden"> Pour anticiper les dividendes</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
-<input type="radio" name="q16" value="wrong" class="hidden"> Pour optimiser le BFR</label>
-</div></div>
+      <input type="radio" name="q16" value="wrong" class="hidden"> Pour justifier une augmentation de capital.
+    </label>
+  </div>
+</div>
+
+<div class="question-step hidden" id="step17">
+  <div class="bg-white shadow p-4 mb-4 rounded">
+    <p class="mb-4 font-medium">Question 17 / 17 :<br>Pourquoi ArcelorMittal condamne-t-il la présentation du compte de résultat par fonction ?</p>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'correct', 17)">
+      <input type="radio" name="q17" value="correct" class="hidden"> Car une seule ligne peut représenter 95 % des coûts, ce qui nuit à la lisibilité.
+    </label>
+    <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+      <input type="radio" name="q17" value="wrong" class="hidden"> Parce qu’elle ne respecte pas les normes françaises.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+      <input type="radio" name="q17" value="wrong" class="hidden"> Parce que les charges sont réparties entre filiales.
+    </label>
+<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q17', 'wrong', 17)">
+      <input type="radio" name="q17" value="wrong" class="hidden"> Car elle exclut les amortissements exceptionnels.
+    </label>
+  </div>
+</div>
 
     </div>
     <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
       <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
-      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 16.</p>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 17.</p>
+    </div>
+    <div id='corrections' class='hidden mt-10 bg-white p-6 rounded shadow'>
+      <h3 class='text-xl font-bold text-blue-600 mb-4'>Corrections :</h3>
+      <ul class='space-y-6 text-left'>
+<li><p class='font-semibold'>Question 1 : Pourquoi le concept de production n’est-il pas satisfaisant ?</p><p class='text-green-700'>✔ Il ajoute des produits évalués au prix de vente (chiffre d’affaires) et des produits évalués au prix de revient (production stockée et immobilisée).</p></li>
+<li><p class='font-semibold'>Question 2 : Pourquoi le résultat d’exploitation est-il au centre de la lecture du compte de résultat ?</p><p class='text-green-700'>✔ Il mesure la richesse produite par l’actif économique.</p></li>
+<li><p class='font-semibold'>Question 3 : Montrez les limites du concept de valeur ajoutée.</p><p class='text-green-700'>✔ C’est un concept macroéconomique, peu pertinent en cas d’externalisation massive.</p></li>
+<li><p class='font-semibold'>Question 4 : Vous analysez les comptes d’un holding industriel. Quel résultat privilégier et que valent les comptes consolidés ?</p><p class='text-green-700'>✔ Le résultat financier ; comptes consolidés peu lisibles car reflètent divers secteurs.</p></li>
+<li><p class='font-semibold'>Question 5 : Heems affiche un résultat net formé à 80 % du résultat exceptionnel. Qu’en penser ?</p><p class='text-green-700'>✔ Bien comprendre la nature du résultat exceptionnel ; une telle situation n’est pas durable.</p></li>
+<li><p class='font-semibold'>Question 6 : Vandamme affiche 80 % de son résultat net en résultat financier. Qu’en penser ?</p><p class='text-green-700'>✔ Comprendre la nature réelle du résultat financier : trésorerie, provisions, gains de change ?</p></li>
+<li><p class='font-semibold'>Question 7 : Bonnefoy affiche un résultat net dominé par la mise en équivalence. Que faire ?</p><p class='text-green-700'>✔ Éclater la quote-part en résultat exploitation, financier et non récurrent ; ou analyse séparée.</p></li>
+<li><p class='font-semibold'>Question 8 : Les charges d’intéressement et de participation doivent-elles être incluses dans l’EBE ?</p><p class='text-green-700'>✔ Oui, ce sont des frais de personnel variables.</p></li>
+<li><p class='font-semibold'>Question 9 : Pourquoi ne peut-on pas relier directement une hausse des coûts à une baisse du bénéfice ?</p><p class='text-green-700'>✔ À cause d’effets secondaires complexes qu’il faut analyser.</p></li>
+<li><p class='font-semibold'>Question 10 : Quelles mesures prendre face à un effet ciseau négatif ?</p><p class='text-green-700'>✔ Être flexible : sous-traiter, innover, monter en gamme.</p></li>
+<li><p class='font-semibold'>Question 11 : Lesquelles de ces entreprises sont une marge entre un marché final et un marché amont ?</p><p class='text-green-700'>✔ Intérim, abattoir, meubles : marge entre amont et aval ; entrepôt et hyper : marge sur volume.</p></li>
+<li><p class='font-semibold'>Question 12 : De quoi dépend la stabilité du bénéfice net ?</p><p class='text-green-700'>✔ Du caractère cyclique du CA, de la flexibilité et de la marge absolue.</p></li>
+<li><p class='font-semibold'>Question 13 : EBE en croissance mais résultat d’exploitation négatif chez Lecointre. Que faire ?</p><p class='text-green-700'>✔ Analyser les investissements, amortissements et provisions d’actifs.</p></li>
+<li><p class='font-semibold'>Question 14 : CA en hausse via forte baisse de prix et effet volume : bon ou mauvais ?</p><p class='text-green-700'>✔ Analyser l’impact sur les marges et la rentabilité : prudence nécessaire.</p></li>
+<li><p class='font-semibold'>Question 15 : Pourquoi analyser les intérêts minoritaires dans le compte consolidé ?</p><p class='text-green-700'>✔ Pour comprendre dans quelle entité du groupe se fait le résultat.</p></li>
+<li><p class='font-semibold'>Question 16 : Pourquoi ventiler les mises en équivalence ?</p><p class='text-green-700'>✔ Pour affiner le résultat entre exploitation, financier et non récurrent.</p></li>
+<li><p class='font-semibold'>Question 17 : Pourquoi ArcelorMittal condamne-t-il la présentation du compte de résultat par fonction ?</p><p class='text-green-700'>✔ Car une seule ligne peut représenter 95 % des coûts, ce qui nuit à la lisibilité.</p></li>
+
+      </ul>
     </div>
 <script>
 let score = 0;
@@ -222,14 +359,13 @@ let envoiFait = false;
 function repondre(label, q, val, i) {
   if (envoiFait || label.classList.contains('answered')) return;
   label.classList.add('answered');
-  const alreadyAnswered = document.querySelectorAll('input[name="q' + i + '"]:checked').length > 0;
   if (val === 'correct') score++;
   document.getElementById('step' + i).classList.add('hidden');
-  const nextStep = document.getElementById('step' + (i+1));
+  const nextStep = document.getElementById('step' + (i + 1));
   if (nextStep) {
     nextStep.classList.remove('hidden');
   } else {
-    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+    if (!envoiFait && i === 17 && confirm("Envoyer tes réponses ?")) {
       envoiFait = true;
       envoyer();
     }
@@ -240,9 +376,9 @@ async function envoyer() {
   const nom = document.getElementById('nom').value;
   const data = {
     nom: nom,
-    score: score + "/16",
+    score: score + "/17",
     date: new Date().toISOString(),
-    sujet: "L’analyse des marges structure"
+    sujet: "L’analyse des marges"
   };
   await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
     method: "POST",
@@ -252,7 +388,8 @@ async function envoyer() {
   document.getElementById('quiz-container').classList.add('hidden');
   document.getElementById('resultat').classList.remove('hidden');
   document.getElementById('prenomResultat').textContent = nom;
-  document.getElementById('scoreFinal').textContent = score + " / 16";
+  document.getElementById('scoreFinal').textContent = score + " / 17";
+  document.getElementById('corrections').classList.remove('hidden');
 }
 </script>
 </div>
