@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">36. Structure financière, fiscalité et théorie des organisations </h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Selon la nouvelle approche de Modigliani et Miller (1963), en quoi diffèrent la valeur d’une firme endettée et non endettée ?",
+    "choices": [
+      {
+        "text": "Elle vaut moins car la dette accroît le risque opérationnel",
+        "correct": false
+      },
+      {
+        "text": "L’entreprise endettée vaut plus grâce à l’économie d’impôt sur les intérêts",
+        "correct": true
+      },
+      {
+        "text": "Elle a la même valeur car le levier est neutre fiscalement",
+        "correct": false
+      },
+      {
+        "text": "Elle vaut plus car les dividendes sont déductibles fiscalement",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelles sont les deux limites au raisonnement de M&M 1963 ?",
+    "choices": [
+      {
+        "text": "Coût du capital et asymétrie réglementaire",
+        "correct": false
+      },
+      {
+        "text": "Effet de levier et amortissements dégressifs",
+        "correct": false
+      },
+      {
+        "text": "Coûts de faillite et fiscalité des investisseurs",
+        "correct": true
+      },
+      {
+        "text": "Risque de dilution et inflation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le fondement du raisonnement de Miller (1977) ?",
+    "choices": [
+      {
+        "text": "Les marchés de capitaux sont parfaitement efficients",
+        "correct": false
+      },
+      {
+        "text": "L’impôt personnel annule l’avantage fiscal de la dette",
+        "correct": true
+      },
+      {
+        "text": "Le capital social ne supporte aucun frottement fiscal",
+        "correct": false
+      },
+      {
+        "text": "La fiscalité d’entreprise prime sur toute autre considération",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Citez les dispositifs français qui favorisent l’endettement, les capitaux propres.",
+    "choices": [
+      {
+        "text": "Intérêts notionnels et impôt forfaitaire",
+        "correct": false
+      },
+      {
+        "text": "Dividendes défiscalisés et amortissement fiscal",
+        "correct": false
+      },
+      {
+        "text": "Déductibilité des intérêts et Plan d’Épargne en Actions",
+        "correct": true
+      },
+      {
+        "text": "Intérêts capitalisés et taux effectif réduit",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la valeur d’une entreprise endettée avec risque de faillite ?",
+    "choices": [
+      {
+        "text": "Valeur économique + économie d’impôt − coûts de faillite",
+        "correct": true
+      },
+      {
+        "text": "Valeur comptable + levier financier + beta",
+        "correct": false
+      },
+      {
+        "text": "Valeur brute − dettes financières − EBE",
+        "correct": false
+      },
+      {
+        "text": "Actif économique − charges d’exploitation − IS",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que penser de : « X a fait faillite car ses frais financiers représentaient 13 % du CA » ?",
+    "choices": [
+      {
+        "text": "Vrai, tout ratio supérieur à 10 % est critique",
+        "correct": false
+      },
+      {
+        "text": "Faux, c’est la rentabilité insuffisante qui cause la faillite",
+        "correct": true
+      },
+      {
+        "text": "Faux, seule la taille du bilan importe",
+        "correct": false
+      },
+      {
+        "text": "Correct, car cela réduit la capacité de remboursement",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les dirigeants n’aiment-ils pas la dette ?",
+    "choices": [
+      {
+        "text": "Elle favorise la dilution du capital",
+        "correct": false
+      },
+      {
+        "text": "Elle diminue le pouvoir de négociation avec les fournisseurs",
+        "correct": false
+      },
+      {
+        "text": "Elle accroît leur risque personnel et réduit leur liberté",
+        "correct": true
+      },
+      {
+        "text": "Elle augmente artificiellement la valeur de marché",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi est-ce bon qu’une société mature et rentable soit endettée ?",
+    "choices": [
+      {
+        "text": "Pour accroître son effet de levier fiscal sur les dividendes",
+        "correct": false
+      },
+      {
+        "text": "Pour surinvestir dans des projets d’innovation risqués",
+        "correct": false
+      },
+      {
+        "text": "Pour éviter le gaspillage des flux dans des projets peu rentables",
+        "correct": true
+      },
+      {
+        "text": "Pour éviter l’imposition sur les excédents de trésorerie",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Si la théorie de M&M (1963) était juste, l’endettement aurait dû… ?",
+    "choices": [
+      {
+        "text": "Croître, car la baisse des taux renforce l’intérêt fiscal de la dette",
+        "correct": true
+      },
+      {
+        "text": "Stagner, car les marchés sont efficients",
+        "correct": false
+      },
+      {
+        "text": "Être neutre vis-à-vis du coût moyen pondéré",
+        "correct": false
+      },
+      {
+        "text": "Décroître, pour éviter le risque systémique",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Selon la théorie du signal, les sociétés sous-évaluées doivent-elles s’endetter ?",
+    "choices": [
+      {
+        "text": "Oui, pour renforcer les capitaux propres",
+        "correct": false
+      },
+      {
+        "text": "Non, car le marché corrige toujours les erreurs",
+        "correct": false
+      },
+      {
+        "text": "Non, car la dette accroît la dilution",
+        "correct": false
+      },
+      {
+        "text": "Oui, pour ne pas émettre à un cours injustement bas",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Si M&M 1963 avait raison, l’IS collecté serait-il plus bas ?",
+    "choices": [
+      {
+        "text": "Non, car les crédits d’impôt annulent l’effet",
+        "correct": false
+      },
+      {
+        "text": "Oui, car les entreprises s’endetteraient plus pour réduire l’IS",
+        "correct": true
+      },
+      {
+        "text": "Oui, car la rentabilité brute serait plus élevée",
+        "correct": false
+      },
+      {
+        "text": "Non, car les dividendes compensent les intérêts",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Après un échec d’OPA, le levier net évolue-t-il ?",
+    "choices": [
+      {
+        "text": "Non, car la dette est figée juridiquement",
+        "correct": false
+      },
+      {
+        "text": "Oui, il baisse car la société devient surévaluée",
+        "correct": false
+      },
+      {
+        "text": "Oui, il augmente car les actionnaires poussent à améliorer la perf",
+        "correct": true
+      },
+      {
+        "text": "Non, car le marché sanctionne tout changement",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Ces théories peuvent-elles être démontrées comme la parité put/call ?",
+    "choices": [
+      {
+        "text": "Non, car elles reposent sur des comportements humains",
+        "correct": true
+      },
+      {
+        "text": "Oui, car elles utilisent des modèles mathématiques",
+        "correct": false
+      },
+      {
+        "text": "Non, car elles dépendent des taux d’intérêt",
+        "correct": false
+      },
+      {
+        "text": "Oui, si on isole tous les biais cognitifs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Vaut-il mieux calculer le levier en valeur ou en montant comptable ?",
+    "choices": [
+      {
+        "text": "En comptable, car elle s’appuie sur les ratios bancaires",
+        "correct": false
+      },
+      {
+        "text": "En valeur, car elle inclut l’EBITDA",
+        "correct": false
+      },
+      {
+        "text": "En comptable, car elle est moins volatile",
+        "correct": false
+      },
+      {
+        "text": "En valeur, car elle reflète la capacité réelle de remboursement",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Le pecking order implique-t-il une structure optimale ?",
+    "choices": [
+      {
+        "text": "Oui, dans les marchés semi-efficients",
+        "correct": false
+      },
+      {
+        "text": "Non, car le financement suit l’ordre des contraintes",
+        "correct": true
+      },
+      {
+        "text": "Oui, déterminée par le coût moyen pondéré",
+        "correct": false
+      },
+      {
+        "text": "Non, car seules les PME y sont soumises",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une structure optimale dette/capitaux propres serait-elle stable dans le temps ?",
+    "choices": [
+      {
+        "text": "Oui, si la prime de risque est constante",
+        "correct": false
+      },
+      {
+        "text": "Oui, en environnement fiscal stable",
+        "correct": false
+      },
+      {
+        "text": "Non, car les BFR restent cycliques",
+        "correct": false
+      },
+      {
+        "text": "Non, car les paramètres économiques évoluent",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Un fonds LBO paie 3 500 avec 75 % de dette. Qu’en penser ?",
+    "choices": [
+      {
+        "text": "L'effet de levier permet mécaniquement un prix plus élevé",
+        "correct": false
+      },
+      {
+        "text": "C’est cohérent si les flux sont doublés",
+        "correct": false
+      },
+      {
+        "text": "Les capitaux propres exigent un TRI plus bas",
+        "correct": false
+      },
+      {
+        "text": "Cela dépasse l’effet fiscal attendu, il s’agit d’un leurre",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">10. Introduction au diagnostic financier</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Décrivez les trois méthodes de consolidation des comptes.",
+    "choices": [
+      {
+        "text": "Voir le paragraphe 4.5 du manuel fiscal.",
+        "correct": false
+      },
+      {
+        "text": "Voir l’annexe 2, tableau C.",
+        "correct": false
+      },
+      {
+        "text": "Voir le chapitre 9, note de bas de page 7.",
+        "correct": false
+      },
+      {
+        "text": "Voir ce chapitre, section 1.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Critiques de la mise en équivalence ?",
+    "choices": [
+      {
+        "text": "Ce n’est pas une vraie méthode de consolidation mais une réévaluation d’actifs.",
+        "correct": true
+      },
+      {
+        "text": "Elle force à consolider toutes les dettes hors bilan du partenaire.",
+        "correct": false
+      },
+      {
+        "text": "Elle empêche l’application du principe de continuité d’exploitation.",
+        "correct": false
+      },
+      {
+        "text": "Elle interdit l’utilisation de la juste valeur pour les goodwill.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Critiques de l’intégration proportionnelle ?",
+    "choices": [
+      {
+        "text": "Elle conduit toujours à un sur-amortissement des immobilisations incorporelles.",
+        "correct": false
+      },
+      {
+        "text": "Méthode théorique ; elle laisse penser que le groupe détient 100 d’actifs alors qu’il n’a droit qu’à 33,3 % de 300.",
+        "correct": true
+      },
+      {
+        "text": "Elle gonfle les flux de trésorerie disponibles en doublant les dividendes internes.",
+        "correct": false
+      },
+      {
+        "text": "Elle interdit de distinguer entre capitaux propres part du groupe et minoritaires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Différence entre pourcentage de contrôle et pourcentage d’intérêt ?",
+    "choices": [
+      {
+        "text": "Voir la figure 5A dans l’appendice fiscal.",
+        "correct": false
+      },
+      {
+        "text": "Voir les paragraphes 7.15 et 7.16.",
+        "correct": true
+      },
+      {
+        "text": "Voir le commentaire de l’AMF du 12 janvier 2019.",
+        "correct": false
+      },
+      {
+        "text": "Voir le schéma 8.2 page 314.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Exemple où pourcentage d’intérêt et de contrôle coïncident ?",
+    "choices": [
+      {
+        "text": "A détient 30 % de B et 70 % d’options d’achat hors bilan.",
+        "correct": false
+      },
+      {
+        "text": "A et C codétiennent B mais avec des droits de veto croisés.",
+        "correct": false
+      },
+      {
+        "text": "A contrôle B à 51 % par des actions sans droit de vote.",
+        "correct": false
+      },
+      {
+        "text": "A détient sa participation dans B en direct ou via une filiale à 100 %.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "À quoi s’apparente la quote-part de résultat des sociétés mises en équivalence ?",
+    "choices": [
+      {
+        "text": "À des flux de trésorerie d’investissement projetés.",
+        "correct": false
+      },
+      {
+        "text": "À des produits financiers sur titres immobilisés.",
+        "correct": true
+      },
+      {
+        "text": "À des charges opérationnelles récurrentes.",
+        "correct": false
+      },
+      {
+        "text": "À des variations de capitaux propres non distribuables.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quand traiter différemment part du groupe et minoritaires ?",
+    "choices": [
+      {
+        "text": "Lorsqu’on calcule le coût moyen pondéré du capital du groupe.",
+        "correct": false
+      },
+      {
+        "text": "Dans le suivi des dettes fiscales différées à long terme.",
+        "correct": false
+      },
+      {
+        "text": "Dans l’évaluation des actions, les profits revenant aux minoritaires ne bénéficient pas aux actionnaires de la maison mère.",
+        "correct": true
+      },
+      {
+        "text": "Pendant l’audit des engagements de retraite obligatoires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Ouverture du capital d’une filiale : effet sur le résultat du groupe ?",
+    "choices": [
+      {
+        "text": "Oui, entrée de minoritaires = profit ou perte de dilution ; paradoxe car pas de cession mais variation de part dans les capitaux propres (cf. 8.79).",
+        "correct": true
+      },
+      {
+        "text": "Oui, toujours une perte car la filiale émet des actions au-dessus de la valeur nominale.",
+        "correct": false
+      },
+      {
+        "text": "Non, seule la trésorerie consolidée est affectée, pas le résultat.",
+        "correct": false
+      },
+      {
+        "text": "Non, car les minoritaires sont neutralisés par élimination intra-groupe.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi retraiter les dividendes intra-groupe lors de la consolidation ?",
+    "choices": [
+      {
+        "text": "Flux interne ; sinon le même résultat serait compté deux fois.",
+        "correct": true
+      },
+      {
+        "text": "Parce que la distribution de dividendes déclenche automatiquement un test d’impairment.",
+        "correct": false
+      },
+      {
+        "text": "Afin de respecter l’article 39-4 du Code du commerce sur le plafond des réserves légales.",
+        "correct": false
+      },
+      {
+        "text": "Pour éviter de surévaluer les impôts différés actifs de la maison mère.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Écart d’acquisition : définition et traitement ?",
+    "choices": [
+      {
+        "text": "Bonus de transaction versé aux dirigeants ; comptabilisé en charges exceptionnelles amorties.",
+        "correct": false
+      },
+      {
+        "text": "Provision obligatoire pour restructuration enregistrée lors de l’achat ; reprise sur cinq ans.",
+        "correct": false
+      },
+      {
+        "text": "Différence entre prix payé et part de valeur des actifs nets acquis ; immobilisation incorporelle amortie (FR) ou dépréciée (IFRS).",
+        "correct": true
+      },
+      {
+        "text": "Surcote calculée entre valeur vénale et valeur fiscale des dettes ; toujours passée en charges financières.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les méthodes d’évaluation consolidées diffèrent-elles des comptes sociaux ?",
+    "choices": [
+      {
+        "text": "Les consolidés interdisent la valorisation à la juste valeur, les sociaux l’autorisent.",
+        "correct": false
+      },
+      {
+        "text": "Parce que les consolidés sont régis par la loi bancaire et les sociaux par le code civil.",
+        "correct": false
+      },
+      {
+        "text": "Les consolidés visent une approche économique alors que les sociaux répondent à une logique juridique ou fiscale.",
+        "correct": true
+      },
+      {
+        "text": "Les consolidés doivent être audités par deux cabinets distincts, les sociaux par un seul.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dépréciation du goodwill : impact fiscal en France ?",
+    "choices": [
+      {
+        "text": "Non ; l’impôt est calculé sur les comptes sociaux, pas sur les comptes consolidés.",
+        "correct": true
+      },
+      {
+        "text": "Non ; mais elle augmente la contribution sociale sur les bénéfices.",
+        "correct": false
+      },
+      {
+        "text": "Oui ; la dépréciation réduit directement la base taxable consolidée.",
+        "correct": false
+      },
+      {
+        "text": "Oui ; elle génère un crédit d’impôt reportable sur cinq ans.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi publier des résultats ajustés après une acquisition ?",
+    "choices": [
+      {
+        "text": "Pour différer la reconnaissance des coûts d’intégration dans un compte de réserve.",
+        "correct": false
+      },
+      {
+        "text": "Pour respecter la bonne information financière, voir le paragraphe 6.17.",
+        "correct": true
+      },
+      {
+        "text": "Pour lisser les fluctuations de change liées aux filiales hors zone euro.",
+        "correct": false
+      },
+      {
+        "text": "Pour intégrer les effets escomptés des synergies trois ans avant leur réalisation.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "A achète 100 % de B en numéraire : les capitaux propres consolidés A+B = somme A + B ?",
+    "choices": [
+      {
+        "text": "Oui ; l’achat en numéraire s’ajoute mécaniquement aux capitaux propres du groupe.",
+        "correct": false
+      },
+      {
+        "text": "Non ; sauf lorsque B est intégrée proportionnellement au lieu d’être intégrée globalement.",
+        "correct": false
+      },
+      {
+        "text": "Non ; A n’a pas émis de capitaux propres pour acquérir B (cf. 7.21).",
+        "correct": true
+      },
+      {
+        "text": "Oui ; uniquement si la valeur d’acquisition de B est égale à son actif net comptable.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

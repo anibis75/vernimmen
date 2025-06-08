@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">20. Le risque d’un titre financier</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quelle est la mesure du risque en économie de marché ?",
+    "choices": [
+      {
+        "text": "La volatilité de la valeur de l’actif mesurée par l’écart type de son taux de rentabilité.",
+        "correct": true
+      },
+      {
+        "text": "Le taux d’actualisation utilisé par les analystes financiers.",
+        "correct": false
+      },
+      {
+        "text": "La capitalisation boursière moyenne pondérée du secteur.",
+        "correct": false
+      },
+      {
+        "text": "Le rendement moyen observé sur cinq ans pour un actif donné.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que mesure le coefficient β ?",
+    "choices": [
+      {
+        "text": "Le niveau d’endettement de l’entreprise par rapport au secteur.",
+        "correct": false
+      },
+      {
+        "text": "La part des coûts fixes dans le chiffre d'affaires total.",
+        "correct": false
+      },
+      {
+        "text": "Le rendement historique corrigé de l’inflation.",
+        "correct": false
+      },
+      {
+        "text": "Le risque de marché du titre, sa sensibilité au marché.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’actif le plus volatil dans le graphique du §19.5 et pourquoi les investisseurs y vont ?",
+    "choices": [
+      {
+        "text": "Les actions pharmaceutiques, pour leur faible volatilité historique.",
+        "correct": false
+      },
+      {
+        "text": "Les actions chinoises, car elles offrent une espérance de rentabilité élevée.",
+        "correct": true
+      },
+      {
+        "text": "Les obligations d’État, pour leur stabilité à long terme.",
+        "correct": false
+      },
+      {
+        "text": "Les actifs monétaires, pour leur liquidité immédiate.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le coefficient β mesure le risque spécifique d’un titre. Vrai ou faux ?",
+    "choices": [
+      {
+        "text": "Faux, il mesure la volatilité totale du portefeuille.",
+        "correct": false
+      },
+      {
+        "text": "Vrai, il mesure les facteurs internes à l’entreprise.",
+        "correct": false
+      },
+      {
+        "text": "Vrai, car il est propre à chaque entreprise.",
+        "correct": false
+      },
+      {
+        "text": "Faux.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "L’action Danone est-elle plus ou moins risquée que le marché ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Aussi risquée car elle est cotée sur un marché mature.",
+        "correct": false
+      },
+      {
+        "text": "Plus risquée car elle est dans le secteur alimentaire.",
+        "correct": false
+      },
+      {
+        "text": "Moins risquée car son β est inférieur à 1 (secteur peu volatil).",
+        "correct": true
+      },
+      {
+        "text": "Moins risquée car elle a peu de dettes à long terme.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "De quoi dépend le coefficient β ?",
+    "choices": [
+      {
+        "text": "De la variation annuelle du cours boursier.",
+        "correct": false
+      },
+      {
+        "text": "De la politique de dividende et du chiffre d'affaires.",
+        "correct": false
+      },
+      {
+        "text": "De la structure de coûts, de la structure financière, de la visibilité, et du taux de croissance.",
+        "correct": true
+      },
+      {
+        "text": "De la rentabilité nette et du taux d’imposition.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi risque de marché et risque spécifique sont-ils indépendants ?",
+    "choices": [
+      {
+        "text": "Car ils n’influencent pas les flux de trésorerie.",
+        "correct": false
+      },
+      {
+        "text": "Car l’un affecte tous les titres, l’autre seulement un titre donné.",
+        "correct": true
+      },
+      {
+        "text": "Car ils sont issus de modèles économiques distincts.",
+        "correct": false
+      },
+      {
+        "text": "Car l’un est financier et l’autre opérationnel.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’endettement accru d’une entreprise augmente-t-il la volatilité ?",
+    "choices": [
+      {
+        "text": "Oui, car cela augmente les coûts variables.",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela diminue le coût moyen du capital.",
+        "correct": false
+      },
+      {
+        "text": "Oui, à cause de l’effet de levier.",
+        "correct": true
+      },
+      {
+        "text": "Non, car les charges d’intérêts sont fixes.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une hausse des coûts fixes influence-t-elle le risque de l’action ?",
+    "choices": [
+      {
+        "text": "Oui, car elle diminue la marge nette.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car elle augmente le point mort et donc la volatilité.",
+        "correct": true
+      },
+      {
+        "text": "Non, car les coûts fixes sont amortis dans le temps.",
+        "correct": false
+      },
+      {
+        "text": "Non, car elle n’affecte pas la rentabilité brute.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi n’est-il pas sain qu’une entreprise place sa trésorerie en actions ?",
+    "choices": [
+      {
+        "text": "Car cela fausse la valeur de l’EBITDA.",
+        "correct": false
+      },
+      {
+        "text": "Car cela augmente l’actif circulant net.",
+        "correct": false
+      },
+      {
+        "text": "Car elle pourrait perdre en capital au moment où elle en a besoin.",
+        "correct": true
+      },
+      {
+        "text": "Car les dividendes sont imposés à la source.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le β d’un conglomérat diversifié est-il proche de 1 ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Non, car la diversification augmente le risque.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car il reflète un « mini-marché » diversifié.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car tous les segments ont des β similaires.",
+        "correct": false
+      },
+      {
+        "text": "Non, car le conglomérat est souvent moins rentable.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les sociétés tech ont-elles un β élevé malgré peu de dettes ?",
+    "choices": [
+      {
+        "text": "Car leur capital est majoritairement flottant.",
+        "correct": false
+      },
+      {
+        "text": "Car leur croissance rend les flux futurs très sensibles aux révisions.",
+        "correct": true
+      },
+      {
+        "text": "Car elles ne versent pas de dividendes réguliers.",
+        "correct": false
+      },
+      {
+        "text": "Car elles sont exposées aux devises étrangères.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le coefficient β est-il stable dans le temps ?",
+    "choices": [
+      {
+        "text": "Non, car l’activité et la structure financière évoluent.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car le marché corrige les anomalies.",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf pour les sociétés du CAC 40.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car il est défini à l’introduction en Bourse.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le β d’un ticket de loterie à 100 € ?",
+    "choices": [
+      {
+        "text": "–1, car c’est une couverture contre le marché.",
+        "correct": false
+      },
+      {
+        "text": "1, car il fluctue comme le marché.",
+        "correct": false
+      },
+      {
+        "text": "2, car le gain est très élevé.",
+        "correct": false
+      },
+      {
+        "text": "0, car sans lien avec le marché, mais risque très élevé.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’écart type est-il préféré à la variance ?",
+    "choices": [
+      {
+        "text": "Car il est de même ordre que la rentabilité (ordre 1).",
+        "correct": true
+      },
+      {
+        "text": "Car il annule les valeurs extrêmes.",
+        "correct": false
+      },
+      {
+        "text": "Car il est indépendant de la moyenne.",
+        "correct": false
+      },
+      {
+        "text": "Car il est plus facile à calculer.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle loi statistique explique la baisse du risque à long terme ?",
+    "choices": [
+      {
+        "text": "Le théorème de la diversification optimale.",
+        "correct": false
+      },
+      {
+        "text": "La loi de Pareto appliquée à la finance.",
+        "correct": false
+      },
+      {
+        "text": "La loi faible des grands nombres.",
+        "correct": true
+      },
+      {
+        "text": "La loi des rendements décroissants.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel investissement choisir à 20 ans, 55 ans, 80 ans ?",
+    "choices": [
+      {
+        "text": "Immobilier à 20 ans, matières premières à 55, art à 80.",
+        "correct": false
+      },
+      {
+        "text": "Actions à 20 ans, obligations à 55, monétaires à 80.",
+        "correct": true
+      },
+      {
+        "text": "Obligations à tout âge pour sécurité.",
+        "correct": false
+      },
+      {
+        "text": "Actions à tout âge pour performance.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Les biotech sont-elles plus risquées que les grandes distributions ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Non, car elles ont une forte croissance.",
+        "correct": false
+      },
+      {
+        "text": "Non, car elles sont plus innovantes.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car elles ont un meilleur accès au capital.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car leurs résultats sont très incertains (risque spécifique élevé).",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi certains disent que l’analyse financière est inutile ?",
+    "choices": [
+      {
+        "text": "Car elle ne s’applique qu’aux grandes entreprises.",
+        "correct": false
+      },
+      {
+        "text": "Car elle est immédiatement intégrée aux cours (efficience).",
+        "correct": true
+      },
+      {
+        "text": "Car elle ne prend pas en compte l’émotion des marchés.",
+        "correct": false
+      },
+      {
+        "text": "Car elle repose sur des hypothèses arbitraires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les β négatifs sont-ils exceptionnels ?",
+    "choices": [
+      {
+        "text": "Car ils ne sont pas autorisés par les autorités.",
+        "correct": false
+      },
+      {
+        "text": "Car cela impliquerait une absence de risque.",
+        "correct": false
+      },
+      {
+        "text": "Car cela impliquerait une évolution inverse au marché, ce qui est rare.",
+        "correct": true
+      },
+      {
+        "text": "Car ils violent le théorème de Modigliani-Miller.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que dire d’une action avec un écart type élevé et un β faible ?",
+    "choices": [
+      {
+        "text": "Elle est parfaitement corrélée au marché.",
+        "correct": false
+      },
+      {
+        "text": "Elle bénéficie d’une forte prime de risque.",
+        "correct": false
+      },
+      {
+        "text": "Elle a un rendement garanti.",
+        "correct": false
+      },
+      {
+        "text": "Elle présente un risque spécifique élevé.",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

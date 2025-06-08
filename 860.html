@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">24. Les autres produits de dette</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Les banques prennent-elles un risque lors de l’émission de NEU CP par une entreprise ?",
+    "choices": [
+      {
+        "text": "Non, car le marché monétaire couvre automatiquement le risque.",
+        "correct": false
+      },
+      {
+        "text": "Non, car les NEU CP sont toujours garantis par l’État.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car elles accordent souvent des lignes de crédit de substitution.",
+        "correct": true
+      },
+      {
+        "text": "Non, car elles ne sont pas impliquées dans les émissions de court terme.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quel autre type de produit financier le crédit documentaire peut-il être assimilé ?",
+    "choices": [
+      {
+        "text": "Contrat d’assurance.",
+        "correct": true
+      },
+      {
+        "text": "Garantie bancaire standard.",
+        "correct": false
+      },
+      {
+        "text": "Obligation négociable.",
+        "correct": false
+      },
+      {
+        "text": "Ligne de crédit revolving.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le risque de l’escompte ?",
+    "choices": [
+      {
+        "text": "Non-paiement du débiteur final.",
+        "correct": true
+      },
+      {
+        "text": "Refus de l’effet par la banque.",
+        "correct": false
+      },
+      {
+        "text": "Non-transfert de propriété de la créance.",
+        "correct": false
+      },
+      {
+        "text": "Diminution du taux d’intérêt.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel facteur essentiel limite l’accès des PME aux marchés obligataires ou des billets de trésorerie ?",
+    "choices": [
+      {
+        "text": "Refus de l’AMF pour les émissions.",
+        "correct": false
+      },
+      {
+        "text": "Besoin de financement trop faible pour assurer la liquidité du titre émis.",
+        "correct": true
+      },
+      {
+        "text": "Manque de notation ESG.",
+        "correct": false
+      },
+      {
+        "text": "Incapacité à proposer une garantie immobilière.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Comment les banques financent-elles les prêts qu’elles accordent aux clients ?",
+    "choices": [
+      {
+        "text": "Cessions d’actifs à des fonds souverains.",
+        "correct": false
+      },
+      {
+        "text": "Dépôts, refinancement auprès de la banque centrale, marché obligataire, capitaux propres.",
+        "correct": true
+      },
+      {
+        "text": "Emissions de NEU MTN exclusivement.",
+        "correct": false
+      },
+      {
+        "text": "Utilisation de lignes de crédit publiques.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’intérêt des lignes de crédit confirmées non tirées pour un groupe ?",
+    "choices": [
+      {
+        "text": "Optimiser la valeur de marché de l’obligation senior.",
+        "correct": false
+      },
+      {
+        "text": "Réduire la volatilité du besoin en fonds de roulement.",
+        "correct": false
+      },
+      {
+        "text": "Sécuriser la disponibilité de fonds si les marchés ou les crédits non confirmés font défaut.",
+        "correct": true
+      },
+      {
+        "text": "Bénéficier d’une marge bancaire plus avantageuse.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "En dehors de tout coût de structure ou d’information, les banques peuvent-elles proposer des crédits moins chers que les marchés ? Comment ?",
+    "choices": [
+      {
+        "text": "Oui, grâce à des prises de garanties et covenants, à des rémunérations sur d’autres services vendus en même temps que le crédit.",
+        "correct": true
+      },
+      {
+        "text": "Oui, uniquement via les facilités garanties par l’État.",
+        "correct": false
+      },
+      {
+        "text": "Non, car les marchés sont toujours plus efficients.",
+        "correct": false
+      },
+      {
+        "text": "Non, car les banques n’ont pas accès à des sources de financement à taux bas.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la différence entre l’escompte et l’affacturage ?",
+    "choices": [
+      {
+        "text": "L’escompte porte sur le long terme, l’affacturage sur le court terme.",
+        "correct": false
+      },
+      {
+        "text": "L’un est un produit d’assurance, l’autre un produit de dette.",
+        "correct": false
+      },
+      {
+        "text": "L’affacturage est réservé aux entreprises exportatrices.",
+        "correct": false
+      },
+      {
+        "text": "Principalement la nature du prêteur (banque/établissement spécialisé).",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les services qui peuvent être proposés dans une prestation d’affacturage ?",
+    "choices": [
+      {
+        "text": "L’émission de titres obligataires.",
+        "correct": false
+      },
+      {
+        "text": "Le financement, le recouvrement, l’assurance contre l’impayé, la déconsolidation.",
+        "correct": true
+      },
+      {
+        "text": "L’analyse financière du portefeuille client.",
+        "correct": false
+      },
+      {
+        "text": "La réduction du capital social.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la principale différence entre le crédit-bail immobilier et le crédit-bail mobilier ?",
+    "choices": [
+      {
+        "text": "Le crédit-bail immobilier est amorti fiscalement sur 5 ans.",
+        "correct": false
+      },
+      {
+        "text": "La nature du bien, immobilier ou non, et la durée du contrat naturellement plus longue pour un crédit-bail immobilier.",
+        "correct": true
+      },
+      {
+        "text": "Le crédit-bail mobilier inclut systématiquement une clause ESG.",
+        "correct": false
+      },
+      {
+        "text": "Le crédit-bail mobilier est toujours avec option d’achat.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans une opération de titrisation, l’entreprise qui a cédé des actifs à une entité ad hoc est-elle en risque si ces actifs sont insuffisants pour faire face à la dette de l’entité ad hoc ?",
+    "choices": [
+      {
+        "text": "Normalement non, c’est le risque que l’entité ad hoc supporte et dont elle se protège par une assurance, par un surdimensionnement des actifs transférés.",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf si une clause de retour à meilleure fortune existe.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car la banque agit comme garant implicite.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car l’entreprise reste responsable en cas de défaut.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les agences de notation demandent-elles une ligne de back-up minimum pour une notation de qualité d’un programme d’émission de NEU CP ?",
+    "choices": [
+      {
+        "text": "Car les NEU CP étant à court terme, ils sont le plus souvent remboursés par une autre émission de NEU CP.",
+        "correct": true
+      },
+      {
+        "text": "Pour répondre aux critères ESG des agences européennes.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elles sont tenues de garantir la liquidité des marchés monétaires.",
+        "correct": false
+      },
+      {
+        "text": "Car elles ne notent pas les programmes non adossés à une dette senior.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que finance un RCF vert ?",
+    "choices": [
+      {
+        "text": "Une levée de fonds dédiée au développement durable.",
+        "correct": false
+      },
+      {
+        "text": "Un projet à impact environnemental vérifié par l’État.",
+        "correct": false
+      },
+      {
+        "text": "Un investissement en infrastructures vertes certifiées.",
+        "correct": false
+      },
+      {
+        "text": "Le plus souvent rien de particulier, mais son coût est indexé sur certains objectifs environnementaux.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les avantages des financements participatifs ?",
+    "choices": [
+      {
+        "text": "Garantie bancaire automatique.",
+        "correct": false
+      },
+      {
+        "text": "Réduction des délais de reporting.",
+        "correct": false
+      },
+      {
+        "text": "Coût réduit par effet d’échelle.",
+        "correct": false
+      },
+      {
+        "text": "Vitesse de mise en place, faire connaître l’entreprise, absence de covenants.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les inconvénients des financements participatifs ?",
+    "choices": [
+      {
+        "text": "Taux d’intérêt plus élevé, faiblesse des montants unitaires plafonnés à 5 M€.",
+        "correct": true
+      },
+      {
+        "text": "Limitation de la capacité d’endettement globale.",
+        "correct": false
+      },
+      {
+        "text": "Risque de dilution du capital.",
+        "correct": false
+      },
+      {
+        "text": "Besoin d’un rating externe obligatoire.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

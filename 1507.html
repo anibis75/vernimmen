@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">40. La mise en œuvre de la politique de distribution : dividendes, rachats d’actions et réductions de capital </h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quels sont les deux critères qui permettent de juger une politique de dividendes ?",
+    "choices": [
+      {
+        "text": "Le taux de distribution et le taux de croissance du dividende",
+        "correct": true
+      },
+      {
+        "text": "Le résultat net et le montant des réserves",
+        "correct": false
+      },
+      {
+        "text": "Le taux de capitalisation et le cours de Bourse",
+        "correct": false
+      },
+      {
+        "text": "Le taux de rendement et le nominal de l’action",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une augmentation de dividendes conduit-elle à une augmentation de la valeur de l’action ?",
+    "choices": [
+      {
+        "text": "Non selon la théorie des marchés à l’équilibre",
+        "correct": true
+      },
+      {
+        "text": "Non sauf si le PER est en baisse",
+        "correct": false
+      },
+      {
+        "text": "Oui car cela augmente le patrimoine de l’actionnaire",
+        "correct": false
+      },
+      {
+        "text": "Oui si le dividende est supérieur à la moyenne sectorielle",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À fiscalité neutre, préférez-vous percevoir des dividendes ou enregistrer des plus-values ?",
+    "choices": [
+      {
+        "text": "Plus-values pour éviter l’imposition",
+        "correct": false
+      },
+      {
+        "text": "Dividendes pour leur liquidité immédiate",
+        "correct": false
+      },
+      {
+        "text": "Dividendes si l’action est en baisse",
+        "correct": false
+      },
+      {
+        "text": "Indifférence selon la théorie des marchés à l’équilibre",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Selon la théorie des signaux, qu’indique le maintien du dividende par action suite à une augmentation de capital par incorporation de réserves ?",
+    "choices": [
+      {
+        "text": "Que les profits de l’entreprise devraient continuer de progresser",
+        "correct": true
+      },
+      {
+        "text": "Que la société cherche à diluer les anciens actionnaires",
+        "correct": false
+      },
+      {
+        "text": "Que l’entreprise prépare une cession d’actifs",
+        "correct": false
+      },
+      {
+        "text": "Que la direction cherche à manipuler le marché",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’émission d’actions gratuites est-elle gratuite pour l’entreprise ? Modifie-t-elle la richesse de l’actionnaire ? Quel est son objet ?",
+    "choices": [
+      {
+        "text": "Elle augmente la richesse de l’actionnaire de 10 %",
+        "correct": false
+      },
+      {
+        "text": "Sans impact sur la richesse, elle améliore la liquidité de l’action",
+        "correct": true
+      },
+      {
+        "text": "Elle permet de contourner l’impôt sur les dividendes",
+        "correct": false
+      },
+      {
+        "text": "Elle réduit la dilution du capital",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un dividende élevé représente-t-il la garantie d’un cours stable ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Oui, car la fiscalité avantage les dividendes",
+        "correct": false
+      },
+      {
+        "text": "Oui, car le revenu attire les investisseurs long terme",
+        "correct": false
+      },
+      {
+        "text": "Non, il contribue à la stabilité mais ne la garantit pas",
+        "correct": true
+      },
+      {
+        "text": "Non, car les dividendes sont toujours erratiques",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une société peut-elle avoir comme objectif un taux de rendement à servir à ses actionnaires ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Oui, pour fidéliser ses actionnaires",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf en période de croissance forte",
+        "correct": false
+      },
+      {
+        "text": "Oui, pour garantir une performance boursière",
+        "correct": false
+      },
+      {
+        "text": "Non, car elle ne maîtrise pas le cours de l’action",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la tentation naturelle d’une entreprise imposée à un taux de distribution de 100 % ?",
+    "choices": [
+      {
+        "text": "Masquer une partie du résultat en dotant des provisions",
+        "correct": true
+      },
+      {
+        "text": "Diminuer le nombre d’actions pour réduire les dividendes",
+        "correct": false
+      },
+      {
+        "text": "Contracter un emprunt pour financer les distributions",
+        "correct": false
+      },
+      {
+        "text": "Acheter ses propres actions pour éviter le dividende",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le dirigeant qui a des stock-options est-il favorable à une politique de dividendes élevés ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Non, car les stock-options sont annulées en cas de dividende",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela freine la hausse du cours de l’action",
+        "correct": true
+      },
+      {
+        "text": "Oui, cela maximise son revenu immédiat",
+        "correct": false
+      },
+      {
+        "text": "Oui, car cela augmente mécaniquement la valeur de l’option",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le signal d’un dividende payé en actions ?",
+    "choices": [
+      {
+        "text": "Que l’entreprise manque de liquidités pour payer en cash",
+        "correct": true
+      },
+      {
+        "text": "Que le PER est trop élevé pour verser un dividende",
+        "correct": false
+      },
+      {
+        "text": "Que l’entreprise veut accroître la volatilité du titre",
+        "correct": false
+      },
+      {
+        "text": "Que le management veut diluer les actionnaires",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’annonce d’un fort dividende exceptionnel se traduit-elle souvent par une baisse de la valeur des dettes ?",
+    "choices": [
+      {
+        "text": "Car les actionnaires sont protégés en priorité",
+        "correct": false
+      },
+      {
+        "text": "Car le risque pour les créanciers augmente",
+        "correct": true
+      },
+      {
+        "text": "Car cela signale une restructuration imminente",
+        "correct": false
+      },
+      {
+        "text": "Car cela diminue la base imposable de la société",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’impact d’une structure financière très endettée sur le taux de distribution ?",
+    "choices": [
+      {
+        "text": "Augmentation du dividende exceptionnel",
+        "correct": false
+      },
+      {
+        "text": "Réduction du taux de distribution",
+        "correct": true
+      },
+      {
+        "text": "Hausse de la rémunération des créanciers",
+        "correct": false
+      },
+      {
+        "text": "Distribution sous forme d’actions gratuites",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans quel cas une entreprise a-t-elle intérêt à procéder à une réduction de capital ?",
+    "choices": [
+      {
+        "text": "Lorsqu’elle veut éviter un rachat hostile",
+        "correct": false
+      },
+      {
+        "text": "Lorsque la rentabilité marginale des investissements est trop faible",
+        "correct": true
+      },
+      {
+        "text": "Lorsque le taux de croissance est supérieur au PER",
+        "correct": false
+      },
+      {
+        "text": "Quand elle veut attirer de nouveaux investisseurs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La réduction de capital permet-elle d’améliorer la valeur des actions ?",
+    "choices": [
+      {
+        "text": "Non, sauf si les réserves sont intégralement distribuées",
+        "correct": false
+      },
+      {
+        "text": "Oui, si le prix de rachat est inférieur à la valeur estimée",
+        "correct": true
+      },
+      {
+        "text": "Oui, si le taux d’endettement devient nul",
+        "correct": false
+      },
+      {
+        "text": "Non, cela dilue les minoritaires",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle différence faites-vous entre le paiement de dividendes et la réduction de capital ?",
+    "choices": [
+      {
+        "text": "Le dividende est versé à tous les actionnaires, la réduction peut être ciblée",
+        "correct": true
+      },
+      {
+        "text": "La réduction de capital est systématiquement imposable",
+        "correct": false
+      },
+      {
+        "text": "Le dividende diminue les capitaux propres, la réduction non",
+        "correct": false
+      },
+      {
+        "text": "Le dividende modifie l’actionnariat, la réduction non",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la condition pour que le rachat d’actions augmente le BPA ?",
+    "choices": [
+      {
+        "text": "Si le rendement des placements est supérieur au BPA",
+        "correct": false
+      },
+      {
+        "text": "Lorsque la dette est à taux fixe sur 10 ans",
+        "correct": false
+      },
+      {
+        "text": "Lorsque l’inverse du PER est supérieur au taux d’endettement net",
+        "correct": true
+      },
+      {
+        "text": "Quand le cours de l’action est inférieur à sa valeur nominale",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la conséquence d’un programme de rachat d’actions pour les créanciers ?",
+    "choices": [
+      {
+        "text": "Il augmente leur risque car la dette nette augmente",
+        "correct": true
+      },
+      {
+        "text": "Il augmente la valorisation de leurs obligations",
+        "correct": false
+      },
+      {
+        "text": "Il dilue leur droit de vote",
+        "correct": false
+      },
+      {
+        "text": "Il rend les dividendes plus fréquents",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans quelles conditions une entreprise en forte croissance peut-elle procéder à une réduction de capital ?",
+    "choices": [
+      {
+        "text": "Si elle veut doubler son PER",
+        "correct": false
+      },
+      {
+        "text": "Si elle subit une OPA hostile",
+        "correct": false
+      },
+      {
+        "text": "Si ses dettes deviennent trop risquées",
+        "correct": false
+      },
+      {
+        "text": "Si elle accumule trop de liquidités à faible rendement",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Un dirigeant détenteur de stock-options préfère-t-il les rachats d’actions ou les dividendes ?",
+    "choices": [
+      {
+        "text": "Aucun, car ils réduisent le flottant",
+        "correct": false
+      },
+      {
+        "text": "Les dividendes, qui valorisent les actions détenues",
+        "correct": false
+      },
+      {
+        "text": "Les actions gratuites, qui diluent la base",
+        "correct": false
+      },
+      {
+        "text": "Les rachats d’actions, qui soutiennent le cours sans l’abaisser",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Que pensez-vous d’un groupe qui augmente fortement son dividende alors que sa croissance ralentit ?",
+    "choices": [
+      {
+        "text": "Cela permet de réduire son taux d’endettement",
+        "correct": false
+      },
+      {
+        "text": "Cela confirme la volonté de diluer les actionnaires",
+        "correct": false
+      },
+      {
+        "text": "Cela peut signaler une mauvaise allocation du capital",
+        "correct": true
+      },
+      {
+        "text": "Cela montre une très bonne performance opérationnelle",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">52. La gestion du besoin en fonds de roulement, de la trésorerie, des risques et de l’immobilier</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quelle est la limite de l’arrêt de certaines productions le temps de résorber des stocks excédentaires ?",
+    "choices": [
+      {
+        "text": "Les stocks excédentaires peuvent toujours être écoulés par promotion.",
+        "correct": false
+      },
+      {
+        "text": "Tous les outils de production sont conçus pour fonctionner à la demande.",
+        "correct": false
+      },
+      {
+        "text": "Certains outils industriels ne peuvent pas être arrêtés ou redémarrés rapidement.",
+        "correct": true
+      },
+      {
+        "text": "Le redémarrage d’une production se fait toujours sans coût additionnel.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi la gestion du BFR est-elle à la fois de l’intendance et de la stratégie ?",
+    "choices": [
+      {
+        "text": "Parce qu’elle suit des procédures standards dans toutes les industries.",
+        "correct": false
+      },
+      {
+        "text": "Elle relève uniquement du service comptabilité ou du contrôle de gestion.",
+        "correct": false
+      },
+      {
+        "text": "Elle combine arbitrages stratégiques et actions opérationnelles quotidiennes.",
+        "correct": true
+      },
+      {
+        "text": "Car elle dépend uniquement des décisions du directeur financier.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les fonds de LBO mettent-ils l’accent sur la gestion du BFR ?",
+    "choices": [
+      {
+        "text": "Car le BFR représente une charge non déductible pour l’entreprise cible.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’un BFR élevé accroît automatiquement la valeur de revente.",
+        "correct": false
+      },
+      {
+        "text": "Car libérer du cash améliore la rentabilité financière et le TRI du fonds.",
+        "correct": true
+      },
+      {
+        "text": "Car la gestion du BFR permet d’éviter toute dilution capitalistique.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quelles conditions un BFR pléthorique n’est-il pas le signe d’une mauvaise gestion ?",
+    "choices": [
+      {
+        "text": "S’il est en phase avec le benchmark moyen du secteur d’activité.",
+        "correct": false
+      },
+      {
+        "text": "Lorsqu’il est causé par une croissance rapide et non anticipée.",
+        "correct": false
+      },
+      {
+        "text": "Quand il est financé uniquement par des dettes à long terme.",
+        "correct": false
+      },
+      {
+        "text": "S’il est volontaire et permet un gain commercial ou de marge.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Un client augmente brutalement ses commandes auprès de vous. À quoi devez-vous penser ?",
+    "choices": [
+      {
+        "text": "Il a peut-être amélioré ses prévisions de ventes internes.",
+        "correct": false
+      },
+      {
+        "text": "Il souhaite renforcer sa relation client-fournisseur avec vous.",
+        "correct": false
+      },
+      {
+        "text": "Il anticipe une hausse de votre prix unitaire à court terme.",
+        "correct": false
+      },
+      {
+        "text": "Il a probablement été déréférencé par un concurrent.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Vous êtes en retard de paiement d’une facture. Vous n’êtes pas relancé. Qu’en déduisez-vous ?",
+    "choices": [
+      {
+        "text": "Votre fournisseur est désorganisé ou dispose d’un excès de trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "Il s’agit probablement d’une tentative de fraude ou de chantage.",
+        "correct": false
+      },
+      {
+        "text": "Le paiement a été annulé automatiquement dans le système.",
+        "correct": false
+      },
+      {
+        "text": "Il vous a définitivement retiré de son fichier client actif.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les trois documents qui prouvent l’existence d’une créance et qui sont indispensables pour faire une relance efficace ?",
+    "choices": [
+      {
+        "text": "Contrat de distribution, IBAN, avis d’expédition.",
+        "correct": false
+      },
+      {
+        "text": "Bon de commande, bon de livraison, facture.",
+        "correct": true
+      },
+      {
+        "text": "Statuts juridiques, avis d’échéance, lettre de mission.",
+        "correct": false
+      },
+      {
+        "text": "Conditions générales, preuve de dépôt, fiche client.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La titrisation des créances commerciales ou de stocks est-elle une façon de gérer le BFR ?",
+    "choices": [
+      {
+        "text": "Non, c’est uniquement un mode de financement du BFR.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car cela réduit directement le besoin opérationnel.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car elle supprime le poste créance à l’actif du bilan.",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela diminue artificiellement le chiffre d’affaires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les services apportés par l’assurance-crédit ?",
+    "choices": [
+      {
+        "text": "Garantie de marge opérationnelle et des ratios bancaires.",
+        "correct": false
+      },
+      {
+        "text": "Affacturage, titrisation, portage bancaire à long terme.",
+        "correct": false
+      },
+      {
+        "text": "Prévention, recouvrement, indemnisation des créances garanties.",
+        "correct": true
+      },
+      {
+        "text": "Diminution automatique des délais de paiement contractuels.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi une entreprise, sachant que ses fournisseurs ont mis sous assurance-crédit une partie de leur encours sur elle, a-t-elle intérêt à payer dans les délais ?",
+    "choices": [
+      {
+        "text": "Car cela permet de bénéficier d’un abattement fiscal immédiat.",
+        "correct": false
+      },
+      {
+        "text": "Parce que la loi l’y oblige même si elle n’a pas de cash.",
+        "correct": false
+      },
+      {
+        "text": "Car les assureurs crédit partagent les retards dans leurs bases.",
+        "correct": true
+      },
+      {
+        "text": "Parce que cela permet une réduction automatique du prix.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un client ayant le choix entre payer à 10 jours avec un escompte de 2 % ou à 60 jours net choisit cette seconde possibilité. Que signale-t-il ?",
+    "choices": [
+      {
+        "text": "Une volonté de renégocier en amont les termes du contrat.",
+        "correct": false
+      },
+      {
+        "text": "Une volonté de rompre la relation commerciale en douceur.",
+        "correct": false
+      },
+      {
+        "text": "Une situation financière tendue ou un coût du capital élevé.",
+        "correct": true
+      },
+      {
+        "text": "Une stratégie de gestion active de sa marge brute unitaire.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi y a-t-il une corrélation entre délais de paiement et taux de défaut du client ?",
+    "choices": [
+      {
+        "text": "Le retard est souvent lié à une tension de trésorerie du client.",
+        "correct": true
+      },
+      {
+        "text": "Car les clients bien gérés paient au-delà des 90 jours.",
+        "correct": false
+      },
+      {
+        "text": "Car les clients en bonne santé obtiennent plus de crédits.",
+        "correct": false
+      },
+      {
+        "text": "Car les retards sont toujours causés par des litiges juridiques.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La gestion du BFR est-elle du seul domaine du directeur financier ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Non, car seul le contrôleur de gestion a la main dessus.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car il pilote tous les postes à l’actif du bilan.",
+        "correct": false
+      },
+      {
+        "text": "Non, elle implique toute l’entreprise : achats, logistique, ventes.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car il détient seul la délégation de signature bancaire.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que peut être tenté de faire un groupe qui craint à la clôture de son exercice de ne pas respecter les covenants de sa dette ?",
+    "choices": [
+      {
+        "text": "Réduire le BFR par des moyens ponctuels pour améliorer sa dette nette.",
+        "correct": true
+      },
+      {
+        "text": "Réévaluer à la hausse ses actifs immobilisés au bilan.",
+        "correct": false
+      },
+      {
+        "text": "Demander à ses fournisseurs un escompte exceptionnel rétroactif.",
+        "correct": false
+      },
+      {
+        "text": "Réduire les dividendes à verser pour compenser les ratios.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Montrez comment l’accroissement des délais de paiement des fournisseurs de 100 peut accroître la valeur des capitaux propres de 100. Quelles sont les limites de ce raisonnement ?",
+    "choices": [
+      {
+        "text": "Car cela réduit l’endettement net, donc augmente la valeur nette.",
+        "correct": true
+      },
+      {
+        "text": "Car cela permet de réduire les amortissements comptables.",
+        "correct": false
+      },
+      {
+        "text": "Car cela supprime le besoin en fonds de roulement des fournisseurs.",
+        "correct": false
+      },
+      {
+        "text": "Car l’allongement des délais augmente mécaniquement la productivité.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Montrez comment l’accélération du paiement des fournisseurs de 100 peut réduire la valeur des capitaux propres de l’entreprise de 100.",
+    "choices": [
+      {
+        "text": "Car cela diminue mécaniquement le chiffre d’affaires consolidé.",
+        "correct": false
+      },
+      {
+        "text": "Car cela entraîne une baisse immédiate du coût des ventes.",
+        "correct": false
+      },
+      {
+        "text": "Car cela impacte uniquement les résultats du groupe consolidé.",
+        "correct": false
+      },
+      {
+        "text": "Car cela augmente le BFR financé par endettement donc réduit la valeur nette.",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

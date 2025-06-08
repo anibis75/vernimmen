@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">34. La pratique de l’évaluation de l’entreprise</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quelle est la méthode la plus utilisée par les professionnels pour évaluer une entreprise cotée mature dans un secteur stable ?",
+    "choices": [
+      {
+        "text": "Actualisation des flux de trésorerie disponibles",
+        "correct": true
+      },
+      {
+        "text": "Actualisation des dividendes distribués",
+        "correct": false
+      },
+      {
+        "text": "Calcul du bénéfice net ajusté",
+        "correct": false
+      },
+      {
+        "text": "Application du goodwill sectoriel moyen",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans un DCF, quelle est la principale limite du taux de croissance à l’infini ?",
+    "choices": [
+      {
+        "text": "Il correspond toujours à la croissance du secteur",
+        "correct": false
+      },
+      {
+        "text": "Il ne doit pas excéder le taux de croissance de l’économie",
+        "correct": true
+      },
+      {
+        "text": "Il est basé sur le ROE projeté sur 10 ans",
+        "correct": false
+      },
+      {
+        "text": "Il doit être égal à l’inflation attendue",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi la méthode des comparables boursiers est-elle souvent combinée au DCF ?",
+    "choices": [
+      {
+        "text": "Pour valoriser les actifs incorporels de manière indépendante",
+        "correct": false
+      },
+      {
+        "text": "Pour calculer la prime de contrôle de l’entreprise",
+        "correct": false
+      },
+      {
+        "text": "Pour confronter la valeur obtenue à celle du marché",
+        "correct": true
+      },
+      {
+        "text": "Pour actualiser les cash flows au coût moyen pondéré",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le risque principal en utilisant la méthode des multiples de transactions passées ?",
+    "choices": [
+      {
+        "text": "Les contextes de marché peuvent différer fortement",
+        "correct": true
+      },
+      {
+        "text": "Les données sont toujours normalisées comptablement",
+        "correct": false
+      },
+      {
+        "text": "Les multiples sont systématiquement trop bas",
+        "correct": false
+      },
+      {
+        "text": "Elle surestime les synergies attendues",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que signifie un multiple EV/EBITDA de 10x dans un secteur donné ?",
+    "choices": [
+      {
+        "text": "Les investisseurs paient 10 ans d’EBITDA pour l’entreprise",
+        "correct": true
+      },
+      {
+        "text": "Cela équivaut à un PER de 10 dans tous les cas",
+        "correct": false
+      },
+      {
+        "text": "Le ROI sera multiplié par 10 en 5 ans",
+        "correct": false
+      },
+      {
+        "text": "L’entreprise génère 10 % d’EBITDA chaque année",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans une valorisation par DCF, pourquoi les prévisions de cash flows doivent-elles être cohérentes avec le business plan stratégique ?",
+    "choices": [
+      {
+        "text": "Car elles s’annulent dans la valeur terminale",
+        "correct": false
+      },
+      {
+        "text": "Car elles sont uniquement utilisées pour l’analyse de risque",
+        "correct": false
+      },
+      {
+        "text": "Car elles permettent d’optimiser la fiscalité",
+        "correct": false
+      },
+      {
+        "text": "Car elles conditionnent directement la valeur estimée",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’intérêt d’utiliser une approche par actifs pour valoriser une entreprise ?",
+    "choices": [
+      {
+        "text": "Elle permet d’évaluer la rentabilité des capitaux propres",
+        "correct": false
+      },
+      {
+        "text": "Elle reflète fidèlement les flux futurs",
+        "correct": false
+      },
+      {
+        "text": "Elle mesure l’efficacité opérationnelle à long terme",
+        "correct": false
+      },
+      {
+        "text": "Elle permet de déterminer une valeur plancher en cas de liquidation",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les méthodes de valorisation peuvent-elles donner des résultats très différents ?",
+    "choices": [
+      {
+        "text": "Parce qu’elles reposent sur des hypothèses distinctes",
+        "correct": true
+      },
+      {
+        "text": "Parce que les taux d’imposition utilisés sont figés",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elles utilisent toutes la même base de cash flows",
+        "correct": false
+      },
+      {
+        "text": "Parce que la valeur de marché est toujours supérieure",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que faut-il éviter lors du choix des sociétés comparables pour une méthode de multiples ?",
+    "choices": [
+      {
+        "text": "Inclure les sociétés les plus rentables uniquement",
+        "correct": false
+      },
+      {
+        "text": "Choisir uniquement des sociétés du même pays",
+        "correct": false
+      },
+      {
+        "text": "Écarter les sociétés endettées même faiblement",
+        "correct": false
+      },
+      {
+        "text": "Prendre des entreprises avec un profil trop différent",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "À quoi sert la prime de contrôle dans une évaluation ?",
+    "choices": [
+      {
+        "text": "À compenser un manque de liquidité des titres",
+        "correct": false
+      },
+      {
+        "text": "À équilibrer le poids des actionnaires minoritaires",
+        "correct": false
+      },
+      {
+        "text": "À refléter la valeur supplémentaire d’un pouvoir de décision",
+        "correct": true
+      },
+      {
+        "text": "À réduire la volatilité des résultats",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quand une entreprise devient-elle difficile à valoriser par les flux futurs ?",
+    "choices": [
+      {
+        "text": "Lorsqu’elle est en forte restructuration ou en perte de visibilité",
+        "correct": true
+      },
+      {
+        "text": "Lorsqu’elle a un taux de croissance stable",
+        "correct": false
+      },
+      {
+        "text": "Lorsqu’elle verse des dividendes réguliers",
+        "correct": false
+      },
+      {
+        "text": "Lorsqu’elle est cotée sur un marché réglementé",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que permet l’usage de plusieurs méthodes de valorisation ?",
+    "choices": [
+      {
+        "text": "De vérifier la qualité de l’audit externe",
+        "correct": false
+      },
+      {
+        "text": "De fixer automatiquement le prix de marché",
+        "correct": false
+      },
+      {
+        "text": "D’obtenir une moyenne arithmétique représentative",
+        "correct": false
+      },
+      {
+        "text": "Une triangulation pour limiter les biais d’estimation",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quel critère est essentiel pour la pertinence d’un multiple sectoriel ?",
+    "choices": [
+      {
+        "text": "Le niveau absolu du chiffre d’affaires",
+        "correct": false
+      },
+      {
+        "text": "Le pays d’origine de l’actionnaire principal",
+        "correct": false
+      },
+      {
+        "text": "L’ancienneté des sociétés incluses dans l’échantillon",
+        "correct": false
+      },
+      {
+        "text": "L’homogénéité du modèle économique des entreprises",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’approche DCF est-elle moins utilisée pour les startups ?",
+    "choices": [
+      {
+        "text": "Car leur valorisation est fondée uniquement sur le goodwill",
+        "correct": false
+      },
+      {
+        "text": "Car leurs cash flows sont trop incertains ou inexistants",
+        "correct": true
+      },
+      {
+        "text": "Car elles ne sont pas encore enregistrées au greffe",
+        "correct": false
+      },
+      {
+        "text": "Car elles ont un endettement structurel nul",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’impact d’un taux d’actualisation plus élevé dans un DCF ?",
+    "choices": [
+      {
+        "text": "Il augmente mécaniquement la valeur terminale",
+        "correct": false
+      },
+      {
+        "text": "Il maximise l’effet de levier comptable",
+        "correct": false
+      },
+      {
+        "text": "Il neutralise l’effet de la dette nette",
+        "correct": false
+      },
+      {
+        "text": "Il réduit la valeur actuelle des cash flows futurs",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelle méthode de valorisation est la plus adaptée à une société de gestion de fonds cotée ?",
+    "choices": [
+      {
+        "text": "Valorisation par la valeur comptable",
+        "correct": false
+      },
+      {
+        "text": "Valorisation par les dividendes",
+        "correct": false
+      },
+      {
+        "text": "Méthode des comparables boursiers",
+        "correct": true
+      },
+      {
+        "text": "Méthode des actifs réévalués",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que permet d’identifier une valorisation par multiples de transactions ?",
+    "choices": [
+      {
+        "text": "Le taux de croissance interne de l’entreprise",
+        "correct": false
+      },
+      {
+        "text": "Le prix payé récemment pour des sociétés comparables",
+        "correct": true
+      },
+      {
+        "text": "Le coût moyen pondéré du capital",
+        "correct": false
+      },
+      {
+        "text": "Le niveau des stocks normatifs sectoriels",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’horizon de prévision du DCF est-il souvent limité à 5 ou 10 ans ?",
+    "choices": [
+      {
+        "text": "Car le taux sans risque devient incalculable",
+        "correct": false
+      },
+      {
+        "text": "Car la visibilité diminue fortement au-delà",
+        "correct": true
+      },
+      {
+        "text": "Car la législation interdit de dépasser ce seuil",
+        "correct": false
+      },
+      {
+        "text": "Car les multiples boursiers se figent ensuite",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans quel cas la méthode de l’actif net comptable est-elle pertinente ?",
+    "choices": [
+      {
+        "text": "Pour les entreprises innovantes du numérique",
+        "correct": false
+      },
+      {
+        "text": "Pour valoriser une marque déposée",
+        "correct": false
+      },
+      {
+        "text": "Pour les sociétés en forte croissance",
+        "correct": false
+      },
+      {
+        "text": "Pour des sociétés en liquidation ou holdings patrimoniales",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi la valeur terminale est-elle si importante dans un DCF ?",
+    "choices": [
+      {
+        "text": "Car elle reflète le taux d’imposition optimal",
+        "correct": false
+      },
+      {
+        "text": "Car elle neutralise les dettes à court terme",
+        "correct": false
+      },
+      {
+        "text": "Car elle mesure l’EBIT retraité dans le futur",
+        "correct": false
+      },
+      {
+        "text": "Car elle représente souvent plus de 50 % de la valeur totale",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

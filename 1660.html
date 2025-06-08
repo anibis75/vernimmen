@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">44. L’actionnariat</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quelle est la forme la plus fréquente d’actionnariat en France pour les grandes entreprises cotées ?",
+    "choices": [
+      {
+        "text": "Un actionnariat dispersé avec un ou deux blocs significatifs",
+        "correct": true
+      },
+      {
+        "text": "Un contrôle familial total sans flottant",
+        "correct": false
+      },
+      {
+        "text": "Une entreprise 100 % détenue par l’État",
+        "correct": false
+      },
+      {
+        "text": "Un actionnariat exclusivement salarié",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’objectif principal d’un pacte d’actionnaires ?",
+    "choices": [
+      {
+        "text": "Organiser les relations entre actionnaires en cas de conflit",
+        "correct": true
+      },
+      {
+        "text": "Augmenter le nombre de titres cotés en Bourse",
+        "correct": false
+      },
+      {
+        "text": "Diminuer les droits de vote des minoritaires",
+        "correct": false
+      },
+      {
+        "text": "Éviter toute distribution de dividendes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que permet une clause de préemption dans un pacte d’actionnaires ?",
+    "choices": [
+      {
+        "text": "Supprimer les droits de vote d’un actionnaire minoritaire",
+        "correct": false
+      },
+      {
+        "text": "Donner un droit prioritaire à un actionnaire en cas de cession d’actions",
+        "correct": true
+      },
+      {
+        "text": "Permettre un financement bancaire sans aval",
+        "correct": false
+      },
+      {
+        "text": "Obliger tous les actionnaires à vendre en cas d’OPA",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À partir de quel seuil une offre publique d’achat obligatoire est-elle déclenchée selon la réglementation française ?",
+    "choices": [
+      {
+        "text": "30 % du capital ou des droits de vote",
+        "correct": true
+      },
+      {
+        "text": "75 % du capital ou des droits de vote",
+        "correct": false
+      },
+      {
+        "text": "50 % du capital et des droits de vote",
+        "correct": false
+      },
+      {
+        "text": "10 % du capital ou des droits de vote",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’effet principal de la loi Florange de 2014 ?",
+    "choices": [
+      {
+        "text": "Supprimer les plans d’actions gratuites",
+        "correct": false
+      },
+      {
+        "text": "Interdire les OPA hostiles sur les sociétés cotées",
+        "correct": false
+      },
+      {
+        "text": "Rendre automatique les droits de vote double pour les actionnaires fidèles",
+        "correct": true
+      },
+      {
+        "text": "Obliger les sociétés à verser un dividende minimal",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle structure actionnariale est typique des groupes coopératifs français ?",
+    "choices": [
+      {
+        "text": "Un sociétariat composé d’agriculteurs ou de clients",
+        "correct": true
+      },
+      {
+        "text": "Une holding purement capitalistique basée au Luxembourg",
+        "correct": false
+      },
+      {
+        "text": "Un actionnariat flottant avec hedge funds majoritaires",
+        "correct": false
+      },
+      {
+        "text": "Une fondation de droit néerlandais",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les entreprises mettent-elles en place des plans d’actions gratuites ?",
+    "choices": [
+      {
+        "text": "Pour éviter toute distribution de dividendes",
+        "correct": false
+      },
+      {
+        "text": "Pour réduire artificiellement le capital social",
+        "correct": false
+      },
+      {
+        "text": "Pour fidéliser les salariés en les associant à la valeur de l’entreprise",
+        "correct": true
+      },
+      {
+        "text": "Pour transférer des dettes au bilan de la holding",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’effet d’un droit de vote double ?",
+    "choices": [
+      {
+        "text": "Il interdit la distribution de dividendes pendant deux ans",
+        "correct": false
+      },
+      {
+        "text": "Il empêche l’émission de nouveaux titres",
+        "correct": false
+      },
+      {
+        "text": "Il supprime l’obligation d’information des actionnaires",
+        "correct": false
+      },
+      {
+        "text": "Il renforce le contrôle d’un actionnaire sur la société",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la condition pour bénéficier du droit de vote double dans une SA cotée en France ?",
+    "choices": [
+      {
+        "text": "Détention exclusive par une fondation",
+        "correct": false
+      },
+      {
+        "text": "Détention nominative d’au moins deux ans",
+        "correct": true
+      },
+      {
+        "text": "Détention au porteur depuis trois ans",
+        "correct": false
+      },
+      {
+        "text": "Détention majoritaire avec accord du conseil",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qu’est-ce qu’une minorité de blocage ?",
+    "choices": [
+      {
+        "text": "Un ensemble d’actions sans droit de vote",
+        "correct": false
+      },
+      {
+        "text": "Un bloc d’actions sous séquestre fiscal",
+        "correct": false
+      },
+      {
+        "text": "Une part de capital empêchant la distribution de dividendes",
+        "correct": false
+      },
+      {
+        "text": "Une détention de plus d’un tiers des voix pour bloquer les décisions d’AGE",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi une société utilise-t-elle un holding de contrôle ?",
+    "choices": [
+      {
+        "text": "Pour centraliser toutes les dettes de filiales",
+        "correct": false
+      },
+      {
+        "text": "Pour conserver le contrôle avec une faible part du capital",
+        "correct": true
+      },
+      {
+        "text": "Pour supprimer tous les pactes d’actionnaires",
+        "correct": false
+      },
+      {
+        "text": "Pour éviter les contrôles fiscaux européens",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le risque principal d’un actionnariat salarié trop concentré ?",
+    "choices": [
+      {
+        "text": "Une double exposition au risque financier et professionnel",
+        "correct": true
+      },
+      {
+        "text": "Une limitation de la gouvernance externe",
+        "correct": false
+      },
+      {
+        "text": "Une dilution excessive des investisseurs institutionnels",
+        "correct": false
+      },
+      {
+        "text": "Un excès de distribution de dividendes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la forme juridique qui permet une dissociation forte entre gestion et capital ?",
+    "choices": [
+      {
+        "text": "La société par actions simplifiée (SAS)",
+        "correct": false
+      },
+      {
+        "text": "La société en commandite par actions (SCA)",
+        "correct": true
+      },
+      {
+        "text": "La société coopérative de production (SCOP)",
+        "correct": false
+      },
+      {
+        "text": "La société à responsabilité limitée (SARL)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel mécanisme permet de renforcer les actionnaires historiques lors d’une augmentation de capital ?",
+    "choices": [
+      {
+        "text": "Attribution d’actions gratuites à tous les porteurs",
+        "correct": false
+      },
+      {
+        "text": "Rachat des actions à prix de marché",
+        "correct": false
+      },
+      {
+        "text": "Suppression du droit préférentiel de souscription",
+        "correct": true
+      },
+      {
+        "text": "Distribution obligatoire de réserves",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’intérêt stratégique des bons défensifs (\"bons Breton\") ?",
+    "choices": [
+      {
+        "text": "Réduire le taux d’imposition des dividendes",
+        "correct": false
+      },
+      {
+        "text": "Permettre une cotation secondaire à l’étranger",
+        "correct": false
+      },
+      {
+        "text": "Obliger les salariés à acheter des actions",
+        "correct": false
+      },
+      {
+        "text": "Empêcher une OPA en diluant l’initiateur",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quel rôle jouent les fonds activistes dans l’actionnariat ?",
+    "choices": [
+      {
+        "text": "Ils financent uniquement les entreprises publiques",
+        "correct": false
+      },
+      {
+        "text": "Ils fixent les cours des titres en période de crise",
+        "correct": false
+      },
+      {
+        "text": "Ils assurent la liquidité des marchés dérivés",
+        "correct": false
+      },
+      {
+        "text": "Ils exercent une pression publique pour améliorer la valeur",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les investisseurs institutionnels influencent-ils fortement les sociétés cotées ?",
+    "choices": [
+      {
+        "text": "Parce qu’ils ont tous un droit de veto",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’ils sont majoritaires dans toutes les AG",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’ils fixent le prix d’introduction en Bourse",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’ils détiennent une large part du flottant",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelle technique permet de rendre une entreprise non cessible en cas de tentative de prise de contrôle ?",
+    "choices": [
+      {
+        "text": "La révocation automatique du conseil d’administration",
+        "correct": false
+      },
+      {
+        "text": "L’émission de titres sans valeur de marché",
+        "correct": false
+      },
+      {
+        "text": "La fondation de droit néerlandais détenant les actifs clés",
+        "correct": true
+      },
+      {
+        "text": "L’augmentation obligatoire du capital en cas d’OPA",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle disposition peut rendre un contrat caduc en cas de changement d’actionnaire ?",
+    "choices": [
+      {
+        "text": "Le plan d’attribution universelle d’actions",
+        "correct": false
+      },
+      {
+        "text": "La clause de changement de contrôle",
+        "correct": true
+      },
+      {
+        "text": "La clause de prorogation des droits",
+        "correct": false
+      },
+      {
+        "text": "Le transfert automatique des créances",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le principal argument pour justifier l’existence de pactes Dutreil ?",
+    "choices": [
+      {
+        "text": "Réduction des droits de mutation en cas de succession ou donation",
+        "correct": true
+      },
+      {
+        "text": "Dispense d’établissement des comptes consolidés",
+        "correct": false
+      },
+      {
+        "text": "Suppression des impôts sur les plus-values de cession",
+        "correct": false
+      },
+      {
+        "text": "Obligation d’introduction en Bourse dans les 5 ans",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

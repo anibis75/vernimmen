@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">48. Les négociations du contrôle</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quels sont les avantages et les inconvénients de la négociation privée ?",
+    "choices": [
+      {
+        "text": "La confidentialité est maximale mais le processus peut être plus lent et moins compétitif.",
+        "correct": true
+      },
+      {
+        "text": "Le prix final est fixé par l’AMF mais peut varier selon l’OPA.",
+        "correct": false
+      },
+      {
+        "text": "La liquidité du titre est renforcée mais le contrôle devient diffus.",
+        "correct": false
+      },
+      {
+        "text": "L’opération est rapide mais les synergies sont souvent surestimées.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les avantages et les inconvénients de la mise aux enchères ?",
+    "choices": [
+      {
+        "text": "Elle facilite les paiements différés mais empêche l’intégration rapide.",
+        "correct": false
+      },
+      {
+        "text": "Elle favorise la croissance interne mais bloque les financements externes.",
+        "correct": false
+      },
+      {
+        "text": "Elle maximise le prix par la concurrence mais limite la confidentialité.",
+        "correct": true
+      },
+      {
+        "text": "Elle valorise les actifs nets mais oublie les dettes implicites.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’AMF est-elle la seule autorité de réglementation pouvant intervenir lors d’une OPA ?",
+    "choices": [
+      {
+        "text": "Non, d’autres autorités peuvent intervenir selon la nature de l’opération (concurrence, secteurs stratégiques).",
+        "correct": true
+      },
+      {
+        "text": "Non, seules les chambres de commerce étrangères sont compétentes.",
+        "correct": false
+      },
+      {
+        "text": "Oui, c’est la seule habilitée sur tous les marchés européens.",
+        "correct": false
+      },
+      {
+        "text": "Oui, sauf dans les cas de retrait obligatoire ou de scission.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les actions de concert sont-elles réglementées ?",
+    "choices": [
+      {
+        "text": "Pour interdire les achats par des investisseurs étrangers.",
+        "correct": false
+      },
+      {
+        "text": "Pour éviter une prise de contrôle déguisée sans offre publique.",
+        "correct": true
+      },
+      {
+        "text": "Pour bloquer les ventes croisées d’actifs entre filiales.",
+        "correct": false
+      },
+      {
+        "text": "Pour empêcher les pactes d’actionnaires minoritaires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le CVG incite-t-il à répondre à une offre ou à ne pas y venir ?",
+    "choices": [
+      {
+        "text": "Il incite à répondre à une offre en sécurisant l’acheteur contre les passifs cachés.",
+        "correct": true
+      },
+      {
+        "text": "Il pousse les cédants à surestimer les actifs existants.",
+        "correct": false
+      },
+      {
+        "text": "Il empêche toute revente de titres dans les deux ans.",
+        "correct": false
+      },
+      {
+        "text": "Il interdit les augmentations de capital postérieures.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’avantage d’une OPA ou d’une OPE pour un actionnaire minoritaire ?",
+    "choices": [
+      {
+        "text": "Recevoir une part du goodwill non amorti.",
+        "correct": false
+      },
+      {
+        "text": "Réintégrer la société cible à la holding familiale.",
+        "correct": false
+      },
+      {
+        "text": "Bénéficier d’un prix de rachat supérieur au cours de Bourse.",
+        "correct": true
+      },
+      {
+        "text": "Profiter d’un droit de vote double automatique.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pour l’initiateur, quel est l’avantage d’une offre publique sans ramassage préalable ? Quel est l’inconvénient ?",
+    "choices": [
+      {
+        "text": "L’offre est transparente mais déclenche immédiatement des défenses.",
+        "correct": true
+      },
+      {
+        "text": "Elle assure un bonus fiscal mais génère un blocage des dividendes.",
+        "correct": false
+      },
+      {
+        "text": "Elle donne un accès rapide aux comptes mais bloque les OPE futures.",
+        "correct": false
+      },
+      {
+        "text": "Elle réduit les synergies comptables mais améliore la structure bilancielle.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise peut-elle se déclarer candidate au rachat d’une société sans véritable intention de conclure une transaction ? Pourquoi ? Quelles techniques protègent le vendeur ?",
+    "choices": [
+      {
+        "text": "Oui, pour sonder le marché, mais le vendeur peut exiger une clause d’exclusivité et un dépôt de garantie.",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf si l’entreprise dispose d’un droit de préemption publique.",
+        "correct": false
+      },
+      {
+        "text": "Oui, mais cela nécessite l’accord du conseil fiscal central.",
+        "correct": false
+      },
+      {
+        "text": "Non, car toute intention doit être pré-validée par l’AMF.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qu’est-ce qui fera principalement le succès, ou l’échec d’une acquisition ?",
+    "choices": [
+      {
+        "text": "La présence d’un audit externe certifié par l’AMF.",
+        "correct": false
+      },
+      {
+        "text": "Le montant des dividendes versés la première année.",
+        "correct": false
+      },
+      {
+        "text": "La revalorisation comptable du capital social.",
+        "correct": false
+      },
+      {
+        "text": "La qualité de l’intégration post-acquisition.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les techniques d’earn-out sont-elles tout particulièrement utilisées par les sociétés de services non cotées ?",
+    "choices": [
+      {
+        "text": "Pour empêcher les fusions verticales ou horizontales.",
+        "correct": false
+      },
+      {
+        "text": "Pour transformer le goodwill en actifs fiscaux.",
+        "correct": false
+      },
+      {
+        "text": "Pour contourner les règles de consolidation des dettes.",
+        "correct": false
+      },
+      {
+        "text": "Pour retenir les dirigeants clés et conditionner le prix à la performance future.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Toutes choses égales par ailleurs, quelle est la contrepartie d’une confidentialité accrue dans une transaction ?",
+    "choices": [
+      {
+        "text": "Plus d’intérêt pour les banques mais moins d’aides publiques.",
+        "correct": false
+      },
+      {
+        "text": "Moins de pression concurrentielle mais aussi moins d’effet prix.",
+        "correct": true
+      },
+      {
+        "text": "Moins de garantie juridique mais plus de dividendes.",
+        "correct": false
+      },
+      {
+        "text": "Moins de contrôle fiscal mais plus d’amortissements.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans quel cas une enchère est-elle pertinente ?",
+    "choices": [
+      {
+        "text": "Lorsque le vendeur souhaite racheter ses propres actions.",
+        "correct": false
+      },
+      {
+        "text": "Quand on cherche un partenaire socialement responsable.",
+        "correct": false
+      },
+      {
+        "text": "Lorsqu’on veut maximiser le prix et aller vite.",
+        "correct": true
+      },
+      {
+        "text": "Quand la cible est sous procédure judiciaire interne.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Comment l’acquéreur peut-il se protéger contre les engagements et les dettes cachés éventuels de la cible ?",
+    "choices": [
+      {
+        "text": "En imposant une clause de retour à meilleure fortune.",
+        "correct": false
+      },
+      {
+        "text": "En faisant appel à l’Inspection Générale des Finances.",
+        "correct": false
+      },
+      {
+        "text": "En exigeant un lock-up de 5 ans sur les titres.",
+        "correct": false
+      },
+      {
+        "text": "En obtenant une clause de garantie d’actif et de passif.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la fonction d’une clause de garantie d’actif et de passif ? Quelle en est néanmoins la limite ?",
+    "choices": [
+      {
+        "text": "Répartir les profits sur trois exercices comptables.",
+        "correct": false
+      },
+      {
+        "text": "Réévaluer les actifs corporels selon l’inflation.",
+        "correct": false
+      },
+      {
+        "text": "Protéger les minoritaires contre la dilution.",
+        "correct": false
+      },
+      {
+        "text": "Couvrir les risques antérieurs à la vente mais elle n’empêche pas l’apparition de litiges futurs.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la suite logique d’un ramassage hostile réussi ?",
+    "choices": [
+      {
+        "text": "L’annulation des bons de souscription antérieurs.",
+        "correct": false
+      },
+      {
+        "text": "Une offre publique obligatoire sur le solde du capital.",
+        "correct": true
+      },
+      {
+        "text": "La revente partielle à des fonds souverains.",
+        "correct": false
+      },
+      {
+        "text": "La nomination automatique du PDG par l’AMF.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quelle limite pratique majeure l’achat de blocs permet-il de répondre ?",
+    "choices": [
+      {
+        "text": "Prolonger la durée d’amortissement fiscal des titres.",
+        "correct": false
+      },
+      {
+        "text": "Supprimer le besoin de publier des comptes semestriels.",
+        "correct": false
+      },
+      {
+        "text": "Accélérer la prise de contrôle en évitant les fluctuations de marché.",
+        "correct": true
+      },
+      {
+        "text": "Réduire les besoins en fonds de roulement à long terme.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quelle préoccupation des autorités de marché la suspension des cours après le dépôt d’une offre répond-elle ?",
+    "choices": [
+      {
+        "text": "Simplifier les obligations comptables consolidées.",
+        "correct": false
+      },
+      {
+        "text": "Rendre l’offre irrévocable juridiquement avant accord.",
+        "correct": false
+      },
+      {
+        "text": "Favoriser les actionnaires familiaux historiques.",
+        "correct": false
+      },
+      {
+        "text": "Éviter la diffusion inégale d’informations sensibles.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les moyens de défense des sociétés contre des offres hostiles sont-ils très strictement réglementés ?",
+    "choices": [
+      {
+        "text": "Pour protéger les administrateurs contre toute responsabilité.",
+        "correct": false
+      },
+      {
+        "text": "Pour empêcher les holdings d’être cotées deux fois.",
+        "correct": false
+      },
+      {
+        "text": "Pour éviter la consolidation des pertes fiscales.",
+        "correct": false
+      },
+      {
+        "text": "Pour garantir l’égalité de traitement entre actionnaires.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "En théorie financière, comment pourrait-on résumer le rôle d’une banque d’affaires dans une transaction ?",
+    "choices": [
+      {
+        "text": "Contrôler les flux intersociétés et les dividendes.",
+        "correct": false
+      },
+      {
+        "text": "Créer des conditions favorables à l’accord en valorisant et structurant la négociation.",
+        "correct": true
+      },
+      {
+        "text": "Remplacer les auditeurs dans les procédures de contrôle.",
+        "correct": false
+      },
+      {
+        "text": "Imposer le prix d’acquisition et gérer le reporting post-deal.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

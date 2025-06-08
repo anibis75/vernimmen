@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">38. Choisir sa structure financière</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Un bon plan de financement peut-il rattraper un investissement médiocre ?",
+    "choices": [
+      {
+        "text": "Oui, si l’endettement est bien structuré et peu coûteux",
+        "correct": false
+      },
+      {
+        "text": "Un bon financement rend toujours un investissement plus rentable",
+        "correct": false
+      },
+      {
+        "text": "Non, car il est très difficile de créer de la valeur grâce au financement",
+        "correct": true
+      },
+      {
+        "text": "Rater son financement compromet la stratégie d’investissement",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "De quelle maladie est atteint l’investisseur qui confond le taux facial de l’obligation convertible avec son coût financier ?",
+    "choices": [
+      {
+        "text": "La surévaluation du levier",
+        "correct": false
+      },
+      {
+        "text": "La myopie",
+        "correct": true
+      },
+      {
+        "text": "L’illusion monétaire",
+        "correct": false
+      },
+      {
+        "text": "Le biais de liquidité",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "On exige d’un actif un TRI de 17 % financé à 100 % par capitaux propres. Quel taux exigent les actionnaires ? Et les prêteurs si la dette finance 99 % ?",
+    "choices": [
+      {
+        "text": "12 % pour les actionnaires, 17 % pour les prêteurs",
+        "correct": false
+      },
+      {
+        "text": "17 % pour les actionnaires, 5 % pour les prêteurs",
+        "correct": false
+      },
+      {
+        "text": "17 % pour les deux",
+        "correct": true
+      },
+      {
+        "text": "8 % pour les actionnaires, 10 % pour les prêteurs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la source de financement avec l’écart le plus grand entre coût apparent et coût financier ?",
+    "choices": [
+      {
+        "text": "L’augmentation de capital",
+        "correct": false
+      },
+      {
+        "text": "Les produits hybrides",
+        "correct": false
+      },
+      {
+        "text": "L’autofinancement",
+        "correct": true
+      },
+      {
+        "text": "L’endettement bancaire",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Conseilleriez-vous à une start-up de se financer par endettement ?",
+    "choices": [
+      {
+        "text": "Non, car la dette est fiscalement peu avantageuse",
+        "correct": false
+      },
+      {
+        "text": "Oui, car ses coûts fixes sont limités",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela est trop risqué pour elle",
+        "correct": true
+      },
+      {
+        "text": "Oui, si elle a une valorisation importante",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Existe-t-il une structure financière optimale ?",
+    "choices": [
+      {
+        "text": "Non",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf en cas de croissance forte",
+        "correct": false
+      },
+      {
+        "text": "Oui, celle avec le coût moyen pondéré le plus faible",
+        "correct": false
+      },
+      {
+        "text": "Oui, un équilibre entre dette et fonds propres",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans un plan de financement, les capitaux propres ont deux rôles. Lesquels ?",
+    "choices": [
+      {
+        "text": "Financer et garantir les créanciers",
+        "correct": true
+      },
+      {
+        "text": "Compenser l’effet de l’inflation sur les marges",
+        "correct": false
+      },
+      {
+        "text": "Diluer les actionnaires et réduire le levier",
+        "correct": false
+      },
+      {
+        "text": "Couvrir les pertes et stabiliser la trésorerie",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "En définitive, la ressource la moins chère n’est-elle pas le court terme ?",
+    "choices": [
+      {
+        "text": "Non, sauf en cas de taux négatifs",
+        "correct": false
+      },
+      {
+        "text": "Oui, si la courbe des taux est plate",
+        "correct": false
+      },
+      {
+        "text": "Non, non et non ! On oublie le risque",
+        "correct": true
+      },
+      {
+        "text": "Oui, car la flexibilité prime le risque",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Comment concilier : « On ne peut faire fortune qu’en s’endettant » et « L’endettement ne crée pas de valeur » ?",
+    "choices": [
+      {
+        "text": "L’effet de levier justifie la contradiction",
+        "correct": false
+      },
+      {
+        "text": "Cela dépend du niveau de diversification",
+        "correct": true
+      },
+      {
+        "text": "L’endettement crée mécaniquement du BPA",
+        "correct": false
+      },
+      {
+        "text": "La fiscalité différencie les deux logiques",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une société avec beaucoup d’opportunités de croissance émettra-t-elle de la dette à court, moyen ou long terme ?",
+    "choices": [
+      {
+        "text": "À moyen terme, pour éviter la volatilité",
+        "correct": false
+      },
+      {
+        "text": "À long terme, car la dette est bon marché",
+        "correct": false
+      },
+      {
+        "text": "À long terme, pour sécuriser les cash-flows",
+        "correct": false
+      },
+      {
+        "text": "À court terme, pour se refinancer ensuite",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Donnez deux exemples de profits d’inflation.",
+    "choices": [
+      {
+        "text": "Déduction d’amortissements et baisse du BFR",
+        "correct": false
+      },
+      {
+        "text": "Profit sur stocks et d’opportunité d’investissement",
+        "correct": true
+      },
+      {
+        "text": "Survalorisation comptable et marge d’autofinancement",
+        "correct": false
+      },
+      {
+        "text": "Rentabilité financière accrue et levier plus fort",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Si la flexibilité est prioritaire, la politique saturera-t-elle la capacité d’endettement ?",
+    "choices": [
+      {
+        "text": "Non, car une marge est nécessaire",
+        "correct": true
+      },
+      {
+        "text": "Oui, car les taux sont faibles",
+        "correct": false
+      },
+      {
+        "text": "Non, mais la dette reste prioritaire",
+        "correct": false
+      },
+      {
+        "text": "Oui, pour exploiter l’effet de levier au maximum",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise a-t-elle vocation à être durablement financée par capitaux propres ?",
+    "choices": [
+      {
+        "text": "Oui, si ses actionnaires sont conservateurs",
+        "correct": false
+      },
+      {
+        "text": "Non, moins elle est risquée plus elle s’endette",
+        "correct": true
+      },
+      {
+        "text": "Non, car les taux d’intérêt sont toujours favorables",
+        "correct": false
+      },
+      {
+        "text": "Oui, si elle veut éviter la dilution",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un entrepreneur opportuniste peut-il avoir une stratégie industrielle durable ?",
+    "choices": [
+      {
+        "text": "Non, sauf s’il anticipe les marchés",
+        "correct": false
+      },
+      {
+        "text": "Non, la stratégie ne peut dépendre d’opportunités",
+        "correct": true
+      },
+      {
+        "text": "Oui, s’il capte les bons cycles économiques",
+        "correct": false
+      },
+      {
+        "text": "Oui, en profitant des spreads de taux",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les entreprises européennes se sont-elles désendettées entre 1980 et 1998 puis ont arrêté entre 1999 et 2002 ?",
+    "choices": [
+      {
+        "text": "Déréglementation bancaire puis crise asiatique",
+        "correct": false
+      },
+      {
+        "text": "Taux élevés et faibles investissements, puis nouvelles opportunités",
+        "correct": true
+      },
+      {
+        "text": "Faibles marges puis renchérissement de la dette",
+        "correct": false
+      },
+      {
+        "text": "Endettement LBO puis revente d’actifs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi un groupe hôtelier se finance-t-il plus facilement par dette qu’une entreprise de haute technologie ?",
+    "choices": [
+      {
+        "text": "Car il est exposé à moins de concurrence",
+        "correct": false
+      },
+      {
+        "text": "Car ses actifs ont une valeur de garantie",
+        "correct": true
+      },
+      {
+        "text": "Car il dégage plus de bénéfices",
+        "correct": false
+      },
+      {
+        "text": "Car il bénéficie de subventions publiques",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi une entreprise d’eau minérale se finance-t-elle plus facilement par dette qu’un groupe pharmaceutique ?",
+    "choices": [
+      {
+        "text": "Car ses flux sont plus prévisibles",
+        "correct": true
+      },
+      {
+        "text": "Car ses actionnaires sont plus conservateurs",
+        "correct": false
+      },
+      {
+        "text": "Car son activité est moins capitalistique",
+        "correct": false
+      },
+      {
+        "text": "Car son risque réglementaire est plus faible",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une compagnie aérienne peut-elle se financer par endettement malgré ses coûts fixes élevés ?",
+    "choices": [
+      {
+        "text": "Oui, car elle détient des actifs valorisables",
+        "correct": true
+      },
+      {
+        "text": "Non, car les coûts d’amortissement sont élevés",
+        "correct": false
+      },
+      {
+        "text": "Oui, si elle bénéficie d’aides publiques",
+        "correct": false
+      },
+      {
+        "text": "Non, car le secteur est trop risqué",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les entreprises européennes ne se sont-elles pas plus endettées entre 2015 et 2021 malgré des taux réels bas ?",
+    "choices": [
+      {
+        "text": "Car la BCE limitait les prêts aux entreprises",
+        "correct": false
+      },
+      {
+        "text": "Car l’endettement bancaire était plafonné",
+        "correct": false
+      },
+      {
+        "text": "Car les marchés obligataires étaient fermés",
+        "correct": false
+      },
+      {
+        "text": "Car les marges élevées ont réduit les besoins",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>
