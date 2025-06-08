@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">46. La gouvernance d’entreprise</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quelle théorie financière explique le mieux le développement de la gouvernance d’entreprise ?",
+    "choices": [
+      {
+        "text": "La théorie du cycle de vie de l’entreprise",
+        "correct": false
+      },
+      {
+        "text": "La théorie de la concurrence parfaite",
+        "correct": false
+      },
+      {
+        "text": "La théorie de l’agence",
+        "correct": true
+      },
+      {
+        "text": "La théorie des options réelles",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi la gouvernance d’entreprise s’est-elle développée principalement autour des sociétés cotées ?",
+    "choices": [
+      {
+        "text": "Car la gouvernance n’a pas d’impact dans les sociétés familiales",
+        "correct": false
+      },
+      {
+        "text": "Car la structure juridique y interdit l’autocontrôle",
+        "correct": false
+      },
+      {
+        "text": "Car l’actionnariat est plus éclaté et éloigné des dirigeants",
+        "correct": true
+      },
+      {
+        "text": "Car les sociétés cotées sont plus souvent dirigées par l’État",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "En quoi les stock-options permettent-elles de mieux aligner les intérêts des dirigeants et des actionnaires ?",
+    "choices": [
+      {
+        "text": "Elles sont versées uniquement en numéraire à la fin du mandat",
+        "correct": false
+      },
+      {
+        "text": "Elles remplacent totalement les actions gratuites dans la plupart des cas",
+        "correct": false
+      },
+      {
+        "text": "Elles garantissent des revenus fixes aux dirigeants quelle que soit la performance",
+        "correct": false
+      },
+      {
+        "text": "Elles donnent un intérêt financier aux dirigeants à faire croître la valeur de l’action",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Citez un grand groupe français où la moitié des 18 administrateurs étaient indépendants, ce qui n’a pas empêché la découverte de pratiques douteuses après l’arrestation de son PDG en 2018 ?",
+    "choices": [
+      {
+        "text": "TotalEnergies",
+        "correct": false
+      },
+      {
+        "text": "L’Oréal",
+        "correct": false
+      },
+      {
+        "text": "Carrefour",
+        "correct": false
+      },
+      {
+        "text": "Renault",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quel est le danger des comités spécialisés au sein du conseil d’administration ?",
+    "choices": [
+      {
+        "text": "Ils peuvent déresponsabiliser les autres administrateurs",
+        "correct": true
+      },
+      {
+        "text": "Ils ne sont pas reconnus juridiquement en France",
+        "correct": false
+      },
+      {
+        "text": "Ils empêchent les actionnaires de s’exprimer",
+        "correct": false
+      },
+      {
+        "text": "Ils sont trop nombreux et augmentent les coûts administratifs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que doit faire un administrateur surchargé qui ne peut pas assister à plus d’un conseil d’administration sur deux ?",
+    "choices": [
+      {
+        "text": "Démissionner",
+        "correct": true
+      },
+      {
+        "text": "Assister uniquement aux réunions stratégiques",
+        "correct": false
+      },
+      {
+        "text": "Déléguer son pouvoir de vote",
+        "correct": false
+      },
+      {
+        "text": "Réclamer une réduction de son périmètre",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qu’est-ce qui est le plus important : un administrateur indépendant, travailleur, compétent ou courageux ?",
+    "choices": [
+      {
+        "text": "Un administrateur expérimenté dans le même secteur",
+        "correct": false
+      },
+      {
+        "text": "Un administrateur discret et loyal",
+        "correct": false
+      },
+      {
+        "text": "Un administrateur compétent et courageux",
+        "correct": true
+      },
+      {
+        "text": "Un administrateur proche des actionnaires majoritaires",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans quels types de pays la gouvernance d’entreprise est-elle la plus nécessaire ?",
+    "choices": [
+      {
+        "text": "Dans les pays où l’État détient plus de 50 % des entreprises",
+        "correct": false
+      },
+      {
+        "text": "Dans les pays émergents avec droits de propriété incertains",
+        "correct": true
+      },
+      {
+        "text": "Dans les pays à faible fiscalité sur les sociétés",
+        "correct": false
+      },
+      {
+        "text": "Dans les pays à fort taux de cotation boursière",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le lien entre la gouvernance d’entreprise et le coût du capital ?",
+    "choices": [
+      {
+        "text": "Une gouvernance rigide augmente mécaniquement le coût du capital",
+        "correct": false
+      },
+      {
+        "text": "Le coût du capital est indépendant de la gouvernance",
+        "correct": false
+      },
+      {
+        "text": "Seule la politique de dividende influence le coût du capital",
+        "correct": false
+      },
+      {
+        "text": "Une bonne gouvernance baisse le coût du capital en réduisant les risques",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "La rotation régulière au bout de quelques années des auditeurs de l’entreprise améliore-t-elle la gouvernance ?",
+    "choices": [
+      {
+        "text": "Oui, mais seulement dans les sociétés non cotées",
+        "correct": false
+      },
+      {
+        "text": "Oui, en théorie, mais les recherches ne le confirment pas",
+        "correct": true
+      },
+      {
+        "text": "Non, car les auditeurs sont toujours indépendants",
+        "correct": false
+      },
+      {
+        "text": "Non, car elle affaiblit la qualité des audits",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La gouvernance d’entreprise s’applique-t-elle aux entreprises entièrement contrôlées par l’État ?",
+    "choices": [
+      {
+        "text": "Oui, mais seulement pour les entreprises en monopole",
+        "correct": false
+      },
+      {
+        "text": "Non, car les entreprises publiques sont soumises à d’autres règles",
+        "correct": false
+      },
+      {
+        "text": "Non, car l’État est censé être neutre et objectif",
+        "correct": false
+      },
+      {
+        "text": "Oui, les conflits d’intérêts existent aussi avec l’État actionnaire",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Que penser d’une entreprise qui passe d’un conseil d’administration à un conseil de surveillance puis revient au conseil d’administration ?",
+    "choices": [
+      {
+        "text": "Cela supprime le pouvoir des actionnaires minoritaires",
+        "correct": false
+      },
+      {
+        "text": "Cela est interdit dans les sociétés cotées",
+        "correct": false
+      },
+      {
+        "text": "Cela montre une capacité d’adaptation stratégique",
+        "correct": true
+      },
+      {
+        "text": "C’est une preuve d’instabilité et de mauvaise gestion",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Est-il souhaitable que le commissaire aux comptes soit aussi administrateur ?",
+    "choices": [
+      {
+        "text": "Oui, cela renforce la qualité des audits",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela crée un conflit d’intérêts interdit",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf s’il s’abstient de voter",
+        "correct": false
+      },
+      {
+        "text": "Oui, si le commissaire est indépendant",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les avantages et les inconvénients de la dissociation du poste de président et de directeur général ?",
+    "choices": [
+      {
+        "text": "Avantage : réduction des coûts de gouvernance ; inconvénient : moins de transparence",
+        "correct": false
+      },
+      {
+        "text": "Avantage : meilleure lisibilité pour les analystes ; inconvénient : perte de réactivité",
+        "correct": false
+      },
+      {
+        "text": "Avantage : alignement ESG ; inconvénient : baisse du rendement actionnarial",
+        "correct": false
+      },
+      {
+        "text": "Avantage : séparation des pouvoirs ; inconvénient : risque de conflits de personnes",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

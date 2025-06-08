@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">26. L’option</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Comment définir une option d’achat ou une option de vente ?",
+    "choices": [
+      {
+        "text": "Un contrat donnant le droit, mais non l’obligation, d’acheter ou de vendre un actif à un prix déterminé pendant une période ou à une date définie.",
+        "correct": true
+      },
+      {
+        "text": "Une obligation de vendre ou d’acheter un actif au meilleur prix disponible sur le marché.",
+        "correct": false
+      },
+      {
+        "text": "Un engagement irrévocable de transférer un actif selon le cours de marché en vigueur.",
+        "correct": false
+      },
+      {
+        "text": "Un contrat imposant la livraison d’un actif dès que son prix franchit un seuil critique.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les six paramètres qui déterminent la valeur d’une option ?",
+    "choices": [
+      {
+        "text": "Cours du sous-jacent, prix d’exercice, volatilité, durée de vie, taux sans risque, dividende ou coupon éventuel.",
+        "correct": true
+      },
+      {
+        "text": "Cours spot, coefficient bêta, nombre d’actionnaires, rating, niveau de dettes, cash-flow libre.",
+        "correct": false
+      },
+      {
+        "text": "Taux de croissance, marge brute, P/E ratio, nombre d’actions, capital social, date de création.",
+        "correct": false
+      },
+      {
+        "text": "Rentabilité passée, volume d’échange, spread bid-ask, capitalisation boursière, taux de change, devise de cotation.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelles sont les deux significations du delta d’une option ?",
+    "choices": [
+      {
+        "text": "Le ratio de couverture et la probabilité d’expiration dans la monnaie.",
+        "correct": true
+      },
+      {
+        "text": "Le coût marginal et la sensibilité au dividende.",
+        "correct": false
+      },
+      {
+        "text": "La corrélation implicite et l’intensité de variation des spreads.",
+        "correct": false
+      },
+      {
+        "text": "L’exposition directionnelle et le niveau de prime payé.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’impact sur la valeur d’une option de vente de différentes variables ?",
+    "choices": [
+      {
+        "text": "hausse, hausse, baisse, baisse, baisse",
+        "correct": false
+      },
+      {
+        "text": "baisse, baisse, hausse, baisse, hausse",
+        "correct": false
+      },
+      {
+        "text": "hausse, baisse, hausse, hausse, hausse",
+        "correct": true
+      },
+      {
+        "text": "baisse, hausse, baisse, baisse, hausse",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Peut-on compenser la vente d’une option d’achat par l’achat d’une option de vente ?",
+    "choices": [
+      {
+        "text": "Oui, mais uniquement si les deux options sont dans la monnaie.",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf en cas de parité put-call déséquilibrée.",
+        "correct": false
+      },
+      {
+        "text": "Oui, cela annule exactement le risque de marché.",
+        "correct": false
+      },
+      {
+        "text": "Non, cela revient à vendre le sous-jacent à l’échéance.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Comment un investisseur peut-il trouver des contreparties pour ces opérations ?",
+    "choices": [
+      {
+        "text": "En concluant un swap de liquidité auprès de sa banque.",
+        "correct": false
+      },
+      {
+        "text": "En intervenant sur le marché à terme.",
+        "correct": true
+      },
+      {
+        "text": "En négociant directement avec une chambre de compensation.",
+        "correct": false
+      },
+      {
+        "text": "En combinant plusieurs forward contracts sur produits dérivés.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Démontrez qu’après coup, l’option a toujours été payée trop cher. Qu’y a-t-il d’absurde ?",
+    "choices": [
+      {
+        "text": "Car les options suivent un pricing biaisé par les taux spot.",
+        "correct": false
+      },
+      {
+        "text": "Parce que la prime est toujours surestimée par l’émetteur.",
+        "correct": false
+      },
+      {
+        "text": "C’est ignorer que la valeur intrinsèque n’est pas figée.",
+        "correct": true
+      },
+      {
+        "text": "C’est vrai uniquement pour les options avec forte maturité.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est, de ces quatre opérations, la plus risquée ?",
+    "choices": [
+      {
+        "text": "L’achat d’une option d’achat.",
+        "correct": false
+      },
+      {
+        "text": "La vente d’une option de vente.",
+        "correct": false
+      },
+      {
+        "text": "La vente d’une option d’achat.",
+        "correct": true
+      },
+      {
+        "text": "L’achat d’une option de vente.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi la valeur temps ne peut-elle pas être négative ?",
+    "choices": [
+      {
+        "text": "Parce qu’elle reflète uniquement l’inflation anticipée.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elle est fixée réglementairement par l’émetteur.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elle dépend uniquement du temps restant.",
+        "correct": false
+      },
+      {
+        "text": "Sinon l’option vaudrait moins que sa valeur intrinsèque, ce qui générerait un arbitrage.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la principale difficulté pour valoriser une option ?",
+    "choices": [
+      {
+        "text": "Choisir entre taux nominal et taux actuariel.",
+        "correct": false
+      },
+      {
+        "text": "Estimer le montant exact des dividendes futurs.",
+        "correct": false
+      },
+      {
+        "text": "Déterminer la volatilité à utiliser.",
+        "correct": true
+      },
+      {
+        "text": "Prendre en compte l’impact du spread bid-ask.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les options se prêtent-elles aux stratégies d’arbitrage, spéculation et couverture ?",
+    "choices": [
+      {
+        "text": "Elles sont immunisées contre les taux d’intérêt et la volatilité.",
+        "correct": false
+      },
+      {
+        "text": "Elles génèrent automatiquement des profits si bien choisies.",
+        "correct": false
+      },
+      {
+        "text": "Elles s’échangent à la valeur nominale et sans contrepartie réelle.",
+        "correct": false
+      },
+      {
+        "text": "Elles reconstituent un actif sous-jacent, offrent un levier et permettent d’acheter du temps.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Comment protéger contre une baisse sans frais ?",
+    "choices": [
+      {
+        "text": "Acheter un put à 100 et financer par la vente d’un call à 120.",
+        "correct": true
+      },
+      {
+        "text": "Acheter un call à 120 et vendre un put à 100.",
+        "correct": false
+      },
+      {
+        "text": "Vendre un call à 80 et acheter un call à 100.",
+        "correct": false
+      },
+      {
+        "text": "Acheter un call et un put à la monnaie avec échéance différente.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le versement de dividendes est-il favorable pour un détenteur de stock-options ?",
+    "choices": [
+      {
+        "text": "Oui, car cela réduit le coût de l’option d’achat.",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela augmente le prix d’exercice à terme.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car cela augmente la probabilité d’exercice.",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela diminue la valeur du sous-jacent.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’apport majeur du modèle de Black-Scholes ?",
+    "choices": [
+      {
+        "text": "Évaluer précisément les cash flows des actifs à taux fixe.",
+        "correct": false
+      },
+      {
+        "text": "Avoir industrialisé la valorisation des actifs conditionnels.",
+        "correct": true
+      },
+      {
+        "text": "Permettre de fixer la prime de risque à long terme.",
+        "correct": false
+      },
+      {
+        "text": "Offrir une garantie absolue contre les erreurs de pricing.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les modèles d’options sont inefficaces face aux événements extrêmes ?",
+    "choices": [
+      {
+        "text": "Car ils ne prennent pas en compte la fiscalité des plus-values.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’ils ignorent complètement les variations de volume.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’ils reposent sur des lois log-normales sous-estimant les queues de distribution.",
+        "correct": true
+      },
+      {
+        "text": "Car ils sont sensibles uniquement à la prime et non à l’exposition.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

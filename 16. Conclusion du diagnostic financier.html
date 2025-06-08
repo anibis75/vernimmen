@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">16. Conclusion du diagnostic financier</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quel est le risque du créancier ? Comment s’en protège-t-il ?",
+    "choices": [
+      {
+        "text": "Le risque d’illiquidité des actions. Souscrire une assurance-vie ou revendre à perte si besoin.",
+        "correct": false
+      },
+      {
+        "text": "Le risque de change. Utiliser des swaps de devises ou des options de couverture.",
+        "correct": false
+      },
+      {
+        "text": "Le risque de défaut de l’emprunteur. Prendre des garanties ou une assurance-crédit, vérifier la solvabilité mesurée par l’analyse financière.",
+        "correct": true
+      },
+      {
+        "text": "Le risque de dilution. Protéger par des clauses de relution ou par des titres hybrides.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la garantie ultime du remboursement du créancier ?",
+    "choices": [
+      {
+        "text": "La capacité à lever des fonds propres.",
+        "correct": false
+      },
+      {
+        "text": "La valeur de marché de l’entreprise.",
+        "correct": false
+      },
+      {
+        "text": "La valeur des capitaux propres.",
+        "correct": true
+      },
+      {
+        "text": "La trésorerie disponible nette.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qu’est-ce que la solvabilité ?",
+    "choices": [
+      {
+        "text": "La capacité à financer sa croissance externe par émission obligataire.",
+        "correct": false
+      },
+      {
+        "text": "La capacité à payer ses fournisseurs à 30 jours.",
+        "correct": false
+      },
+      {
+        "text": "La capacité à dégager un résultat net supérieur à 10 % du chiffre d’affaires.",
+        "correct": false
+      },
+      {
+        "text": "La capacité à rembourser intégralement ses dettes en cas de faillite.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise insolvable fait-elle nécessairement faillite ?",
+    "choices": [
+      {
+        "text": "Oui, systématiquement si ses dettes dépassent ses actifs.",
+        "correct": false
+      },
+      {
+        "text": "Oui, sauf si son goodwill est élevé et valorisé positivement.",
+        "correct": false
+      },
+      {
+        "text": "Non, si elle a des filiales rentables qui compensent les pertes.",
+        "correct": false
+      },
+      {
+        "text": "Tôt ou tard sans doute à moins qu’elle ne réussisse à restructurer son bilan.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise s’endette au jour le jour pour acheter des obligations à taux fixe. Court-elle un risque de liquidité ? de solvabilité ? Comment ce(s) risque(s) se matérialise(nt)-t-il(s) ? Quelle est l’anticipation de taux de cette société ?",
+    "choices": [
+      {
+        "text": "Non ; non ; la société peut refinancer à taux constant et vendre à maturité ; hausse des taux.",
+        "correct": false
+      },
+      {
+        "text": "Oui ; oui ; impossibilité de renouveler l’endettement quand il vient à échéance, moins-value sur ses obligations en cas de hausse des taux d’intérêt ; baisse des taux.",
+        "correct": true
+      },
+      {
+        "text": "Non ; oui ; le risque est seulement lié à son BFR ; maintien des taux.",
+        "correct": false
+      },
+      {
+        "text": "Oui ; non ; elle vendra ses obligations à prime ; stabilité des taux.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise à l’actif net négatif est-elle illiquide ? Insolvable ?",
+    "choices": [
+      {
+        "text": "Peut-être, mais cela n’a rien d’automatique (par exemple si ses dettes sont à long terme) ; oui par définition.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car elle ne peut plus rembourser aucune échéance ; non si ses clients paient à temps.",
+        "correct": false
+      },
+      {
+        "text": "Non dans tous les cas ; non, si elle détient des stocks valorisés.",
+        "correct": false
+      },
+      {
+        "text": "Non, si elle a un chiffre d’affaires stable ; oui si elle distribue des dividendes.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "On a pu dire qu’une bonne structure financière était, pour l’entreprise, un gage de liberté et d’autonomie. Est-ce vrai ?",
+    "choices": [
+      {
+        "text": "Oui ; sauf à avoir un cours sous-évalué et dans ce cas courir un risque d’OPA (voir le chapitre 47).",
+        "correct": true
+      },
+      {
+        "text": "Non ; car la croissance impose toujours de s’endetter.",
+        "correct": false
+      },
+      {
+        "text": "Non ; une entreprise ne dépend jamais des marchés financiers.",
+        "correct": false
+      },
+      {
+        "text": "Oui ; mais seulement si l’endettement dépasse 80 %.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’actif net est-il difficile à établir en comptes consolidés ?",
+    "choices": [
+      {
+        "text": "En raison des intérêts minoritaires dont on ne sait pas à quels actifs précis ils ont droit.",
+        "correct": true
+      },
+      {
+        "text": "À cause des écarts d’acquisition passés en charges chaque année.",
+        "correct": false
+      },
+      {
+        "text": "À cause de la valorisation flottante des goodwill en normes IFRS.",
+        "correct": false
+      },
+      {
+        "text": "Parce que les stocks et les créances sont amortis à la juste valeur.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’intérêt du concept d’actif net comptable ?",
+    "choices": [
+      {
+        "text": "C’est une méthode d’évaluation du goodwill après fusion.",
+        "correct": false
+      },
+      {
+        "text": "C’est une approximation du cash-flow disponible annuel.",
+        "correct": false
+      },
+      {
+        "text": "C’est l’évaluation comptable de l’ensemble des actifs et des engagements de l’entreprise.",
+        "correct": true
+      },
+      {
+        "text": "C’est une mesure de la capacité de financement externe par obligations.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La solvabilité d’un groupe s’apprécie-t-elle en comptes consolidés ou en comptes sociaux ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "En comptes sociaux uniquement pour suivre l’endettement bancaire.",
+        "correct": false
+      },
+      {
+        "text": "En comptes sociaux car c’est là que figurent les charges de personnel.",
+        "correct": false
+      },
+      {
+        "text": "En comptes consolidés car les flux de trésorerie sont consolidés.",
+        "correct": false
+      },
+      {
+        "text": "En comptes consolidés pour apprécier la totalité des actifs et la totalité des dettes du groupe, une attention particulière doit être portée aux filiales mises en équivalence et fortement endettées puisque leurs dettes n’apparaissent pas au bilan consolidé.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "La liquidité d’un groupe s’apprécie-t-elle en comptes sociaux ou en comptes consolidés ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Uniquement en consolidé, car c’est là que se concentre la trésorerie nette.",
+        "correct": false
+      },
+      {
+        "text": "Les deux ! Il faut éviter la situation d’une maison mère endettée avec des filiales qui ne le sont pas et qui ne peuvent pas verser des dividendes importants. La maison mère ne peut faire face au service de la dette qu’en cédant des actifs dans des conditions de valorisation qui peuvent être mauvaises (voir Vivendi Universal en 2002 qui était illiquide, mais pas insolvable).",
+        "correct": true
+      },
+      {
+        "text": "Uniquement en social, car les filiales ne comptent pas dans les ratios.",
+        "correct": false
+      },
+      {
+        "text": "En consolidé car les dividendes sont versés automatiquement à la maison mère.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">2. Vers une finance d’entreprise verte, durable et responsable </h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "L’annonce d’une hausse des taux non anticipée doit-elle mécaniquement conduire à une baisse de l’indice boursier ?",
+    "choices": [
+      {
+        "text": "Oui, mécaniquement, car les valeurs varient en sens inverse des taux d’intérêt.",
+        "correct": true
+      },
+      {
+        "text": "Non, cela entraîne en général une hausse, car cela reflète une bonne santé économique.",
+        "correct": false
+      },
+      {
+        "text": "Cela dépend uniquement du secteur concerné, pas des taux.",
+        "correct": false
+      },
+      {
+        "text": "Non, car les marchés actions sont décorrélés des taux monétaires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’élément important dans toute évaluation de titres ?",
+    "choices": [
+      {
+        "text": "Le dividende net versé l’année précédente.",
+        "correct": false
+      },
+      {
+        "text": "Le ratio cours/bénéfice historique de l’entreprise.",
+        "correct": false
+      },
+      {
+        "text": "Le taux d’intérêt réel uniquement.",
+        "correct": false
+      },
+      {
+        "text": "Les anticipations du marché.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quel est le maître mot en finance selon le Vernimmen ?",
+    "choices": [
+      {
+        "text": "La solvabilité.",
+        "correct": false
+      },
+      {
+        "text": "La croissance.",
+        "correct": false
+      },
+      {
+        "text": "Le rendement.",
+        "correct": false
+      },
+      {
+        "text": "La valeur.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Que peut faire un actionnaire qui est en désaccord avec la politique RSE d’une entreprise ?",
+    "choices": [
+      {
+        "text": "Voter contre certaines résolutions ou vendre ses actions.",
+        "correct": true
+      },
+      {
+        "text": "Porter plainte auprès de l’AMF.",
+        "correct": false
+      },
+      {
+        "text": "Demander le remboursement de ses actions.",
+        "correct": false
+      },
+      {
+        "text": "Exiger un rachat d’actions à prix fixe.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un prêt à 3,5 % sans garantie ou à 3 % avec garantie : comment raisonner ?",
+    "choices": [
+      {
+        "text": "Prendre celui avec garantie pour rassurer les créanciers.",
+        "correct": false
+      },
+      {
+        "text": "Opter pour le plus court à rembourser.",
+        "correct": false
+      },
+      {
+        "text": "Toujours choisir le taux le plus bas.",
+        "correct": false
+      },
+      {
+        "text": "Évaluer si la réduction du taux compense la perte de flexibilité liée à la garantie.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Que peut faire un étudiant en désaccord avec la RSE d’une entreprise ?",
+    "choices": [
+      {
+        "text": "Lancer une action en justice.",
+        "correct": false
+      },
+      {
+        "text": "Refuser l’offre d’emploi, ce qui peut affecter l’attractivité de l’entreprise.",
+        "correct": true
+      },
+      {
+        "text": "Contacter les syndicats.",
+        "correct": false
+      },
+      {
+        "text": "Publier une note de conjoncture sur l’entreprise.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans le cas de Rexel, qui supporte la baisse de 0,10 % du taux d’intérêt ?",
+    "choices": [
+      {
+        "text": "Les investisseurs qui acceptent une rentabilité moindre pour soutenir les engagements ESG.",
+        "correct": true
+      },
+      {
+        "text": "L’entreprise par réduction de son résultat net.",
+        "correct": false
+      },
+      {
+        "text": "Les banques qui renoncent à leurs marges.",
+        "correct": false
+      },
+      {
+        "text": "Le gouvernement via des subventions implicites.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle forme d’analyse est la plus pertinente pour les actions ?",
+    "choices": [
+      {
+        "text": "L’analyse par le coût du capital seul.",
+        "correct": false
+      },
+      {
+        "text": "L’analyse bilancielle uniquement.",
+        "correct": false
+      },
+      {
+        "text": "La comparaison avec les obligations d’État.",
+        "correct": false
+      },
+      {
+        "text": "L’analyse par l’offre et la demande de titres financiers.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Si l’on vous dit \"rentabilité\", à quel autre terme penser ?",
+    "choices": [
+      {
+        "text": "Résultat net.",
+        "correct": false
+      },
+      {
+        "text": "Flux de trésorerie disponible.",
+        "correct": false
+      },
+      {
+        "text": "Risque.",
+        "correct": true
+      },
+      {
+        "text": "Dette.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Et si l’on vous dit \"risque\", à quel autre terme penser ?",
+    "choices": [
+      {
+        "text": "Inflation.",
+        "correct": false
+      },
+      {
+        "text": "Durée.",
+        "correct": false
+      },
+      {
+        "text": "Croissance.",
+        "correct": false
+      },
+      {
+        "text": "Rentabilité.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les deux défauts fréquents chez un mauvais financier d’entreprise ?",
+    "choices": [
+      {
+        "text": "Myopie et incompétence marketing.",
+        "correct": true
+      },
+      {
+        "text": "Manque de créativité et excès de rigueur.",
+        "correct": false
+      },
+      {
+        "text": "Aversion au risque et excès de prudence.",
+        "correct": false
+      },
+      {
+        "text": "Refus des modèles mathématiques et absence d’intuition.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les roadshows précèdent-ils les placements de titres ?",
+    "choices": [
+      {
+        "text": "Pour contourner les obligations réglementaires.",
+        "correct": false
+      },
+      {
+        "text": "Pour convaincre les investisseurs et présenter l’activité sous-jacente.",
+        "correct": true
+      },
+      {
+        "text": "Pour éviter les commissions d’intermédiaires.",
+        "correct": false
+      },
+      {
+        "text": "Pour bénéficier d’avantages fiscaux.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi s’endetter à très court terme est risqué ?",
+    "choices": [
+      {
+        "text": "Risque de liquidité si on ne peut pas se refinancer à temps.",
+        "correct": true
+      },
+      {
+        "text": "Cela empêche l'accès au crédit à long terme.",
+        "correct": false
+      },
+      {
+        "text": "Les banques refusent généralement les prêts à court terme.",
+        "correct": false
+      },
+      {
+        "text": "Cela entraîne toujours un surcoût fiscal.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que faire si on vous propose un rendement supérieur au taux du marché ?",
+    "choices": [
+      {
+        "text": "Accepter immédiatement, c’est une opportunité rare.",
+        "correct": false
+      },
+      {
+        "text": "Vérifier le risque associé, souvent caché (ex : subprime).",
+        "correct": true
+      },
+      {
+        "text": "Simuler les performances dans Excel.",
+        "correct": false
+      },
+      {
+        "text": "Contacter l’AMF pour validation.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

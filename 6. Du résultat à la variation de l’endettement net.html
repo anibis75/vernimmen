@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">6. Du résultat à la variation de l’endettement net</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Les méthodes d’évaluation des stocks influencent-elles :",
+    "choices": [
+      {
+        "text": "Le résultat uniquement lorsqu'il y a cession d’actifs.",
+        "correct": false
+      },
+      {
+        "text": "Le résultat de l’entreprise, mais pas la trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "La trésorerie, mais pas le résultat de l’entreprise.",
+        "correct": false
+      },
+      {
+        "text": "Ni le résultat ni la trésorerie.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une dotation aux amortissements impacte-t-elle le résultat et/ou la trésorerie ?",
+    "choices": [
+      {
+        "text": "Elle impacte la trésorerie mais pas le résultat.",
+        "correct": false
+      },
+      {
+        "text": "Elle impacte le résultat mais pas la trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "Elle impacte directement les flux d’investissement.",
+        "correct": false
+      },
+      {
+        "text": "Elle n’a aucun impact, ni sur le résultat, ni sur la trésorerie.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la différence entre les flux de trésorerie provenant de l’exploitation et l’ETE ?",
+    "choices": [
+      {
+        "text": "L’ETE est toujours supérieur aux flux de trésorerie.",
+        "correct": false
+      },
+      {
+        "text": "Il n’y a aucune différence entre les deux.",
+        "correct": false
+      },
+      {
+        "text": "Les flux de trésorerie excluent les éléments exceptionnels, contrairement à l’ETE.",
+        "correct": false
+      },
+      {
+        "text": "Les flux de trésorerie incluent impôt et frais financiers, contrairement à l’ETE.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelles sont les charges calculées à réintégrer dans la CAF ?",
+    "choices": [
+      {
+        "text": "Résultat financier, intérêts payés, impôt différé.",
+        "correct": false
+      },
+      {
+        "text": "Dotations aux amortissements, dépréciations d’actifs, provisions à caractère de réserve.",
+        "correct": true
+      },
+      {
+        "text": "Dividendes, achats de stocks, amortissements financiers.",
+        "correct": false
+      },
+      {
+        "text": "Plus-values de cession, charges d’exploitation, variation du BFR.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La CAF est-elle une mesure de richesse ou de trésorerie ?",
+    "choices": [
+      {
+        "text": "Ni richesse, ni trésorerie, mais un potentiel de trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "Elle mesure exclusivement la trésorerie.",
+        "correct": false
+      },
+      {
+        "text": "C’est une mesure du résultat économique brut.",
+        "correct": false
+      },
+      {
+        "text": "Elle est équivalente à l’EBE.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’écart entre EBE et ETE correspond-il à la variation du BFR ?",
+    "choices": [
+      {
+        "text": "Parce qu’il s’agit d’un résultat net différé.",
+        "correct": false
+      },
+      {
+        "text": "Car le BFR est un décalage temporel entre flux et création de richesse.",
+        "correct": true
+      },
+      {
+        "text": "Car les stocks ne sont pas comptabilisés.",
+        "correct": false
+      },
+      {
+        "text": "Car il traduit uniquement des charges non payées.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Différence entre ventes et recettes d’exploitation d’un exercice ?",
+    "choices": [
+      {
+        "text": "Les ventes peuvent être à crédit, donc non encaissées.",
+        "correct": true
+      },
+      {
+        "text": "Les ventes sont toujours payées comptant.",
+        "correct": false
+      },
+      {
+        "text": "Les ventes excluent les livraisons intragroupe.",
+        "correct": false
+      },
+      {
+        "text": "Les recettes comprennent les produits exceptionnels.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Différence entre CAF et flux de trésorerie provenant de l’exploitation ?",
+    "choices": [
+      {
+        "text": "La CAF comprend les dividendes versés.",
+        "correct": false
+      },
+      {
+        "text": "Le flux de trésorerie inclut l’investissement.",
+        "correct": false
+      },
+      {
+        "text": "Ils sont équivalents mais présentés différemment.",
+        "correct": false
+      },
+      {
+        "text": "Le flux de trésorerie retranche la variation du BFR à la CAF.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi la notion de désendettement net est-elle plus pertinente ?",
+    "choices": [
+      {
+        "text": "Parce qu’elle ignore les dividendes versés.",
+        "correct": false
+      },
+      {
+        "text": "Car elle neutralise les manipulations possibles sur le disponible en fin d’année.",
+        "correct": true
+      },
+      {
+        "text": "Car elle correspond au résultat net corrigé.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elle est fiscalement plus avantageuse.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une dépréciation de clients/stocks a-t-elle un impact en trésorerie ?",
+    "choices": [
+      {
+        "text": "Non, car elle est compensée par la diminution du poste et n’impacte pas les flux.",
+        "correct": true
+      },
+      {
+        "text": "Oui, elle entraîne une sortie de trésorerie.",
+        "correct": false
+      },
+      {
+        "text": "Oui, elle augmente le besoin en fonds de roulement.",
+        "correct": false
+      },
+      {
+        "text": "Non, car elle est réintégrée fiscalement.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une augmentation de capital par incorporation de réserves apparaît-elle dans le tableau de flux ?",
+    "choices": [
+      {
+        "text": "Oui, comme augmentation des capitaux propres.",
+        "correct": false
+      },
+      {
+        "text": "Oui, comme flux de financement.",
+        "correct": false
+      },
+      {
+        "text": "Non, car il n’y a pas de flux de trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf si elle concerne une émission de nouvelles actions.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le traitement des provisions dans la CAF ?",
+    "choices": [
+      {
+        "text": "Seules celles à caractère de réserve sont intégrées.",
+        "correct": true
+      },
+      {
+        "text": "Les provisions fiscales sont toujours incluses.",
+        "correct": false
+      },
+      {
+        "text": "Les provisions ne concernent jamais la CAF.",
+        "correct": false
+      },
+      {
+        "text": "Toutes les provisions sont déduites.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quoi correspond une diminution d’un poste d’actif dans le tableau de flux ?",
+    "choices": [
+      {
+        "text": "À une augmentation du BFR.",
+        "correct": false
+      },
+      {
+        "text": "À un emploi de fonds.",
+        "correct": false
+      },
+      {
+        "text": "À un flux de trésorerie négatif.",
+        "correct": false
+      },
+      {
+        "text": "À un flux de trésorerie positif.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "À quoi correspond une augmentation d’un poste de passif ?",
+    "choices": [
+      {
+        "text": "À un flux de trésorerie négatif.",
+        "correct": false
+      },
+      {
+        "text": "À une réduction de la CAF.",
+        "correct": false
+      },
+      {
+        "text": "À un investissement net.",
+        "correct": false
+      },
+      {
+        "text": "À un flux de trésorerie positif.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Vrai ou faux : Le remboursement d’un emprunt apparaît au compte de résultat ?",
+    "choices": [
+      {
+        "text": "Vrai, car il s’agit d’une charge financière.",
+        "correct": false
+      },
+      {
+        "text": "Faux, mais il impacte le résultat courant.",
+        "correct": false
+      },
+      {
+        "text": "Faux.",
+        "correct": true
+      },
+      {
+        "text": "Vrai, car il impacte la CAF.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’impact d’une réévaluation d’actifs corporels dans le tableau de flux ?",
+    "choices": [
+      {
+        "text": "C’est une ressource exceptionnelle.",
+        "correct": false
+      },
+      {
+        "text": "C’est un flux d’investissement fictif.",
+        "correct": false
+      },
+      {
+        "text": "Cela augmente les capitaux propres donc la trésorerie.",
+        "correct": false
+      },
+      {
+        "text": "Aucun, car il ne s’agit pas d’un flux de trésorerie.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les plus-values de cession sont-elles déduites de la CAF ?",
+    "choices": [
+      {
+        "text": "Pour éviter de les comptabiliser deux fois : elles sont déjà incluses dans le prix de cession.",
+        "correct": true
+      },
+      {
+        "text": "Car elles réduisent la dotation aux amortissements.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elles sont non déductibles fiscalement.",
+        "correct": false
+      },
+      {
+        "text": "Car elles ne concernent pas les opérations récurrentes.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

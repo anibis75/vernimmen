@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">50. Les LBO</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Expliquez pourquoi un LBO est une forme de réduction de capital.",
+    "choices": [
+      {
+        "text": "Car on rembourse les créanciers avec des actions nouvellement émises.",
+        "correct": false
+      },
+      {
+        "text": "Car on substitue de la dette à des capitaux propres en consolidé.",
+        "correct": true
+      },
+      {
+        "text": "Car on augmente la dette pour créer un effet de dilution comptable.",
+        "correct": false
+      },
+      {
+        "text": "Car on transforme des dettes en capitaux propres par effet fiscal.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le risque d’un LBO ?",
+    "choices": [
+      {
+        "text": "Celui d’une valorisation trop faible par rapport aux actifs de marché pouvant nuire à la gouvernance future.",
+        "correct": false
+      },
+      {
+        "text": "Celui d’un endettement trop lourd par rapport aux flux de trésorerie dégagés qui conduit à la faillite ou à une restructuration.",
+        "correct": true
+      },
+      {
+        "text": "Celui d’une instabilité juridique de la structure du holding qui rend incertain le traitement fiscal des dividendes.",
+        "correct": false
+      },
+      {
+        "text": "Celui d’une dilution du management qui réduit les incitations de long terme sur la génération de cash-flows.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le financement mezzanine dans un LBO s’apparente-t-il à des capitaux propres ou à de la dette ?",
+    "choices": [
+      {
+        "text": "À de la dette puisqu’il doit tôt ou tard être remboursé.",
+        "correct": true
+      },
+      {
+        "text": "À une obligation car il porte un intérêt fixe souvent élevé.",
+        "correct": false
+      },
+      {
+        "text": "À un hybride puisque le remboursement dépend du cash-flow.",
+        "correct": false
+      },
+      {
+        "text": "À des capitaux propres puisqu’il peut être converti en actions.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Dans un LBO, le détenteur de dettes senior prend-il plus ou moins de risques que le détenteur de dettes junior ?",
+    "choices": [
+      {
+        "text": "Plus de risque car son exposition porte sur les actifs stratégiques.",
+        "correct": false
+      },
+      {
+        "text": "Moins de risque car sa garantie est partagée avec les actionnaires.",
+        "correct": false
+      },
+      {
+        "text": "Moins de risque car il est remboursé avant le détenteur de dette junior.",
+        "correct": true
+      },
+      {
+        "text": "Autant de risque car les deux ont une créance prioritaire en cas de défaut.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Peut-on réaliser un LBO sur une start-up ?",
+    "choices": [
+      {
+        "text": "Non, car l’incertitude sur les flux de trésorerie générés est beaucoup trop grande pour supporter un endettement.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car le potentiel de création de valeur peut justifier un fort effet de levier.",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf si la valorisation permet une dette supérieure au cash.",
+        "correct": false
+      },
+      {
+        "text": "Oui, à condition que l'équipe fondatrice conserve la majorité.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un fonds de LBO peut-il accepter dans un LBO secondaire que le management ne réinvestisse pas une partie significative de sa plus-value dégagée par le premier LBO ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Oui, dans le cas où le TRI cible du fonds a été dépassé au premier cycle.",
+        "correct": false
+      },
+      {
+        "text": "Non, en général il demande à ce qu’environ 50 % de la plus-value soit réinvestie dans le nouveau LBO pour garder une forte motivation des dirigeants.",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf si le plan d’affaires prévoit une sortie rapide sans réendettement.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car la génération de cash est déjà largement sécurisée dans ce type d’opération.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi dit-on parfois que gérer un LBO « c’est le retour à la classe prépa » ?",
+    "choices": [
+      {
+        "text": "Car les actionnaires imposent des objectifs financiers et stratégiques sur le long terme.",
+        "correct": false
+      },
+      {
+        "text": "Car les équipes doivent livrer un reporting mensuel détaillé aux créanciers.",
+        "correct": false
+      },
+      {
+        "text": "Car le niveau d’exigence dans le suivi des covenants est extrêmement élevé.",
+        "correct": false
+      },
+      {
+        "text": "Car les dirigeants travaillent beaucoup, sous pression et avec une obsession : la génération de cash.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quelles sont les différentes issues à un LBO ?",
+    "choices": [
+      {
+        "text": "L’intégration dans un groupe, le rachat par le management, la conversion en coopérative, l’acquisition inverse par une start-up, la transformation juridique.",
+        "correct": false
+      },
+      {
+        "text": "La vente à un concurrent, la fusion en holding, la scission stratégique, le réinvestissement des dividendes, la revente partielle à un family office.",
+        "correct": false
+      },
+      {
+        "text": "La création d’une JV sectorielle, le remboursement des dettes, la prise de participation d’un investisseur, l’émission d’obligations perpétuelles, la recapitalisation croisée.",
+        "correct": false
+      },
+      {
+        "text": "L’introduction en Bourse, la cession à un industriel, à un autre fonds de LBO, le réendettement, la prise de contrôle par les créanciers, la faillite.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "En quoi la gouvernance d’entreprise d’un LBO est-elle différente de celle d’une entreprise cotée à l’actionnariat dispersé ?",
+    "choices": [
+      {
+        "text": "Centralisation de la gouvernance opérationnelle, communication réduite avec les actionnaires externes, suppression des bonus variables.",
+        "correct": false
+      },
+      {
+        "text": "Suivi trimestriel du free cash-flow, division des fonctions stratégiques, dissociation entre le management et les superviseurs.",
+        "correct": false
+      },
+      {
+        "text": "Fort intéressement financier des dirigeants, contrainte de la dette à rembourser, dialogue constant avec des actionnaires professionnels.",
+        "correct": true
+      },
+      {
+        "text": "Absence d’obligation de publication des comptes, limitation des droits de vote, contrôle indirect du conseil stratégique.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "En quoi la gouvernance d’entreprise d’un LBO est-elle différente de celle d’une entreprise familiale ?",
+    "choices": [
+      {
+        "text": "L’évaluation des dirigeants est faite par le fondateur sur la base d’un plan stratégique quinquennal.",
+        "correct": false
+      },
+      {
+        "text": "Les capacités démontrées sont le critère numéro un de choix d’un dirigeant, non l’appartenance à une famille.",
+        "correct": true
+      },
+      {
+        "text": "Le pouvoir est réparti selon les anciens statuts familiaux votés à l’AG.",
+        "correct": false
+      },
+      {
+        "text": "Les décisions clés sont prises en comité de gestion de manière collective.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est l’avantage d’être actionnaire d’un fonds de LBO coté par rapport à celui de l’être d’un fonds de LBO non coté ? Quel est l’inconvénient ?",
+    "choices": [
+      {
+        "text": "L’action offre un dividende fixe, mais elle ne permet pas de sortir avant la liquidation.",
+        "correct": false
+      },
+      {
+        "text": "L’action est liquidable chaque année, mais sa valeur dépend de l’EBITDA cumulé.",
+        "correct": false
+      },
+      {
+        "text": "L’action est transférable entre associés, mais elle perd son droit au carried interest.",
+        "correct": false
+      },
+      {
+        "text": "L’action peut se vendre facilement en Bourse, elle n’est pas illiquide. En revanche, elle est négociée avec une décote par rapport à l’actif net réévalué qui peut être très importante.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les trois risques que court un actionnaire d’un fonds de LBO et pour lesquels il doit être rémunéré ?",
+    "choices": [
+      {
+        "text": "Le risque lié au montage fiscal, le risque de sortie différée en cas de changement macro, et le risque contractuel en cas de mauvaise syndication.",
+        "correct": false
+      },
+      {
+        "text": "Le risque opérationnel de l’activité des entreprises sous LBO, le risque de la structure financière (l’endettement) et l’illiquidité de son placement.",
+        "correct": true
+      },
+      {
+        "text": "Le risque sectoriel lié aux fluctuations du marché cible, le risque d’arbitrage défavorable au moment de la revente, et le risque sur le TRI réalisé à l’échéance.",
+        "correct": false
+      },
+      {
+        "text": "Le risque de retournement stratégique des partenaires, le risque de gouvernance minoritaire, et le risque sur la notation de crédit.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un LBO peut-il fonctionner sans dette ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Non, car il n’y a plus la pression du remboursement de la dette ni l’espérance d’une rémunération dopée par l’effet de levier.",
+        "correct": true
+      },
+      {
+        "text": "Non, car les fonds préfèrent conserver leur cash pour optimiser la structure financière.",
+        "correct": false
+      },
+      {
+        "text": "Oui, si l’objectif est une croissance purement organique financée par les excédents.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car la gouvernance des fonds permet un suivi rigoureux du cash-flow sans besoin d’endettement.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Peut-on être dirigeant d’une entreprise sous LBO pendant dix ans ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Oui, dans le cas où le fonds choisit de rester passif pendant toute la période.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car la stabilité de la stratégie permet une gouvernance continue et motivée.",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf si les conditions de refinancement ont été renégociées à chaque cycle.",
+        "correct": false
+      },
+      {
+        "text": "Non, car cela fait trop de pressions à supporter trop longtemps et car normalement ayant fait fortune au bout de deux LBO, l’envie de travailler sous pression pour accroître sa fortune s’est émoussée.",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

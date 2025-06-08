@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">32. Le coût du capital </h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Dans quel cas le coût du capital est-il égal au coût des capitaux propres ? Le coût du capital peut-il être égal au coût de l’endettement ?",
+    "choices": [
+      {
+        "text": "Lorsque l’entreprise réalise des marges élevées. Oui si les créanciers exigent une prime très faible.",
+        "correct": false
+      },
+      {
+        "text": "Lorsque l’endettement est nul. Oui dans les cas rarissimes où l’entreprise est très endettée et qu’elle n’a quasi plus de capitaux propres.",
+        "correct": true
+      },
+      {
+        "text": "Lorsque le rendement des capitaux propres est stable. Oui si les dividendes sont constants et sûrs sur le long terme.",
+        "correct": false
+      },
+      {
+        "text": "Lorsque les fonds propres sont faiblement volatils. Oui si la fiscalité avantage clairement la dette par rapport aux actions.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi le coût du capital constitue-t-il le lien direct entre la rentabilité des investissements industriels et la rentabilité exigée par les investisseurs financiers ?",
+    "choices": [
+      {
+        "text": "Car le coût du capital est utilisé comme le taux de rentabilité minimum que doivent dégager les projets d’investissement pour être approuvés.",
+        "correct": true
+      },
+      {
+        "text": "Car le coût du capital sert à estimer la valeur de marché des titres selon les normes comptables en vigueur.",
+        "correct": false
+      },
+      {
+        "text": "Car le coût du capital intègre l’impact des dividendes sur la valorisation boursière de l’entreprise.",
+        "correct": false
+      },
+      {
+        "text": "Car le coût du capital reflète uniquement la rentabilité des projets existants selon la comptabilité de gestion.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi le coût du capital n’est-il pas un concept comptable ?",
+    "choices": [
+      {
+        "text": "Car c’est le coût auquel l’entreprise pourrait reconstituer son passif aujourd’hui, ce qui n’a rien à voir avec des coûts comptables qui sont historiques.",
+        "correct": true
+      },
+      {
+        "text": "Car c’est un indicateur basé sur les flux futurs estimés et non sur les résultats enregistrés en comptabilité.",
+        "correct": false
+      },
+      {
+        "text": "Car il est déterminé par le marché selon des méthodes statistiques et non par les états financiers annuels.",
+        "correct": false
+      },
+      {
+        "text": "Car il est dérivé du bêta et des primes de risque, et non des valeurs historiques inscrites au bilan.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quoi est égal le coût du capital ?",
+    "choices": [
+      {
+        "text": "Au rendement minimal attendu par les actionnaires et les créanciers combinés.",
+        "correct": false
+      },
+      {
+        "text": "Au taux moyen pondéré entre le coût de la dette brute et le rendement des actions ordinaires.",
+        "correct": false
+      },
+      {
+        "text": "Au taux de rentabilité exigé sur l’actif économique.",
+        "correct": true
+      },
+      {
+        "text": "Au taux d’actualisation des dividendes futurs pondéré par le ratio d’endettement.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le coût des capitaux propres est-il égal au rendement de l’action ?",
+    "choices": [
+      {
+        "text": "Non, il est souvent proche ou légèrement inférieur sauf si le PER est fortement élevé.",
+        "correct": false
+      },
+      {
+        "text": "Non, il lui est très généralement bien supérieur sauf si l’entreprise verse la totalité de ses résultats en dividendes.",
+        "correct": true
+      },
+      {
+        "text": "Non, il est parfois égal ou inférieur sauf si la société est en croissance rapide et peu endettée.",
+        "correct": false
+      },
+      {
+        "text": "Non, il est généralement plus bas sauf si le cours de l’action est très volatil et peu suivi.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Combien y a-t-il de coût(s) du capital dans une entreprise diversifiée sectoriellement mais non géographiquement ? Même question au sein de chacune de ses divisions ?",
+    "choices": [
+      {
+        "text": "Autant que de divisions. Un seul puisqu’il n’y a pas d’hétérogénéité géographique.",
+        "correct": true
+      },
+      {
+        "text": "Un par pays d’activité. Plusieurs dans chaque division selon la clientèle visée par le projet.",
+        "correct": false
+      },
+      {
+        "text": "Un seul pour le groupe. Autant que de divisions car chacune est juridiquement distincte.",
+        "correct": false
+      },
+      {
+        "text": "Un seul dans chaque entité. Plusieurs si les produits vendus présentent des risques différents.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise qui investit dans des projets à la rentabilité inférieure à son coût du capital pourra-t-elle continuer à se procurer des ressources par autofinancement ? Par endettement ? Par augmentation de capital ?",
+    "choices": [
+      {
+        "text": "Oui, si les résultats restent stables ; oui, avec des garanties ; oui, si les actions sont sous-évaluées.",
+        "correct": false
+      },
+      {
+        "text": "Oui, malheureusement par autofinancement ; oui, par endettement, si elle est encore très peu endettée ; difficilement par augmentation de capital car les actionnaires n’auront pas envie de réinvestir.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car les investisseurs tolèrent parfois un rendement faible ; oui, si les banques restent confiantes ; oui, si elle annonce un plan stratégique crédible.",
+        "correct": false
+      },
+      {
+        "text": "Oui, grâce aux réserves ; oui, à taux fixe ; oui, si l’opération est pilotée par une banque réputée.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise cotée lance une offre publique d’achat sur une autre entreprise à un prix excessif. Selon la théorie du coût du capital, quelle doit être la sanction ?",
+    "choices": [
+      {
+        "text": "Sa prime de risque baisse car l’acquisition renforce sa présence sur un secteur stable.",
+        "correct": false
+      },
+      {
+        "text": "Sa valeur baisse car elle vient de réaliser un investissement à la rentabilité insuffisante.",
+        "correct": true
+      },
+      {
+        "text": "Son cours monte car les investisseurs anticipent une croissance rapide du chiffre d’affaires.",
+        "correct": false
+      },
+      {
+        "text": "Son coût des fonds propres diminue car elle augmente sa taille et sa part de marché.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La diversification permet-elle de réduire le coût du capital ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Non, car seul le risque de marché est rémunéré et non le risque diversifiable qui peut être éliminé par la diversification.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car la diversification réduit globalement la volatilité du résultat net de l’entreprise.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car un portefeuille diversifié permet de baisser le bêta observé de chaque segment.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car elle permet d’étendre la base clients et donc de lisser les cycles d’activité.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Est-ce parce qu’une entreprise s’endette qu’elle a un faible coût du capital, ou est-ce parce qu’elle a un faible coût du capital qu’elle s’endette ?",
+    "choices": [
+      {
+        "text": "Si elle s’endette fortement, son coût du capital baisse mécaniquement grâce à l’effet de levier.",
+        "correct": false
+      },
+      {
+        "text": "Si elle a un faible coût du capital, c’est que le risque de son actif économique est faible, donc elle peut s’endetter beaucoup.",
+        "correct": true
+      },
+      {
+        "text": "Si elle a peu de fonds propres, elle s’endette, ce qui réduit mécaniquement le coût global.",
+        "correct": false
+      },
+      {
+        "text": "Si elle s’endette plus, c’est pour tirer profit du différentiel entre dette et coût des fonds propres.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Est-ce parce qu’une entreprise se finance par capitaux propres qu’elle a un fort coût du capital ou est-ce parce qu’elle a un fort coût du capital qu’elle se finance par capitaux propres ?",
+    "choices": [
+      {
+        "text": "Si elle finance par actions, les investisseurs exigent plus, donc le coût augmente.",
+        "correct": false
+      },
+      {
+        "text": "Si elle utilise peu la dette, son coût du capital augmente car le levier est inefficace.",
+        "correct": false
+      },
+      {
+        "text": "Si le marché est volatil, elle émet des actions, ce qui accroît la prime de risque exigée.",
+        "correct": false
+      },
+      {
+        "text": "Si elle a un fort coût du capital, c’est que le risque de son actif économique est fort, donc elle a du mal à s’endetter beaucoup, d’où des capitaux propres importants.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise française qui a un coût du capital de 9 % envisage un nouvel investissement aux Pays-Bas financé par emprunt à 4 %. Quel taux utiliser ?",
+    "choices": [
+      {
+        "text": "4 % car c’est le coût réel du financement mis en place. Cela permettra de maximiser la VAN.",
+        "correct": false
+      },
+      {
+        "text": "9 % car le coût du capital de ce projet n’a pas de raison d’être différent. Choisir 4 % reviendrait à ignorer le coût des capitaux propres nécessaires à sécuriser les prêteurs.",
+        "correct": true
+      },
+      {
+        "text": "6 % car cela reflète le taux moyen pondéré historique utilisé par l’entreprise pour ce métier.",
+        "correct": false
+      },
+      {
+        "text": "7 % car les Pays-Bas ont un risque macroéconomique plus faible que la France actuellement.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Les Éditions de Moulinsart (Belgique) créent une activité de conserves de crabe au Maroc. Quel taux de coût du capital utiliser ?",
+    "choices": [
+      {
+        "text": "4 % car c’est une estimation prudente du coût d’entrée dans un nouveau pays.",
+        "correct": false
+      },
+      {
+        "text": "8 % car c’est le coût moyen pondéré utilisé par Moulinsart pour ses projets récents.",
+        "correct": false
+      },
+      {
+        "text": "13 % car le risque de marché du Maroc est plus élevé que celui de la Belgique.",
+        "correct": true
+      },
+      {
+        "text": "2 % car il s’agit du taux de rendement de la trésorerie réinvestie à court terme.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi une entreprise très surévaluée risque-t-elle d’avoir un coût du capital sous-estimé via la méthode indirecte ?",
+    "choices": [
+      {
+        "text": "Car les ratios financiers de marché donnent de fausses pondérations. Solution : utiliser une moyenne mobile.",
+        "correct": false
+      },
+      {
+        "text": "Car l’effet fiscal n’est pas bien pris en compte. Solution : recalculer selon le rendement net.",
+        "correct": false
+      },
+      {
+        "text": "Car la surévaluation de l’action réduit artificiellement le coût des fonds propres. Solution : utiliser la méthode directe.",
+        "correct": true
+      },
+      {
+        "text": "Car le PER devient artificiellement élevé. Solution : revenir à une valorisation comptable moyenne.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi une entreprise très sous-évaluée peut-elle avoir un coût du capital surestimé via la méthode indirecte ?",
+    "choices": [
+      {
+        "text": "Car le poids relatif de la dette devient trop faible. Solution : normaliser avec une structure cible.",
+        "correct": false
+      },
+      {
+        "text": "Car l’effet de levier augmente la pondération des fonds propres. Solution : revenir au beta désendetté.",
+        "correct": false
+      },
+      {
+        "text": "Car le coût des capitaux propres est exagéré. Solution : utiliser la méthode directe.",
+        "correct": true
+      },
+      {
+        "text": "Car les primes de marché deviennent peu représentatives. Solution : recalculer via l’indice sectoriel.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

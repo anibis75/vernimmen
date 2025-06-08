@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">30. Les mesures de la création de valeur*Mesure de la création de valeur</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Quel est le défaut des taux de rentabilité comptable ?",
+    "choices": [
+      {
+        "text": "Ils excluent l'effet de levier financier.",
+        "correct": false
+      },
+      {
+        "text": "Ils reposent sur une hypothèse de marché parfait.",
+        "correct": false
+      },
+      {
+        "text": "Ils sont calculés en valeur actuelle des flux.",
+        "correct": false
+      },
+      {
+        "text": "Ils ne prennent pas en compte le risque ni le coût du capital.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi Félix Bogliolo a-t-il écrit que l’EVA était un coup de marketing génial ?",
+    "choices": [
+      {
+        "text": "Car l’EVA repose sur une méthode d’audit financier infaillible.",
+        "correct": false
+      },
+      {
+        "text": "Parce que c’est une mesure validée par les normes IFRS.",
+        "correct": false
+      },
+      {
+        "text": "Car il s’agit d’un rebranding d’un concept ancien avec un fort impact médiatique.",
+        "correct": true
+      },
+      {
+        "text": "Parce que c’est une invention mathématique inédite.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qu’est-ce qu’un TSR calculé sur 1 an ?",
+    "choices": [
+      {
+        "text": "C’est la variation du PER sur l’année.",
+        "correct": false
+      },
+      {
+        "text": "C’est la moyenne des dividendes versés depuis 3 ans.",
+        "correct": false
+      },
+      {
+        "text": "C’est la rentabilité annuelle de l’action.",
+        "correct": true
+      },
+      {
+        "text": "C’est le coût moyen pondéré du capital.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise en perte fait-elle un profit économique positif ?",
+    "choices": [
+      {
+        "text": "Non, car elle ne couvre pas le coût de ses capitaux.",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf si elle est en phase de croissance.",
+        "correct": false
+      },
+      {
+        "text": "Oui, si sa marge brute est positive.",
+        "correct": false
+      },
+      {
+        "text": "Oui, si sa dette est bien notée.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise avec un résultat net positif peut-elle faire apparaître un profit économique négatif ?",
+    "choices": [
+      {
+        "text": "Oui, si le résultat ne couvre pas le coût des capitaux propres.",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf en cas de distribution de dividendes.",
+        "correct": false
+      },
+      {
+        "text": "Oui, si le ROCE est supérieur au WACC.",
+        "correct": false
+      },
+      {
+        "text": "Non, le résultat net positif implique toujours un EVA positif.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quoi la somme des EVA futures actualisées au coût du capital est-elle égale ?",
+    "choices": [
+      {
+        "text": "À la capitalisation boursière.",
+        "correct": false
+      },
+      {
+        "text": "À la valeur actuelle nette.",
+        "correct": true
+      },
+      {
+        "text": "À l’excédent brut d’exploitation.",
+        "correct": false
+      },
+      {
+        "text": "Au montant des capitaux propres.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quelles conditions peut-on comparer le bénéfice par action avant et après une opération ?",
+    "choices": [
+      {
+        "text": "Lorsque le PER reste identique après l'opération.",
+        "correct": false
+      },
+      {
+        "text": "Si le risque, la croissance et la structure financière sont constants.",
+        "correct": true
+      },
+      {
+        "text": "Si la taille du bilan est restée inchangée.",
+        "correct": false
+      },
+      {
+        "text": "Si les synergies prévues sont intégrées au BPA.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Que pensez-vous de cette citation : « une série d’EVA positives signale soit un monopole, soit une mauvaise estimation du coût du capital » ?",
+    "choices": [
+      {
+        "text": "Elle est discutable, car l’EVA ne prend pas en compte le coût de la dette.",
+        "correct": false
+      },
+      {
+        "text": "Elle est fausse, car l’EVA positive est toujours une bonne chose.",
+        "correct": false
+      },
+      {
+        "text": "Elle est juste, car seule une position dominante ou une erreur de WACC l'explique.",
+        "correct": true
+      },
+      {
+        "text": "Elle est vraie uniquement pour les sociétés technologiques.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "La baisse du taux de rentabilité des capitaux propres est-elle synonyme de destruction de valeur ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Oui, car le ROE est toujours aligné sur la création de valeur.",
+        "correct": false
+      },
+      {
+        "text": "Non, uniquement si l’endettement est stable.",
+        "correct": false
+      },
+      {
+        "text": "Oui, si le BPA diminue aussi.",
+        "correct": false
+      },
+      {
+        "text": "Pas forcément, cela dépend du risque ou des perspectives de croissance.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "La baisse du taux de rentabilité de l’actif économique (ROCE) est-elle synonyme de destruction de valeur ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Oui, dès qu'il baisse sous 10 %.",
+        "correct": false
+      },
+      {
+        "text": "Non, si la dette a diminué dans le même temps.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car le ROCE est la seule mesure fiable de performance.",
+        "correct": false
+      },
+      {
+        "text": "Pas toujours, cela dépend du WACC et des opportunités de croissance.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise peut-elle créer de la valeur et avoir un TSR négatif sur 1 an ? Sur 10 ans ?",
+    "choices": [
+      {
+        "text": "Non, sauf si le coût du capital est nul.",
+        "correct": false
+      },
+      {
+        "text": "Oui sur 1 an ; sur 10 ans c’est plus rare à cause des effets de lissage.",
+        "correct": true
+      },
+      {
+        "text": "Oui, mais seulement en cas de dividende exceptionnel.",
+        "correct": false
+      },
+      {
+        "text": "Non, le TSR négatif est toujours un signe de destruction de valeur.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quoi correspond le TSR en matière de choix d’investissement ?",
+    "choices": [
+      {
+        "text": "À la somme des cash flows futurs.",
+        "correct": false
+      },
+      {
+        "text": "Au taux de rentabilité interne de l’action.",
+        "correct": true
+      },
+      {
+        "text": "Au rapport entre EBITDA et capitalisation.",
+        "correct": false
+      },
+      {
+        "text": "À la VAN actualisée à 5 %.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Si vous alliez sur une île déserte avec un seul critère de mesure de création de valeur, lequel prendriez-vous ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "La VAN, car elle mesure précisément la valeur créée.",
+        "correct": true
+      },
+      {
+        "text": "Le BPA, car il est connu des marchés.",
+        "correct": false
+      },
+      {
+        "text": "L’EVA, car elle est plus simple à communiquer.",
+        "correct": false
+      },
+      {
+        "text": "Le ROCE, car il reflète le rendement des actifs.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un BPA en baisse après une acquisition est-il synonyme de destruction de valeur ?",
+    "choices": [
+      {
+        "text": "Non, sauf si le PER est faible.",
+        "correct": false
+      },
+      {
+        "text": "Oui, sauf en cas de croissance externe forte.",
+        "correct": false
+      },
+      {
+        "text": "Pas nécessairement, cela dépend du risque et des synergies.",
+        "correct": true
+      },
+      {
+        "text": "Oui, la baisse du BPA est toujours négative.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un BPA en hausse après une acquisition est-il synonyme de création de valeur ?",
+    "choices": [
+      {
+        "text": "Non, sauf si la prime de contrôle est faible.",
+        "correct": false
+      },
+      {
+        "text": "Pas toujours, cela dépend du prix payé et du risque pris.",
+        "correct": true
+      },
+      {
+        "text": "Oui, une hausse de BPA signifie forcément création de valeur.",
+        "correct": false
+      },
+      {
+        "text": "Oui, si le PER reste constant.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi un calcul précis d’EVA ou de rentabilité implique-t-il des retraitements bilantiels ?",
+    "choices": [
+      {
+        "text": "Pour respecter les normes IFRS en matière de capitalisation.",
+        "correct": false
+      },
+      {
+        "text": "Pour quitter le formalisme comptable et adopter une logique économique.",
+        "correct": true
+      },
+      {
+        "text": "Pour inclure les coûts variables dans le coût du capital.",
+        "correct": false
+      },
+      {
+        "text": "Pour annuler les effets de change non réalisés.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le défaut des classements d’entreprises fondés sur l’EVA ?",
+    "choices": [
+      {
+        "text": "Ils se basent sur un indicateur annuel manipulable et court-termiste.",
+        "correct": true
+      },
+      {
+        "text": "Ils sont faussés par l’inflation des marchés actions.",
+        "correct": false
+      },
+      {
+        "text": "Ils favorisent les entreprises à forte intensité capitalistique.",
+        "correct": false
+      },
+      {
+        "text": "Ils ne tiennent pas compte du bénéfice net par action.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Création de valeur et licenciements sont-ils systématiquement synonymes ?",
+    "choices": [
+      {
+        "text": "Oui, car réduire les coûts augmente toujours la valeur.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car les restructurations sont sources de gains immédiats.",
+        "correct": false
+      },
+      {
+        "text": "Non, la croissance de l’entreprise passe souvent par la croissance des effectifs.",
+        "correct": true
+      },
+      {
+        "text": "Non, mais uniquement dans les sociétés familiales.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Peut-on créer plus de valeur en développant de nouveaux produits ou en réduisant les coûts ?",
+    "choices": [
+      {
+        "text": "Non, seule la réduction du BFR crée de la valeur durable.",
+        "correct": false
+      },
+      {
+        "text": "Non, les économies sont plus faciles à mesurer.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car le potentiel de croissance est plus élevé que les économies possibles.",
+        "correct": true
+      },
+      {
+        "text": "Oui, mais uniquement si le WACC est supérieur à 10 %.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Un groupe hôtelier rapporte son EBE sur la valeur historique brute de ses actifs. Qu’en pensez-vous ?",
+    "choices": [
+      {
+        "text": "Cela conduit toujours à surestimer la rentabilité.",
+        "correct": false
+      },
+      {
+        "text": "Cela se justifie si les amortissements ne reflètent pas la perte réelle de valeur.",
+        "correct": true
+      },
+      {
+        "text": "C’est interdit car contraire aux normes comptables.",
+        "correct": false
+      },
+      {
+        "text": "Ce choix fausse systématiquement la VAN et l’EVA.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">22. Taux de rentabilité exigé et marchés à l’équilibre</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Pourquoi le risque diversifiable n’est-il pas rémunéré dans les marchés en équilibre ?",
+    "choices": [
+      {
+        "text": "Parce qu’il est trop complexe à mesurer pour être intégré.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’on peut l’éliminer sans coût en diversifiant simplement son portefeuille.",
+        "correct": true
+      },
+      {
+        "text": "Parce que ce risque est entièrement pris en charge par l’État.",
+        "correct": false
+      },
+      {
+        "text": "Parce que ce risque est identique pour tous les investisseurs.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Puisque le risque diversifiable n’est pas rémunéré, est-il utile de diversifier son investissement ?",
+    "choices": [
+      {
+        "text": "Non, car cela réduit le potentiel de gain.",
+        "correct": false
+      },
+      {
+        "text": "Non, car le rendement moyen baisse avec la diversification.",
+        "correct": false
+      },
+      {
+        "text": "Oui justement, pour l’éliminer puisqu’il n’est pas rémunéré.",
+        "correct": true
+      },
+      {
+        "text": "Oui, mais uniquement sur les marchés émergents.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quoi est égal le taux de rentabilité exigé par l’actionnaire ?",
+    "choices": [
+      {
+        "text": "Au taux de croissance attendu de l’entreprise.",
+        "correct": false
+      },
+      {
+        "text": "Au taux sans risque plus une prime liée au risque de marché.",
+        "correct": true
+      },
+      {
+        "text": "À la somme du PER et du taux d’intérêt directeur.",
+        "correct": false
+      },
+      {
+        "text": "À la rentabilité historique des actions sur 10 ans.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le défaut du coefficient β ?",
+    "choices": [
+      {
+        "text": "Il ne prend pas en compte les dividendes versés.",
+        "correct": false
+      },
+      {
+        "text": "Il est identique pour toutes les actions d’un même secteur.",
+        "correct": false
+      },
+      {
+        "text": "Son instabilité au cours du temps.",
+        "correct": true
+      },
+      {
+        "text": "Il surestime toujours le risque de marché.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’actionnaire exige un taux de rentabilité deux fois plus élevé sur une action dont le β est deux fois plus élevé que celui d’une autre. Vrai ou faux ?",
+    "choices": [
+      {
+        "text": "Vrai, uniquement si le titre est coté aux États-Unis.",
+        "correct": false
+      },
+      {
+        "text": "Faux, car le rendement est indépendant du risque.",
+        "correct": false
+      },
+      {
+        "text": "Vrai, car le β mesure directement le rendement attendu.",
+        "correct": false
+      },
+      {
+        "text": "Faux, car il faut aussi tenir compte du taux sans risque.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Qu’indique une prime de risque faible ?",
+    "choices": [
+      {
+        "text": "Que le marché rémunère peu le risque, donc baisse probable.",
+        "correct": true
+      },
+      {
+        "text": "Que la croissance mondiale est très forte.",
+        "correct": false
+      },
+      {
+        "text": "Que tous les actifs sont devenus sans risque.",
+        "correct": false
+      },
+      {
+        "text": "Que les taux longs vont fortement augmenter.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’action Legrand vous paraît-elle surévaluée ou sous-évaluée ? Et l’action Vivendi ?",
+    "choices": [
+      {
+        "text": "Les deux sont sous-évaluées car elles paient des dividendes.",
+        "correct": false
+      },
+      {
+        "text": "Legrand est surévaluée, Vivendi est correctement évaluée.",
+        "correct": true
+      },
+      {
+        "text": "Les deux sont surévaluées car les taux sont bas.",
+        "correct": false
+      },
+      {
+        "text": "Legrand est sous-évaluée, Vivendi est surévaluée.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quel est le point fort de l’APT par rapport au MEDAF ? Quel est son point faible ?",
+    "choices": [
+      {
+        "text": "Il se base sur le PER, ce qui le rend plus stable.",
+        "correct": false
+      },
+      {
+        "text": "Il prédit mieux les dividendes des actions à fort flottant.",
+        "correct": false
+      },
+      {
+        "text": "Il décompose la rentabilité mais les facteurs sont difficiles à estimer.",
+        "correct": true
+      },
+      {
+        "text": "Il intègre les cash flows futurs sans incertitude.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "En période de krach, les primes de liquidité augmentent ou diminuent ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Elles restent stables si les banques centrales interviennent.",
+        "correct": false
+      },
+      {
+        "text": "Elles baissent car la volatilité diminue.",
+        "correct": false
+      },
+      {
+        "text": "Elles augmentent car les investisseurs veulent du liquide.",
+        "correct": true
+      },
+      {
+        "text": "Elles disparaissent car tout devient risqué.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qu’indique une prime de liquidité très faible ?",
+    "choices": [
+      {
+        "text": "Une absence de volatilité sur les marchés mondiaux.",
+        "correct": false
+      },
+      {
+        "text": "Une forte préférence pour les obligations à long terme.",
+        "correct": false
+      },
+      {
+        "text": "Une remontée des taux de la BCE imminente.",
+        "correct": false
+      },
+      {
+        "text": "Un attrait fort pour les petites sociétés en croissance.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’écart type de Getlink est élevé alors que son β est faible ?",
+    "choices": [
+      {
+        "text": "Parce qu’elle a un fort risque spécifique mais un faible risque de marché.",
+        "correct": true
+      },
+      {
+        "text": "Parce que sa valorisation boursière est trop élevée.",
+        "correct": false
+      },
+      {
+        "text": "Parce que son secteur est réglementé, donc moins sensible au marché.",
+        "correct": false
+      },
+      {
+        "text": "Parce que les dividendes versés faussent la mesure du risque.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi un investisseur peut-il exiger un taux de rentabilité inférieur au taux sans risque pour un β négatif ?",
+    "choices": [
+      {
+        "text": "Car elles versent des dividendes fixes indexés sur l’inflation.",
+        "correct": false
+      },
+      {
+        "text": "Car elles sont protégées par un plan d’épargne garantie.",
+        "correct": false
+      },
+      {
+        "text": "Car ces actions montent quand le marché baisse, ce qui réduit le risque global du portefeuille.",
+        "correct": true
+      },
+      {
+        "text": "Car elles bénéficient de niches fiscales importantes.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi deux entreprises de secteurs différents peuvent-elles avoir le même taux de rentabilité exigé ?",
+    "choices": [
+      {
+        "text": "Car elles ont le même taux d’endettement.",
+        "correct": false
+      },
+      {
+        "text": "Car ce taux dépend du β, pas du secteur d’activité.",
+        "correct": true
+      },
+      {
+        "text": "Car elles ont des tailles similaires en capitalisation.",
+        "correct": false
+      },
+      {
+        "text": "Car elles versent un dividende identique par action.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qui a gagné entre un enfant, un astrologue et un financier après 8 jours d’investissement aléatoire ?",
+    "choices": [
+      {
+        "text": "Le financier, grâce à son analyse technique.",
+        "correct": false
+      },
+      {
+        "text": "Aucun, car tous ont subi des pertes identiques.",
+        "correct": false
+      },
+      {
+        "text": "L’enfant, car les marchés sont efficients.",
+        "correct": true
+      },
+      {
+        "text": "L’astrologue, à cause de la cyclicité des planètes.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi les grands groupes agroalimentaires sont valorisés plus cher que les PME du même secteur ?",
+    "choices": [
+      {
+        "text": "Car les grandes entreprises publient des comptes semestriels.",
+        "correct": false
+      },
+      {
+        "text": "À cause de la prime de liquidité qui pénalise les petites valeurs.",
+        "correct": true
+      },
+      {
+        "text": "Car les analystes suivent davantage les grandes capitalisations.",
+        "correct": false
+      },
+      {
+        "text": "Car les PME ont une meilleure croissance donc plus de risque.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quelle est la différence entre courbe des taux coupon zéro et courbe des taux de rentabilité ?",
+    "choices": [
+      {
+        "text": "La première corrige l’effet des coupons, la seconde non.",
+        "correct": true
+      },
+      {
+        "text": "La seconde est horizontale, la première est croissante.",
+        "correct": false
+      },
+      {
+        "text": "La première intègre les dividendes, la seconde pas.",
+        "correct": false
+      },
+      {
+        "text": "La première s’applique aux actions, la seconde aux obligations.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi une courbe des taux croissante est dite \"normale\" ?",
+    "choices": [
+      {
+        "text": "Car cela reflète une baisse anticipée de l’activité économique.",
+        "correct": false
+      },
+      {
+        "text": "Car la préférence pour la liquidité pousse les taux longs à être supérieurs.",
+        "correct": true
+      },
+      {
+        "text": "Car la BCE impose une pente réglementaire aux taux.",
+        "correct": false
+      },
+      {
+        "text": "Car l’inflation passée est intégrée dans les taux courts.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quand on dit qu’une obligation d’État est sans risque, de quel risque parle-t-on ?",
+    "choices": [
+      {
+        "text": "Du risque de défaut de l’émetteur.",
+        "correct": true
+      },
+      {
+        "text": "Du risque de marché lié à la volatilité boursière.",
+        "correct": false
+      },
+      {
+        "text": "Du risque de récession dans le pays émetteur.",
+        "correct": false
+      },
+      {
+        "text": "Du risque lié à l’évolution de la politique monétaire.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels risques subsistent malgré l’absence de défaut ?",
+    "choices": [
+      {
+        "text": "Réinvestissement des coupons, évolution des taux, inflation.",
+        "correct": true
+      },
+      {
+        "text": "Le risque lié aux résultats trimestriels de l’État.",
+        "correct": false
+      },
+      {
+        "text": "Le risque politique et les fluctuations du CAC 40.",
+        "correct": false
+      },
+      {
+        "text": "Uniquement le risque de change si libellée en euro.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Comment obtenir le taux à 2 ans si on connaît le taux à 1 an et le taux à 2 ans global ?",
+    "choices": [
+      {
+        "text": "En prenant la moyenne des deux taux annuels précédents.",
+        "correct": false
+      },
+      {
+        "text": "En divisant le taux à 2 ans par deux.",
+        "correct": false
+      },
+      {
+        "text": "En actualisant le taux à 1 an par le taux de l’inflation.",
+        "correct": false
+      },
+      {
+        "text": "En résolvant une équation à une inconnue à partir des taux donnés.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Comment faire si on ne connaît pas le taux à 1 an ?",
+    "choices": [
+      {
+        "text": "En supposant que le taux à 1 an est égal au taux directeur.",
+        "correct": false
+      },
+      {
+        "text": "En utilisant deux obligations pour former un système à deux inconnues.",
+        "correct": true
+      },
+      {
+        "text": "En appliquant un modèle de Black-Scholes sur les taux.",
+        "correct": false
+      },
+      {
+        "text": "En prenant le taux moyen du marché obligataire.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

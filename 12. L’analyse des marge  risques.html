@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Final - QCM Plausibles</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
+  <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’évolution historique de l’analyse financière</h1>
+    <div class="mb-6 text-center">
+      <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
+        <option value="azad">azad</option>
+        <option value="remi">remi</option>
+      </select>
+    </div>
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Le bénéfice net d’une entreprise, qui était de 0,2 % du chiffre d’affaires en année 1 bondit de 40 % en année 2. Qu’en pensez-vous ?",
+    "choices": [
+      {
+        "text": "Le chiffre d’affaires a augmenté dans les mêmes proportions.",
+        "correct": false
+      },
+      {
+        "text": "Un tel bond prouve une performance structurelle très solide.",
+        "correct": false
+      },
+      {
+        "text": "La faiblesse du bénéfice fait qu’une simple amélioration conjoncturelle peut le faire croître rapidement.",
+        "correct": true
+      },
+      {
+        "text": "Cela signifie que la rentabilité est désormais stable et élevée.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise de raffinage pétrolier aura-t-elle plutôt intérêt à se financer par capitaux propres ou par endettement ?",
+    "choices": [
+      {
+        "text": "Par obligations convertibles pour réduire le coût.",
+        "correct": false
+      },
+      {
+        "text": "Par capitaux propres : entreprise très cyclique.",
+        "correct": true
+      },
+      {
+        "text": "Par endettement pour profiter des effets de levier.",
+        "correct": false
+      },
+      {
+        "text": "Par emprunts courts pour plus de flexibilité.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une start-up Internet aura-t-elle plutôt intérêt à se financer par capitaux propres ou par endettement ?",
+    "choices": [
+      {
+        "text": "Par crédit fournisseur pour limiter les risques.",
+        "correct": false
+      },
+      {
+        "text": "Par subvention publique comme unique levier.",
+        "correct": false
+      },
+      {
+        "text": "Par endettement bancaire pour éviter la dilution.",
+        "correct": false
+      },
+      {
+        "text": "Par capitaux propres car les sociétés Internet ont beaucoup de coûts fixes.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Vous êtes nommé directeur financier d’un groupe cimentier non endetté. Quelles sont vos préoccupations ?",
+    "choices": [
+      {
+        "text": "Augmenter rapidement les volumes de production.",
+        "correct": false
+      },
+      {
+        "text": "Accélérer l’endettement pour doper la rentabilité.",
+        "correct": false
+      },
+      {
+        "text": "Conserver une structure rigide pour sécuriser les marges.",
+        "correct": false
+      },
+      {
+        "text": "« Variabiliser » les coûts et réduire les coûts fixes.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Vous êtes nommé directeur financier d’un groupe cimentier endetté. Quelles sont vos préoccupations ?",
+    "choices": [
+      {
+        "text": "Les mêmes qu’en 4 et vous désendetter !",
+        "correct": true
+      },
+      {
+        "text": "Maintenir le niveau d’endettement pour profiter du levier.",
+        "correct": false
+      },
+      {
+        "text": "Investir davantage pour diluer les charges fixes.",
+        "correct": false
+      },
+      {
+        "text": "Distribuer les bénéfices pour rassurer les actionnaires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Les frais de personnel sont-ils des coûts variables ou des coûts fixes ?",
+    "choices": [
+      {
+        "text": "Cela dépend du type de personnel, de la rémunération et de l’horizon.",
+        "correct": true
+      },
+      {
+        "text": "Ne peuvent être classés : ils sont hybrides par nature.",
+        "correct": false
+      },
+      {
+        "text": "Toujours fixes car liés à des contrats longue durée.",
+        "correct": false
+      },
+      {
+        "text": "Toujours variables car ajustables par les RH.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une banque d’investissement annonce les résultats semestriels les plus élevés de son histoire, qu’en pensez-vous ?",
+    "choices": [
+      {
+        "text": "Cela valide le plan stratégique et son exécution.",
+        "correct": false
+      },
+      {
+        "text": "Cela permet d’augmenter la part variable des salaires.",
+        "correct": false
+      },
+      {
+        "text": "Cela indique une rentabilité durablement élevée.",
+        "correct": false
+      },
+      {
+        "text": "Il faut distinguer l’amélioration conjoncturelle de l’amélioration structurelle.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Est-ce Renault ou Volkswagen qui est le plus proche de son point mort ? Pourquoi ?",
+    "choices": [
+      {
+        "text": "Renault car son chiffre d’affaires est plus bas.",
+        "correct": false
+      },
+      {
+        "text": "Renault car il est plus sensible à une variation du chiffre d’affaires.",
+        "correct": true
+      },
+      {
+        "text": "Volkswagen car sa marge est plus faible.",
+        "correct": false
+      },
+      {
+        "text": "Aucun, car ils ont une structure de coûts similaire.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Qu’est-ce que le levier d’exploitation et de quoi dépend-il ?",
+    "choices": [
+      {
+        "text": "Il dépend du taux d’intérêt et des amortissements.",
+        "correct": false
+      },
+      {
+        "text": "Il mesure la rentabilité des actifs.",
+        "correct": false
+      },
+      {
+        "text": "C’est le rapport entre la dette et les capitaux propres.",
+        "correct": false
+      },
+      {
+        "text": "Il indique la sensibilité du résultat d’exploitation à une variation du chiffre d’affaires.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Les bonus et primes versés au personnel sont-ils des coûts fixes ou variables ?",
+    "choices": [
+      {
+        "text": "Des charges exceptionnelles sans lien au cycle.",
+        "correct": false
+      },
+      {
+        "text": "Des coûts variables car liés aux résultats.",
+        "correct": true
+      },
+      {
+        "text": "Des coûts fixes car décidés en début d’année.",
+        "correct": false
+      },
+      {
+        "text": "Des coûts d’investissement capital humain.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le dividende versé par une société est-il un coût fixe ou un coût variable ?",
+    "choices": [
+      {
+        "text": "Une obligation légale annuelle.",
+        "correct": false
+      },
+      {
+        "text": "Un coût variable lié au bénéfice net.",
+        "correct": false
+      },
+      {
+        "text": "Un coût fixe voté par les actionnaires.",
+        "correct": false
+      },
+      {
+        "text": "Ni l’un ni l’autre : c’est une répartition du profit, pas un coût.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Les dépenses publicitaires d’un nouveau produit sont-elles fixes ou variables ? Et pour un produit à maturité ?",
+    "choices": [
+      {
+        "text": "Toujours variables pour s’adapter au marché.",
+        "correct": false
+      },
+      {
+        "text": "Toujours fixes quel que soit le cycle.",
+        "correct": false
+      },
+      {
+        "text": "Fixes au lancement, variables ensuite.",
+        "correct": true
+      },
+      {
+        "text": "Dépenses non classifiables selon le cycle de vie.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’impôt sur les sociétés est-il un coût fixe ou un coût variable ?",
+    "choices": [
+      {
+        "text": "Un coût variable car proportionnel au résultat.",
+        "correct": true
+      },
+      {
+        "text": "Un coût marginal dans la stratégie.",
+        "correct": false
+      },
+      {
+        "text": "Un coût fixe car légalement établi.",
+        "correct": false
+      },
+      {
+        "text": "Une charge non opérationnelle.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "En 2011, les coûts fixes d’ArcelorMittal étaient de 21,4 Md$ pour des ventes de 94 Md$. Comparez-les à ceux de 2018-2022. Qu’est-ce que cela illustre ?",
+    "choices": [
+      {
+        "text": "Que le chiffre d’affaires a baissé de moitié.",
+        "correct": false
+      },
+      {
+        "text": "Que les coûts fixes ne sont jamais fixes pour toujours.",
+        "correct": true
+      },
+      {
+        "text": "Que la rentabilité s’est améliorée structurellement.",
+        "correct": false
+      },
+      {
+        "text": "Que la flexibilité de la production est restée faible.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise peut-elle augmenter sa production de 3 % sans augmenter ses coûts fixes ? Et de 30 % ?",
+    "choices": [
+      {
+        "text": "Oui pour 3 %, non pour 30 % sauf investissement.",
+        "correct": true
+      },
+      {
+        "text": "Oui dans les deux cas si la marge brute le permet.",
+        "correct": false
+      },
+      {
+        "text": "Non pour 3 %, oui pour 30 % grâce aux économies d’échelle.",
+        "correct": false
+      },
+      {
+        "text": "Non dans les deux cas car les coûts sont rigides.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels sont les deux autres éléments utiles à connaître pour apprécier le risque opérationnel d’une entreprise ?",
+    "choices": [
+      {
+        "text": "Le taux d’endettement et le taux de marge nette.",
+        "correct": false
+      },
+      {
+        "text": "Le ROCE et la part des charges fixes.",
+        "correct": false
+      },
+      {
+        "text": "Le levier opérationnel et la position par rapport au point mort.",
+        "correct": true
+      },
+      {
+        "text": "Le montant du chiffre d’affaires et l’EBITDA.",
+        "correct": false
+      }
+    ]
+  }
+];
+</script>
+
+<script>
+let score = 0;
+let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
+
+function repondre(label, q, val, i) {
+  if (envoiFait || label.classList.contains('answered')) return;
+  label.classList.add('answered');
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
+  if (val === 'correct') score++;
+  document.getElementById('step' + i).classList.add('hidden');
+  const nextStep = document.getElementById('step' + (i + 1));
+  if (nextStep) {
+    nextStep.classList.remove('hidden');
+  } else {
+    if (!envoiFait && confirm("Envoyer tes réponses ?")) {
+      envoiFait = true;
+      envoyer();
+    }
+  }
+}
+
+function envoyer() {
+  const nom = document.getElementById('nom').value;
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('resultat').classList.remove('hidden');
+  document.getElementById('prenomResultat').textContent = nom;
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
+}
+
+window.onload = afficherQuestions;
+</script>
+</body>
+</html>

@@ -1,231 +1,659 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
   <title>Quiz Final - QCM Plausibles</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-white to-slate-100 text-gray-800">
   <div class="max-w-2xl mx-auto py-8 px-4 min-h-screen">
-    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">Quiz - L’analyse du compte de résultat</h1>
+    <h1 class="text-2xl font-bold mb-6 text-center text-blue-700">4. Les résultats</h1>
     <div class="mb-6 text-center">
       <label class="block mb-1 font-semibold">Choisis ton prénom :</label>
-      <select id="nom" class="border border-gray-300 rounded px-4 py-2">
+      <select class="border border-gray-300 rounded px-4 py-2" id="nom">
         <option value="azad">azad</option>
         <option value="remi">remi</option>
       </select>
     </div>
-    <div id="quiz-container">
-<div class="question-step " id="step1">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 1 / 16 :<br>Pourquoi le concept de production n’est-il pas satisfaisant ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'correct', 1)">
-<input type="radio" name="q1" value="correct" class="hidden"> Il ajoute des produits évalués au prix de vente (chiffre d’affaires) et des produits évalués au prix de revient (production stockée et immobilisée).</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce qu’il exclut les coûts indirects</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce qu’il est trop simple</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q1', 'wrong', 1)">
-<input type="radio" name="q1" value="wrong" class="hidden"> Parce qu’il ne reflète pas la marge brute</label>
-</div></div>
-<div class="question-step hidden" id="step2">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 2 / 16 :<br>Pourquoi le résultat d’exploitation est-il au centre de la lecture du compte de résultat ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> Il reflète le cash-flow</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> Il inclut les charges financières</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'wrong', 2)">
-<input type="radio" name="q2" value="wrong" class="hidden"> Il donne la valeur ajoutée nette</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q2', 'correct', 2)">
-<input type="radio" name="q2" value="correct" class="hidden"> Il mesure la richesse produite par l’actif économique.</label>
-</div></div>
-<div class="question-step hidden" id="step3">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 3 / 16 :<br>Montrez les limites du concept de valeur ajoutée.</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> Elle exclut les amortissements</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> Elle n’intègre pas le BFR</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'wrong', 3)">
-<input type="radio" name="q3" value="wrong" class="hidden"> Elle surestime la trésorerie</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q3', 'correct', 3)">
-<input type="radio" name="q3" value="correct" class="hidden"> C’est un concept plus macroéconomique... et qui perd son reste de pertinence quand l’externalisation est significative.</label>
-</div></div>
-<div class="question-step hidden" id="step4">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 4 / 16 :<br>Vous analysez les comptes sociaux d’un holding industriel. Quel résultat privilégiez-vous ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'correct', 4)">
-<input type="radio" name="q4" value="correct" class="hidden"> Le résultat financier. Les frais administratifs et l’impôt. Non, ils reflètent surtout le cumul de l’état de santé des différentes participations.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Le résultat d’exploitation uniquement</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Le chiffre d’affaires consolidé</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q4', 'wrong', 4)">
-<input type="radio" name="q4" value="wrong" class="hidden"> Le résultat net seul</label>
-</div></div>
-<div class="question-step hidden" id="step5">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 5 / 16 :<br>L’entreprise Heems affiche un résultat net formé à 80 % du résultat exceptionnel. Qu’en pensez-vous ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> C’est bon signe</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> Cela indique une forte croissance</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'wrong', 5)">
-<input type="radio" name="q5" value="wrong" class="hidden"> C’est toujours favorable</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q5', 'correct', 5)">
-<input type="radio" name="q5" value="correct" class="hidden"> Bien comprendre la nature du résultat exceptionnel (récurrence éventuelle ?), car a priori une telle situation n’est pas durable.</label>
-</div></div>
-<div class="question-step hidden" id="step6">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 6 / 16 :<br>L’entreprise Vandamme affiche un résultat net formé à 80 % du résultat financier. Qu’en pensez-vous ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Cela reflète un effet volume</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Cela montre une bonne gestion des stocks</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'correct', 6)">
-<input type="radio" name="q6" value="correct" class="hidden"> Bien comprendre la nature du résultat financier. Est-ce lié à trésorerie, provisions, change, etc. ?</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q6', 'wrong', 6)">
-<input type="radio" name="q6" value="wrong" class="hidden"> Cela indique une bonne exploitation</label>
-</div></div>
-<div class="question-step hidden" id="step7">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 7 / 16 :<br>L’entreprise Bonnefoy affiche un résultat net formé à 80 % de la mise en équivalence. Qu’en pensez-vous ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Analyser seulement le résultat net</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Ignorer la MEE</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'correct', 7)">
-<input type="radio" name="q7" value="correct" class="hidden"> Éclater la quote-part MEE en exploitation, financier et non récurrent ; ou analyser séparément la participation.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q7', 'wrong', 7)">
-<input type="radio" name="q7" value="wrong" class="hidden"> Accepter sans ajustement</label>
-</div></div>
-<div class="question-step hidden" id="step8">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 8 / 16 :<br>Les charges d’intéressement et de participation doivent-elles être incluses dans l’EBE ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Non, car elles sont exceptionnelles</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Non, car elles sont liées au capital</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'wrong', 8)">
-<input type="radio" name="q8" value="wrong" class="hidden"> Oui, mais uniquement pour les dirigeants</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q8', 'correct', 8)">
-<input type="radio" name="q8" value="correct" class="hidden"> Oui, car il s’agit de frais de personnel variables.</label>
-</div></div>
-<div class="question-step hidden" id="step9">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 9 / 16 :<br>Pourquoi ne peut-on pas relier directement un coût de production en hausse et une baisse de bénéfice ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Parce que les clients répercutent le prix</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Parce que le volume compense toujours</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'correct', 9)">
-<input type="radio" name="q9" value="correct" class="hidden"> En raison d’effets beaucoup plus compliqués, y compris secondaires, qu’il faut étudier.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q9', 'wrong', 9)">
-<input type="radio" name="q9" value="wrong" class="hidden"> Parce que les charges fixes augmentent aussi</label>
-</div></div>
-<div class="question-step hidden" id="step10">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 10 / 16 :<br>Quelles mesures peuvent remédier à un effet ciseau négatif ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Négocier la dette</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Augmenter les stocks</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'correct', 10)">
-<input type="radio" name="q10" value="correct" class="hidden"> Être flexible : sous-traiter, travail intérimaire ; monter en gamme ; innover pour sortir du prix comme variable clef.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q10', 'wrong', 10)">
-<input type="radio" name="q10" value="wrong" class="hidden"> Réduire le CA</label>
-</div></div>
-<div class="question-step hidden" id="step11">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 11 / 16 :<br>Parmi ces entreprises, lesquelles sont une « marge entre deux marchés » ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Seul l’intérim et l’abattoir</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Seul l’hypermarché</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'wrong', 11)">
-<input type="radio" name="q11" value="wrong" class="hidden"> Aucune</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q11', 'correct', 11)">
-<input type="radio" name="q11" value="correct" class="hidden"> Intérim, entrepôt, abattoir, meuble, hypermarché : toutes ont une logique de marge entre deux marchés ou activité cyclique.</label>
-</div></div>
-<div class="question-step hidden" id="step12">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 12 / 16 :<br>De quoi dépend la stabilité du bénéfice net d’une entreprise ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'correct', 12)">
-<input type="radio" name="q12" value="correct" class="hidden"> Du caractère cyclique du CA, de la flexibilité (frais fixes/variables) et de la marge absolue.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Des clients principaux</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Des dividendes</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q12', 'wrong', 12)">
-<input type="radio" name="q12" value="wrong" class="hidden"> Du taux d’impôt</label>
-</div></div>
-<div class="question-step hidden" id="step13">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 13 / 16 :<br>L’entreprise Lecointre a un EBE en croissance mais un REX négatif. Qu’en pensez-vous ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> C’est normal</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'correct', 13)">
-<input type="radio" name="q13" value="correct" class="hidden"> Analyser investissements, amortissements, provisions pour dépréciation.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> C’est bon signe</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q13', 'wrong', 13)">
-<input type="radio" name="q13" value="wrong" class="hidden"> Cela prouve une bonne gestion RH</label>
-</div></div>
-<div class="question-step hidden" id="step14">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 14 / 16 :<br>CA en hausse via baisse de prix et effet volume. Qu’en penser ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Le résultat net explose</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'correct', 14)">
-<input type="radio" name="q14" value="correct" class="hidden"> Quelle est l’incidence sur le résultat d’exploitation ?</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Indique une forte rentabilité</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q14', 'wrong', 14)">
-<input type="radio" name="q14" value="wrong" class="hidden"> Toujours positif</label>
-</div></div>
-<div class="question-step hidden" id="step15">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 15 / 16 :<br>Pourquoi étudier les intérêts minoritaires dans le CR consolidé ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'correct', 15)">
-<input type="radio" name="q15" value="correct" class="hidden"> Pour comprendre dans quelle entité du groupe se fait le résultat.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
-<input type="radio" name="q15" value="wrong" class="hidden"> Pour consolider le capital</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
-<input type="radio" name="q15" value="wrong" class="hidden"> Pour calculer l’EBE exact</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q15', 'wrong', 15)">
-<input type="radio" name="q15" value="wrong" class="hidden"> Pour valoriser les filiales</label>
-</div></div>
-<div class="question-step hidden" id="step16">
-<div class="bg-white shadow p-4 mb-4 rounded">
-<p class="mb-4 font-medium">Question 16 / 16 :<br>Pourquoi ventiler la MEE entre exploitation, financier et non récurrent ?</p>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
-<input type="radio" name="q16" value="wrong" class="hidden"> Pour valoriser le goodwill</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'correct', 16)">
-<input type="radio" name="q16" value="correct" class="hidden"> Pour avoir une vision plus fine de l’ensemble du compte de résultat et notamment du résultat d’exploitation.</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
-<input type="radio" name="q16" value="wrong" class="hidden"> Pour anticiper les dividendes</label>
-<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q16', 'wrong', 16)">
-<input type="radio" name="q16" value="wrong" class="hidden"> Pour optimiser le BFR</label>
-</div></div>
-
-    </div>
-    <div id="resultat" class="hidden text-center mt-10 bg-white p-6 rounded shadow">
+    <div id="quiz-container"></div>
+    <div class="hidden text-center mt-10 bg-white p-6 rounded shadow" id="resultat">
       <h2 class="text-xl font-bold text-green-600 mb-2">Merci <span id="prenomResultat"></span> !</h2>
-      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span> sur 16.</p>
+      <p class="text-lg">Tu as obtenu <span id="scoreFinal"></span>.</p>
+      <div class="hidden mt-10 bg-white p-6 rounded shadow" id="corrections">
+        <h3 class="text-xl font-bold text-blue-600 mb-4">Corrections :</h3>
+        <ul id="recapitulatif" class="space-y-6 text-left"></ul>
+      </div>
     </div>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "Une entreprise lève 500 M€ de capitaux propres pour un projet R&D. S’est-elle enrichie ?",
+    "choices": [
+      {
+        "text": "Non. Elle a juste levé 500 M€. Si le projet échoue, elle s’appauvrit de 250 M€. Si elle achète une entreprise à +25 % et génère 75 M€ de synergies, elle s’enrichit de 25 M€.",
+        "correct": true
+      },
+      {
+        "text": "Non, elle s’appauvrit de 500 M€ dès le départ.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car lever du capital est toujours un gain.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car elle augmente ses capitaux propres.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "À quels agrégats comptables correspond l’enrichissement des actionnaires, créanciers, État ?",
+    "choices": [
+      {
+        "text": "Actionnaires : dividendes ; créanciers : amortissement ; État : BFR.",
+        "correct": false
+      },
+      {
+        "text": "Actionnaires : résultat net ; créanciers : frais financiers ; État : impôt sur les sociétés.",
+        "correct": true
+      },
+      {
+        "text": "Créanciers et État par le résultat d’exploitation, actionnaires par le capital.",
+        "correct": false
+      },
+      {
+        "text": "Tous trois sont enrichis par le chiffre d’affaires.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "De quoi l’entreprise s’enrichit-elle concrètement ?",
+    "choices": [
+      {
+        "text": "Du capital investi.",
+        "correct": false
+      },
+      {
+        "text": "Du résultat courant : résultat d’exploitation + résultat non récurrent – impôt sur les sociétés.",
+        "correct": true
+      },
+      {
+        "text": "Du chiffre d’affaires brut.",
+        "correct": false
+      },
+      {
+        "text": "Du flux de trésorerie disponible.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Commentez : « nous allons nous endetter pour combler nos pertes »",
+    "choices": [
+      {
+        "text": "Cela va augmenter le résultat net.",
+        "correct": false
+      },
+      {
+        "text": "C’est une erreur : l’endettement n’est pas une création de richesse, il compense un besoin de trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "C’est une bonne stratégie financière.",
+        "correct": false
+      },
+      {
+        "text": "Cela réduit mécaniquement les charges.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise a un flux de trésorerie disponible négatif. A-t-elle créé de la richesse ?",
+    "choices": [
+      {
+        "text": "Oui, si les charges sont élevées.",
+        "correct": false
+      },
+      {
+        "text": "Non forcément, car c’est un flux négatif.",
+        "correct": false
+      },
+      {
+        "text": "Oui forcément, car elle a dépensé.",
+        "correct": false
+      },
+      {
+        "text": "On ne peut pas le savoir sans analyser le contexte (ex : investissement exceptionnel ou stockage stratégique).",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "L’EBE est-il toujours une trésorerie réelle ?",
+    "choices": [
+      {
+        "text": "Oui toujours, c’est un flux de cash.",
+        "correct": false
+      },
+      {
+        "text": "Non. Des charges non monétaires comme les dotations peuvent s’y ajouter.",
+        "correct": true
+      },
+      {
+        "text": "Non, sauf en normes IFRS.",
+        "correct": false
+      },
+      {
+        "text": "Oui car c’est le bénéfice brut.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’EBE reflète-t-il l’enrichissement annuel ?",
+    "choices": [
+      {
+        "text": "Oui, c’est le cash généré.",
+        "correct": false
+      },
+      {
+        "text": "Oui car il mesure la marge nette.",
+        "correct": false
+      },
+      {
+        "text": "Oui si l’entreprise est rentable.",
+        "correct": false
+      },
+      {
+        "text": "Non. Il faut encore retirer amortissements, impôts, frais financiers, etc.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "La dotation aux amortissements est-elle une dépense ou une charge ?",
+    "choices": [
+      {
+        "text": "Une dépense engagée immédiatement.",
+        "correct": false
+      },
+      {
+        "text": "C’est une charge non décaissée, une évaluation comptable.",
+        "correct": true
+      },
+      {
+        "text": "Une sortie de trésorerie planifiée.",
+        "correct": false
+      },
+      {
+        "text": "Un investissement comptable.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi la variation des stocks de produits finis est-elle un produit ?",
+    "choices": [
+      {
+        "text": "Parce que les stocks sont amortis.",
+        "correct": false
+      },
+      {
+        "text": "Car elle diminue les ventes.",
+        "correct": false
+      },
+      {
+        "text": "Elle corrige les charges de production sur unités non vendues (stockées).",
+        "correct": true
+      },
+      {
+        "text": "Parce que le chiffre d’affaires est insuffisant.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Le remboursement d’emprunt est-il une charge ?",
+    "choices": [
+      {
+        "text": "Oui, car c’est une sortie d’argent.",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf si partiellement refinancé.",
+        "correct": false
+      },
+      {
+        "text": "Non. C’est une sortie de trésorerie, pas une charge du compte de résultat.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car cela coûte.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une hausse de valeur nominale d’un bien liée à l’inflation figure-t-elle au compte de résultat ?",
+    "choices": [
+      {
+        "text": "Oui, si elle est supérieure à 10 %.",
+        "correct": false
+      },
+      {
+        "text": "Oui, en normes françaises.",
+        "correct": false
+      },
+      {
+        "text": "Oui, toujours.",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf cas très rares en hyperinflation.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’augmentation des stocks de matières premières diminue-t-elle les achats ?",
+    "choices": [
+      {
+        "text": "Car elles sont amorties sur plusieurs années.",
+        "correct": false
+      },
+      {
+        "text": "Parce que le prix unitaire a baissé.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elles n’ont pas été livrées.",
+        "correct": false
+      },
+      {
+        "text": "Car il s’agit de consommations futures, pas encore incorporées.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "La cession d’un actif immobilisé est-elle une activité normale ?",
+    "choices": [
+      {
+        "text": "Non, c’est interdit en comptabilité.",
+        "correct": false
+      },
+      {
+        "text": "Non, cela relève du bilan uniquement.",
+        "correct": false
+      },
+      {
+        "text": "Oui, mais son impact est enregistré en produit non récurrent.",
+        "correct": true
+      },
+      {
+        "text": "Oui, et cela augmente automatiquement le résultat d’exploitation.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Exemples de distinction produits/recettes et charges/dépenses ?",
+    "choices": [
+      {
+        "text": "Recette = variation de BFR.",
+        "correct": false
+      },
+      {
+        "text": "Produit = flux monétaire certain.",
+        "correct": false
+      },
+      {
+        "text": "Charge = toujours une dépense immédiate.",
+        "correct": false
+      },
+      {
+        "text": "Vente (produit) ≠ paiement (recette), amortissement = charge ≠ dépense.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Le compte de résultat ressemble-t-il au budget de trésorerie ?",
+    "choices": [
+      {
+        "text": "Oui, ce sont des équivalents.",
+        "correct": false
+      },
+      {
+        "text": "Non, car les stocks y sont exclus.",
+        "correct": false
+      },
+      {
+        "text": "Oui, sauf les impôts.",
+        "correct": false
+      },
+      {
+        "text": "Non. Le compte de résultat est patrimonial, le budget de trésorerie est cash.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Différence entre charge calculée et charge constatée d’avance ?",
+    "choices": [
+      {
+        "text": "Les deux sont des produits différés.",
+        "correct": false
+      },
+      {
+        "text": "Calculée = charge non décaissée (ex : amortissement) ; constatée d’avance = charge décaissée mais non consommée.",
+        "correct": true
+      },
+      {
+        "text": "Charge calculée = liée à l’IS.",
+        "correct": false
+      },
+      {
+        "text": "Constatée d’avance = toujours une dette.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Une entreprise lève 500 M€ pour un projet R&D. S’est-elle enrichie ?",
+    "choices": [
+      {
+        "text": "Non, elle s’est appauvrie dès la levée du capital.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car elle dispose maintenant d’un actif de 500 M€.",
+        "correct": false
+      },
+      {
+        "text": "Non, elle n’a ni créé ni détruit de richesse au moment de la levée.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car les capitaux propres sont comptabilisés en haut de bilan.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Quels agrégats mesurent l’enrichissement des acteurs ?",
+    "choices": [
+      {
+        "text": "Dividendes versés pour les actionnaires, amortissements pour les créanciers, TVA pour l’État.",
+        "correct": false
+      },
+      {
+        "text": "Résultat courant pour tous, car il agrège l’ensemble des revenus.",
+        "correct": false
+      },
+      {
+        "text": "Résultat net pour les actionnaires, frais financiers pour les créanciers, impôt sur les sociétés pour l’État.",
+        "correct": true
+      },
+      {
+        "text": "Capitaux propres pour les actionnaires, dettes pour les créanciers, chiffre d’affaires pour l’État.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "De quoi l’entreprise s’enrichit-elle ?",
+    "choices": [
+      {
+        "text": "Du chiffre d’affaires diminué des dettes à court terme.",
+        "correct": false
+      },
+      {
+        "text": "Du résultat net augmenté de la variation de trésorerie.",
+        "correct": false
+      },
+      {
+        "text": "De son résultat courant, ajusté des éléments non récurrents et de l’impôt.",
+        "correct": true
+      },
+      {
+        "text": "De la marge brute dégagée sur l’exercice.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "« Nous allons nous endetter pour combler nos pertes » — Commentez.",
+    "choices": [
+      {
+        "text": "L’endettement ne compense pas une perte, il finance un besoin de trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "La dette crée de la richesse à hauteur du montant levé.",
+        "correct": false
+      },
+      {
+        "text": "L’endettement peut compenser directement un résultat négatif.",
+        "correct": false
+      },
+      {
+        "text": "C’est justifié si l’endettement permet de couvrir les charges.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Flux de trésorerie disponible négatif = destruction de richesse ?",
+    "choices": [
+      {
+        "text": "Oui, car cela traduit un excédent de charges sur produits.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car cela signifie une perte d’exploitation.",
+        "correct": false
+      },
+      {
+        "text": "Pas nécessairement, cela peut provenir d’un investissement ou d’un stockage.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car cela réduit mécaniquement les capitaux propres.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’EBE est-il toujours un flux de trésorerie ?",
+    "choices": [
+      {
+        "text": "Non, c’est un indicateur comptable qui inclut des éléments non monétaires.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car il représente la trésorerie brute dégagée.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car il est calculé avant dotation aux amortissements.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car il se trouve toujours dans le tableau des flux.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "L’EBE représente-t-il un enrichissement ?",
+    "choices": [
+      {
+        "text": "Oui, car il mesure l’excédent final disponible.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car il intègre l’ensemble des produits d’exploitation.",
+        "correct": false
+      },
+      {
+        "text": "Non, il faut retirer les amortissements, frais financiers et impôts.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car il reflète la capacité d’autofinancement nette.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Amortissement = charge ou dépense ?",
+    "choices": [
+      {
+        "text": "C’est une charge, sans sortie immédiate de trésorerie.",
+        "correct": true
+      },
+      {
+        "text": "C’est une sortie de trésorerie comptabilisée par précaution.",
+        "correct": false
+      },
+      {
+        "text": "C’est une dépense car elle réduit la trésorerie à terme.",
+        "correct": false
+      },
+      {
+        "text": "C’est une dépense si elle est annuelle et récurrente.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Achat terrain/R&D : trésorerie vs patrimoine ?",
+    "choices": [
+      {
+        "text": "Patrimoine : actif ou perte selon succès ; trésorerie : sortie immédiate.",
+        "correct": true
+      },
+      {
+        "text": "Patrimoine : charge immédiate ; trésorerie : amortissement différé.",
+        "correct": false
+      },
+      {
+        "text": "Trésorerie : résultat nul ; patrimoine : flux positif automatique.",
+        "correct": false
+      },
+      {
+        "text": "Les deux approches concluent à un enrichissement dès le paiement.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Remboursement d’emprunt = charge ?",
+    "choices": [
+      {
+        "text": "Oui, si le remboursement concerne des charges financières.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car c’est une dépense récurrente assimilée à un coût.",
+        "correct": false
+      },
+      {
+        "text": "Oui, car cela pèse sur les comptes de l’année.",
+        "correct": false
+      },
+      {
+        "text": "Non, c’est une sortie de trésorerie sans impact sur le résultat.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Hausse de valeur nominale liée à l’inflation = produit ?",
+    "choices": [
+      {
+        "text": "Oui, car cela augmente mécaniquement les capitaux propres.",
+        "correct": false
+      },
+      {
+        "text": "Oui, si la hausse dépasse un seuil réglementaire.",
+        "correct": false
+      },
+      {
+        "text": "Non, sauf cas très rares d’hyperinflation reconnus en normes spécifiques.",
+        "correct": true
+      },
+      {
+        "text": "Oui, car la réévaluation des actifs est comptabilisée.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Pourquoi l’augmentation de stock MP diminue-t-elle les achats ?",
+    "choices": [
+      {
+        "text": "Parce qu’elle est amortie dans les charges différées.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elle reflète une baisse des achats comptables.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elle réduit automatiquement la consommation brute.",
+        "correct": false
+      },
+      {
+        "text": "Parce qu’elle correspond à une consommation future, pas encore engagée.",
+        "correct": true
+      }
+    ]
+  }
+];
+</script>
+
 <script>
 let score = 0;
 let envoiFait = false;
+const reponsesUtilisateur = {};
+
+function afficherQuestions() {
+  const container = document.getElementById('quiz-container');
+  questions.forEach((q, i) => {
+    const step = document.createElement('div');
+    step.className = "question-step" + (i === 0 ? "" : " hidden");
+    step.id = `step${i+1}`;
+    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    q.choices.forEach((rep, idx) => {
+      const valid = rep.correct ? 'correct' : 'wrong';
+      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+    });
+    html += `</div>`;
+    step.innerHTML = html;
+    container.appendChild(step);
+  });
+}
 
 function repondre(label, q, val, i) {
   if (envoiFait || label.classList.contains('answered')) return;
   label.classList.add('answered');
-  const alreadyAnswered = document.querySelectorAll('input[name="q' + i + '"]:checked').length > 0;
+  const questionText = document.querySelector(`#step${i} p`).innerText;
+  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const choisie = label.textContent.trim();
+  reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
   if (val === 'correct') score++;
   document.getElementById('step' + i).classList.add('hidden');
-  const nextStep = document.getElementById('step' + (i+1));
+  const nextStep = document.getElementById('step' + (i + 1));
   if (nextStep) {
     nextStep.classList.remove('hidden');
   } else {
@@ -236,25 +664,26 @@ function repondre(label, q, val, i) {
   }
 }
 
-async function envoyer() {
+function envoyer() {
   const nom = document.getElementById('nom').value;
-  const data = {
-    nom: nom,
-    score: score + "/16",
-    date: new Date().toISOString(),
-    sujet: "L’analyse du compte de résultat"
-  };
-  await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
   document.getElementById('quiz-container').classList.add('hidden');
   document.getElementById('resultat').classList.remove('hidden');
   document.getElementById('prenomResultat').textContent = nom;
-  document.getElementById('scoreFinal').textContent = score + " / 16";
+  document.getElementById('scoreFinal').textContent = score + " / " + questions.length;
+  document.getElementById('corrections').classList.remove('hidden');
+
+  const recapList = document.getElementById('recapitulatif');
+  recapList.innerHTML = "";
+  Object.entries(reponsesUtilisateur).forEach(([key, val], index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<p class='font-semibold'>${val.question}</p>
+                    <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
+                    <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
+    recapList.appendChild(li);
+  });
 }
+
+window.onload = afficherQuestions;
 </script>
-</div>
 </body>
 </html>
