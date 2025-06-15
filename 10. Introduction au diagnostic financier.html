@@ -336,15 +336,15 @@ function afficherQuestions() {
   questions.forEach((q, i) => {
     const step = document.createElement('div');
     step.className = "question-step" + (i === 0 ? "" : " hidden");
-    step.id = `step${i+1}`;
-    let html = `<div class="bg-white shadow p-4 mb-4 rounded">
-      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>`;
+    step.id = step${i+1};
+    let html = <div class="bg-white shadow p-4 mb-4 rounded">
+      <p class="mb-4 font-medium">Question ${i+1} / ${questions.length} :<br/>${q.question}</p>;
     q.choices.forEach((rep, idx) => {
       const valid = rep.correct ? 'correct' : 'wrong';
-      html += `<label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
-          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>`;
+      html += <label class="block mb-3 cursor-pointer hover:bg-blue-50 p-3 border rounded" onclick="repondre(this, 'q${i+1}', '${valid}', ${i+1})">
+          <input class="hidden" name="q${i+1}" type="radio" value="${valid}"/> ${rep.text}</label>;
     });
-    html += `</div>`;
+    html += </div>;
     step.innerHTML = html;
     container.appendChild(step);
   });
@@ -353,8 +353,8 @@ function afficherQuestions() {
 function repondre(label, q, val, i) {
   if (envoiFait || label.classList.contains('answered')) return;
   label.classList.add('answered');
-  const questionText = document.querySelector(`#step${i} p`).innerText;
-  const bonne = document.querySelector(`input[name="q${i}"][value="correct"]`).parentElement.textContent.trim();
+  const questionText = document.querySelector(#step${i} p).innerText;
+  const bonne = document.querySelector(input[name="q${i}"][value="correct"]).parentElement.textContent.trim();
   const choisie = label.textContent.trim();
   reponsesUtilisateur[q] = { question: questionText, bonne: bonne, choisie: choisie };
   if (val === 'correct') score++;
@@ -386,22 +386,21 @@ function envoyer() {
                     <p><span class='text-red-600'>Réponse choisie : ${val.choisie}</span></p>
                     <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
     recapList.appendChild(li);
+  });
 
-    const data = {
-  nom: nom,
-  score: score + " / " + questions.length,
-  date: new Date().toISOString(),
-  sujet: document.querySelector("h1").innerText.trim()
-};
+  const data = {
+    nom: nom,
+    score: score + " / " + questions.length,
+    date: new Date().toISOString(),
+    sujet: document.querySelector("h1").innerText.trim()
+  };
 
-fetch("https://hook.eu2.make.com/7lb3a659dmgwahwrhhef0n4xazag1ahm", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(data)
+  fetch("https://hook.eu2.make.com/7lb3a659dmgwahwrhhef0n4xazag1ahm", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
   });
 }
 
 window.onload = afficherQuestions;
 </script>
-</body>
-</html>
