@@ -184,12 +184,13 @@ function repondre(label, q, val, i) {
 
 async function envoyer() {
   const nom = document.getElementById('nom').value;
-  const data = {
-    nom: nom,
-    score: score + "/10",
-    date: new Date().toISOString(),
-    sujet: "L’évolution historique de l’analyse financière"
-  };
+const data = {
+  nom: nom,
+  score: score + "/10",
+  date: new Date().toISOString(),
+  sujet: "L’évolution historique de l’analyse financière",
+  page: document.querySelector("h1").innerText.trim()
+};
   await fetch("https://hook.eu2.make.com/g18eref45ghf6x1p2b52wn4xm1qm9b2x", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
