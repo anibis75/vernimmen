@@ -450,11 +450,14 @@ function envoyer() {
     recapList.appendChild(li);
   });
 
+  const sujet = document.querySelector("h1").innerText.trim();
+
   const data = {
     nom: nom,
     score: score + " / " + questions.length,
     date: new Date().toISOString(),
-    sujet: document.querySelector("h1").innerText.trim()
+    sujet: sujet,
+    page: sujet  // <- le champ 'page' reprend la même valeur que 'sujet'
   };
 
   fetch("https://hook.eu2.make.com/7lb3a659dmgwahwrhhef0n4xazag1ahm", {
