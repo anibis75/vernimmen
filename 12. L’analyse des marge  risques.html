@@ -429,9 +429,20 @@ function envoyer() {
                     <p><span class='text-green-600'>Bonne réponse : ${val.bonne}</span></p>`;
     recapList.appendChild(li);
   });
+
+  const data = {
+    nom: nom,
+    score: score + " / " + questions.length,
+    date: new Date().toISOString(),
+    sujet: document.querySelector("h1").innerText.trim()
+  };
+
+  fetch("https://hook.eu2.make.com/7lb3a659dmgwahwrhhef0n4xazag1ahm", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 }
 
 window.onload = afficherQuestions;
 </script>
-</body>
-</html>
