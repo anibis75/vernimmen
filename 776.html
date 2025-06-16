@@ -535,12 +535,13 @@ function envoyer() {
     recapList.appendChild(li);
   });
 
-  const data = {
-    nom: nom,
-    score: score + " / " + questions.length,
-    date: new Date().toISOString(),
-    sujet: document.querySelector("h1").innerText.trim()
-  };
+const data = {
+  nom: nom,
+  score: score + " / " + questions.length,
+  date: new Date().toISOString(),
+  sujet: document.querySelector("h1").innerText.trim(),
+  title: document.querySelector("h1").innerText.trim()  // ← champ requis par Make
+};
 
   fetch("https://hook.eu2.make.com/7lb3a659dmgwahwrhhef0n4xazag1ahm", {
     method: "POST",
