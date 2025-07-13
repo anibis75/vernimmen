@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veille Google News RSS - Tereos Analyste M&A</title>
+  <title>Veille Google News RSS - Tereos M&A</title>
   <style>
     body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; color: #333; }
     header { background: #00552e; color: white; text-align: center; padding: 1em; }
@@ -23,7 +23,7 @@
 
 <header>
   <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos Logo">
-  <h1>Veille Google News RSS - Analyste M&A Tereos</h1>
+  <h1>Veille d'Azad - M&A Tereos</h1>
 </header>
 
 <nav id="category-buttons"></nav>
@@ -42,24 +42,23 @@
     "M&A Sucre": "https://news.google.com/rss/search?q=fusion+acquisition+sucre&hl=fr&gl=FR&ceid=FR:fr",
     "Climat & Agriculture": "https://news.google.com/rss/search?q=climat+impact+agriculture&hl=fr&gl=FR&ceid=FR:fr",
     "Brésil Sucre": "https://news.google.com/rss/search?q=sucre+Brésil&hl=fr&gl=FR&ceid=FR:fr",
-    "Afrique Mozambique": "https://news.google.com/rss/search?q=sucre+Mozambique&hl=fr&gl=FR&ceid=FR:fr",
+    "Mozambique Sucre": "https://news.google.com/rss/search?q=sucre+Mozambique&hl=fr&gl=FR&ceid=FR:fr",
     "Union Européenne Sucre": "https://news.google.com/rss/search?q=sucre+Union+Européenne&hl=fr&gl=FR&ceid=FR:fr"
   };
 
   let allData = [];
 
   async function fetchRSS(url, category) {
-    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+    const res = await fetch(apiUrl);
     const data = await res.json();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, "text/xml");
-    const items = Array.from(xml.querySelectorAll("item")).map(item => ({
-      title: item.querySelector("title").textContent,
-      link: item.querySelector("link").textContent,
-      pubDate: item.querySelector("pubDate").textContent,
+    if (!data.items) throw new Error("Pas d'articles");
+    return data.items.map(item => ({
+      title: item.title,
+      link: item.link,
+      pubDate: item.pubDate,
       category: category
     }));
-    return items;
   }
 
   function renderCategories() {
