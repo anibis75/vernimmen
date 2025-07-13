@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veille NewsAPI - Tereos M&A</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      color: #333;
+    }
+    header {
+      background-color: #00552e;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    header img {
+      height: 50px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    header h1 {
+      display: inline-block;
+      font-size: 1.5em;
+      vertical-align: middle;
+      margin: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1em;
+      margin-bottom: 1.5em;
+    }
+    .card h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+    .card a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+    .card time {
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos Logo" />
+    <h1>Veille NewsAPI - Tereos M&A</h1>
+  </header>
+
+  <div class="container" id="rss-feed">
+    <p>Chargement des actualités...</p>
+  </div>
+
+  <script>
+    const NEWS_API_KEY = 'b5e2bd29ff05486a97cec6d92b558861';
+    const NEWS_QUERY = 'Tereos M&A';
+
+    async function fetchNewsAPI() {
+      const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(NEWS_QUERY)}&language=fr&sortBy=publishedAt&pageSize=10&apiKey=${NEWS_API_KEY}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.status !== "ok") throw new Error("Erreur NewsAPI");
+      return data.articles;
+    }
+
+    function renderFeed(articles) {
+      const container = document.getElementById("rss-feed");
+      if (articles.length === 0) {
+        container.innerHTML = "<p>Aucun article trouvé.</p>";
+        return;
+      }
+      container.innerHTML = "";
+      articles.forEach(article => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <h2><a href="${article.url}" target="_blank">${article.title}</a></h2>
+          <time>${new Date(article.publishedAt).toLocaleString()}</time>
+          <p>Source : ${article.source.name}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    window.onload = async () => {
+      try {
+        const articles = await fetchNewsAPI();
+        renderFeed(articles);
+      } catch (e) {
+        console.error(e);
+        document.getElementById("rss-feed").innerHTML = "<p>Erreur lors du chargement des actualités.</p>";
+      }
+    };
+  </script>
+</body>
+</html>
