@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veille Google News RSS - Tereos Analyste M&A</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; color: #333; }
+    header { background: #00552e; color: white; text-align: center; padding: 1em; }
+    header img { height: 50px; margin-right: 10px; vertical-align: middle; }
+    header h1 { display: inline-block; margin: 0; font-size: 1.5em; vertical-align: middle; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; background: #e9e9e9; padding: 0.5em; }
+    nav button { border: none; background: none; padding: 0.7em 1em; margin: 0.2em; font-weight: bold; cursor: pointer; border-bottom: 2px solid transparent; }
+    nav button.active { color: #00552e; border-bottom: 2px solid #00552e; }
+    .container { max-width: 1000px; margin: 2em auto; padding: 0 1em; }
+    .card { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 1em; margin-bottom: 1.5em; }
+    .card h2 { font-size: 1.2em; margin-top: 0; }
+    .card a { color: #1a73e8; text-decoration: none; }
+    .card time { font-size: 0.9em; color: #666; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos Logo">
+  <h1>Veille Google News RSS - Analyste M&A Tereos</h1>
+</header>
+
+<nav id="category-buttons"></nav>
+
+<div class="container" id="rss-feed">
+  <p>Chargement des actualités...</p>
+</div>
+
+<script>
+  const categories = {
+    "Tereos": "https://news.google.com/rss/search?q=Tereos&hl=fr&gl=FR&ceid=FR:fr",
+    "Sucre": "https://news.google.com/rss/search?q=sucre+marché&hl=fr&gl=FR&ceid=FR:fr",
+    "Éthanol": "https://news.google.com/rss/search?q=éthanol+marché&hl=fr&gl=FR&ceid=FR:fr",
+    "Marché Agricole": "https://news.google.com/rss/search?q=commodities+agricoles&hl=fr&gl=FR&ceid=FR:fr",
+    "Prix Matières Premières": "https://news.google.com/rss/search?q=prix+matières+premières&hl=fr&gl=FR&ceid=FR:fr",
+    "M&A Sucre": "https://news.google.com/rss/search?q=fusion+acquisition+sucre&hl=fr&gl=FR&ceid=FR:fr",
+    "Climat & Agriculture": "https://news.google.com/rss/search?q=climat+impact+agriculture&hl=fr&gl=FR&ceid=FR:fr",
+    "Brésil Sucre": "https://news.google.com/rss/search?q=sucre+Brésil&hl=fr&gl=FR&ceid=FR:fr",
+    "Afrique Mozambique": "https://news.google.com/rss/search?q=sucre+Mozambique&hl=fr&gl=FR&ceid=FR:fr",
+    "Union Européenne Sucre": "https://news.google.com/rss/search?q=sucre+Union+Européenne&hl=fr&gl=FR&ceid=FR:fr"
+  };
+
+  let allData = [];
+
+  async function fetchRSS(url, category) {
+    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const data = await res.json();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data.contents, "text/xml");
+    const items = Array.from(xml.querySelectorAll("item")).map(item => ({
+      title: item.querySelector("title").textContent,
+      link: item.querySelector("link").textContent,
+      pubDate: item.querySelector("pubDate").textContent,
+      category: category
+    }));
+    return items;
+  }
+
+  function renderCategories() {
+    const nav = document.getElementById("category-buttons");
+    nav.innerHTML = "";
+    Object.keys(categories).forEach(cat => {
+      const btn = document.createElement("button");
+      btn.textContent = cat;
+      btn.onclick = () => {
+        document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderFeed(cat);
+      };
+      nav.appendChild(btn);
+    });
+  }
+
+  function renderFeed(category) {
+    const container = document.getElementById("rss-feed");
+    const filtered = allData.filter(item => item.category === category);
+    if (!filtered.length) {
+      container.innerHTML = "<p>Aucun article trouvé.</p>";
+      return;
+    }
+    container.innerHTML = "";
+    filtered.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+    filtered.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
+        <time>${new Date(item.pubDate).toLocaleString()}</time>
+        <p>Catégorie : ${item.category}</p>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  async function loadAllFeeds() {
+    try {
+      allData = [];
+      for (const [cat, url] of Object.entries(categories)) {
+        const articles = await fetchRSS(url, cat);
+        allData.push(...articles);
+      }
+      renderCategories();
+      document.querySelectorAll("nav button")[0]?.click();
+    } catch (e) {
+      console.error(e);
+      document.getElementById("rss-feed").innerHTML = "<p>Erreur lors du chargement des flux.</p>";
+    }
+  }
+
+  window.onload = loadAllFeeds;
+</script>
+
+</body>
+</html>
