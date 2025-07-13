@@ -87,16 +87,17 @@
   </header>
 
   <nav>
-    <button class="active" onclick="loadFeed('ma', this)">M&A</button>
-    <button onclick="loadFeed('macro', this)">Macro Sucre</button>
+    <button class="active" onclick="loadFeed('recent', this)">🆕 Derniers articles filtrés</button>
+    <button onclick="loadFeed('ma', this)">M&A</button>
+    <button onclick="loadFeed('macro', this)">Macro sucre</button>
     <button onclick="loadFeed('bresil', this)">Brésil</button>
     <button onclick="loadFeed('france', this)">France</button>
     <button onclick="loadFeed('afrique', this)">Afrique</button>
     <button onclick="loadFeed('reunion', this)">Réunion</button>
-    <button onclick="loadFeed('ethanol', this)">Éthanol & Bioénergie</button>
+    <button onclick="loadFeed('ethanol', this)">Éthanol</button>
     <button onclick="loadFeed('climat', this)">Climat</button>
     <button onclick="loadFeed('reglementaire', this)">Réglementaire</button>
-    <button onclick="loadFeed('watchlist', this)">Watchlist</button>
+    <button onclick="loadFeed('watchlist', this)">Concurrents</button>
   </nav>
 
   <div class="container" id="rss-feed">
@@ -105,57 +106,96 @@
 
   <script>
     const API_KEY = '219b18769097df63790aa1d0df991162';
-    const BASE_URL = 'https://gnews.io/api/v4/search?lang=fr&country=fr&max=10&token=' + API_KEY;
+    const BASE_URL = 'https://gnews.io/api/v4/search?lang=fr&max=10&sortby=publishedAt&token=' + API_KEY;
 
     const queries = {
-      ma: 'tereos+acquisition+OR+cession+OR+rachat+OR+fusion+OR+joint+venture',
-      macro: 'prix+sucre+OR+quotas+sucre+OR+stock+sucre+OR+production+sucre',
-      bresil: 'tereos+brésil+canne+sucre+OR+production+OR+gel+OR+sécheresse',
-      france: 'tereos+france+betterave+OR+usine+OR+coopérative+sucrière',
-      afrique: 'tereos+mozambique+canne+sucre+production+infrastructure',
-      reunion: 'tereos+réunion+canne+sucre+coopérative+DOM+usine',
-      ethanol: 'tereos+éthanol+biocarburant+mélasse+subvention+bioénergie',
-      climat: 'tereos+climat+sécheresse+gel+impact+agriculture+sucre',
-      reglementaire: 'quotas+sucre+OMC+droits+douane+exportation+interdiction+subvention',
-      watchlist: 'tereos+OR+cristal+union+OR+sudzucker+OR+alvean+OR+copersucar+OR+"saint+louis+sucre"'
+      recent: [
+        'tereos 
+      ],
+      ma: '(tereos OR sucrerie OR distillerie) AND (rachat OR fusion OR acquisition OR cession OR restructuration OR fermeture OR JV OR "joint-venture")',
+      macro: 'sucre prix marché mondial consommation demande offre production stock exportation importation quotas énergie pétrole fret inflation devise',
+      bresil: 'Brésil sucre canne éthanol récolte sécheresse usine Cosan Raizen Sao Martinho Biosev Atvos agriculture PAC',
+      france: 'France betterave sucre éthanol usine réforme PAC Cristal Union Saint Louis Sucre quotas néonicotinoïdes jaunisse cercosporiose filière',
+      afrique: 'sucre Afrique canne production importation Illovo Tongaat Dangote Nigéria Éthiopie Kenya Afrique du Sud filière agricole',
+      reunion: 'Réunion canne sucre cyclone sucrerie Bois-Rouge Gol DOM DOM-TOM production agricole Tereos Bourbon',
+      ethanol: 'bioéthanol éthanol biocarburant betterave canne distillerie carburant durable quotas incorporation CO2 substitution',
+      climat: 'sécheresse inondation canne betterave météo gel incendie aléas climat cyclone récolte agricole dérèglement climatique',
+      reglementaire: 'quotas sucre subventions taxe douane import export réglementation pesticides OMC PAC politique agricole CAP',
+      watchlist: 'Tereos Cristal Union Südzucker Cosun Cargill ADM Roquette Agrana Ingredion Raizen Biosev Cosan Wilmar Renuka Mitr Phol Saint Louis Sucre CropEnergies Vertex Bioenergy'
     };
 
-    function loadFeed(key, element) {
+    async function loadFeed(key, element) {
       document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
       if (element) element.classList.add('active');
 
-      const query = queries[key];
-      const url = `${BASE_URL}&q=${query}`;
       const container = document.getElementById('rss-feed');
-
       container.innerHTML = '<p>Chargement...</p>';
 
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          container.innerHTML = '';
-          if (!data.articles || data.articles.length === 0) {
-            container.innerHTML = '<p>Aucun article trouvé pour cette catégorie.</p>';
-            return;
+      if (key === 'recent') {
+        const promises = queries.recent.map(q =>
+          fetch(`${BASE_URL}&q=${encodeURIComponent(q)}`).then(res => res.json())
+        );
+        const results = await Promise.all(promises);
+
+        let allArticles = results.flatMap(r => r.articles || []);
+        allArticles = allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        const unique = [];
+        const seen = new Set();
+        for (let art of allArticles) {
+          if (!seen.has(art.url)) {
+            seen.add(art.url);
+            unique.push(art);
           }
-          data.articles.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-              <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
-              <time>${new Date(item.publishedAt).toLocaleString()}</time>
-              <p>${item.description || ''}</p>
-            `;
-            container.appendChild(card);
-          });
-        })
-        .catch(err => {
-          container.innerHTML = '<p>Erreur lors du chargement du flux.</p>';
-          console.error(err);
+          if (unique.length >= 10) break;
+        }
+
+        container.innerHTML = '';
+        if (unique.length === 0) {
+          container.innerHTML = '<p>Aucun article trouvé pour cette catégorie.</p>';
+          return;
+        }
+        unique.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+            <time>${new Date(item.publishedAt).toLocaleString()}</time>
+            <p>${item.description || ''}</p>
+          `;
+          container.appendChild(card);
         });
+
+      } else {
+        const query = encodeURIComponent(queries[key]);
+        const url = `${BASE_URL}&q=${query}`;
+
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            container.innerHTML = '';
+            if (!data.articles || data.articles.length === 0) {
+              container.innerHTML = '<p>Aucun article trouvé pour cette catégorie.</p>';
+              return;
+            }
+            data.articles.forEach(item => {
+              const card = document.createElement('div');
+              card.className = 'card';
+              card.innerHTML = `
+                <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+                <time>${new Date(item.publishedAt).toLocaleString()}</time>
+                <p>${item.description || ''}</p>
+              `;
+              container.appendChild(card);
+            });
+          })
+          .catch(err => {
+            container.innerHTML = '<p>Erreur lors du chargement du flux.</p>';
+            console.error(err);
+          });
+      }
     }
 
-    window.onload = () => loadFeed('ma');
+    window.onload = () => loadFeed('recent');
   </script>
 </body>
 </html>
