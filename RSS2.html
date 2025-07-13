@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veille RSS - Tereos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
+    header {
+      background-color: #00552e;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    header img {
+      height: 50px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    header h1 {
+      display: inline-block;
+      font-size: 1.5em;
+      vertical-align: middle;
+      margin: 0;
+    }
+    nav {
+      background: #e9e9e9;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0.5em 0;
+    }
+    nav button {
+      background: none;
+      border: none;
+      padding: 0.7em 1.2em;
+      margin: 0.3em;
+      cursor: pointer;
+      font-weight: bold;
+      color: #333;
+      border-bottom: 3px solid transparent;
+    }
+    nav button.active {
+      color: #00552e;
+      border-bottom: 3px solid #00552e;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1em;
+      margin-bottom: 1.5em;
+    }
+    .card h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+    .card a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+    .card time {
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos Logo" />
+    <h1>Veille RSS - Tereos</h1>
+  </header>
+
+  <nav id="nav"></nav>
+  <div class="container" id="rss-feed"><p>Chargement...</p></div>
+
+  <script>
+    const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQyqGh87x5NiJo54ujJJ9BqMbQTQVKGzk0QpUQDrUV18G1O-EoCscWRo6FOLYLLnu8FcAt5O0ukHJPT/pub?gid=0&single=true&output=csv";
+    let allData = [];
+
+    async function fetchSheet() {
+      const res = await fetch(SHEET_URL);
+      const text = await res.text();
+      const rows = text.trim().split('\n').map(r => r.split(','));
+      const headers = rows.shift();
+      const entries = rows.map(r => {
+        const obj = {};
+        headers.forEach((h, i) => obj[h.trim()] = r[i]);
+        return obj;
+      });
+      return entries;
+    }
+
+    function buildNav(categories) {
+      const nav = document.getElementById("nav");
+      nav.innerHTML = '';
+      const accueilBtn = document.createElement("button");
+      accueilBtn.textContent = "🆕 Accueil";
+      accueilBtn.classList.add("active");
+      accueilBtn.onclick = () => displayArticles(allData.slice(0, 10), accueilBtn);
+      nav.appendChild(accueilBtn);
+
+      categories.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.textContent = cat;
+        btn.onclick = () => displayArticles(allData.filter(a => a["Catégorie"] === cat), btn);
+        nav.appendChild(btn);
+      });
+    }
+
+    function displayArticles(articles, button) {
+      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      if (button) button.classList.add("active");
+
+      const container = document.getElementById("rss-feed");
+      container.innerHTML = '';
+
+      if (articles.length === 0) {
+        container.innerHTML = "<p>Aucun article trouvé.</p>";
+        return;
+      }
+
+      articles
+        .sort((a, b) => new Date(b.Date) - new Date(a.Date))
+        .slice(0, 10)
+        .forEach(item => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <h2><a href="${item.Lien}" target="_blank">${item.Titre}</a></h2>
+            <time>${new Date(item.Date).toLocaleString()}</time>
+            <p><strong>Catégorie :</strong> ${item["Catégorie"]}</p>
+          `;
+          container.appendChild(card);
+        });
+    }
+
+    async function init() {
+      allData = await fetchSheet();
+      const uniqueCategories = [...new Set(allData.map(r => r["Catégorie"]).filter(Boolean))];
+      buildNav(uniqueCategories);
+      displayA
