@@ -1,260 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veille sectorielle Azad - Tereos M&A</title>
-<style>
-  body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; color: #333; }
-  header { background: #00552e; color: white; text-align: center; padding: 1em; position: relative; }
-  header img { height: 50px; margin-right: 10px; vertical-align: middle; transition: transform 0.5s ease; }
-  header h1 { display: inline-block; margin: 0; font-size: 1.5em; vertical-align: middle; }
-  #config-btn, #refresh-btn, #change-btn { position: absolute; top: 10px; background: none; border: none; font-size: 1.5em; color: white; cursor: pointer; }
-  #config-btn { right: 10px; }
-  #refresh-btn { left: 10px; }
-  #change-btn { right: 50px; }
-  nav { display: flex; flex-wrap: wrap; justify-content: center; background: #e9e9e9; padding: 0.5em; }
-  nav button { border: none; background: none; padding: 0.7em 1em; margin: 0.2em; font-weight: bold; cursor: pointer; border-bottom: 2px solid transparent; }
-  nav button.active { color: #00552e; border-bottom: 2px solid #00552e; }
-  .container { max-width: 1000px; margin: 2em auto; padding: 0 1em; }
-  .card { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 1em; margin-bottom: 1.5em; }
-  .card h2 a { color: #00552e; text-decoration: none; font-weight: normal; }
-  #configurator-popup, #change-popup { display: none; position: fixed; top: 5%; left: 50%; transform: translateX(-50%); background: white; border: 1px solid #ccc; padding: 1em; z-index: 1000; width: 700px; max-height: 90vh; overflow-y: auto; }
-  .category-block { border: 1px solid #ddd; padding: 0.5em; margin-bottom: 1em; background: #f0f0f0; }
-  .category-title { font-weight: bold; margin-bottom: 0.5em; }
-  .keywords-list { margin-left: 1em; }
-  .remove { background: red; color: white; border: none; cursor: pointer; margin-left: 5px; }
-  .carousel-container { position: relative; max-width: 600px; margin: 2em auto; overflow: hidden; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-  .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-  .carousel-slide { min-width: 100%; box-sizing: border-box; padding: 1em; text-align: center; }
-  .carousel-slide h2 a { font-weight: bold; text-decoration: none; color: #00552e; }
-  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #00552e; color: white; border: none; padding: 0.5em; cursor: pointer; }
-  .carousel-btn.prev { left: 0; }
-  .carousel-btn.next { right: 0; }
-  table { width: 100%; border-collapse: collapse; margin-top: 1em; }
-  th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-  #overlayLogo { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; display: none; background: white; padding: 10px; border-radius: 10px; }
-  #overlayLogo img { width: 150px; animation: zoomInOut 3s forwards; }
-  @keyframes zoomInOut { 0% { transform: scale(0.5); opacity: 0; } 50% { transform: scale(1.5); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veille sectorielle — Tereos M&A</title>
+  <meta name="description" content="Lecteur RSS multi-catégories pour la veille sectorielle Tereos" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b0f14; --bg2:#101626; --fg:#eef3f9; --muted:#9fb0c5;
+      --accent:#e63946; --accent2:#2ec4b6; --glass:rgba(255,255,255,.06);
+      --glass-border:rgba(255,255,255,.15); --radius:22px; --shadow:0 12px 40px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",sans-serif; color:var(--fg);
+      background:linear-gradient(135deg,var(--bg1),var(--bg2)); background-attachment:fixed;}
+
+    /* Animated background blobs */
+    .bg-blob{position:fixed; inset:-20vmax; filter:blur(80px); opacity:.55; z-index:-2;
+      background:radial-gradient(35vmax 35vmax at 20% 30%, rgba(230,57,70,.35), transparent 70%),
+                 radial-gradient(40vmax 40vmax at 80% 20%, rgba(46,196,182,.35), transparent 70%),
+                 radial-gradient(45vmax 45vmax at 50% 80%, rgba(67,97,238,.25), transparent 70%);
+      animation:float 18s ease-in-out infinite alternate;}
+    @keyframes float{to{transform:translate3d(0,-3vmax,0) scale(1.02)}}
+
+    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px);
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.12));
+      border-bottom:1px solid var(--glass-border);}
+    .head-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:14px; padding:14px 18px;}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;}
+    .brand img{height:42px; width:auto; filter:drop-shadow(0 8px 16px rgba(0,0,0,.2));}
+    .brand h1{margin:0; font-size: clamp(18px, 2.2vw, 24px); font-weight:800; letter-spacing:.25px;}
+    .actions{margin-left:auto; display:flex; gap:8px}
+    .icon-btn{border:1px solid var(--glass-border); background:var(--glass); color:var(--fg);
+      border-radius:12px; padding:10px 12px; cursor:pointer; box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      transition:transform .12s ease, background .2s ease, box-shadow .2s ease;}
+    .icon-btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,.35)}
+
+    /* Tabs */
+    nav{max-width:1200px; margin:16px auto 0; padding:0 18px 8px;}
+    .tabs{display:flex; gap:10px; flex-wrap:wrap}
+    .tab{appearance:none; border:1px solid var(--glass-border); background:var(--glass); color:var(--fg);
+      padding:10px 14px; border-radius:999px; font-weight:700; letter-spacing:.2px; cursor:pointer;}
+    .tab.active{background:linear-gradient(135deg, rgba(230,57,70,.25), rgba(46,196,182,.20));}
+
+    main{max-width:1200px; margin:10px auto 60px; padding:0 18px;}
+
+    /* Carousel */
+    .carousel{position:relative; overflow:hidden; border-radius:var(--radius);
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border:1px solid var(--glass-border); box-shadow:var(--shadow);}
+    .track{display:flex; transition:transform .5s ease-in-out}
+    .slide{min-width:100%; padding:24px; text-align:center}
+    .slide h2{margin:0 0 6px; font-weight:800; font-size: clamp(18px,2vw,22px)}
+    /* Liens carrousel : gras sans souligné */
+    .slide h2 a{color:var(--fg); text-decoration:none; font-weight:800}
+    .slide time{display:block; color:var(--muted); font-size:14px}
+    .slide .cat{margin-top:6px; display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--glass-border); background:var(--glass); font-weight:600}
+    .cbtn{position:absolute; top:50%; transform:translateY(-50%); border:none; background:rgba(0,0,0,.35); color:#fff; padding:10px 12px; border-radius:12px; cursor:pointer}
+    .cbtn.prev{left:8px} .cbtn.next{right:8px}
+
+    /* Feed cards */
+    .feed{margin-top:18px}
+    .card{background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border:1px solid var(--glass-border); border-radius:var(--radius); padding:18px; margin:14px 0; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px; font-size: clamp(16px, 2vw, 20px); font-weight:800}
+    /* Liens articles feed : gras + souligné */
+    .card h3 a{color:var(--fg); text-decoration:underline; font-weight:800}
+    .meta{display:flex; gap:12px; align-items:center; color:var(--muted); font-size:13px}
+
+    /* Configurator modal */
+    .modal{position:fixed; inset:0; display:none; place-items:center; z-index:50;}
+    .modal.open{display:grid}
+    .scrim{position:absolute; inset:0; background:rgba(0,0,0,.55); backdrop-filter: blur(2px)}
+    .panel{position:relative; width:min(920px,92vw); max-height:86vh; overflow:auto; border-radius:24px; padding:20px;
+      background:linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.03)); border:1px solid var(--glass-border);
+      box-shadow:var(--shadow)}
+    .panel h2{margin:0 0 12px}
+    .cblock{border:1px dashed var(--glass-border); border-radius:16px; padding:12px; margin:10px 0; background:rgba(255,255,255,.03)}
+    .cblock .row{display:flex; gap:8px; align-items:center; margin-bottom:8px}
+    .input, .chip{background:rgba(255,255,255,.08); border:1px solid var(--glass-border); color:var(--fg);
+      border-radius:12px; padding:10px 12px}
+    .input{flex:1}
+    .chip{display:inline-flex; align-items:center; gap:8px; margin:6px 6px 0 0}
+    .chip button{border:none; background:transparent; color:var(--muted); cursor:pointer}
+    .row .remove{border:1px solid rgba(255,0,0,.35); color:#fff; background:rgba(255,0,0,.15);}
+    .toolbar{display:flex; gap:10px; justify-content:flex-end; margin-top:10px}
+    .btn{border:1px solid var(--glass-border); background:var(--glass); color:var(--fg); border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg, rgba(230,57,70,.25), rgba(46,196,182,.20))}
+
+    /* Overlay logo animation */
+    #overlayLogo{position:fixed; inset:0; display:none; place-items:center; z-index:60}
+    #overlayLogo .box{background:rgba(255,255,255,.06); border:1px solid var(--glass-border); padding:16px 22px; border-radius:18px}
+    #overlayLogo img{width:140px; animation:zoomInOut 2.6s forwards}
+    @keyframes zoomInOut{0%{transform:scale(.6); opacity:0} 50%{transform:scale(1.4); opacity:1} 100%{transform:scale(1); opacity:0}}
+
+    footer{color:var(--muted); text-align:center; padding:24px 18px 40px; font-size:14px}
+  </style>
 </head>
 <body>
-<header>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos Logo">
-  <h1>Veille sectorielle Azad - Tereos M&A</h1>
-  <button id="refresh-btn" onclick="loadCategoriesFromSheet()">🔄</button>
-  <button id="change-btn" onclick="toggleChange()">💱</button>
-  <button id="config-btn" onclick="toggleConfigurator()">⚙️</button>
-</header>
-<div id="overlayLogo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Logo"></div>
-<nav id="category-buttons"></nav>
-<div class="carousel-container">
-  <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
-  <div class="carousel-track" id="carousel"><div class="carousel-slide">Chargement...</div></div>
-  <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
-</div>
-<div class="container" id="rss-feed"><p>Chargement des actualités...</p></div>
-<div id="configurator-popup">
-  <h2>Configuration des Catégories & Mots-clés</h2>
-  <div id="configurator"></div>
-  <button onclick="addCategoryBlock()">+ Ajouter Catégorie</button><br><br>
-  <button onclick="applyConfig()">Appliquer</button>
-  <button onclick="toggleConfigurator()">Fermer</button>
-</div>
-<div id="change-popup">
-  <h2>Taux de Change (via Frankfurter.app)</h2>
-  <button onclick="fetchExchangeRates()">Actualiser les taux</button>
-  <button onclick="exportRatesToCSV()">Exporter Excel</button>
-  <table id="rates-table">
-    <thead><tr><th>Date</th><th>Devise</th><th>Taux</th></tr></thead>
-    <tbody></tbody>
-  </table>
-  <button onclick="toggleChange()">Fermer</button>
-</div>
-<script>
-// Toutes les fonctions JS ici y compris exportRatesToCSV corrigée
-let categoriesData = {}, allData = [], currentIndex = 0, totalSlides = 0;
-const exchangeRates = [];
-const makeWebhookURL = "https://hook.eu2.make.com/evvl4g8reogx47pssd32r7gwgcjs83q3";
-const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyqGh87x5NiJo54ujJJ9BqMbQTQVKGzk0QpUQDrUV18G1O-EoCscWRo6FOLYLLnu8FcAt5O0ukHJPT/pub?gid=565132429&single=true&output=csv';
+  <div class="bg-blob" aria-hidden="true"></div>
 
-function showOverlayLogo() {
-  const overlay = document.getElementById("overlayLogo");
-  overlay.style.display = "block";
-  setTimeout(() => overlay.style.display = "none", 3000);
-}
+  <header>
+    <div class="head-inner">
+      <a class="brand" href="#" aria-label="Accueil Veille sectorielle">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos" />
+        <h1>Veille sectorielle — Tereos M&A</h1>
+      </a>
+      <div class="actions">
+        <button class="icon-btn" id="refresh-btn" title="Rafraîchir" aria-label="Rafraîchir">🔄</button>
+        <button class="icon-btn" id="config-btn" title="Configurer" aria-label="Configurer">⚙️</button>
+      </div>
+    </div>
+  </header>
 
-async function loadCategoriesFromSheet() {
-  const res = await fetch(sheetURL);
-  const csv = await res.text();
-  categoriesData = {};
-  csv.split('\n').slice(1).forEach(line => {
-    const [category, keyword] = line.split(',').map(x => x.trim());
-    if (!category || !keyword) return;
-    if (!categoriesData[category]) categoriesData[category] = [];
-    categoriesData[category].push(keyword);
-  });
-  loadAllFeeds();
-}
+  <nav>
+    <div class="tabs" id="category-buttons"></div>
+  </nav>
 
-async function saveCategoriesToMake() {
-  for (const [cat, kws] of Object.entries(categoriesData)) {
-    for (const kw of kws) {
-      await fetch(makeWebhookURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ catégorie: cat, mot_clé: kw })
+  <main>
+    <!-- Carousel Dernières news -->
+    <section class="carousel" aria-label="Dernières actualités">
+      <button class="cbtn prev" aria-label="Précédent">◀</button>
+      <div class="track" id="carousel"><div class="slide">Chargement…</div></div>
+      <button class="cbtn next" aria-label="Suivant">▶</button>
+    </section>
+
+    <!-- Flux par catégorie -->
+    <section class="feed" id="rss-feed"><p class="meta">Chargement des actualités…</p></section>
+  </main>
+
+  <!-- Configurator Modal -->
+  <div class="modal" id="configurator-modal" aria-hidden="true">
+    <div class="scrim" role="button" tabindex="0"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="cfg-title">
+      <h2 id="cfg-title">Configuration des catégories & mots-clés</h2>
+      <div id="configurator"></div>
+      <div class="toolbar">
+        <button class="btn" id="add-cat">+ Ajouter catégorie</button>
+        <button class="btn" id="close-cfg">Fermer</button>
+        <button class="btn primary" id="apply-cfg">Appliquer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay Logo -->
+  <div id="overlayLogo"><div class="box"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Logo Tereos" /></div></div>
+
+  <footer>© <span id="year"></span> Tereos — Veille sectorielle.</footer>
+
+  <script>
+    // ======= Data sources (reprend tes URLs existantes) =======
+    const makeWebhookURL = "https://hook.eu2.make.com/evvl4g8reogx47pssd32r7gwgcjs83q3";
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyqGh87x5NiJo54ujJJ9BqMbQTQVKGzk0QpUQDrUV18G1O-EoCscWRo6FOLYLLnu8FcAt5O0ukHJPT/pub?gid=565132429&single=true&output=csv';
+
+    // ======= State =======
+    let categoriesData = {}; // {cat: [kw]}
+    let allData = []; // {title, link, pubDate, category}
+    let currentIndex = 0, totalSlides = 0;
+
+    // ======= Helpers UI =======
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const year = new Date().getFullYear(); $('#year').textContent = year;
+
+    function showOverlayLogo(){ const o = $('#overlayLogo'); o.style.display = 'grid'; setTimeout(()=> o.style.display='none', 2600); }
+
+    // ======= Load categories from Google Sheet =======
+    async function loadCategoriesFromSheet(){
+      try{
+        const res = await fetch(sheetURL);
+        const csv = await res.text();
+        const rows = csv.split('\n').slice(1);
+        categoriesData = {};
+        for(const line of rows){
+          const [category, keyword] = line.split(',').map(x => (x||'').trim());
+          if(!category || !keyword) continue;
+          (categoriesData[category] ??= []).push(keyword);
+        }
+        await loadAllFeeds();
+      }catch(e){ console.error('Sheet load error', e); }
+    }
+
+    // ======= Persist categories to Make (optionnel) =======
+    async function saveCategoriesToMake(){
+      try{
+        for(const [cat,kws] of Object.entries(categoriesData)){
+          for(const kw of kws){
+            await fetch(makeWebhookURL,{method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ catégorie:cat, mot_clé:kw })});
+          }
+        }
+      }catch(e){ console.warn('Make webhook skipped/failed', e); }
+    }
+
+    // ======= Build Google News RSS URLs =======
+    function getRSSUrls(){
+      const urls = {};
+      for(const [cat,kws] of Object.entries(categoriesData)){
+        urls[cat] = kws.map(kw => `https://news.google.com/rss/search?q=${encodeURIComponent('"'+kw+'"')}&hl=fr&gl=FR&ceid=FR:fr`);
+      }
+      return urls;
+    }
+
+    // ======= Fetch & parse one RSS (via rss2json) =======
+    async function fetchRSS(url, category){
+      try{
+        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`);
+        const data = await res.json();
+        if(!data.items) return [];
+        return data.items.map(i => ({ title:i.title, link:i.link, pubDate:i.pubDate, category }));
+      }catch{ return []; }
+    }
+
+    // ======= Load all feeds =======
+    async function loadAllFeeds(){
+      allData = [];
+      const urls = getRSSUrls();
+      for(const [cat,links] of Object.entries(urls)){
+        for(const link of links){
+          const items = await fetchRSS(link, cat);
+          allData.push(...items);
+        }
+      }
+      renderCategories();
+      renderCarousel();
+      // auto-select first tab
+      const first = $('#category-buttons .tab'); if(first) first.click();
+    }
+
+    // ======= Render tabs =======
+    function renderCategories(){
+      const wrap = $('#category-buttons');
+      wrap.innerHTML = '';
+      for(const cat of Object.keys(categoriesData)){
+        const btn = document.createElement('button');
+        btn.className = 'tab'; btn.type = 'button'; btn.textContent = cat;
+        btn.onclick = () => { $$('.tab', wrap).forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderFeed(cat); };
+        wrap.appendChild(btn);
+      }
+    }
+
+    // ======= Render feed for a category =======
+    function renderFeed(category){
+      const container = $('#rss-feed');
+      const filtered = allData.filter(i => i.category === category).sort((a,b)=> new Date(b.pubDate)-new Date(a.pubDate));
+      if(!filtered.length){ container.innerHTML = '<p class="meta">Aucun article trouvé.</p>'; return; }
+      container.innerHTML = filtered.map(item => `
+        <article class="card">
+          <h3><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>
+          <div class="meta"><time datetime="${item.pubDate}">${new Date(item.pubDate).toLocaleString()}</time><span>•</span><span>${item.category}</span></div>
+        </article>
+      `).join('');
+    }
+
+    // ======= Carousel (latest 10) =======
+    function renderCarousel(){
+      const carousel = $('#carousel');
+      const latest = [...allData].sort((a,b)=> new Date(b.pubDate)-new Date(a.pubDate)).slice(0,10);
+      if(!latest.length){ carousel.innerHTML = '<div class="slide">Aucune actualité récente.</div>'; totalSlides=1; currentIndex=0; return; }
+      carousel.innerHTML = latest.map(item => `
+        <div class="slide">
+          <h2><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h2>
+          <time datetime="${item.pubDate}">${new Date(item.pubDate).toLocaleString()}</time>
+          <div class="cat">${item.category}</div>
+        </div>
+      `).join('');
+      totalSlides = latest.length; currentIndex = 0; updateCarousel();
+    }
+    function updateCarousel(){ $('#carousel').style.transform = `translateX(-${currentIndex*100}%)`; }
+    function nextSlide(){ if(!totalSlides) return; currentIndex = (currentIndex+1)%totalSlides; updateCarousel(); }
+    function prevSlide(){ if(!totalSlides) return; currentIndex = (currentIndex-1+totalSlides)%totalSlides; updateCarousel(); }
+
+    // ======= Configurator =======
+    function openConfigurator(){ const m=$('#configurator-modal'); m.classList.add('open'); m.setAttribute('aria-hidden','false'); renderConfigurator(); }
+    function closeConfigurator(){ const m=$('#configurator-modal'); m.classList.remove('open'); m.setAttribute('aria-hidden','true'); }
+
+    function renderConfigurator(){
+      const box = $('#configurator'); box.innerHTML='';
+      for(const [cat,kws] of Object.entries(categoriesData)){
+        box.appendChild(makeCategoryBlock(cat, kws));
+      }
+    }
+
+    function makeCategoryBlock(catName, keywords){
+      const block = document.createElement('div'); block.className='cblock';
+      block.innerHTML = `
+        <div class="row">
+          <input class="input cname" value="${catName}" placeholder="Nom de la catégorie" />
+          <button class="btn remove">Supprimer</button>
+        </div>
+        <div class="kw"></div>
+        <div class="row"><button class="btn addkw">+ Ajouter mot-clé</button></div>
+      `;
+      const kwBox = $('.kw', block);
+      for(const kw of keywords){ kwBox.appendChild(makeKeywordChip(kw)); }
+      $('.addkw', block).onclick = ()=> kwBox.appendChild(makeKeywordChip(''));
+      $('.remove', block).onclick = ()=> block.remove();
+      return block;
+    }
+
+    function makeKeywordChip(value){
+      const chip = document.createElement('span'); chip.className='chip';
+      chip.innerHTML = `<input class="input kwin" value="${value}" placeholder="Mot-clé" /> <button title="Supprimer">✕</button>`;
+      chip.querySelector('button').onclick = ()=> chip.remove();
+      return chip;
+    }
+
+    function collectConfig(){
+      const result = {};
+      $$('#configurator .cblock').forEach(block=>{
+        const name = $('.cname', block).value.trim();
+        const kws = $$('.kwin', block).map(i=> i.value.trim()).filter(Boolean);
+        if(name && kws.length) result[name]=kws;
       });
+      return result;
     }
-  }
-}
 
-function getRSSUrls() {
-  const urls = {};
-  Object.entries(categoriesData).forEach(([cat, kws]) => {
-    urls[cat] = kws.map(kw => `https://news.google.com/rss/search?q=${encodeURIComponent('"' + kw + '"')}&hl=fr&gl=FR&ceid=FR:fr`);
-  });
-  return urls;
-}
-
-async function fetchRSS(url, category) {
-  try {
-    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`);
-    const data = await res.json();
-    if (!data.items) return [];
-    return data.items.map(item => ({ title: item.title, link: item.link, pubDate: item.pubDate, category }));
-  } catch { return []; }
-}
-
-async function loadAllFeeds() {
-  allData = [];
-  const urls = getRSSUrls();
-  for (const [cat, links] of Object.entries(urls)) {
-    for (const link of links) {
-      const articles = await fetchRSS(link, cat);
-      allData.push(...articles);
+    async function applyConfig(){
+      categoriesData = collectConfig();
+      showOverlayLogo();
+      closeConfigurator();
+      await saveCategoriesToMake();
+      await loadAllFeeds();
     }
-  }
-  renderCategories();
-  renderCarousel();
-  document.querySelectorAll("nav button")[0]?.click();
-}
 
-function renderCategories() {
-  const nav = document.getElementById("category-buttons");
-  nav.innerHTML = "";
-  Object.keys(categoriesData).forEach(cat => {
-    const btn = document.createElement("button");
-    btn.textContent = cat;
-    btn.onclick = () => {
-      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      renderFeed(cat);
-    };
-    nav.appendChild(btn);
-  });
-}
+    function addCategoryBlock(){ $('#configurator').appendChild(makeCategoryBlock('Nouvelle catégorie', [])); }
 
-function renderFeed(category) {
-  const container = document.getElementById("rss-feed");
-  const filtered = allData.filter(item => item.category === category).sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-  container.innerHTML = filtered.map(item => `<div class='card'><h2><a href='${item.link}' target='_blank'>${item.title}</a></h2><time>${new Date(item.pubDate).toLocaleString()}</time></div>`).join('') || '<p>Aucun article trouvé.</p>';
-}
+    // ======= Events =======
+    $('#refresh-btn').onclick = loadCategoriesFromSheet;
+    $('#config-btn').onclick = openConfigurator;
+    $('#add-cat').onclick = addCategoryBlock;
+    $('#close-cfg').onclick = closeConfigurator;
+    $('#apply-cfg').onclick = applyConfig;
+    $('.scrim').onclick = closeConfigurator;
 
-function renderCarousel() {
-  const carousel = document.getElementById("carousel");
-  const latest = [...allData].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate)).slice(0, 10);
-  carousel.innerHTML = latest.length ? latest.map(item => `<div class='carousel-slide'><h2><a href='${item.link}' target='_blank'>${item.title}</a></h2><time>${new Date(item.pubDate).toLocaleString()}</time><p>${item.category}</p></div>`).join('') : "<div class='carousel-slide'>Aucune actualité récente.</div>";
-  totalSlides = latest.length || 1;
-  currentIndex = 0;
-  updateCarousel();
-}
+    $('.prev').onclick = prevSlide; $('.next').onclick = nextSlide;
 
-function updateCarousel() { document.getElementById("carousel").style.transform = `translateX(-${currentIndex * 100}%)`; }
-function nextSlide() { if (totalSlides) { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); } }
-function prevSlide() { if (totalSlides) { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); } }
+    // Keyboard accessibility for carousel
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='ArrowLeft') prevSlide();
+      if(e.key==='ArrowRight') nextSlide();
+      if(e.key==='Escape') closeConfigurator();
+    });
 
-function toggleConfigurator() {
-  const popup = document.getElementById("configurator-popup");
-  popup.style.display = popup.style.display === "block" ? "none" : "block";
-  if (popup.style.display === "block") renderConfigurator();
-}
-
-function renderConfigurator() {
-  const container = document.getElementById("configurator");
-  container.innerHTML = "";
-  Object.entries(categoriesData).forEach(([cat, kws]) => createCategoryBlock(container, cat, kws));
-}
-
-function createCategoryBlock(container, catName, keywords) {
-  const block = document.createElement("div");
-  block.className = "category-block";
-  block.innerHTML = `<div class='category-title'><input type='text' value='${catName}' class='category-name'> <button class='remove' onclick='this.parentElement.parentElement.remove()'>Supprimer</button></div>`;
-  const kwList = document.createElement("div");
-  kwList.className = "keywords-list";
-  keywords.forEach(kw => addKeywordField(kwList, kw));
-  block.appendChild(kwList);
-  const addKwBtn = document.createElement("button");
-  addKwBtn.textContent = "+ Ajouter mot-clé";
-  addKwBtn.onclick = () => addKeywordField(kwList, "");
-  block.appendChild(addKwBtn);
-  container.appendChild(block);
-}
-
-function addCategoryBlock() { createCategoryBlock(document.getElementById("configurator"), "Nouvelle Catégorie", []); }
-function addKeywordField(container, value) {
-  const div = document.createElement("div");
-  div.innerHTML = `<input type='text' value='${value}' class='keyword'> <button class='remove' onclick='this.parentElement.remove()'>X</button>`;
-  container.appendChild(div);
-}
-
-function applyConfig() {
-  categoriesData = {};
-  document.querySelectorAll(".category-block").forEach(block => {
-    const name = block.querySelector(".category-name").value.trim();
-    const kws = Array.from(block.querySelectorAll(".keyword")).map(input => input.value.trim()).filter(v => v);
-    if (name && kws.length) categoriesData[name] = kws;
-  });
-  showOverlayLogo();
-  saveCategoriesToMake();
-  toggleConfigurator();
-  loadAllFeeds();
-}
-
-function toggleChange() {
-  const popup = document.getElementById("change-popup");
-  popup.style.display = popup.style.display === "block" ? "none" : "block";
-}
-
-async function fetchExchangeRates() {
-  const res = await fetch('https://api.frankfurter.app/latest');
-  const data = await res.json();
-  const tbody = document.querySelector("#rates-table tbody");
-  tbody.innerHTML = "";
-  exchangeRates.length = 0;
-  Object.entries(data.rates).forEach(([currency, rate]) => {
-    exchangeRates.push({ date: data.date, currency, rate });
-    tbody.innerHTML += `<tr><td>${data.date}</td><td>${currency}</td><td>${rate}</td></tr>`;
-  });
-}
-
-function exportRatesToCSV() {
-  let csv = "Date;Devise;Taux\n";
-  exchangeRates.forEach(r => {
-    const rateFormatted = r.rate.toString().replace('.', ',');
-    csv += `${r.date};${r.currency};${rateFormatted}\n`;
-  });
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'taux_de_change.csv';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
-
-window.onload = loadCategoriesFromSheet;
-</script>
+    // ======= Init =======
+    window.onload = loadCategoriesFromSheet;
+  </script>
 </body>
 </html>
