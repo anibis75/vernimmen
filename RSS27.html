@@ -1,246 +1,260 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Veille sectorielle — Tereos M&A</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille sectorielle Azad - Tereos M&A</title>
 <style>
-  :root{
-    --bg: #0c0f12;          /* fond sombre */
-    --bg-soft:#12161b;      /* cartes */
-    --text:#e9eef3;         /* texte principal */
-    --muted:#96a0ab;        /* texte secondaire */
-    --primary:#e30613;      /* rouge Tereos */
-    --accent:#ff8a00;       /* orange Tereos */
-    --accent2:#ffd200;      /* jaune Tereos */
-    --chip:#182028;         /* fond chip */
-    --chip-active:#20303c;  /* fond chip active */
-    --border:#1f2a33;       /* séparateurs */
-    --ring: rgba(227,6,19,.35);
-    --radius:18px;
-    --shadow: 0 10px 24px rgba(0,0,0,.35);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;background:radial-gradient(1200px 600px at 0% -10%, rgba(227,6,19,.12), transparent 60%),
-                               radial-gradient(900px 500px at 100% -20%, rgba(255,138,0,.12), transparent 55%),
-                               var(--bg);
-       color:var(--text); font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
-
-  /* Header */
-  header{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,var(--primary),var(--accent));
-         padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.15)}
-  .brand{display:flex;align-items:center;gap:12px;max-width:1200px;margin:0 auto}
-  .brand img{height:32px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
-  .brand h1{margin:0;font-size:18px;font-weight:700;letter-spacing:.2px}
-
-  /* Container */
-  .wrap{max-width:1200px;margin:24px auto;padding:0 18px}
-
-  /* Chips */
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 18px}
-  .chip{appearance:none;border:1px solid var(--border);background:var(--chip);color:var(--text);
-        padding:8px 12px;border-radius:999px;cursor:pointer;transition:.2s; font-weight:600}
-  .chip:hover{transform:translateY(-1px)}
-  .chip.active{background:var(--chip-active); outline:2px solid var(--ring)}
-
-  /* Carousel (compact) */
-  .carousel{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-soft);
-            box-shadow:var(--shadow);height:220px;margin-bottom:18px}
-  .slide{position:absolute;inset:0;display:none}
-  .slide.active{display:flex}
-  .slide .media{flex:0 0 38%;background:#0b0f14;overflow:hidden}
-  .slide .media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
-  .slide .meta{flex:1;padding:18px 18px 18px 18px;display:flex;flex-direction:column;gap:10px}
-  .kicker{font-size:12px;font-weight:700;color:var(--accent2)}
-  .title{font-size:22px;font-weight:800;margin:0}
-  .date{font-size:12px;color:var(--muted)}
-  .pill{display:inline-block;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 10px;
-        border-radius:999px;font-weight:700;font-size:12px}
-  .cnav{position:absolute;inset-inline:10px;top:calc(50% - 20px);display:flex;justify-content:space-between;pointer-events:none}
-  .cbtn{pointer-events:auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:rgba(0,0,0,.35);
-        display:grid;place-items:center;font-size:18px;color:#fff;cursor:pointer}
-  .cbtn:hover{background:rgba(0,0,0,.5)}
-
-  /* Grid list */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  @media (max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:680px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
-        display:flex;flex-direction:column;min-height:190px}
-  .card .thumb{aspect-ratio:16/9;background:#0b0f14;overflow:hidden}
-  .card .thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
-  .card .body{padding:14px;display:flex;flex-direction:column;gap:8px}
-  .card .body .cat{font-size:11px;font-weight:700;color:var(--accent2)}
-  .card .body .ttl{font-size:16px;font-weight:800;margin:0}
-  .card .body .ttl a{color:inherit;text-decoration:underline;font-weight:800}
-  .card .body .ttl a:hover{opacity:.9}
-  .card .body .time{font-size:12px;color:var(--muted)}
-
-  /* Footer note */
-  footer{color:var(--muted);text-align:center;padding:26px 0}
+  body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; color: #333; }
+  header { background: #00552e; color: white; text-align: center; padding: 1em; position: relative; }
+  header img { height: 50px; margin-right: 10px; vertical-align: middle; transition: transform 0.5s ease; }
+  header h1 { display: inline-block; margin: 0; font-size: 1.5em; vertical-align: middle; }
+  #config-btn, #refresh-btn, #change-btn { position: absolute; top: 10px; background: none; border: none; font-size: 1.5em; color: white; cursor: pointer; }
+  #config-btn { right: 10px; }
+  #refresh-btn { left: 10px; }
+  #change-btn { right: 50px; }
+  nav { display: flex; flex-wrap: wrap; justify-content: center; background: #e9e9e9; padding: 0.5em; }
+  nav button { border: none; background: none; padding: 0.7em 1em; margin: 0.2em; font-weight: bold; cursor: pointer; border-bottom: 2px solid transparent; }
+  nav button.active { color: #00552e; border-bottom: 2px solid #00552e; }
+  .container { max-width: 1000px; margin: 2em auto; padding: 0 1em; }
+  .card { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 1em; margin-bottom: 1.5em; }
+  .card h2 a { color: #00552e; text-decoration: none; font-weight: normal; }
+  #configurator-popup, #change-popup { display: none; position: fixed; top: 5%; left: 50%; transform: translateX(-50%); background: white; border: 1px solid #ccc; padding: 1em; z-index: 1000; width: 700px; max-height: 90vh; overflow-y: auto; }
+  .category-block { border: 1px solid #ddd; padding: 0.5em; margin-bottom: 1em; background: #f0f0f0; }
+  .category-title { font-weight: bold; margin-bottom: 0.5em; }
+  .keywords-list { margin-left: 1em; }
+  .remove { background: red; color: white; border: none; cursor: pointer; margin-left: 5px; }
+  .carousel-container { position: relative; max-width: 600px; margin: 2em auto; overflow: hidden; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+  .carousel-slide { min-width: 100%; box-sizing: border-box; padding: 1em; text-align: center; }
+  .carousel-slide h2 a { font-weight: bold; text-decoration: none; color: #00552e; }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #00552e; color: white; border: none; padding: 0.5em; cursor: pointer; }
+  .carousel-btn.prev { left: 0; }
+  .carousel-btn.next { right: 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+  #overlayLogo { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; display: none; background: white; padding: 10px; border-radius: 10px; }
+  #overlayLogo img { width: 150px; animation: zoomInOut 3s forwards; }
+  @keyframes zoomInOut { 0% { transform: scale(0.5); opacity: 0; } 50% { transform: scale(1.5); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
 </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos" />
-      <h1>Veille sectorielle — Tereos M&A</h1>
-    </div>
-  </header>
-
-  <div class="wrap">
-    <!-- Chips catégories -->
-    <div class="chips" id="chips"></div>
-
-    <!-- Carousel compact -->
-    <section class="carousel" id="carousel" aria-label="À la une">
-      <div class="cnav">
-        <button class="cbtn" id="prev" aria-label="Précédent">◀</button>
-        <button class="cbtn" id="next" aria-label="Suivant">▶</button>
-      </div>
-    </section>
-
-    <!-- Grille d'articles -->
-    <section class="grid" id="grid"></section>
-  </div>
-
-  <footer>UI compacte, moderne. Couleurs Tereos. — © Veille interne</footer>
-
+<header>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos Logo">
+  <h1>Veille sectorielle Azad - Tereos M&A</h1>
+  <button id="refresh-btn" onclick="loadCategoriesFromSheet()">🔄</button>
+  <button id="change-btn" onclick="toggleChange()">💱</button>
+  <button id="config-btn" onclick="toggleConfigurator()">⚙️</button>
+</header>
+<div id="overlayLogo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Logo"></div>
+<nav id="category-buttons"></nav>
+<div class="carousel-container">
+  <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+  <div class="carousel-track" id="carousel"><div class="carousel-slide">Chargement...</div></div>
+  <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+</div>
+<div class="container" id="rss-feed"><p>Chargement des actualités...</p></div>
+<div id="configurator-popup">
+  <h2>Configuration des Catégories & Mots-clés</h2>
+  <div id="configurator"></div>
+  <button onclick="addCategoryBlock()">+ Ajouter Catégorie</button><br><br>
+  <button onclick="applyConfig()">Appliquer</button>
+  <button onclick="toggleConfigurator()">Fermer</button>
+</div>
+<div id="change-popup">
+  <h2>Taux de Change (via Frankfurter.app)</h2>
+  <button onclick="fetchExchangeRates()">Actualiser les taux</button>
+  <button onclick="exportRatesToCSV()">Exporter Excel</button>
+  <table id="rates-table">
+    <thead><tr><th>Date</th><th>Devise</th><th>Taux</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <button onclick="toggleChange()">Fermer</button>
+</div>
 <script>
-  // ====== Jeu de données DEMO (remplace via updateArticles([...])) ======
-  const seed = [
-    {title:"Coca light : cette boisson est-elle mauvaise pour la santé ? - RTL.fr",
-     date:"2025-08-13 06:33:00", category:"Sucre & Matières Premières",
-     link:"https://www.rtl.fr/", image:"https://images.unsplash.com/photo-1600275669283-5e4b3f6f49d1?q=80&w=1600&auto=format&fit=crop"},
-    {title:"Éthanol : bilan hebdomadaire des prix — USDA",
-     date:"2025-08-12 18:05:00", category:"Éthanol & Bioénergies",
-     link:"https://www.usda.gov/", image:"https://images.unsplash.com/photo-1581092921461-eab62e97a886?q=80&w=1600&auto=format&fit=crop"},
-    {title:"Brésil : taxe export sucre brut discutée au Congrès",
-     date:"2025-08-11 10:01:00", category:"Réglementation & Taxes",
-     link:"https://www.gov.br/", image:"https://images.unsplash.com/photo-1596040033229-2ec8c7c91e43?q=80&w=1600&auto=format&fit=crop"},
-    {title:"Cosumar : résultats semestriels et investissement logistique",
-     date:"2025-08-10 17:10:00", category:"Performance financière & M&A",
-     link:"https://www.cosumar.ma/", image:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"},
-    {title:"Indonésie : quota import sucre 2025 révisé",
-     date:"2025-08-09 08:30:00", category:"Zones géographiques stratégiques",
-     link:"https://www.kemendag.go.id/", image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"},
-    {title:"Tereos : nomination d’un directeur stratégie M&A",
-     date:"2025-08-08 12:00:00", category:"Actualités Corporate Tereos",
-     link:"https://www.tereos.com/", image:"https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=1600&auto=format&fit=crop"},
-    {title:"Europe : arbitrages concurrence sucre raffiné",
-     date:"2025-08-07 09:40:00", category:"Concurrence Sucrière",
-     link:"https://ec.europa.eu/", image:"https://images.unsplash.com/photo-1543087903-1ac2ec7aa8c5?q=80&w=1600&auto=format&fit=crop"}
-  ];
+// Toutes les fonctions JS ici y compris exportRatesToCSV corrigée
+let categoriesData = {}, allData = [], currentIndex = 0, totalSlides = 0;
+const exchangeRates = [];
+const makeWebhookURL = "https://hook.eu2.make.com/evvl4g8reogx47pssd32r7gwgcjs83q3";
+const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyqGh87x5NiJo54ujJJ9BqMbQTQVKGzk0QpUQDrUV18G1O-EoCscWRo6FOLYLLnu8FcAt5O0ukHJPT/pub?gid=565132429&single=true&output=csv';
 
-  // ====== State ======
-  let ARTICLES = [...seed];
-  let ACTIVE_CAT = 'Toutes';
-  let IDX = 0;
+function showOverlayLogo() {
+  const overlay = document.getElementById("overlayLogo");
+  overlay.style.display = "block";
+  setTimeout(() => overlay.style.display = "none", 3000);
+}
 
-  const EL = {
-    chips: document.getElementById('chips'),
-    grid: document.getElementById('grid'),
-    carousel: document.getElementById('carousel'),
-    prev: document.getElementById('prev'),
-    next: document.getElementById('next')
-  };
+async function loadCategoriesFromSheet() {
+  const res = await fetch(sheetURL);
+  const csv = await res.text();
+  categoriesData = {};
+  csv.split('\n').slice(1).forEach(line => {
+    const [category, keyword] = line.split(',').map(x => x.trim());
+    if (!category || !keyword) return;
+    if (!categoriesData[category]) categoriesData[category] = [];
+    categoriesData[category].push(keyword);
+  });
+  loadAllFeeds();
+}
 
-  // ====== Utils ======
-  const fmtDate = s => {
-    const d = new Date(s.replace(' ', 'T'));
-    if (isNaN(d)) return s;
-    return d.toLocaleString('fr-FR', {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
-  };
-
-  const uniq = arr => Array.from(new Set(arr));
-
-  // ====== Render Chips ======
-  function renderChips(){
-    const cats = ['Toutes', ...uniq(ARTICLES.map(a=>a.category)).sort()];
-    EL.chips.innerHTML = cats.map(c=>`<button class="chip ${c===ACTIVE_CAT?'active':''}" data-cat="${c}">${c}</button>`).join('');
-    EL.chips.querySelectorAll('.chip').forEach(btn=>{
-      btn.addEventListener('click',()=>{ ACTIVE_CAT = btn.dataset.cat; renderAll(); });
-    });
+async function saveCategoriesToMake() {
+  for (const [cat, kws] of Object.entries(categoriesData)) {
+    for (const kw of kws) {
+      await fetch(makeWebhookURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ catégorie: cat, mot_clé: kw })
+      });
+    }
   }
+}
 
-  // ====== Render Carousel (top 1 par catégorie active, sinon top 1 global) ======
-  function renderCarousel(){
-    const list = filtered();
-    EL.carousel.querySelectorAll('.slide').forEach(n=>n.remove());
-    if(!list.length){ return; }
-    const top = list[0];
-    const slide = document.createElement('article');
-    slide.className = 'slide active';
-    slide.innerHTML = `
-      <div class="media"><img src="${top.image||''}" alt=""/></div>
-      <div class="meta">
-        <span class="kicker">À la une</span>
-        <h2 class="title"><a class="pill" href="${top.link}" target="_blank" rel="noopener">Lire</a> ${top.title}</h2>
-        <div class="date">${fmtDate(top.date)} · <span class="pill">${top.category}</span></div>
-      </div>`;
-    EL.carousel.appendChild(slide);
-    IDX = 0;
+function getRSSUrls() {
+  const urls = {};
+  Object.entries(categoriesData).forEach(([cat, kws]) => {
+    urls[cat] = kws.map(kw => https://news.google.com/rss/search?q=${encodeURIComponent('"' + kw + '"')}&hl=fr&gl=FR&ceid=FR:fr);
+  });
+  return urls;
+}
+
+async function fetchRSS(url, category) {
+  try {
+    const res = await fetch(https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)});
+    const data = await res.json();
+    if (!data.items) return [];
+    return data.items.map(item => ({ title: item.title, link: item.link, pubDate: item.pubDate, category }));
+  } catch { return []; }
+}
+
+async function loadAllFeeds() {
+  allData = [];
+  const urls = getRSSUrls();
+  for (const [cat, links] of Object.entries(urls)) {
+    for (const link of links) {
+      const articles = await fetchRSS(link, cat);
+      allData.push(...articles);
+    }
   }
+  renderCategories();
+  renderCarousel();
+  document.querySelectorAll("nav button")[0]?.click();
+}
 
-  // Navigation (si on veut faire défiler, on tourne dans la même liste filtrée)
-  function shift(dir){
-    const list = filtered();
-    if(!list.length) return;
-    IDX = (IDX + dir + list.length) % list.length;
-    const a = list[IDX];
-    const slide = EL.carousel.querySelector('.slide');
-    if(!slide) return;
-    slide.querySelector('.media img').src = a.image||'';
-    slide.querySelector('.title').innerHTML = `<a class="pill" href="${a.link}" target="_blank" rel="noopener">Lire</a> ${a.title}`;
-    slide.querySelector('.date').innerHTML = `${fmtDate(a.date)} · <span class="pill">${a.category}</span>`;
-  }
-  EL.prev.addEventListener('click',()=>shift(-1));
-  EL.next.addEventListener('click',()=>shift(1));
+function renderCategories() {
+  const nav = document.getElementById("category-buttons");
+  nav.innerHTML = "";
+  Object.keys(categoriesData).forEach(cat => {
+    const btn = document.createElement("button");
+    btn.textContent = cat;
+    btn.onclick = () => {
+      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderFeed(cat);
+    };
+    nav.appendChild(btn);
+  });
+}
 
-  // ====== Render Grid ======
-  function renderGrid(){
-    const list = filtered();
-    EL.grid.innerHTML = list.map(a=>`
-      <article class="card">
-        <div class="thumb">${a.image?`<img src="${a.image}" alt="">`:''}</div>
-        <div class="body">
-          <span class="cat">${a.category}</span>
-          <h3 class="ttl"><a href="${a.link}" target="_blank" rel="noopener">${a.title}</a></h3>
-          <div class="time">${fmtDate(a.date)}</div>
-        </div>
-      </article>
-    `).join('');
-  }
+function renderFeed(category) {
+  const container = document.getElementById("rss-feed");
+  const filtered = allData.filter(item => item.category === category).sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+  container.innerHTML = filtered.map(item => <div class='card'><h2><a href='${item.link}' target='_blank'>${item.title}</a></h2><time>${new Date(item.pubDate).toLocaleString()}</time></div>).join('') || '<p>Aucun article trouvé.</p>';
+}
 
-  function filtered(){
-    return ARTICLES
-      .filter(a=>ACTIVE_CAT==='Toutes' || a.category===ACTIVE_CAT)
-      .sort((a,b)=> new Date(b.date.replace(' ','T')) - new Date(a.date.replace(' ','T')));
-  }
+function renderCarousel() {
+  const carousel = document.getElementById("carousel");
+  const latest = [...allData].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate)).slice(0, 10);
+  carousel.innerHTML = latest.length ? latest.map(item => <div class='carousel-slide'><h2><a href='${item.link}' target='_blank'>${item.title}</a></h2><time>${new Date(item.pubDate).toLocaleString()}</time><p>${item.category}</p></div>).join('') : "<div class='carousel-slide'>Aucune actualité récente.</div>";
+  totalSlides = latest.length || 1;
+  currentIndex = 0;
+  updateCarousel();
+}
 
-  function renderAll(){
-    renderChips();
-    renderCarousel();
-    renderGrid();
-  }
+function updateCarousel() { document.getElementById("carousel").style.transform = translateX(-${currentIndex * 100}%); }
+function nextSlide() { if (totalSlides) { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); } }
+function prevSlide() { if (totalSlides) { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); } }
 
-  // ====== API publique pour brancher ton flux ======
-  window.updateArticles = function(list){
-    if(!Array.isArray(list)) return;
-    ARTICLES = list.map(x=>({
-      title: String(x.title||''),
-      date: String(x.date||x.pubDate||''),
-      category: String(x.category||x.cat||'Autres'),
-      link: String(x.link||x.url||'#'),
-      image: String(x.image||x.enclosure||'')
-    }));
-    ACTIVE_CAT = 'Toutes';
-    renderAll();
-  }
+function toggleConfigurator() {
+  const popup = document.getElementById("configurator-popup");
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+  if (popup.style.display === "block") renderConfigurator();
+}
 
-  // Init
-  renderAll();
+function renderConfigurator() {
+  const container = document.getElementById("configurator");
+  container.innerHTML = "";
+  Object.entries(categoriesData).forEach(([cat, kws]) => createCategoryBlock(container, cat, kws));
+}
+
+function createCategoryBlock(container, catName, keywords) {
+  const block = document.createElement("div");
+  block.className = "category-block";
+  block.innerHTML = <div class='category-title'><input type='text' value='${catName}' class='category-name'> <button class='remove' onclick='this.parentElement.parentElement.remove()'>Supprimer</button></div>;
+  const kwList = document.createElement("div");
+  kwList.className = "keywords-list";
+  keywords.forEach(kw => addKeywordField(kwList, kw));
+  block.appendChild(kwList);
+  const addKwBtn = document.createElement("button");
+  addKwBtn.textContent = "+ Ajouter mot-clé";
+  addKwBtn.onclick = () => addKeywordField(kwList, "");
+  block.appendChild(addKwBtn);
+  container.appendChild(block);
+}
+
+function addCategoryBlock() { createCategoryBlock(document.getElementById("configurator"), "Nouvelle Catégorie", []); }
+function addKeywordField(container, value) {
+  const div = document.createElement("div");
+  div.innerHTML = <input type='text' value='${value}' class='keyword'> <button class='remove' onclick='this.parentElement.remove()'>X</button>;
+  container.appendChild(div);
+}
+
+function applyConfig() {
+  categoriesData = {};
+  document.querySelectorAll(".category-block").forEach(block => {
+    const name = block.querySelector(".category-name").value.trim();
+    const kws = Array.from(block.querySelectorAll(".keyword")).map(input => input.value.trim()).filter(v => v);
+    if (name && kws.length) categoriesData[name] = kws;
+  });
+  showOverlayLogo();
+  saveCategoriesToMake();
+  toggleConfigurator();
+  loadAllFeeds();
+}
+
+function toggleChange() {
+  const popup = document.getElementById("change-popup");
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+}
+
+async function fetchExchangeRates() {
+  const res = await fetch('https://api.frankfurter.app/latest');
+  const data = await res.json();
+  const tbody = document.querySelector("#rates-table tbody");
+  tbody.innerHTML = "";
+  exchangeRates.length = 0;
+  Object.entries(data.rates).forEach(([currency, rate]) => {
+    exchangeRates.push({ date: data.date, currency, rate });
+    tbody.innerHTML += <tr><td>${data.date}</td><td>${currency}</td><td>${rate}</td></tr>;
+  });
+}
+
+function exportRatesToCSV() {
+  let csv = "Date;Devise;Taux\n";
+  exchangeRates.forEach(r => {
+    const rateFormatted = r.rate.toString().replace('.', ',');
+    csv += ${r.date};${r.currency};${rateFormatted}\n;
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'taux_de_change.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+window.onload = loadCategoriesFromSheet;
 </script>
 </body>
 </html>
