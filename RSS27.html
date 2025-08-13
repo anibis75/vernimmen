@@ -1,351 +1,246 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Veille sectorielle — Tereos M&A</title>
-  <meta name="description" content="Lecteur RSS multi-catégories pour la veille sectorielle Tereos" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg1:#0b0f14; --bg2:#101626; --fg:#eef3f9; --muted:#9fb0c5;
-      --accent:#e63946; --accent2:#2ec4b6; --glass:rgba(255,255,255,.06);
-      --glass-border:rgba(255,255,255,.15); --radius:24px; --shadow:0 14px 48px rgba(0,0,0,.45);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",sans-serif; color:var(--fg);
-      background:linear-gradient(135deg,var(--bg1),var(--bg2)); background-attachment:fixed;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Veille sectorielle — Tereos M&A</title>
+<style>
+  :root{
+    --bg: #0c0f12;          /* fond sombre */
+    --bg-soft:#12161b;      /* cartes */
+    --text:#e9eef3;         /* texte principal */
+    --muted:#96a0ab;        /* texte secondaire */
+    --primary:#e30613;      /* rouge Tereos */
+    --accent:#ff8a00;       /* orange Tereos */
+    --accent2:#ffd200;      /* jaune Tereos */
+    --chip:#182028;         /* fond chip */
+    --chip-active:#20303c;  /* fond chip active */
+    --border:#1f2a33;       /* séparateurs */
+    --ring: rgba(227,6,19,.35);
+    --radius:18px;
+    --shadow: 0 10px 24px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:radial-gradient(1200px 600px at 0% -10%, rgba(227,6,19,.12), transparent 60%),
+                               radial-gradient(900px 500px at 100% -20%, rgba(255,138,0,.12), transparent 55%),
+                               var(--bg);
+       color:var(--text); font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
 
-    /* Animated background blobs */
-    .bg-blob{position:fixed; inset:-20vmax; filter:blur(80px); opacity:.55; z-index:-2;
-      background:radial-gradient(35vmax 35vmax at 20% 30%, rgba(230,57,70,.35), transparent 70%),
-                 radial-gradient(40vmax 40vmax at 80% 20%, rgba(46,196,182,.35), transparent 70%),
-                 radial-gradient(45vmax 45vmax at 50% 80%, rgba(67,97,238,.25), transparent 70%);
-      animation:float 18s ease-in-out infinite alternate;
-    }
-    @keyframes float{to{transform:translate3d(0,-3vmax,0) scale(1.02)}}
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,var(--primary),var(--accent));
+         padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.15)}
+  .brand{display:flex;align-items:center;gap:12px;max-width:1200px;margin:0 auto}
+  .brand img{height:32px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+  .brand h1{margin:0;font-size:18px;font-weight:700;letter-spacing:.2px}
 
-    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px);
-      background:linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.14));
-      border-bottom:1px solid var(--glass-border);
-    }
-    .head-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:14px; padding:16px 22px;}
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;}
-    .brand img{height:42px; width:auto; filter:drop-shadow(0 8px 16px rgba(0,0,0,.2));}
-    .brand h1{margin:0; font-size: clamp(20px, 2.4vw, 28px); font-weight:800; letter-spacing:.25px;}
-    .actions{margin-left:auto; display:flex; gap:10px}
-    .icon-btn{border:1px solid var(--glass-border); background:var(--glass); color:var(--fg); border-radius:14px; padding:10px 12px; cursor:pointer; transition:transform .12s ease, box-shadow .2s ease;}
-    .icon-btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  /* Container */
+  .wrap{max-width:1200px;margin:24px auto;padding:0 18px}
 
-    /* Tabs */
-    nav{max-width:1200px; margin:16px auto 0; padding:0 22px 8px;}
-    .tabs{display:flex; gap:10px; flex-wrap:wrap}
-    .tab{border:1px solid var(--glass-border); background:var(--glass); color:var(--fg); padding:10px 14px; border-radius:999px; font-weight:700; cursor:pointer; transition:background .2s ease;}
-    .tab.active{background:linear-gradient(135deg, rgba(230,57,70,.25), rgba(46,196,182,.20));}
+  /* Chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 18px}
+  .chip{appearance:none;border:1px solid var(--border);background:var(--chip);color:var(--text);
+        padding:8px 12px;border-radius:999px;cursor:pointer;transition:.2s; font-weight:600}
+  .chip:hover{transform:translateY(-1px)}
+  .chip.active{background:var(--chip-active); outline:2px solid var(--ring)}
 
-    main{max-width:1200px; margin:20px auto 60px; padding:0 22px;}
+  /* Carousel (compact) */
+  .carousel{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-soft);
+            box-shadow:var(--shadow);height:220px;margin-bottom:18px}
+  .slide{position:absolute;inset:0;display:none}
+  .slide.active{display:flex}
+  .slide .media{flex:0 0 38%;background:#0b0f14;overflow:hidden}
+  .slide .media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+  .slide .meta{flex:1;padding:18px 18px 18px 18px;display:flex;flex-direction:column;gap:10px}
+  .kicker{font-size:12px;font-weight:700;color:var(--accent2)}
+  .title{font-size:22px;font-weight:800;margin:0}
+  .date{font-size:12px;color:var(--muted)}
+  .pill{display:inline-block;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 10px;
+        border-radius:999px;font-weight:700;font-size:12px}
+  .cnav{position:absolute;inset-inline:10px;top:calc(50% - 20px);display:flex;justify-content:space-between;pointer-events:none}
+  .cbtn{pointer-events:auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:rgba(0,0,0,.35);
+        display:grid;place-items:center;font-size:18px;color:#fff;cursor:pointer}
+  .cbtn:hover{background:rgba(0,0,0,.5)}
 
-    /* Carousel */
-    .carousel{position:relative; overflow:hidden; border-radius:var(--radius); margin-bottom:26px; background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px solid var(--glass-border); box-shadow:var(--shadow);}
-    .track{display:flex; transition:transform .5s ease-in-out}
-    .slide{min-width:100%; padding:36px 24px; text-align:center}
-    .slide h2{margin:0 0 10px; font-weight:800; font-size: clamp(20px,2.2vw,26px)}
-    /* Liens carrousel : gras sans souligné */
-    .slide h2 a{color:var(--fg); text-decoration:none; font-weight:800}
-    .slide time{display:block; color:var(--muted); font-size:14px; margin-top:4px}
-    .slide .cat{margin-top:10px; display:inline-block; padding:6px 12px; border-radius:999px; border:1px solid var(--glass-border); background:var(--glass); font-weight:600}
-    .cbtn{position:absolute; top:50%; transform:translateY(-50%); border:none; background:rgba(0,0,0,.35); color:#fff; padding:10px 12px; border-radius:12px; cursor:pointer}
-    .cbtn.prev{left:8px} .cbtn.next{right:8px}
+  /* Grid list */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:680px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+        display:flex;flex-direction:column;min-height:190px}
+  .card .thumb{aspect-ratio:16/9;background:#0b0f14;overflow:hidden}
+  .card .thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+  .card .body{padding:14px;display:flex;flex-direction:column;gap:8px}
+  .card .body .cat{font-size:11px;font-weight:700;color:var(--accent2)}
+  .card .body .ttl{font-size:16px;font-weight:800;margin:0}
+  .card .body .ttl a{color:inherit;text-decoration:underline;font-weight:800}
+  .card .body .ttl a:hover{opacity:.9}
+  .card .body .time{font-size:12px;color:var(--muted)}
 
-    /* Feed cards */
-    .feed{margin-top:18px}
-    .card{background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px solid var(--glass-border); border-radius:var(--radius); padding:20px; margin:16px 0; box-shadow:var(--shadow); transition:transform .2s ease, box-shadow .2s ease;}
-    .card:hover{transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.45)}
-    .card h3{margin:0 0 6px; font-size: clamp(17px, 2vw, 21px); font-weight:800}
-    /* Liens liste : gras + souligné */
-    .card h3 a{color:var(--fg); text-decoration:underline; font-weight:800}
-    .meta{display:flex; gap:12px; align-items:center; color:var(--muted); font-size:13px}
-
-    /* Configurator modal */
-    .modal{position:fixed; inset:0; display:none; place-items:center; z-index:50;}
-    .modal.open{display:grid}
-    .scrim{position:absolute; inset:0; background:rgba(0,0,0,.55); backdrop-filter: blur(2px)}
-    .panel{position:relative; width:min(920px,92vw); max-height:86vh; overflow:auto; border-radius:24px; padding:20px;
-      background:linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.03)); border:1px solid var(--glass-border); box-shadow:var(--shadow)}
-    .panel h2{margin:0 0 12px}
-    .cblock{border:1px dashed var(--glass-border); border-radius:16px; padding:12px; margin:10px 0; background:rgba(255,255,255,.03)}
-    .cblock .row{display:flex; gap:8px; align-items:center; margin-bottom:8px}
-    .input, .chip{background:rgba(255,255,255,.08); border:1px solid var(--glass-border); color:var(--fg); border-radius:12px; padding:10px 12px}
-    .input{flex:1}
-    .chip{display:inline-flex; align-items:center; gap:8px; margin:6px 6px 0 0}
-    .chip button{border:none; background:transparent; color:var(--muted); cursor:pointer}
-    .row .remove{border:1px solid rgba(255,0,0,.35); color:#fff; background:rgba(255,0,0,.15);}
-    .toolbar{display:flex; gap:10px; justify-content:flex-end; margin-top:10px}
-    .btn{border:1px solid var(--glass-border); background:var(--glass); color:var(--fg); border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer}
-    .btn.primary{background:linear-gradient(135deg, rgba(230,57,70,.25), rgba(46,196,182,.20))}
-
-    /* Overlay logo animation */
-    #overlayLogo{position:fixed; inset:0; display:none; place-items:center; z-index:60}
-    #overlayLogo .box{background:rgba(255,255,255,.06); border:1px solid var(--glass-border); padding:16px 22px; border-radius:18px}
-    #overlayLogo img{width:140px; animation:zoomInOut 2.6s forwards}
-    @keyframes zoomInOut{0%{transform:scale(.6); opacity:0} 50%{transform:scale(1.4); opacity:1} 100%{transform:scale(1); opacity:0}}
-
-    footer{color:var(--muted); text-align:center; padding:24px 18px 40px; font-size:14px}
-  </style>
+  /* Footer note */
+  footer{color:var(--muted);text-align:center;padding:26px 0}
+</style>
 </head>
 <body>
-  <div class="bg-blob" aria-hidden="true"></div>
-
   <header>
-    <div class="head-inner">
-      <a class="brand" href="#" aria-label="Accueil Veille sectorielle">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos" />
-        <h1>Veille sectorielle — Tereos M&A</h1>
-      </a>
-      <div class="actions">
-        <button class="icon-btn" id="refresh-btn" title="Rafraîchir" aria-label="Rafraîchir">🔄</button>
-        <button class="icon-btn" id="config-btn" title="Configurer" aria-label="Configurer">⚙️</button>
-      </div>
+    <div class="brand">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos" />
+      <h1>Veille sectorielle — Tereos M&A</h1>
     </div>
   </header>
 
-  <nav>
-    <div class="tabs" id="category-buttons"></div>
-  </nav>
+  <div class="wrap">
+    <!-- Chips catégories -->
+    <div class="chips" id="chips"></div>
 
-  <main>
-    <!-- Carousel Dernières news -->
-    <section class="carousel" aria-label="Dernières actualités">
-      <button class="cbtn prev" aria-label="Précédent">◀</button>
-      <div class="track" id="carousel"><div class="slide">Chargement…</div></div>
-      <button class="cbtn next" aria-label="Suivant">▶</button>
+    <!-- Carousel compact -->
+    <section class="carousel" id="carousel" aria-label="À la une">
+      <div class="cnav">
+        <button class="cbtn" id="prev" aria-label="Précédent">◀</button>
+        <button class="cbtn" id="next" aria-label="Suivant">▶</button>
+      </div>
     </section>
 
-    <!-- Flux par catégorie -->
-    <section class="feed" id="rss-feed"><p class="meta">Chargement des actualités…</p></section>
-  </main>
-
-  <!-- Configurator Modal -->
-  <div class="modal" id="configurator-modal" aria-hidden="true">
-    <div class="scrim" role="button" tabindex="0"></div>
-    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="cfg-title">
-      <h2 id="cfg-title">Configuration des catégories & mots-clés</h2>
-      <div id="configurator"></div>
-      <div class="toolbar">
-        <button class="btn" id="add-cat">+ Ajouter catégorie</button>
-        <button class="btn" id="close-cfg">Fermer</button>
-        <button class="btn primary" id="apply-cfg">Appliquer</button>
-      </div>
-    </div>
+    <!-- Grille d'articles -->
+    <section class="grid" id="grid"></section>
   </div>
 
-  <!-- Overlay Logo -->
-  <div id="overlayLogo"><div class="box"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Logo Tereos" /></div></div>
+  <footer>UI compacte, moderne. Couleurs Tereos. — © Veille interne</footer>
 
-  <footer>© <span id="year"></span> Tereos — Veille sectorielle.</footer>
+<script>
+  // ====== Jeu de données DEMO (remplace via updateArticles([...])) ======
+  const seed = [
+    {title:"Coca light : cette boisson est-elle mauvaise pour la santé ? - RTL.fr",
+     date:"2025-08-13 06:33:00", category:"Sucre & Matières Premières",
+     link:"https://www.rtl.fr/", image:"https://images.unsplash.com/photo-1600275669283-5e4b3f6f49d1?q=80&w=1600&auto=format&fit=crop"},
+    {title:"Éthanol : bilan hebdomadaire des prix — USDA",
+     date:"2025-08-12 18:05:00", category:"Éthanol & Bioénergies",
+     link:"https://www.usda.gov/", image:"https://images.unsplash.com/photo-1581092921461-eab62e97a886?q=80&w=1600&auto=format&fit=crop"},
+    {title:"Brésil : taxe export sucre brut discutée au Congrès",
+     date:"2025-08-11 10:01:00", category:"Réglementation & Taxes",
+     link:"https://www.gov.br/", image:"https://images.unsplash.com/photo-1596040033229-2ec8c7c91e43?q=80&w=1600&auto=format&fit=crop"},
+    {title:"Cosumar : résultats semestriels et investissement logistique",
+     date:"2025-08-10 17:10:00", category:"Performance financière & M&A",
+     link:"https://www.cosumar.ma/", image:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop"},
+    {title:"Indonésie : quota import sucre 2025 révisé",
+     date:"2025-08-09 08:30:00", category:"Zones géographiques stratégiques",
+     link:"https://www.kemendag.go.id/", image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"},
+    {title:"Tereos : nomination d’un directeur stratégie M&A",
+     date:"2025-08-08 12:00:00", category:"Actualités Corporate Tereos",
+     link:"https://www.tereos.com/", image:"https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=1600&auto=format&fit=crop"},
+    {title:"Europe : arbitrages concurrence sucre raffiné",
+     date:"2025-08-07 09:40:00", category:"Concurrence Sucrière",
+     link:"https://ec.europa.eu/", image:"https://images.unsplash.com/photo-1543087903-1ac2ec7aa8c5?q=80&w=1600&auto=format&fit=crop"}
+  ];
 
-  <script>
-    // ======= Data sources =======
-    const makeWebhookURL = "https://hook.eu2.make.com/evvl4g8reogx47pssd32r7gwgcjs83q3"; // optionnel
-    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyqGh87x5NiJo54ujJJ9BqMbQTQVKGzk0QpUQDrUV18G1O-EoCscWRo6FOLYLLnu8FcAt5O0ukHJPT/pub?gid=565132429&single=true&output=csv';
+  // ====== State ======
+  let ARTICLES = [...seed];
+  let ACTIVE_CAT = 'Toutes';
+  let IDX = 0;
 
-    // ======= State =======
-    let categoriesData = {}; // {cat: [kw]}
-    let allData = []; // {title, link, pubDate, category}
-    let currentIndex = 0, totalSlides = 0;
+  const EL = {
+    chips: document.getElementById('chips'),
+    grid: document.getElementById('grid'),
+    carousel: document.getElementById('carousel'),
+    prev: document.getElementById('prev'),
+    next: document.getElementById('next')
+  };
 
-    // ======= Helpers UI =======
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-    const year = new Date().getFullYear(); $('#year').textContent = year;
+  // ====== Utils ======
+  const fmtDate = s => {
+    const d = new Date(s.replace(' ', 'T'));
+    if (isNaN(d)) return s;
+    return d.toLocaleString('fr-FR', {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+  };
 
-    function showOverlayLogo(){ const o = $('#overlayLogo'); o.style.display = 'grid'; setTimeout(()=> o.style.display='none', 2600); }
+  const uniq = arr => Array.from(new Set(arr));
 
-    // ======= Load categories from Google Sheet =======
-    async function loadCategoriesFromSheet(){
-      try{
-        const res = await fetch(sheetURL);
-        const csv = await res.text();
-        const rows = csv.split('\n').slice(1);
-        categoriesData = {};
-        for(const line of rows){
-          const [category, keyword] = line.split(',').map(x => (x||'').trim());
-          if(!category || !keyword) continue;
-          (categoriesData[category] ??= []).push(keyword);
-        }
-        await loadAllFeeds();
-      }catch(e){ console.error('Sheet load error', e); }
-    }
-
-    // ======= Persist categories to Make (optionnel) =======
-    async function saveCategoriesToMake(){
-      try{
-        for(const [cat,kws] of Object.entries(categoriesData)){
-          for(const kw of kws){
-            await fetch(makeWebhookURL,{method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ catégorie:cat, mot_clé:kw })});
-          }
-        }
-      }catch(e){ console.warn('Make webhook skipped/failed', e); }
-    }
-
-    // ======= Build Google News RSS URLs =======
-    function getRSSUrls(){
-      const urls = {};
-      for(const [cat,kws] of Object.entries(categoriesData)){
-        urls[cat] = kws.map(kw => `https://news.google.com/rss/search?q=${encodeURIComponent('"'+kw+'"')}&hl=fr&gl=FR&ceid=FR:fr`);
-      }
-      return urls;
-    }
-
-    // ======= Fetch & parse one RSS (via rss2json) =======
-    async function fetchRSS(url, category){
-      try{
-        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`);
-        const data = await res.json();
-        if(!data.items) return [];
-        return data.items.map(i => ({ title:i.title, link:i.link, pubDate:i.pubDate, category }));
-      }catch{ return []; }
-    }
-
-    // ======= Load all feeds =======
-    async function loadAllFeeds(){
-      allData = [];
-      const urls = getRSSUrls();
-      for(const [cat,links] of Object.entries(urls)){
-        for(const link of links){
-          const items = await fetchRSS(link, cat);
-          allData.push(...items);
-        }
-      }
-      renderCategories();
-      renderCarousel();
-      // auto-select first tab
-      const first = $('#category-buttons .tab'); if(first) first.click();
-    }
-
-    // ======= Render tabs =======
-    function renderCategories(){
-      const wrap = $('#category-buttons');
-      wrap.innerHTML = '';
-      for(const cat of Object.keys(categoriesData)){
-        const btn = document.createElement('button');
-        btn.className = 'tab'; btn.type = 'button'; btn.textContent = cat;
-        btn.onclick = () => { $$('.tab', wrap).forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderFeed(cat); };
-        wrap.appendChild(btn);
-      }
-    }
-
-    // ======= Render feed for a category =======
-    function renderFeed(category){
-      const container = $('#rss-feed');
-      const filtered = allData.filter(i => i.category === category).sort((a,b)=> new Date(b.pubDate)-new Date(a.pubDate));
-      if(!filtered.length){ container.innerHTML = '<p class="meta">Aucun article trouvé.</p>'; return; }
-      container.innerHTML = filtered.map(item => `
-        <article class="card">
-          <h3><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>
-          <div class="meta"><time datetime="${item.pubDate}">${new Date(item.pubDate).toLocaleString()}</time><span>•</span><span>${item.category}</span></div>
-        </article>
-      `).join('');
-    }
-
-    // ======= Carousel (latest 10) =======
-    function renderCarousel(){
-      const carousel = $('#carousel');
-      const latest = [...allData].sort((a,b)=> new Date(b.pubDate)-new Date(a.pubDate)).slice(0,10);
-      if(!latest.length){ carousel.innerHTML = '<div class="slide">Aucune actualité récente.</div>'; totalSlides=1; currentIndex=0; return; }
-      carousel.innerHTML = latest.map(item => `
-        <div class="slide">
-          <h2><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h2>
-          <time datetime="${item.pubDate}">${new Date(item.pubDate).toLocaleString()}</time>
-          <div class="cat">${item.category}</div>
-        </div>
-      `).join('');
-      totalSlides = latest.length; currentIndex = 0; updateCarousel();
-    }
-    function updateCarousel(){ $('#carousel').style.transform = `translateX(-${currentIndex*100}%)`; }
-    function nextSlide(){ if(!totalSlides) return; currentIndex = (currentIndex+1)%totalSlides; updateCarousel(); }
-    function prevSlide(){ if(!totalSlides) return; currentIndex = (currentIndex-1+totalSlides)%totalSlides; updateCarousel(); }
-
-    // ======= Configurator =======
-    function openConfigurator(){ const m=$('#configurator-modal'); m.classList.add('open'); m.setAttribute('aria-hidden','false'); renderConfigurator(); }
-    function closeConfigurator(){ const m=$('#configurator-modal'); m.classList.remove('open'); m.setAttribute('aria-hidden','true'); }
-
-    function renderConfigurator(){
-      const box = $('#configurator'); box.innerHTML='';
-      for(const [cat,kws] of Object.entries(categoriesData)){
-        box.appendChild(makeCategoryBlock(cat, kws));
-      }
-    }
-
-    function makeCategoryBlock(catName, keywords){
-      const block = document.createElement('div'); block.className='cblock';
-      block.innerHTML = `
-        <div class="row">
-          <input class="input cname" value="${catName}" placeholder="Nom de la catégorie" />
-          <button class="btn remove">Supprimer</button>
-        </div>
-        <div class="kw"></div>
-        <div class="row"><button class="btn addkw">+ Ajouter mot-clé</button></div>
-      `;
-      const kwBox = $('.kw', block);
-      for(const kw of keywords){ kwBox.appendChild(makeKeywordChip(kw)); }
-      $('.addkw', block).onclick = ()=> kwBox.appendChild(makeKeywordChip(''));
-      $('.remove', block).onclick = ()=> block.remove();
-      return block;
-    }
-
-    function makeKeywordChip(value){
-      const chip = document.createElement('span'); chip.className='chip';
-      chip.innerHTML = `<input class="input kwin" value="${value}" placeholder="Mot-clé" /> <button title="Supprimer">✕</button>`;
-      chip.querySelector('button').onclick = ()=> chip.remove();
-      return chip;
-    }
-
-    function collectConfig(){
-      const result = {};
-      $$('#configurator .cblock').forEach(block=>{
-        const name = $('.cname', block).value.trim();
-        const kws = $$('.kwin', block).map(i=> i.value.trim()).filter(Boolean);
-        if(name && kws.length) result[name]=kws;
-      });
-      return result;
-    }
-
-    async function applyConfig(){
-      categoriesData = collectConfig();
-      showOverlayLogo();
-      closeConfigurator();
-      await saveCategoriesToMake();
-      await loadAllFeeds();
-    }
-
-    function addCategoryBlock(){ $('#configurator').appendChild(makeCategoryBlock('Nouvelle catégorie', [])); }
-
-    // ======= Events =======
-    $('#refresh-btn').onclick = loadCategoriesFromSheet;
-    $('#config-btn').onclick = openConfigurator;
-    $('#add-cat').onclick = addCategoryBlock;
-    $('#close-cfg').onclick = closeConfigurator;
-    $('#apply-cfg').onclick = applyConfig;
-    $('.scrim').onclick = closeConfigurator;
-
-    $('.prev').onclick = prevSlide; $('.next').onclick = nextSlide;
-
-    // Keyboard accessibility
-    document.addEventListener('keydown', (e)=>{
-      if(e.key==='ArrowLeft') prevSlide();
-      if(e.key==='ArrowRight') nextSlide();
-      if(e.key==='Escape') closeConfigurator();
+  // ====== Render Chips ======
+  function renderChips(){
+    const cats = ['Toutes', ...uniq(ARTICLES.map(a=>a.category)).sort()];
+    EL.chips.innerHTML = cats.map(c=>`<button class="chip ${c===ACTIVE_CAT?'active':''}" data-cat="${c}">${c}</button>`).join('');
+    EL.chips.querySelectorAll('.chip').forEach(btn=>{
+      btn.addEventListener('click',()=>{ ACTIVE_CAT = btn.dataset.cat; renderAll(); });
     });
+  }
 
-    // ======= Init =======
-    window.onload = loadCategoriesFromSheet;
-  </script>
+  // ====== Render Carousel (top 1 par catégorie active, sinon top 1 global) ======
+  function renderCarousel(){
+    const list = filtered();
+    EL.carousel.querySelectorAll('.slide').forEach(n=>n.remove());
+    if(!list.length){ return; }
+    const top = list[0];
+    const slide = document.createElement('article');
+    slide.className = 'slide active';
+    slide.innerHTML = `
+      <div class="media"><img src="${top.image||''}" alt=""/></div>
+      <div class="meta">
+        <span class="kicker">À la une</span>
+        <h2 class="title"><a class="pill" href="${top.link}" target="_blank" rel="noopener">Lire</a> ${top.title}</h2>
+        <div class="date">${fmtDate(top.date)} · <span class="pill">${top.category}</span></div>
+      </div>`;
+    EL.carousel.appendChild(slide);
+    IDX = 0;
+  }
+
+  // Navigation (si on veut faire défiler, on tourne dans la même liste filtrée)
+  function shift(dir){
+    const list = filtered();
+    if(!list.length) return;
+    IDX = (IDX + dir + list.length) % list.length;
+    const a = list[IDX];
+    const slide = EL.carousel.querySelector('.slide');
+    if(!slide) return;
+    slide.querySelector('.media img').src = a.image||'';
+    slide.querySelector('.title').innerHTML = `<a class="pill" href="${a.link}" target="_blank" rel="noopener">Lire</a> ${a.title}`;
+    slide.querySelector('.date').innerHTML = `${fmtDate(a.date)} · <span class="pill">${a.category}</span>`;
+  }
+  EL.prev.addEventListener('click',()=>shift(-1));
+  EL.next.addEventListener('click',()=>shift(1));
+
+  // ====== Render Grid ======
+  function renderGrid(){
+    const list = filtered();
+    EL.grid.innerHTML = list.map(a=>`
+      <article class="card">
+        <div class="thumb">${a.image?`<img src="${a.image}" alt="">`:''}</div>
+        <div class="body">
+          <span class="cat">${a.category}</span>
+          <h3 class="ttl"><a href="${a.link}" target="_blank" rel="noopener">${a.title}</a></h3>
+          <div class="time">${fmtDate(a.date)}</div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function filtered(){
+    return ARTICLES
+      .filter(a=>ACTIVE_CAT==='Toutes' || a.category===ACTIVE_CAT)
+      .sort((a,b)=> new Date(b.date.replace(' ','T')) - new Date(a.date.replace(' ','T')));
+  }
+
+  function renderAll(){
+    renderChips();
+    renderCarousel();
+    renderGrid();
+  }
+
+  // ====== API publique pour brancher ton flux ======
+  window.updateArticles = function(list){
+    if(!Array.isArray(list)) return;
+    ARTICLES = list.map(x=>({
+      title: String(x.title||''),
+      date: String(x.date||x.pubDate||''),
+      category: String(x.category||x.cat||'Autres'),
+      link: String(x.link||x.url||'#'),
+      image: String(x.image||x.enclosure||'')
+    }));
+    ACTIVE_CAT = 'Toutes';
+    renderAll();
+  }
+
+  // Init
+  renderAll();
+</script>
 </body>
 </html>
