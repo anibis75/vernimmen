@@ -1,0 +1,555 @@
+# app.py — Veille sectorielle (Streamlit + MotherDuck)
+# Persistance MotherDuck, pas de perte après redeploy/sommeil
+# Onglets: Dernières | Catégories dynamiques | ⚙️ Configuration
+
+import time, random, hashlib, json
+import datetime as dt
+import requests
+import xml.etree.ElementTree as ET
+import streamlit as st
+import duckdb
+from urllib.parse import quote
+
+APP_TITLE = "Veille sectorielle – Tereos M&A"
+
+# ================== MOTHERDUCK (token intégré) ==================
+MOTHERDUCK_TOKEN = (
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6YWQuaG9zc2VpbmlAc2tlbWEuZWR1Iiwic2Vzc2lvbiI6"
+    "ImF6YWQuaG9zc2Vpbmkuc2tlbWEuZWR1IiwicGF0IjoiYkZMVHkydUUyMHFmNVhnMkE1TXh4M1FBZkhwclh0cTBRbnl2cHc4"
+    "TjhLNCIsInVzZXJJZCI6IjllYTRjNDUzLTIyNWEtNGE5NS04Y2NmLWVhMjk1NTUyNmFjZCIsImlzcyI6Im1kX3BhdCIsInJl"
+    "YWRPbmx5IjpmYWxzZSwidG9rZW5UeXBlIjoicmVhZF93cml0ZSIsImlhdCI6MTc1MzYwNjUyMn0.b8KgBs8dKKymTLu4hdQ-6"
+    "ZHiwjJrec9JA7_9q764EzE"
+)
+MOTHERDUCK_DB = "veille"
+
+def get_con():
+    # pas de suffixe /main
+    return duckdb.connect(f"md:{MOTHERDUCK_DB}?motherduck_token={MOTHERDUCK_TOKEN}")
+
+# ================== PALETTE ==================
+TER_DARK  = "#00552e"
+TER_ACC   = "#f0f7f4"
+BG_SOFT   = "#f6f8f7"
+
+# ================== PAGE / STYLE ==================
+st.set_page_config(page_title=APP_TITLE, page_icon="📰", layout="wide")
+st.markdown(f"""
+<style>
+:root {{ --ter: {TER_DARK}; --acc: {TER_ACC}; --bg: {BG_SOFT}; }}
+html, body, [class*="css"] {{ font-family: Arial, sans-serif; background: var(--bg); color:#1e2b25; margin:0; }}
+/* ↓↓↓ ENLÈVE LA BANDE BLANCHE STREAMLIT ↓↓↓ */
+header[data-testid="stHeader"] {{ height:0 !important; background: transparent !important; }}
+div[data-testid="stToolbar"] {{ display:none !important; }}
+div[data-testid="stDecoration"] {{ display:none !important; }}
+/* Conteneur principal : supprime le padding haut */
+.main .block-container {{ max-width: 1100px; margin: 0 auto; padding-top: 0 !important; }}
+
+/* NAVBAR */
+.navbar {{
+  position: sticky; top: 0; z-index: 1000; background: var(--ter); color:#fff;
+  border-radius: 22px; padding: 14px 18px; display:grid; grid-template-columns:auto 1fr auto; align-items:center;
+  box-shadow: 0 10px 26px rgba(0,0,0,.15); margin-bottom: 14px;
+}}
+.brand {{ display:flex; align-items:center; gap:14px; }}
+.brand img {{ height:44px; }}
+.brand .title {{ font-size: 20px; font-weight: 800; }}
+.nav-actions a, .nav-actions button {{
+  padding:10px 16px; margin-left:10px; background:#ffffff22; color:#fff; border:1px solid #ffffff33;
+  border-radius: 14px; text-decoration:none; font-weight:700; transition:.15s ease; cursor:pointer;
+}}
+.nav-actions a:hover, .nav-actions button:hover {{ background:#ffffff33; transform: translateY(-1px); }}
+
+/* SECTION */
+.section {{ background:#fff; border-radius: 18px; padding: 20px 22px; margin: 12px 0 18px 0; box-shadow: 0 6px 18px rgba(0,0,0,.06); }}
+.section h3 {{ margin:0 0 14px 0; color: var(--ter); }}
+
+/* CARDS */
+.card {{ border:1px solid #e8eeeb; border-radius:16px; padding:16px; background:#fff; height:100%;
+  display:flex; flex-direction:column; justify-content:space-between; }}
+.card a {{ font-weight:800; color: var(--ter); text-decoration:none; }}
+.card a:hover {{ text-decoration: underline; }}
+.meta {{ font-size:12px; opacity:.8; margin-top:6px; }}
+
+/* Tabs */
+.stTabs [role="tablist"] button[role="tab"] {{ border-bottom: 2px solid transparent; }}
+.stTabs [role="tablist"] button[role="tab"][aria-selected="true"] {{ color: var(--ter); border-bottom: 2px solid var(--ter); }}
+
+/* Buttons */
+.stButton>button {{ background: var(--ter) !important; color:#fff !important; border:0 !important; border-radius:12px !important; font-weight:800 !important; }}
+</style>
+""", unsafe_allow_html=True)
+
+
+# ================== INIT DB ==================
+def init_db():
+    con = get_con()
+    con.sql("CREATE SEQUENCE IF NOT EXISTS categories_seq START 1;")
+    con.sql("""
+    CREATE TABLE IF NOT EXISTS categories(
+      id BIGINT DEFAULT nextval('categories_seq') PRIMARY KEY,
+      name TEXT UNIQUE NOT NULL
+    );
+    """)
+    con.sql("""
+    CREATE TABLE IF NOT EXISTS keywords(
+      category_id BIGINT NOT NULL,
+      kw TEXT NOT NULL,
+      PRIMARY KEY(category_id, kw)
+    );
+    """)
+    con.sql("""
+    CREATE TABLE IF NOT EXISTS articles(
+      hash TEXT PRIMARY KEY,
+      title TEXT,
+      link TEXT,
+      pubDate TIMESTAMP,
+      category TEXT,
+      kw TEXT,
+      fetched_at TIMESTAMP
+    );
+    """)
+    con.sql("""
+    CREATE TABLE IF NOT EXISTS meta(
+      key TEXT PRIMARY KEY,
+      value TEXT
+    );
+    """)
+    # Seed si vide
+    cnt = con.execute("SELECT COUNT(*) FROM categories").fetchone()[0]
+    if cnt == 0:
+        seed = {
+            "Amidon":  ["starch", "tapioca starch", "potato starch"],
+            "Sucre":   ["sucre", "sugar futures", "white sugar"],
+            "Énergie": ["natural gas europe", "electricity price europe", "brent crude"],
+            "Éthanol": ["ethanol", "bioethanol", "corn ethanol"],
+        }
+        for cat, kws in seed.items():
+            con.execute("INSERT INTO categories(name) VALUES (?) ON CONFLICT DO NOTHING", [cat])
+            cid = con.execute("SELECT id FROM categories WHERE name=?", [cat]).fetchone()[0]
+            for kw in kws:
+                con.execute("INSERT INTO keywords(category_id, kw) VALUES (?,?) ON CONFLICT DO NOTHING", [cid, kw])
+    con.execute("INSERT INTO meta(key,value) VALUES ('ttl_days','7') ON CONFLICT (key) DO NOTHING")
+    con.execute("INSERT INTO meta(key,value) VALUES ('max_requests_per_run','50') ON CONFLICT (key) DO NOTHING")
+
+init_db()
+
+# ================== META / CRUD ==================
+def get_meta(key, default):
+    r = get_con().execute("SELECT value FROM meta WHERE key=?", [key]).fetchone()
+    return r[0] if r else str(default)
+
+def set_meta(key, value):
+    get_con().execute(
+        "INSERT INTO meta(key,value) VALUES (?,?) ON CONFLICT (key) DO UPDATE SET value=excluded.value",
+        [key, str(value)]
+    )
+
+def load_categories_keywords():
+    con = get_con()
+    rows = con.execute("SELECT id, name FROM categories ORDER BY name").fetchall()
+    out = {}
+    for cid, name in rows:
+        kws = [r[0] for r in con.execute("SELECT kw FROM keywords WHERE category_id=? ORDER BY kw", [cid]).fetchall()]
+        out[name] = {"id": cid, "keywords": kws}
+    return out
+
+def rename_category(old, new):
+    get_con().execute("UPDATE categories SET name=? WHERE name=?", [new, old])
+
+def delete_category(name):
+    con = get_con()
+    row = con.execute("SELECT id FROM categories WHERE name=?", [name]).fetchone()
+    if row:
+        con.execute("DELETE FROM keywords WHERE category_id=?", [row[0]])
+        con.execute("DELETE FROM categories WHERE id=?", [row[0]])
+
+def add_category(name):
+    get_con().execute("INSERT INTO categories(name) VALUES (?) ON CONFLICT DO NOTHING", [name])
+
+def add_keyword(cat_name, kw):
+    con = get_con()
+    cid = con.execute("SELECT id FROM categories WHERE name=?", [cat_name]).fetchone()
+    if cid:
+        con.execute("INSERT INTO keywords(category_id, kw) VALUES (?,?) ON CONFLICT DO NOTHING", [cid[0], kw])
+
+def delete_keyword(cat_name, kw):
+    con = get_con()
+    cid = con.execute("SELECT id FROM categories WHERE name=?", [cat_name]).fetchone()
+    if cid:
+        con.execute("DELETE FROM keywords WHERE category_id=? AND kw=?", [cid[0], kw])
+
+# ================== FETCH / CACHE ==================
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
+    "Mozilla/5.0 (X11; Linux x86_64) Gecko/20100101 Firefox/125.0",
+]
+
+def backoff_get(url, tries=3, timeout=15):
+    for i in range(tries):
+        try:
+            r = requests.get(url, headers={"User-Agent": random.choice(USER_AGENTS)}, timeout=timeout)
+            if r.status_code in (429, 503):
+                time.sleep(1.2 * (i+1)); continue
+            r.raise_for_status()
+            return r
+        except Exception:
+            time.sleep(1.0 * (i+1))
+    return None
+
+def parse_rss(xml_bytes):
+    try:
+        root = ET.fromstring(xml_bytes)
+    except Exception:
+        return []
+    items = []
+    for it in root.iterfind(".//item"):
+        title = (it.findtext("title") or "").strip()
+        link  = (it.findtext("link") or "").strip()
+        pub   = (it.findtext("pubDate") or "").strip()
+        items.append({"title": title, "link": link, "pubDate": pub})
+    return items
+
+def upsert_article(item, category, kw):
+    con = get_con()
+    h = hashlib.sha256(f"{item['title']}|{item['link']}".encode()).hexdigest()
+
+    # normalisation date RSS -> TIMESTAMP (ou NULL)
+    pd_val = None
+    pd_raw = (item.get("pubDate") or "").strip()
+    if pd_raw:
+        try:
+            # ex: Tue, 13 Aug 2024 12:34:56 GMT
+            t = dt.datetime.strptime(pd_raw, "%a, %d %b %Y %H:%M:%S %Z")
+            pd_val = t
+        except Exception:
+            pd_val = None
+
+    # UPSERT compatible DuckDB (sans MERGE)
+    con.execute("""
+        INSERT INTO articles (hash, title, link, pubDate, category, kw, fetched_at)
+        VALUES (?, ?, ?, ?, ?, ?, current_timestamp)
+        ON CONFLICT (hash) DO UPDATE SET
+            title       = excluded.title,
+            link        = excluded.link,
+            pubDate     = excluded.pubDate,
+            category    = excluded.category,
+            kw          = excluded.kw,
+            fetched_at  = excluded.fetched_at
+    """, [h, item["title"], item["link"], pd_val, category, kw])
+
+
+def keyword_stale(kw, ttl_days):
+    r = get_con().execute("SELECT max(fetched_at) FROM articles WHERE kw=?", [kw]).fetchone()
+    last = r[0] if r else None
+    if not last:
+        return True
+    try:
+        return (dt.datetime.utcnow() - last) > dt.timedelta(days=ttl_days)
+    except Exception:
+        return True
+
+def fetch_keyword(category, kw, max_items=60):
+    q = quote(f'"{kw}"')
+    url = f"https://news.google.com/rss/search?q={q}&hl=fr&gl=FR&ceid=FR:fr"
+    r = backoff_get(url)
+    if not r:
+        return 0
+    items = parse_rss(r.content)[:max_items]
+    for it in items:
+        upsert_article(it, category, kw)
+    time.sleep(random.uniform(0.2, 0.5))
+    return len(items)
+
+def get_latest_top(n=10):
+    # Fenêtre = 30 jours, tri chrono sur pubDate (fallback fetched_at)
+    df = get_con().execute("""
+        SELECT title,
+               link,
+               strftime(pubDate, '%d/%m/%Y %H:%M') AS date,
+               category
+        FROM articles
+        WHERE coalesce(pubDate, fetched_at) >= (current_timestamp - INTERVAL 60 DAY)
+        ORDER BY coalesce(pubDate, fetched_at) DESC
+        LIMIT ?
+    """, [n]).fetchdf()
+    return df.to_dict("records")
+
+
+def get_cached_by_cat(category, limit=500):
+    # Fenêtre = 30 jours, tri chrono sur pubDate (fallback fetched_at)
+    df = get_con().execute("""
+        SELECT title,
+               link,
+               strftime(pubDate, '%d/%m/%Y %H:%M') AS pubDate,
+               kw
+        FROM articles
+        WHERE category = ?
+          AND coalesce(pubDate, fetched_at) >= (current_timestamp - INTERVAL 60 DAY)
+        ORDER BY coalesce(pubDate, fetched_at) DESC
+        LIMIT ?
+    """, [category, limit]).fetchdf()
+    return df.to_dict("records")
+
+
+def refresh_if_needed(ttl_days, cap, progress=None):
+    data = load_categories_keywords()
+    done = 0
+    for cat, obj in data.items():
+        for kw in obj["keywords"]:
+            if not kw.strip():
+                continue
+            if done >= cap:
+                return done
+            if keyword_stale(kw, ttl_days):
+                n = fetch_keyword(cat, kw)
+                done += 1
+                if progress:
+                    progress(f"Actualisé **{kw}** ({n} items)")
+    return done
+
+# ================== NAVBAR ==================
+def navbar():
+    st.markdown(f"""
+    <div class="navbar">
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos">
+        <div class="title">{APP_TITLE}</div>
+      </div>
+      <div></div>
+      <div class="nav-actions">
+        <a href="https://google.com" target="_blank" rel="noopener">Home</a>
+        <button onclick="window.location.reload()">Actualiser</button>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+navbar()
+
+# Refresh au boot (cap 8 kw)
+if "boot" not in st.session_state:
+    try:
+        refresh_if_needed(int(get_meta("ttl_days", 7)), 8)
+    except Exception:
+        pass
+    st.session_state["boot"] = True
+
+# ================== TABS ==================
+cats_data = load_categories_keywords()
+cat_names  = list(cats_data.keys())
+tabs_labels = ["📰 Dernières", *cat_names, "⚙️ Configuration"]
+tabs = st.tabs(tabs_labels)
+
+# ===== Dernières =====
+
+
+# ===== Dernières =====
+with tabs[0]:
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.markdown("### Dernières publications (Top 10)")
+    latest = get_latest_top(10)
+
+    if not latest:
+        st.info("Aucune actu en cache. Va dans **⚙️ Configuration** et clique **Actualiser maintenant**.")
+    else:
+        items_json = json.dumps(latest).replace("</", "<\\/")
+
+        st.components.v1.html(f"""
+<div style="display:flex;justify-content:center;">
+  <div id="carousel" style="max-width: 920px; width: 100%;">
+
+    <div id="slide" style="
+        background:#fff;border:1px solid #e8eeeb;border-radius:20px;
+        padding:18px; min-height:140px; box-shadow:0 8px 22px rgba(0,0,0,.06);
+        opacity:0; transform: translateY(8px);
+        transition: opacity .28s ease, transform .28s ease;">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="min-width:72px;width:72px;height:72px;border-radius:14px;border:1px solid #e8eeeb;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#f8faf9;">
+          <img id="thumb" alt="favicon" style="width:48px;height:48px;opacity:.9;">
+        </div>
+        <div style="flex:1;">
+          <div id="title" style="font-size:20px;font-weight:800;line-height:1.35;margin-bottom:8px;"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span id="cat" style="padding:6px 12px;border-radius:999px;background:{TER_ACC};
+              color:{TER_DARK};font-weight:700;font-size:12px;border:1px solid #d9eae2;"></span>
+            <span id="date" style="padding:6px 12px;border-radius:999px;background:{TER_ACC};
+              color:{TER_DARK};font-weight:700;font-size:12px;border:1px solid #d9eae2;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px;">
+      <button id="prev" style="padding:10px 14px;border-radius:12px;border:1px solid {TER_DARK};
+        background:#fff;color:{TER_DARK};font-weight:800;cursor:pointer;min-width:44px;">◀</button>
+      <div id="dots" style="display:flex;gap:8px;align-items:center;"></div>
+      <button id="next" style="padding:10px 14px;border-radius:12px;border:1px solid {TER_DARK};
+        background:#fff;color:{TER_DARK};font-weight:800;cursor:pointer;min-width:44px;">▶</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const items = {items_json};
+const slide = document.getElementById('slide');
+const t = document.getElementById('title');
+const c = document.getElementById('cat');
+const d = document.getElementById('date');
+const dotsBox = document.getElementById('dots');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const thumb = document.getElementById('thumb');
+let i = 0, timer = null, hover=false;
+
+function faviconFrom(url) {{
+  try {{
+    const u = new URL(url);
+    return "https://www.google.com/s2/favicons?domain=" + u.hostname + "&sz=128";
+  }} catch(e) {{
+    return "https://www.google.com/s2/favicons?domain=google.com&sz=128";
+  }}
+}}
+
+function render(idx, animate=true) {{
+  const it = items[idx];
+  if(animate) {{ slide.style.opacity = 0; slide.style.transform='translateY(8px)'; }}
+  setTimeout(() => {{
+    t.innerHTML = `<a href="${{it.link}}" target="_blank" rel="noopener" style="color:{TER_DARK};text-decoration:none;">${{it.title}}</a>`;
+    c.textContent = it.category || '';
+    d.textContent = it.date || '';
+    thumb.src = faviconFrom(it.link);
+
+    dotsBox.innerHTML = '';
+    for(let k=0;k<items.length;k++) {{
+      const dot = document.createElement('span');
+      dot.style.cssText = "width:9px;height:9px;border-radius:50%;background:#dfeae6;cursor:pointer;display:inline-block;";
+      if(k===idx) dot.style.background = "{TER_DARK}";
+      dot.onclick = () => {{ i=k; restart(); }};
+      dotsBox.appendChild(dot);
+    }}
+    if(animate) {{ slide.style.opacity = 1; slide.style.transform='translateY(0)'; }}
+  }}, animate?140:0);
+}}
+
+function nextSlide() {{ i = (i+1) % items.length; render(i); }}
+function prevSlide() {{ i = (i-1+items.length) % items.length; render(i); }}
+function start() {{ if(timer) clearInterval(timer); timer = setInterval(() => {{ if(!hover) nextSlide(); }}, 6000); }}
+function restart() {{ render(i,false); start(); }}
+
+prev.onclick = () => {{ prevSlide(); start(); }};
+next.onclick = () => {{ nextSlide(); start(); }};
+slide.addEventListener('mouseenter', () => {{ hover=true; }});
+slide.addEventListener('mouseleave', () => {{ hover=false; }});
+document.addEventListener('keydown', (e) => {{
+  if(e.key === 'ArrowRight') {{ nextSlide(); start(); }}
+  if(e.key === 'ArrowLeft')  {{ prevSlide(); start(); }}
+}});
+
+render(0,false); start();
+</script>
+        """, height=260, scrolling=False)
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
+# ===== Catégories dynamiques =====
+def render_category_grid(cat_name: str):
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.markdown(f"### {cat_name}")
+    items = get_cached_by_cat(cat_name, limit=800)
+    if not items:
+        st.caption("Aucun article (actualise dans **⚙️ Configuration**).")
+    else:
+        n_cols = 3 if len(items) >= 3 else max(1, len(items))
+        for start in range(0, min(len(items), 300), n_cols):
+            cols = st.columns(n_cols)
+            for k, col in enumerate(cols):
+                idx = start + k
+                if idx >= len(items): break
+                dct = items[idx]
+                with col:
+                    st.markdown(f"""
+                    <div class="card">
+                      <div><a href="{dct['link']}" target="_blank" rel="noopener">{dct['title']}</a></div>
+                      <div class="meta">{dct.get('pubDate','')} • {dct.get('kw','')}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+for j, cat in enumerate(cat_names, start=1):
+    with tabs[j]:
+        render_category_grid(cat)
+
+# ===== ⚙️ Configuration =====
+with tabs[-1]:
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.markdown("### Paramètres de rafraîchissement")
+    c1, c2, c3 = st.columns([0.3, 0.3, 0.4])
+    with c1:
+        ttl = int(get_meta("ttl_days", 7))
+        new_ttl = st.number_input("TTL (jours)", 1, 60, ttl)
+    with c2:
+        cap = int(get_meta("max_requests_per_run", 50))
+        new_cap = st.number_input("Cap requêtes/run", 1, 500, cap)
+    with c3:
+        st.write("")
+        if st.button("💾 Enregistrer", use_container_width=True):
+            set_meta("ttl_days", new_ttl)
+            set_meta("max_requests_per_run", new_cap)
+            st.success("OK")
+
+    st.markdown("---")
+    st.markdown("### Actualisation")
+    msg = st.empty()
+    if st.button("🔄 Actualiser maintenant", use_container_width=True):
+        n = refresh_if_needed(
+            int(get_meta("ttl_days", 7)),
+            int(get_meta("max_requests_per_run", 50)),
+            progress=lambda s: msg.info(s)
+        )
+        msg.empty(); st.success(f"Terminé • Requêtes: {n}")
+
+    st.markdown("---")
+    st.markdown("### Catégories & mots-clés")
+    cats = load_categories_keywords()
+
+    addc1, addc2 = st.columns([0.7, 0.3])
+    with addc1:
+        new_cat = st.text_input("Nouvelle catégorie")
+    with addc2:
+        if st.button("Ajouter"):
+            nm = new_cat.strip()
+            if nm:
+                add_category(nm)
+                st.success(f"Ajoutée: {nm}")
+                st.rerun()
+
+    for cat in list(cats.keys()):
+        with st.expander(f"🗂️ {cat}", expanded=False):
+            r1, r2 = st.columns([0.7, 0.3])
+            new_name = r1.text_input("Renommer", value=cat, key=f"rn_{cat}")
+            if new_name.strip() and new_name != cat:
+                if r1.button("OK", key=f"do_{cat}"):
+                    rename_category(cat, new_name.strip())
+                    st.rerun()
+            if r2.button("Supprimer", key=f"del_{cat}"):
+                delete_category(cat)
+                st.warning(f"Supprimée: {cat}")
+                st.rerun()
+
+            st.caption("Mots-clés")
+            for kw in list(cats[cat]["keywords"]):
+                k1, k2 = st.columns([0.85, 0.15])
+                k1.text_input("Mot-clé", value=kw, disabled=True, key=f"kw_{cat}_{kw}")
+                if k2.button("❌", key=f"rm_{cat}_{kw}"):
+                    delete_keyword(cat, kw)
+                    st.rerun()
+            nv = st.text_input("Ajouter un mot-clé", key=f"addkw_{cat}")
+            if st.button("Ajouter ce mot-clé", key=f"btn_addkw_{cat}"):
+                v = nv.strip()
+                if v:
+                    add_keyword(cat, v)
+                    st.success(f"Ajouté: {v}")
+                    st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
