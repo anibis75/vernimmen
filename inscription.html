@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="logo/logo2.ico" type="image/x-icon">
 <title>Argos | Accès sécurisé</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +16,7 @@
   --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
   --radius:22px; --auth-w:360px; --plans-gap:26px; --plan-top-h:130px;
   --container: min(1600px, 96vw);
+  --box-h: 160px;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -49,7 +51,23 @@ main{max-width:var(--container);margin:10px auto 70px;padding:0 24px}
 .msg{display:none;margin-top:10px;padding:10px 12px;border-radius:10px;font-size:14px}
 .msg.error{display:block;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.5);color:#fecaca}
 .msg.ok{display:block;background:rgba(46,196,182,.15);border:1px solid rgba(46,196,182,.5);color:#d1fae5}
-/* Plans */
+
+/* Multi-select (checkbox list + boutons défilement) */
+.ms{margin:8px 0}
+.ms .box{
+  position:relative; border:1px solid var(--glass-border); border-radius:12px;
+  background:rgba(255,255,255,.05); height:var(--box-h); overflow:auto; padding:8px 10px;
+}
+.ms .row{display:flex; align-items:center; gap:10px; padding:6px 4px;}
+.ms .row + .row{border-top:1px dashed rgba(255,255,255,.06)}
+.ms .row input{accent-color:#2ec4b6}
+.ms .controls{display:flex; justify-content:space-between; gap:8px; margin-top:6px;}
+.ms .ctrl{
+  flex:1; border:1px solid var(--glass-border); background:rgba(255,255,255,.06);
+  padding:8px 10px; border-radius:10px; font-weight:700; cursor:pointer;
+}
+
+/* Plans — restitution du visuel "ancien" */
 .plans-wrap{padding:24px}
 .plans-title{margin:0 0 14px;font-weight:800;font-size:22px}
 .plans{display:grid;gap:var(--plans-gap);grid-template-columns:repeat(4,1fr)}
@@ -80,8 +98,14 @@ main{max-width:var(--container);margin:10px auto 70px;padding:0 24px}
 .plan ul{list-style:disc;padding-left:20px;margin:12px 0 0 0;flex-grow:1}
 .plan li{margin:8px 0}
 .plan .bottom{margin-top:16px;display:flex;justify-content:center}
-.plan .cta{border:1px solid var(--glass-border);background:rgba(255,255,255,.06);padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
-.plan .cta:hover{box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.plan .cta{
+  border:1px solid var(--glass-border);
+  background:var(--accent2);
+  color:#0b0f14;
+  padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer;
+  box-shadow:0 6px 18px rgba(46,196,182,.25);
+}
+.plan .cta:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(46,196,182,.35)}
 footer{color:var(--muted);text-align:center;padding: 18px 24px 44px;font-size:14px}
 </style>
 </head>
@@ -108,10 +132,155 @@ footer{color:var(--muted);text-align:center;padding: 18px 24px 44px;font-size:14
     <input id="password" class="input" type="password" placeholder="Mot de passe" autocomplete="current-password" />
     <input id="password2" class="input" type="password" placeholder="Confirmer le mot de passe" autocomplete="new-password" style="display:none" />
 
-    <!-- Champ Entreprise (UNIQUE) -->
-    <div id="grp-entreprise" style="display:none; margin-top:8px;">
-      <label for="entreprise" style="display:block;margin-bottom:6px;">Entreprise (optionnel)</label>
-      <input id="entreprise" class="input" type="text" placeholder="Votre entreprise" autocomplete="organization" />
+    <!-- Listes multi-sélection (mono-clic) -->
+    <div id="ms-region" class="ms" style="display:none">
+      <div class="box" tabindex="0" aria-label="Région">
+        <div class="row"><input type="checkbox" value="asie" id="reg-asie"><label for="reg-asie">asie</label></div>
+        <div class="row"><input type="checkbox" value="moyen-orient" id="reg-mo"><label for="reg-mo">moyen-orient</label></div>
+        <div class="row"><input type="checkbox" value="europe" id="reg-eu"><label for="reg-eu">europe</label></div>
+        <div class="row"><input type="checkbox" value="oceanie" id="reg-oc"><label for="reg-oc">oceanie</label></div>
+        <div class="row"><input type="checkbox" value="afrique" id="reg-af"><label for="reg-af">afrique</label></div>
+        <div class="row"><input type="checkbox" value="amerique-centrale" id="reg-ac"><label for="reg-ac">amerique-centrale</label></div>
+        <div class="row"><input type="checkbox" value="amerique-du-sud" id="reg-ads"><label for="reg-ads">amerique-du-sud</label></div>
+        <div class="row"><input type="checkbox" value="amerique-du-nord" id="reg-adn"><label for="reg-adn">amerique-du-nord</label></div>
+      </div>
+      <div class="controls">
+        <button class="ctrl" data-scroll="#ms-region .box" data-dir="-1">▲</button>
+        <button class="ctrl" data-action="clear" data-target="#ms-region">Effacer</button>
+        <button class="ctrl" data-scroll="#ms-region .box" data-dir="1">▼</button>
+      </div>
+    </div>
+
+    <div id="ms-pays" class="ms" style="display:none">
+      <div class="box" tabindex="0" aria-label="Pays">
+        <!-- liste pays triée alphabétiquement -->
+        <div class="row"><input type="checkbox" value="allemagne" id="py-allemagne"><label for="py-allemagne">allemagne</label></div>
+        <div class="row"><input type="checkbox" value="argentine" id="py-argentine"><label for="py-argentine">argentine</label></div>
+        <div class="row"><input type="checkbox" value="arabie" id="py-arabie"><label for="py-arabie">arabie</label></div>
+        <div class="row"><input type="checkbox" value="australie" id="py-australie"><label for="py-australie">australie</label></div>
+        <div class="row"><input type="checkbox" value="autriche" id="py-autriche"><label for="py-autriche">autriche</label></div>
+        <div class="row"><input type="checkbox" value="bahrein" id="py-bahrein"><label for="py-bahrein">bahrein</label></div>
+        <div class="row"><input type="checkbox" value="bangladesh" id="py-bangladesh"><label for="py-bangladesh">bangladesh</label></div>
+        <div class="row"><input type="checkbox" value="belgique" id="py-belgique"><label for="py-belgique">belgique</label></div>
+        <div class="row"><input type="checkbox" value="bermudes" id="py-bermudes"><label for="py-bermudes">bermudes</label></div>
+        <div class="row"><input type="checkbox" value="botswana" id="py-botswana"><label for="py-botswana">botswana</label></div>
+        <div class="row"><input type="checkbox" value="bresil" id="py-bresil"><label for="py-bresil">bresil</label></div>
+        <div class="row"><input type="checkbox" value="bulgarie" id="py-bulgarie"><label for="py-bulgarie">bulgarie</label></div>
+        <div class="row"><input type="checkbox" value="canada" id="py-canada"><label for="py-canada">canada</label></div>
+        <div class="row"><input type="checkbox" value="chili" id="py-chili"><label for="py-chili">chili</label></div>
+        <div class="row"><input type="checkbox" value="chine" id="py-chine"><label for="py-chine">chine</label></div>
+        <div class="row"><input type="checkbox" value="chypre" id="py-chypre"><label for="py-chypre">chypre</label></div>
+        <div class="row"><input type="checkbox" value="colombie" id="py-colombie"><label for="py-colombie">colombie</label></div>
+        <div class="row"><input type="checkbox" value="coree" id="py-coree"><label for="py-coree">coree</label></div>
+        <div class="row"><input type="checkbox" value="cote" id="py-cote"><label for="py-cote">cote</label></div>
+        <div class="row"><input type="checkbox" value="croatie" id="py-croatie"><label for="py-croatie">croatie</label></div>
+        <div class="row"><input type="checkbox" value="danemark" id="py-danemark"><label for="py-danemark">danemark</label></div>
+        <div class="row"><input type="checkbox" value="egypte" id="py-egypte"><label for="py-egypte">egypte</label></div>
+        <div class="row"><input type="checkbox" value="emirats" id="py-emirats"><label for="py-emirats">emirats</label></div>
+        <div class="row"><input type="checkbox" value="equateur" id="py-equateur"><label for="py-equateur">equateur</label></div>
+        <div class="row"><input type="checkbox" value="espagne" id="py-espagne"><label for="py-espagne">espagne</label></div>
+        <div class="row"><input type="checkbox" value="estonie" id="py-estonie"><label for="py-estonie">estonie</label></div>
+        <div class="row"><input type="checkbox" value="etats-unis" id="py-usa"><label for="py-usa">etats-unis</label></div>
+        <div class="row"><input type="checkbox" value="finlande" id="py-finlande"><label for="py-finlande">finlande</label></div>
+        <div class="row"><input type="checkbox" value="france" id="py-france"><label for="py-france">france</label></div>
+        <div class="row"><input type="checkbox" value="ghana" id="py-ghana"><label for="py-ghana">ghana</label></div>
+        <div class="row"><input type="checkbox" value="grece" id="py-grece"><label for="py-grece">grece</label></div>
+        <div class="row"><input type="checkbox" value="guernesey" id="py-guernesey"><label for="py-guernesey">guernesey</label></div>
+        <div class="row"><input type="checkbox" value="hong" id="py-hong"><label for="py-hong">hong</label></div>
+        <div class="row"><input type="checkbox" value="hongrie" id="py-hongrie"><label for="py-hongrie">hongrie</label></div>
+        <div class="row"><input type="checkbox" value="inde" id="py-inde"><label for="py-inde">inde</label></div>
+        <div class="row"><input type="checkbox" value="indonesie" id="py-indonesie"><label for="py-indonesie">indonesie</label></div>
+        <div class="row"><input type="checkbox" value="irlande" id="py-irlande"><label for="py-irlande">irlande</label></div>
+        <div class="row"><input type="checkbox" value="islande" id="py-islande"><label for="py-islande">islande</label></div>
+        <div class="row"><input type="checkbox" value="israel" id="py-israel"><label for="py-israel">israel</label></div>
+        <div class="row"><input type="checkbox" value="italie" id="py-italie"><label for="py-italie">italie</label></div>
+        <div class="row"><input type="checkbox" value="jamaique" id="py-jamaique"><label for="py-jamaique">jamaique</label></div>
+        <div class="row"><input type="checkbox" value="japon" id="py-japon"><label for="py-japon">japon</label></div>
+        <div class="row"><input type="checkbox" value="jordanie" id="py-jordanie"><label for="py-jordanie">jordanie</label></div>
+        <div class="row"><input type="checkbox" value="kazakhstan" id="py-kazakhstan"><label for="py-kazakhstan">kazakhstan</label></div>
+        <div class="row"><input type="checkbox" value="kenya" id="py-kenya"><label for="py-kenya">kenya</label></div>
+        <div class="row"><input type="checkbox" value="koweit" id="py-koweit"><label for="py-koweit">koweit</label></div>
+        <div class="row"><input type="checkbox" value="lettonie" id="py-lettonie"><label for="py-lettonie">lettonie</label></div>
+        <div class="row"><input type="checkbox" value="lituanie" id="py-lituanie"><label for="py-lituanie">lituanie</label></div>
+        <div class="row"><input type="checkbox" value="luxembourg" id="py-luxembourg"><label for="py-luxembourg">luxembourg</label></div>
+        <div class="row"><input type="checkbox" value="macedoine" id="py-macedoine"><label for="py-macedoine">macedoine</label></div>
+        <div class="row"><input type="checkbox" value="malaisie" id="py-malaisie"><label for="py-malaisie">malaisie</label></div>
+        <div class="row"><input type="checkbox" value="malawi" id="py-malawi"><label for="py-malawi">malawi</label></div>
+        <div class="row"><input type="checkbox" value="malte" id="py-malte"><label for="py-malte">malte</label></div>
+        <div class="row"><input type="checkbox" value="maroc" id="py-maroc"><label for="py-maroc">maroc</label></div>
+        <div class="row"><input type="checkbox" value="maurice" id="py-maurice"><label for="py-maurice">maurice</label></div>
+        <div class="row"><input type="checkbox" value="mexique" id="py-mexique"><label for="py-mexique">mexique</label></div>
+        <div class="row"><input type="checkbox" value="namibie" id="py-namibie"><label for="py-namibie">namibie</label></div>
+        <div class="row"><input type="checkbox" value="nigeria" id="py-nigeria"><label for="py-nigeria">nigeria</label></div>
+        <div class="row"><input type="checkbox" value="norvege" id="py-norvege"><label for="py-norvege">norvege</label></div>
+        <div class="row"><input type="checkbox" value="nouvelle" id="py-nouvelle"><label for="py-nouvelle">nouvelle</label></div>
+        <div class="row"><input type="checkbox" value="oman" id="py-oman"><label for="py-oman">oman</label></div>
+        <div class="row"><input type="checkbox" value="ouganda" id="py-ouganda"><label for="py-ouganda">ouganda</label></div>
+        <div class="row"><input type="checkbox" value="pakistan" id="py-pakistan"><label for="py-pakistan">pakistan</label></div>
+        <div class="row"><input type="checkbox" value="pays" id="py-pays"><label for="py-pays">pays</label></div>
+        <div class="row"><input type="checkbox" value="perou" id="py-perou"><label for="py-perou">perou</label></div>
+        <div class="row"><input type="checkbox" value="philippines" id="py-philippines"><label for="py-philippines">philippines</label></div>
+        <div class="row"><input type="checkbox" value="pologne" id="py-pologne"><label for="py-pologne">pologne</label></div>
+        <div class="row"><input type="checkbox" value="portugal" id="py-portugal"><label for="py-portugal">portugal</label></div>
+        <div class="row"><input type="checkbox" value="qatar" id="py-qatar"><label for="py-qatar">qatar</label></div>
+        <div class="row"><input type="checkbox" value="republique" id="py-republique"><label for="py-republique">republique</label></div>
+        <div class="row"><input type="checkbox" value="royaume" id="py-royaume"><label for="py-royaume">royaume</label></div>
+        <div class="row"><input type="checkbox" value="roumanie" id="py-roumanie"><label for="py-roumanie">roumanie</label></div>
+        <div class="row"><input type="checkbox" value="russie" id="py-russie"><label for="py-russie">russie</label></div>
+        <div class="row"><input type="checkbox" value="serbie" id="py-serbie"><label for="py-serbie">serbie</label></div>
+        <div class="row"><input type="checkbox" value="singapour" id="py-singapour"><label for="py-singapour">singapour</label></div>
+        <div class="row"><input type="checkbox" value="slovaquie" id="py-slovaquie"><label for="py-slovaquie">slovaquie</label></div>
+        <div class="row"><input type="checkbox" value="slovenie" id="py-slovenie"><label for="py-slovenie">slovenie</label></div>
+        <div class="row"><input type="checkbox" value="sri" id="py-sri"><label for="py-sri">sri</label></div>
+        <div class="row"><input type="checkbox" value="suede" id="py-suede"><label for="py-suede">suede</label></div>
+        <div class="row"><input type="checkbox" value="suisse" id="py-suisse"><label for="py-suisse">suisse</label></div>
+        <div class="row"><input type="checkbox" value="taiwan" id="py-taiwan"><label for="py-taiwan">taiwan</label></div>
+        <div class="row"><input type="checkbox" value="tanzanie" id="py-tanzanie"><label for="py-tanzanie">tanzanie</label></div>
+        <div class="row"><input type="checkbox" value="thailande" id="py-thailande"><label for="py-thailande">thailande</label></div>
+        <div class="row"><input type="checkbox" value="trinite" id="py-trinite"><label for="py-trinite">trinite</label></div>
+        <div class="row"><input type="checkbox" value="tunisie" id="py-tunisie"><label for="py-tunisie">tunisie</label></div>
+        <div class="row"><input type="checkbox" value="ukraine" id="py-ukraine"><label for="py-ukraine">ukraine</label></div>
+        <div class="row"><input type="checkbox" value="venezuela" id="py-venezuela"><label for="py-venezuela">venezuela</label></div>
+        <div class="row"><input type="checkbox" value="vietnam" id="py-vietnam"><label for="py-vietnam">vietnam</label></div>
+        <div class="row"><input type="checkbox" value="zambie" id="py-zambie"><label for="py-zambie">zambie</label></div>
+        <div class="row"><input type="checkbox" value="zimbabwe" id="py-zimbabwe"><label for="py-zimbabwe">zimbabwe</label></div>
+      </div>
+      <div class="controls">
+        <button class="ctrl" data-scroll="#ms-pays .box" data-dir="-1">▲</button>
+        <button class="ctrl" data-action="clear" data-target="#ms-pays">Effacer</button>
+        <button class="ctrl" data-scroll="#ms-pays .box" data-dir="1">▼</button>
+      </div>
+    </div>
+
+    <div id="ms-secteur" class="ms" style="display:none">
+      <div class="box" tabindex="0" aria-label="Secteur">
+        <div class="row"><input type="checkbox" value="Industrie manufacturière & Matériaux" id="sx-imm"><label for="sx-imm">Industrie manufacturière & Matériaux</label></div>
+        <div class="row"><input type="checkbox" value="Construction & Immobilier" id="sx-ci"><label for="sx-ci">Construction & Immobilier</label></div>
+        <div class="row"><input type="checkbox" value="Automobile & Mobilité" id="sx-auto"><label for="sx-auto">Automobile & Mobilité</label></div>
+        <div class="row"><input type="checkbox" value="Médias & Divertissement" id="sx-media"><label for="sx-media">Médias & Divertissement</label></div>
+        <div class="row"><input type="checkbox" value="Santé & Sciences de la vie" id="sx-sante"><label for="sx-sante">Santé & Sciences de la vie</label></div>
+        <div class="row"><input type="checkbox" value="Tourisme, Loisirs & Restauration" id="sx-tlr"><label for="sx-tlr">Tourisme, Loisirs & Restauration</label></div>
+        <div class="row"><input type="checkbox" value="Services publics & Administrations" id="sx-spa"><label for="sx-spa">Services publics & Administrations</label></div>
+        <div class="row"><input type="checkbox" value="Transport & Logistique" id="sx-tl"><label for="sx-tl">Transport & Logistique</label></div>
+        <div class="row"><input type="checkbox" value="Services aux entreprises" id="sx-sae"><label for="sx-sae">Services aux entreprises</label></div>
+        <div class="row"><input type="checkbox" value="Énergie & Ressources naturelles" id="sx-ern"><label for="sx-ern">Énergie & Ressources naturelles</label></div>
+        <div class="row"><input type="checkbox" value="Services financiers" id="sx-sf"><label for="sx-sf">Services financiers</label></div>
+        <div class="row"><input type="checkbox" value="Environnement & Gestion des ressources" id="sx-egr"><label for="sx-egr">Environnement & Gestion des ressources</label></div>
+        <div class="row"><input type="checkbox" value="Commerce de détail & Distribution" id="sx-cdd"><label for="sx-cdd">Commerce de détail & Distribution</label></div>
+        <div class="row"><input type="checkbox" value="Agriculture, Pêche & Agroalimentaire" id="sx-agri"><label for="sx-agri">Agriculture, Pêche & Agroalimentaire</label></div>
+        <div class="row"><input type="checkbox" value="Technologies & Électronique" id="sx-tech"><label for="sx-tech">Technologies & Électronique</label></div>
+        <div class="row"><input type="checkbox" value="Grande_Categorie" id="sx-gc"><label for="sx-gc">Grande_Categorie</label></div>
+      </div>
+      <div class="controls">
+        <button class="ctrl" data-scroll="#ms-secteur .box" data-dir="-1">▲</button>
+        <button class="ctrl" data-action="clear" data-target="#ms-secteur">Effacer</button>
+        <button class="ctrl" data-scroll="#ms-secteur .box" data-dir="1">▼</button>
+      </div>
+    </div>
+
+    <!-- Entreprise -->
+    <div id="grp-entreprise" style="display:none; margin:8px 0;">
+      <input id="entreprise" class="input" type="text" placeholder="Entreprise (optionnel)" autocomplete="organization" />
     </div>
 
     <button id="btn-auth" class="btn primary">Se connecter</button>
@@ -149,7 +318,7 @@ footer{color:var(--muted);text-align:center;padding: 18px 24px 44px;font-size:14
         <ul>
           <li>Accès sélectif à 1 000 sociétés cotées</li>
           <li>Suivi des indicateurs financiers essentiels</li>
-          <li><strong>Analyses de valorisation : multiples & DCF simplifié</strong></li>
+          <li>Analyses de valorisation : multiples & DCF simplifié</li>
           <li>Accès général aux données macro (OAT, RM, inflation, FX)</li>
           <li>Export PDF & PowerPoint</li>
         </ul>
@@ -199,81 +368,85 @@ footer{color:var(--muted);text-align:center;padding: 18px 24px 44px;font-size:14
 <!-- Supabase -->
 <script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
-/* ====== CONFIG (remplace en prod via injection serveur) ====== */
 const SUPABASE_URL = "https://dzvpohuqsmtuhlubjgof.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6dnBvaHVxc210dWhsdWJqZ29mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU5NzU5MDYsImV4cCI6MjA3MTU1MTkwNn0.N1J5EsrlYNU-tFX0a8YxoZquFKwbM8IWzx1-UH4GUWI";
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const APP_URL = "http://127.0.0.1:8501";
 
-/* ====== Utils UI ====== */
 document.getElementById('year').textContent = new Date().getFullYear();
 const msg = document.getElementById('auth-msg');
 function showError(t){ msg.className='msg error'; msg.textContent=t; msg.style.display='block'; }
 function showOk(t){ msg.className='msg ok'; msg.textContent=t; msg.style.display='block'; }
 function clearMsg(){ msg.className='msg'; msg.textContent=''; msg.style.display='none'; }
 function isValidEmail(x){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x); }
-async function lock(btn, fn){
-  const lbl=btn.textContent; btn.disabled=true; btn.textContent='Patientez…';
-  try{ await fn(); } finally{ btn.disabled=false; btn.textContent=lbl; }
-}
+async function lock(btn, fn){ const lbl=btn.textContent; btn.disabled=true; btn.textContent='Patientez…'; try{ await fn(); } finally{ btn.disabled=false; btn.textContent=lbl; }}
 
-/* ====== Auth mode ====== */
+/* Auth mode */
 let mode='signin';
-const swIn = document.getElementById('switch-signin');
-const swUp = document.getElementById('switch-signup');
-const btnAuth = document.getElementById('btn-auth');
-const pass2 = document.getElementById('password2');
-const grpEnt = document.getElementById('grp-entreprise');
+const swIn=document.getElementById('switch-signin');
+const swUp=document.getElementById('switch-signup');
+const btnAuth=document.getElementById('btn-auth');
+const pass2=document.getElementById('password2');
+const grpEnt=document.getElementById('grp-entreprise');
+const msRegion=document.querySelector('#ms-region');
+const msPays=document.querySelector('#ms-pays');
+const msSecteur=document.querySelector('#ms-secteur');
 
-swIn.onclick = () => {
-  mode='signin';
-  swIn.classList.add('active'); swUp.classList.remove('active');
+swIn.onclick=()=>{ mode='signin'; swIn.classList.add('active'); swUp.classList.remove('active');
   btnAuth.textContent='Se connecter';
-  pass2.style.display='none';
-  grpEnt.style.display='none';
-  clearMsg();
-};
-
-swUp.onclick = () => {
-  mode='signup';
-  swUp.classList.add('active'); swIn.classList.remove('active');
+  pass2.style.display='none'; grpEnt.style.display='none';
+  msRegion.style.display='none'; msPays.style.display='none'; msSecteur.style.display='none'; clearMsg(); };
+swUp.onclick=()=>{ mode='signup'; swUp.classList.add('active'); swIn.classList.remove('active');
   btnAuth.textContent='Créer un compte';
-  pass2.style.display='block';
-  grpEnt.style.display='block';
-  clearMsg();
-};
+  pass2.style.display='block'; grpEnt.style.display='block';
+  msRegion.style.display='block'; msPays.style.display='block'; msSecteur.style.display='block'; clearMsg(); };
 
-/* ====== Plans ====== */
+/* Plans */
 const cards=[...document.querySelectorAll('.plan')];
-function select(planName){
-  cards.forEach(c=>c.classList.toggle('selected', c.dataset.plan===planName));
-  localStorage.setItem('plan', planName);
-}
-cards.forEach(c=>{
-  c.addEventListener('click', e=>{
-    const t=e.target.closest('[data-choose]');
-    const name=t ? t.dataset.choose : c.dataset.plan;
-    select(name); clearMsg();
-  });
-});
+function select(planName){ cards.forEach(c=>c.classList.toggle('selected', c.dataset.plan===planName)); localStorage.setItem('plan', planName); }
+cards.forEach(c=>{ c.addEventListener('click', e=>{ const t=e.target.closest('[data-choose]'); const name=t ? t.dataset.choose : c.dataset.plan; select(name); clearMsg(); }); });
 function selectedPlan(){ const s=document.querySelector('.plan.selected'); return s ? s.dataset.plan : null; }
+document.addEventListener('DOMContentLoaded', ()=>{ const saved=localStorage.getItem('plan'); if(saved){ const el=document.querySelector(`.plan[data-plan="${saved}"]`); if(el) el.click(); }});
 
-/* Pré-sélection du plan sauvegardé */
-document.addEventListener('DOMContentLoaded', ()=>{
-  const saved = localStorage.getItem('plan');
-  if (saved) {
-    const el = document.querySelector(`.plan[data-plan="${saved}"]`);
-    if (el) el.click();
-  }
+/* Enter = submit */
+['email','password','password2','entreprise'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('keydown', e=>{ if(e.key==='Enter') btnAuth.click(); }); });
+
+/* Défilement / effacer */
+document.querySelectorAll('[data-scroll]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{ const sel=btn.getAttribute('data-scroll'); const dir=parseInt(btn.getAttribute('data-dir'),10)||1; const box=document.querySelector(sel); if(box) box.scrollBy({ top:dir*100, behavior:'smooth' }); });
+});
+document.querySelectorAll('[data-action="clear"]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{ const target=btn.getAttribute('data-target'); document.querySelectorAll(`${target} input[type="checkbox"]`).forEach(cb=>cb.checked=false); });
 });
 
-/* Entrée = valider */
-['email','password','password2'].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el) el.addEventListener('keydown', e=>{ if(e.key==='Enter') btnAuth.click(); });
-});
+/* helpers */
+function collectChecks(container){
+  return [...container.querySelectorAll('input[type="checkbox"]:checked')]
+    .map(cb=>cb.value.trim()).filter(Boolean).join(';');
+}
 
-/* ====== Flows ====== */
+async function upsertProfileIfSession({email, plan, entreprise, region, pays, secteur}) {
+  try{
+    const { data:{ session } } = await client.auth.getSession();
+    if(!session) return { ok:false, reason:"no_session" };
+    const { data:{ user } } = await client.auth.getUser();
+    if(!user) return { ok:false, reason:"no_user" };
+    const payload = {
+      id:user.id,
+      email:(email||"").trim(),
+      plan:(plan||"FREE").toLowerCase(),
+      entreprise:entreprise||null,
+      region:region||null,
+      pays:pays||null,
+      secteur:secteur||null,
+      username:(email||"").split("@")[0]||null
+    };
+    const { error } = await client.from("profiles").upsert(payload,{ onConflict:"id" });
+    if(error) return { ok:false, reason:error.message };
+    return { ok:true };
+  }catch(e){ return { ok:false, reason:String(e) }; }
+}
+
 async function doSignIn(email, password){
   const { error } = await client.auth.signInWithPassword({ email, password });
   if(error){ showError('Identifiants invalides : '+error.message); return; }
@@ -289,29 +462,33 @@ async function doSignUp(email, password, password2){
   if(!plan){ showError("Choisissez un plan avant l'inscription."); return; }
   if(password.length < 8){ showError("Mot de passe trop court (min. 8 caractères)."); return; }
   if(password !== password2){ showError("Les mots de passe ne correspondent pas."); return; }
-  const ent = (document.getElementById('entreprise')?.value || '').trim();
+  const ent     = (document.getElementById('entreprise')?.value || '').trim();
+  const region  = collectChecks(msRegion);
+  const pays    = collectChecks(msPays);
+  const secteur = collectChecks(msSecteur);
 
   const { error } = await client.auth.signUp({
     email, password,
-    options:{ data:{ plan, entreprise: ent } }
+    options:{ data:{ plan, entreprise: ent, region, pays, secteur } }
   });
   if(error){ showError('Erreur inscription : '+error.message); return; }
 
+  await upsertProfileIfSession({ email, plan, entreprise:ent, region, pays, secteur });
+
   const { data:{ session } } = await client.auth.getSession();
   if(session){
-    await client.auth.updateUser({ data:{ plan, entreprise: ent } });
     window.location.href = `${APP_URL}/?token=${encodeURIComponent(session.access_token)}`;
   }else{
     showOk("Inscription créée. Vérifiez votre email pour activer votre compte.");
   }
 }
 
-/* ====== Bind ====== */
+/* Bind */
 document.getElementById('btn-auth').onclick=()=>lock(btnAuth, async()=>{
   clearMsg();
   const email=document.getElementById('email').value.trim();
   const pwd=document.getElementById('password').value;
-  const pwd2=pass2.value;
+  const pwd2=document.getElementById('password2').value;
   if(!email || !pwd){ showError('Email et mot de passe requis.'); return; }
   if(!isValidEmail(email)){ showError('Email invalide.'); return; }
   if(mode==='signin') await doSignIn(email,pwd);
