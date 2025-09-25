@@ -4,255 +4,159 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tereos | Accueil</title>
-<meta name="description" content="Portail Tereos : Veille sectorielle & Analyse de la DPP" />
+<meta name="description" content="Portail Tereos : Veille sectorielle, Analyse DPP et Risk Management" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg1: #0b0f14;
- --bg2: #101626;
- --fg: #eef3f9;
- --muted: #9fb0c5;
- --accent: #e63946;
- --accent2: #2ec4b6;
- --glass: rgba(255,255,255,.06);
- --glass-border: rgba(255,255,255,.15);
- --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
- --radius: 24px;
+  --bg1:#0b0f14; --bg2:#101626; --fg:#eef3f9; --muted:#9fb0c5;
+  --accent:#e63946; --accent2:#2ec4b6; --accent3:#f59e0b;
+  --glass:rgba(255,255,255,.06); --glass-border:rgba(255,255,255,.15);
+  --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+  --radius:24px;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
- margin:0;
- font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
- color:var(--fg);
- background: linear-gradient(135deg,var(--bg1),var(--bg2));
- background-attachment: fixed;
- overflow-x:hidden;
+  margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",sans-serif;
+  color:var(--fg);
+  background:linear-gradient(135deg,var(--bg1),var(--bg2)); background-attachment:fixed; overflow-x:hidden;
 }
 .bg-blob{
- position: fixed;
- inset: -20vmax;
- filter: blur(80px);
- opacity:.6;
- z-index:-2;
- background:
- radial-gradient(35vmax 35vmax at 20% 30%, rgba(230,57,70,.35), transparent 70%),
- radial-gradient(40vmax 40vmax at 80% 20%, rgba(46,196,182,.35), transparent 70%),
- radial-gradient(45vmax 45vmax at 50% 80%, rgba(67,97,238,.25), transparent 70%);
- animation: float 18s ease-in-out infinite alternate;
+  position:fixed; inset:-20vmax; filter:blur(80px); opacity:.6; z-index:-2;
+  background:
+    radial-gradient(35vmax 35vmax at 20% 30%, rgba(230,57,70,.35), transparent 70%),
+    radial-gradient(40vmax 40vmax at 80% 20%, rgba(46,196,182,.35), transparent 70%),
+    radial-gradient(45vmax 45vmax at 50% 80%, rgba(67,97,238,.25), transparent 70%);
+  animation:float 18s ease-in-out infinite alternate;
 }
-@keyframes float{to{transform: translate3d(0,-3vmax,0) scale(1.02)}}
-header{
- display:flex;
- align-items:center;
- justify-content:center;
- flex-direction:column;
- gap:20px;
- padding:46px 20px 10px;
-}
-.brand{
- display:flex;
- align-items:center;
- gap:16px;
- text-decoration:none;
- color:inherit;
-}
-.brand img{
- height:54px;
- width:auto;
- filter: drop-shadow(0 8px 16px rgba(0,0,0,.2));
-}
-.brand h1{
- margin:0;
- font-weight:800;
- letter-spacing:.3px;
- font-size: clamp(24px, 3vw, 34px);
-}
-.tagline{
- margin:0;
- color:var(--muted);
- font-weight:400;
- letter-spacing:.2px;
-}
-main{
- max-width:1200px;
- margin:24px auto 60px;
- padding: 0 20px;
-}
-.grid{
- display:grid;
- gap:28px;
- grid-template-columns: repeat(2, minmax(0,1fr));
-}
-@media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
+@keyframes float{to{transform:translate3d(0,-3vmax,0) scale(1.02)}}
+header{display:flex; align-items:center; justify-content:center; flex-direction:column; gap:20px; padding:46px 20px 10px;}
+.brand{display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit;}
+.brand img{height:54px; width:auto; filter:drop-shadow(0 8px 16px rgba(0,0,0,.2));}
+.brand h1{margin:0; font-weight:800; letter-spacing:.3px; font-size:clamp(24px,3vw,34px);}
+.tagline{margin:0; color:var(--muted); font-weight:400; letter-spacing:.2px;}
+main{max-width:1200px; margin:24px auto 60px; padding:0 20px;}
+.grid{display:grid; gap:28px; grid-template-columns:repeat(3,minmax(0,1fr));}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:700px){.grid{grid-template-columns:1fr;}}
 .card{
- position:relative;
- display:block;
- padding:28px;
- border-radius:var(--radius);
- background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
- border:1px solid var(--glass-border);
- box-shadow: var(--shadow);
- text-decoration:none;
- color:var(--fg);
- transform-style: preserve-3d;
- will-change: transform;
- overflow:hidden;
- isolation:isolate;
+  position:relative; display:block; padding:28px; border-radius:var(--radius);
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  border:1px solid var(--glass-border); box-shadow:var(--shadow);
+  text-decoration:none; color:var(--fg); transform-style:preserve-3d; will-change:transform; overflow:hidden; isolation:isolate;
 }
-.card:focus-visible{ outline:2px solid var(--accent2); outline-offset:3px; }
-.card:hover{ box-shadow: 0 18px 60px rgba(0,0,0,.45); }
+.card:focus-visible{outline:2px solid var(--accent2); outline-offset:3px;}
+.card:hover{box-shadow:0 18px 60px rgba(0,0,0,.45);}
 .card .accent{
- position:absolute;
- inset:auto -20% -20% auto;
- width:60%;
- height:140%;
- background:
- radial-gradient(closest-side at 70% 40%, rgba(255,255,255,.15), transparent 60%),
- linear-gradient(135deg, rgba(230,57,70,.18), rgba(46,196,182,.18));
- transform: rotate(12deg);
- z-index:-1;
- opacity:.65;
- pointer-events:none;
+  position:absolute; inset:auto -20% -20% auto; width:60%; height:140%;
+  background:
+    radial-gradient(closest-side at 70% 40%, rgba(255,255,255,.15), transparent 60%),
+    linear-gradient(135deg, rgba(230,57,70,.18), rgba(46,196,182,.18));
+  transform:rotate(12deg); z-index:-1; opacity:.65; pointer-events:none;
 }
-.card h2{
- margin:4px 0 8px;
- font-size: clamp(20px, 2.2vw, 28px);
- font-weight:800;
- letter-spacing:.2px;
-}
-.card p{
- margin:0;
- color:var(--muted);
- line-height:1.5;
- max-width:70ch;
-}
+.card h2{margin:4px 0 8px; font-size:clamp(20px,2.2vw,28px); font-weight:800; letter-spacing:.2px;}
+.card p{margin:0; color:var(--muted); line-height:1.5; max-width:70ch;}
 .badge{
- display:inline-flex;
- align-items:center;
- gap:10px;
- margin-bottom:14px;
- padding:10px 14px;
- background: rgba(255,255,255,.06);
- border:1px solid var(--glass-border);
- border-radius:999px;
- font-weight:600;
- letter-spacing:.3px;
- backdrop-filter: blur(6px);
+  display:inline-flex; align-items:center; gap:10px; margin-bottom:14px; padding:10px 14px;
+  background:rgba(255,255,255,.06); border:1px solid var(--glass-border); border-radius:999px;
+  font-weight:600; letter-spacing:.3px; backdrop-filter:blur(6px);
 }
-.badge .dot{
- width:10px;
- height:10px;
- border-radius:999px;
- background: var(--accent2);
- box-shadow:0 0 0 6px rgba(46,196,182,.12);
-}
-.cta{
- margin-top:18px;
- display:inline-flex;
- align-items:center;
- gap:10px;
- font-weight:700;
- letter-spacing:.2px;
- border-bottom:2px solid transparent;
-}
-.card:hover .cta{ border-color: currentColor; }
-.arrow{ display:inline-block; transform: translateX(0); transition: transform .25s ease; }
-.card:hover .arrow{ transform: translateX(6px); }
-.shine{
- position:absolute;
- inset:0;
- pointer-events:none;
- mix-blend-mode:soft-light;
- opacity:.0;
- background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.25) 50%, transparent 70%);
- transform: translateX(-120%);
-}
-.card:hover .shine{ animation: shine 1.2s ease forwards; }
-@keyframes shine{ to{ transform: translateX(120%); opacity:.35; } }
-footer{
- color:var(--muted);
- text-align:center;
- padding: 18px 20px 40px;
- font-size:14px;
-}
-.small{ opacity:.8 }
+.badge .dot{width:10px; height:10px; border-radius:999px; background:var(--accent2); box-shadow:0 0 0 6px rgba(46,196,182,.12);}
+.cta{margin-top:18px; display:inline-flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; border-bottom:2px solid transparent;}
+.card:hover .cta{border-color:currentColor;}
+.arrow{display:inline-block; transform:translateX(0); transition:transform .25s ease;}
+.card:hover .arrow{transform:translateX(6px);}
+.shine{position:absolute; inset:0; pointer-events:none; mix-blend-mode:soft-light; opacity:.0; background:linear-gradient(120deg,transparent 30%, rgba(255,255,255,.25) 50%, transparent 70%); transform:translateX(-120%);}
+.card:hover .shine{animation:shine 1.2s ease forwards;}
+@keyframes shine{to{transform:translateX(120%); opacity:.35;}}
+footer{color:var(--muted); text-align:center; padding:18px 20px 40px; font-size:14px;}
+.small{opacity:.8}
 </style>
 </head>
 <body>
 <div class="bg-blob" aria-hidden="true"></div>
+
 <header>
-<a href="#" class="brand" aria-label="Accueil Tereos">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos" />
-<h1>Portail Tereos DPP - Projet Sirius</h1>
-</a>
-<p class="tagline">Choisissez votre espace&nbsp;: veille sectorielle ou analyse DPP.</p>
+  <a href="#" class="brand" aria-label="Accueil Tereos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logo_Tereos_2016.png" alt="Tereos" />
+    <h1>Portail Tereos DPP - Projet Sirius</h1>
+  </a>
+  <p class="tagline">Choisissez votre espace&nbsp;: veille, analyse DPP ou risk management.</p>
 </header>
+
 <main>
-<div class="grid" id="grid">
-<a class="card" href="https://veille.streamlit.app/" target="_self" rel="noopener">
-<span class="badge"><span class="dot"></span> Veille sectorielle</span>
-<h2>Flux d'actualités & veille</h2>
-<p>Lecteur RSS multi-catégories, filtrable, avec carrousel des dernières news. Idéal pour suivre sucre, éthanol, matières premières, géographies clés.</p>
-<div class="cta">Entrer <span class="arrow">➜</span></div>
-<div class="accent"></div>
-<div class="shine"></div>
-</a>
-<a class="card" href="https://tereos-app.streamlit.app/" target="_self" rel="noopener">
-<span class="badge"><span class="dot" style="background:var(--accent); box-shadow:0 0 0 6px rgba(230,57,70,.12)"></span> Analyse DPP</span>
-<h2>Screening & valorisation</h2>
-<p>Dashboard interactif : filtres, EV/EBITDA, exports Excel et modules devises.</p>
-<div class="cta">Entrer <span class="arrow">➜</span></div>
-<div class="accent"></div>
-<div class="shine"></div>
-</a>
-</div>
+  <div class="grid" id="grid">
+
+    <!-- Carte 1 : Veille -->
+    <a class="card" href="https://veille.streamlit.app/" target="_self" rel="noopener">
+      <span class="badge"><span class="dot"></span> Veille sectorielle</span>
+      <h2>Flux d'actualités & veille</h2>
+      <p>Lecteur RSS multi-catégories, filtrable, avec carrousel des dernières news. Idéal pour suivre sucre, éthanol, matières premières et zones clés.</p>
+      <div class="cta">Entrer <span class="arrow">➜</span></div>
+      <div class="accent"></div><div class="shine"></div>
+    </a>
+
+    <!-- Carte 2 : Analyse DPP -->
+    <a class="card" href="https://tereos-app.streamlit.app/" target="_self" rel="noopener">
+      <span class="badge">
+        <span class="dot" style="background:var(--accent); box-shadow:0 0 0 6px rgba(230,57,70,.12)"></span>
+        Analyse DPP
+      </span>
+      <h2>Screening & valorisation</h2>
+      <p>Dashboard interactif : filtres, multiples (EV/EBITDA), exports Excel, modules devises. Outils pour challenger la DPP.</p>
+      <div class="cta">Entrer <span class="arrow">➜</span></div>
+      <div class="accent"></div><div class="shine"></div>
+    </a>
+
+    <!-- Carte 3 : Risk Management -->
+    <a class="card" href="http://google.com" target="_self" rel="noopener">
+      <span class="badge">
+        <span class="dot" style="background:var(--accent3); box-shadow:0 0 0 6px rgba(245,158,11,.12)"></span>
+        Risk management
+      </span>
+      <h2>Stress tests Δ–Γ–Vega</h2>
+      <p>Module pertes/gains selon mouvements de prix (Δ, Γ) et de volatilité (Vega). Heatmap scénarios, pire/meilleur cas, réglages par poste.</p>
+      <div class="cta">Entrer <span class="arrow">➜</span></div>
+      <div class="accent"></div><div class="shine"></div>
+    </a>
+
+  </div>
 </main>
+
 <footer>
-<span class="small">© <span id="year"></span> Tereos — Portail interne (prototype).</span>
+  <span class="small">© <span id="year"></span> Tereos — Portail interne (prototype).</span>
 </footer>
+
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 const prefersNoMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cards = document.querySelectorAll('.card');
-function clamp(n, min, max){ return Math.max(min, Math.min(n, max)); }
+function clamp(n,min,max){return Math.max(min,Math.min(n,max));}
 if(!prefersNoMotion){
- cards.forEach(card => {
- const damp = 18;
- card.addEventListener('mousemove', (e) => {
- const r = card.getBoundingClientRect();
- const px = (e.clientX - r.left) / r.width;
- const py = (e.clientY - r.top) / r.height;
- const rx = clamp((.5 - py) * damp, -8, 8);
- const ry = clamp((px - .5) * damp, -8, 8);
- card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
- });
- card.addEventListener('mouseleave', () => {
- card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
- });
- });
+  cards.forEach(card=>{
+    const damp=18;
+    card.addEventListener('mousemove',(e)=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+      const rx=clamp((.5-py)*damp,-8,8), ry=clamp((px-.5)*damp,-8,8);
+      card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='perspective(1000px) rotateX(0) rotateY(0)';});
+  });
 }
-cards.forEach(card => {
- card.setAttribute('role','link');
- card.setAttribute('tabindex','0');
- card.addEventListener('keydown', (e) => {
- if(e.key === 'Enter' || e.key === ' '){
- e.preventDefault();
- const href = card.getAttribute('href');
- if(href) window.location.href = href;
- }
- });
+cards.forEach(card=>{
+  card.setAttribute('role','link');
+  card.setAttribute('tabindex','0');
+  card.addEventListener('keydown',(e)=>{
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      const href=card.getAttribute('href');
+      if(href) window.location.href=href;
+    }
+  });
 });
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
