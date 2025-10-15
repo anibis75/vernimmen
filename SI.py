@@ -125,6 +125,34 @@ bsc = pd.DataFrame({
     "2025":[16.0,8.2,12,10]
 })
 
+# --- CYBER — RCM détaillé (≥15 risques Odoo) ---
+CYBER_RISKS = pd.DataFrame([
+    # ID, Domaine, Risque, Vecteur, Prob (1-5), Impact (1-5), Contrôle clé, Owner
+    ["C1","Accès","Credential stuffing sur /web/login (comptes réels)","Bots + listes fuité",4,4,"MFA/SSO, rate-limit, CAPTCHA, IP deny/allow, détection anomalies", "DSI/Sécu"],
+    ["C2","Accès","Escalade de privilèges via ACL mal paramétrées (groupes Odoo)","Paramétrage rôles",3,5,"RBAC strict, SoD, recertif trimestrielle, revues logs", "DSI/MOE"],
+    ["C3","App","Injection (SQL/ORM) dans module custom/addon tiers","Entrées non filtrées",3,5,"ORM sécurisé, validation schémas, revues code, SAST/DAST", "MOE/Qualité"],
+    ["C4","App","XSS stockée dans chatter/mail template","Payload HTML/JS",3,4,"Sanitization, CSP headers, revue templates, tests DAST", "MOE/Sécu"],
+    ["C5","App","SSRF via webhooks/URL externes (fetch)","URL non restreinte",2,5,"Allow-list domaines, no internal CIDR, proxy egress", "DSI/Sécu"],
+    ["C6","App","RCE via dépendance Python compromise (typosquatting pip)","Supply-chain",2,5,"Pinning, hashes, dépôt privé, SCA, CI attestations", "MOE/Sécu"],
+    ["C7","Infra","Ransomware sur VM Odoo/PostgreSQL","Phishing/EDR contourné",3,5,"EDR, segmentations, sauvegardes immuables+air-gap, drills", "SOC/Infra"],
+    ["C8","Infra","Exposition DB (PostgreSQL) en 0.0.0.0","Mauvaise conf réseau",2,5,"FW restrictif, SG, private subnets, TLS client cert", "Infra"],
+    ["C9","Réseau","WAF/Reverse proxy mal configuré (HTTP request smuggling)","Desync proxy",2,4,"WAF à jour, tests spécifiques, hardening reverse proxy", "Infra/Sécu"],
+    ["C10","Secrets","Clés JWT/fernet/SMTP dans repo public","Erreur dev/CI",3,4,"Vault/KMS, scans secrets CI, rotation 90j", "MOE/Sécu"],
+    ["C11","Intégrations","API non authentifiée ou clé exposée (marketplace/WMS)","Lien partenaire",3,4,"OAuth2, HMAC, scopes, rotation clés, quotas", "DSI/MOE"],
+    ["C12","Données","Bucket S3/MinIO public listable (exports)","ACL publique",3,5,"Block public ACLs, policies, SSE-S3/KMS, inventory", "Infra/Sécu"],
+    ["C13","Email/Finance","Usurpation domaine (pas de DMARC DKIM SPF) — fraude facture","Business email",3,4,"SPF/DKIM/DMARC p=reject, anti-spoof, éducation", "IT/DAF"],
+    ["C14","Fraude","Changement IBAN client via compte compromis","Process O2C",2,5,"4-eyes, callback out-of-band, verrous champs sensibles", "DAF/Ventes"],
+    ["C15","Ops","Backups non testés / RPO>24h / MTTR élevé","DR non testé",3,5,"PITR, immutables, drills, SLO RTO/RPO, runbooks", "Infra/DSI"],
+    ["C16","Identités","Comptes orphelins & JML non appliqué","Sorties non traitées",4,4,"JML automatisé, recertif mensuelle, disable auto", "RH/DSI"],
+    ["C17","Disponibilité","DoS via webhooks/ETL (amplification)","Burst entrants",3,3,"Rate-limit, queues, backpressure, circuit breaker", "DSI/MOE"],
+    ["C18","Conformité","Logs non signés / horodatage non fiable (NR)","Non-répudiation",2,4,"Hash/signature, time-stamping, WORM", "DSI/Sécu"],
+])
+CYBER_RISKS.columns = ["ID","Domaine","Risque","Vecteur","Probabilité","Impact","Contrôle clé","Owner"]
+CYBER_RISKS["Score"] = CYBER_RISKS["Probabilité"] * CYBER_RISKS["Impact"]
+
+
+
+
 # ---------------------------------------------------------------------------
 # ARTEFACTS (3 PNG hébergés + fallbacks locaux)
 # ---------------------------------------------------------------------------
@@ -272,6 +300,18 @@ def fig_risk_heatmap(rcm_df: pd.DataFrame):
     f = px.imshow(pivot, text_auto=True, color_continuous_scale="Reds", aspect="auto")
     f.update_layout(height=420, template="plotly_white",
                     title="Heatmap Risques (nb par case Impact×Probabilité)",
+                    xaxis_title="Probabilité", yaxis_title="Impact")
+    return f
+
+
+def fig_cyber_heatmap(df: pd.DataFrame):
+    grid = pd.DataFrame(0, index=[1,2,3,4,5], columns=[1,2,3,4,5])
+    for _, r in df.iterrows():
+        grid.loc[r["Impact"], r["Probabilité"]] += 1
+    grid = grid.sort_index(ascending=True)
+    f = px.imshow(grid, text_auto=True, color_continuous_scale="Reds", aspect="auto")
+    f.update_layout(height=420, template="plotly_white",
+                    title="Heatmap Cyber (nb par case Impact×Probabilité)",
                     xaxis_title="Probabilité", yaxis_title="Impact")
     return f
 
@@ -659,7 +699,7 @@ with d2:
 # DAY 3
 # ===========================================================================
 with d3:
-    q1, q2, q3, q4, q5 = st.tabs([ "Data Governance & DQ", "Modèle étoile & ETL", "Sécurité (CIAN)", "SLA / Monitoring", "Sources" ])
+    q1, q2, q3, q4, q5, q6 = st.tabs([ "Data Governance & DQ", "Modèle étoile & ETL", "Sécurité (CIAN)", "SLA / Monitoring", "Sources", "Cyber-attaque — Simulateur" ])
     with q1:
         dq = pd.DataFrame({
             "ID":["DQ1","DQ2","DQ3","DQ4","DQ5","DQ6","DQ7"],
@@ -704,6 +744,63 @@ Clés: (client_id, article_id, date_id)""", language="sql")
             st.markdown("#### Sources (Jour 3)")
             for title, url in SOURCES["Jour 3 — Données, Cyber, SLA"]:
                 st.markdown(f"- [{title}]({url})")
+
+    with q6:
+        st.markdown("#### Simulateur d'attaque & posture défensive")
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        attack = st.selectbox("Type d'attaque", [
+            "Ransomware (poste/serveur)",
+            "Credential stuffing (login Odoo)",
+            "Injection (module custom)",
+            "SSRF (webhook)",
+            "Clé/secret exposé",
+            "DoS via webhooks"
+        ])
+        waf = st.toggle("WAF actif", value=True)
+    with c2:
+        mfa = st.slider("Taux MFA/SSO (%)", 0, 100, 60)
+        edr = st.slider("Couverture EDR (%)", 0, 100, 70)
+    with c3:
+        patch = st.slider("Latence patch (jours)", 0, 60, 14)
+        backup_imm = st.toggle("Backups immuables + air-gap", value=True)
+    with c4:
+        rto = st.slider("RTO cible (heures)", 1, 72, 8)
+        rpo = st.slider("RPO cible (minutes)", 0, 1440, 60)
+
+    # Ajustements de risque (simple modèle multiplicatif)
+    base = CYBER_RISKS["Score"].mean()
+    m = 1.0
+    if attack == "Credential stuffing (login Odoo)":
+        m *= (1 - mfa/150) * (0.85 if waf else 1.0)
+    elif attack == "Ransomware (poste/serveur)":
+        m *= (1 - edr/120) * (0.7 if backup_imm else 1.2)
+    elif attack == "Injection (module custom)":
+        m *= (1 + patch/120)
+    elif attack == "SSRF (webhook)":
+        m *= (0.85 if waf else 1.1) * (1 + patch/200)
+    elif attack == "Clé/secret exposé":
+        m *= 1.25 * (1 - min(edr, mfa)/300)
+    elif attack == "DoS via webhooks":
+        m *= (0.9 if waf else 1.2)
+
+    # Estimation perte attendue (€) & dispo
+    est_loss = base * 25_000 * m  # échelle indicative
+    mttr_h = max(2, rto * (1.2 if not backup_imm else 0.8))
+    avail = max(97.0, 100.0 - (mttr_h/24)*1.2)
+
+    b1,b2,b3 = st.columns(3)
+    b1.markdown(f"<div class='badge KO'>Perte attendue: {est_loss:,.0f} €</div>", unsafe_allow_html=True)
+    b2.markdown(f"<div class='badge WARN'>MTTR estimé: {mttr_h:.1f} h</div>", unsafe_allow_html=True)
+    b3.markdown(f"<div class='badge OK'>Dispo estimée: {avail:.2f} %</div>", unsafe_allow_html=True)
+
+    st.plotly_chart(fig_cyber_heatmap(CYBER_RISKS), use_container_width=True, key="q6_heat")
+    st.markdown("##### Top risques (triés par score)")
+    st.dataframe(CYBER_RISKS.sort_values("Score", ascending=False), use_container_width=True, hide_index=True)
+
+    csv = CYBER_RISKS.to_csv(index=False).encode("utf-8")
+    st.download_button("⬇️ Export CSV — RCM Cyber", data=csv, file_name="rcm_cyber_odoo.csv", mime="text/csv")
+
 
 # ===========================================================================
 # DAY 4
