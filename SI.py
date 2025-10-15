@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Odoo — Management & Audit des SI (PhD) — v2.6 (Artefacts = 2 PNG + PDF)
+# Odoo — Management & Audit des SI (PhD) — v2.7 (Artefacts = 3 PNG + PDF)
 # 4 jours • sous-onglets détaillés • PyVis (graphes interactifs) • Graphviz (BPMN)
 # Plotly (KPI, SLA, Heatmap risques) • Export PDF (texte + visuels) • Thème dark
 # Calculateur ROI/NPV/Payback • Calculateur SLA/SLO & Error Budget
@@ -7,7 +7,6 @@
 # Lancer :  streamlit run app_odoo_si_phd.py
 
 from __future__ import annotations
-
 
 import requests
 import streamlit as st
@@ -127,10 +126,7 @@ bsc = pd.DataFrame({
 })
 
 # ---------------------------------------------------------------------------
-# ARTEFACTS (2 PNG)
-# ---------------------------------------------------------------------------
-# ---------------------------------------------------------------------------
-# ARTEFACTS (2 PNG hébergés + fallback locaux)
+# ARTEFACTS (3 PNG hébergés + fallbacks locaux)
 # ---------------------------------------------------------------------------
 CREATION_IMG_CANDIDATES = [
     "https://anibis75.github.io/vernimmen/Creation%20de%20compte.png",
@@ -142,13 +138,11 @@ TABLEAU_IMG_CANDIDATES = [
     r"C:\Users\azad1\Documents\Skema\SI\tableau.png",
     "/mnt/data/tableau.png",
 ]
-
 SUPPRESSION_IMG_CANDIDATES = [
     "https://anibis75.github.io/vernimmen/suppression.png",
     r"C:\Users\azad1\Documents\Skema\SI\suppression.png",
     "/mnt/data/suppression.png",
 ]
-
 
 def is_url(s: str) -> bool:
     return isinstance(s, str) and s.startswith(("http://", "https://"))
@@ -156,7 +150,7 @@ def is_url(s: str) -> bool:
 def first_existing(paths: list[str]) -> str | None:
     # priorité aux URLs, sinon premier fichier existant
     for p in paths:
-        if not p: 
+        if not p:
             continue
         if is_url(p):
             return p
@@ -175,7 +169,6 @@ def fetch_bytes(src: str) -> bytes | None:
                 return f.read()
     except Exception:
         return None
-
 
 # ---------------------------------------------------------------------------
 # OUTILS CALCUL
@@ -422,7 +415,7 @@ with st.expander("⚙️ Réglages"):
 # TABS
 # ---------------------------------------------------------------------------
 d0, d1, d2, d3, d4 = st.tabs([
-    "Day 0 — Artefacts (2 PNG)",
+    "Day 0 — Artefacts & Gouvernance SI",
     "Day 1 — Business Case & Governance",
     "Day 2 — Process & Architecture",
     "Day 3 — Data, Cyber & SLA",
@@ -430,62 +423,106 @@ d0, d1, d2, d3, d4 = st.tabs([
 ])
 
 # ===========================================================================
-# DAY 0 — 2 PNG
+# DAY 0 — SOUS-ONGLETS (Gouvernance SI + 3 images)
 # ===========================================================================
 with d0:
-    st.markdown("#### Artefacts réels : Diagrammes (PNG)")
-c1, c2, c3 = st.columns(3)
+    t0a, t0b, t0c, t0d = st.tabs([
+        "Gouvernance du SI (Odoo)",
+        "Tableau ‘Architecture • Gouvernance • Sécurité’",
+        "Création de compte (PNG)",
+        "Suppression de compte (PNG)"
+    ])
 
-# PNG 1
-with c1:
-    st.markdown("**Diagramme ‘Création de compte’**")
-    img_path1 = first_existing(CREATION_IMG_CANDIDATES)
-    up_img1 = st.file_uploader("Dépose l’image (optionnel)", type=["png","jpg","jpeg"], key="up_png1")
-    if up_img1 is not None:
-        tmp1 = Path(tempfile.gettempdir()) / f"upload_creation_{datetime.now().timestamp():.0f}.png"
-        with open(tmp1, "wb") as f: f.write(up_img1.read())
-        img_path1 = str(tmp1)
-    if img_path1:
-        st.image(img_path1, use_column_width=True, caption=Path(img_path1).name)
-    else:
-        st.warning("Image non trouvée pour ‘Création de compte’.")
+    # --- t0a : Gouvernance du SI (texte rédigé humain)
+    with t0a:
+        st.markdown("### Gouvernance du Système d’Information — Odoo")
+        st.markdown(
+            """
+**Pilotes & rôles.** Le SI d’Odoo est dirigé par un **binôme produit–tech** : **Fabien Pinckaers** (CEO) porte l’orientation
+fonctionnelle à long terme, tandis que **Antony Lesuisse** (CTO) arbitre l’architecture, la dette technique et la feuille
+de route des plateformes (serveur Odoo, ORM, API, DevOps). Autour d’eux, trois fonctions clefs assurent la gouvernance
+opérationnelle : **CISO** (sécurité & risque), **DPO** (protection des données & RGPD) et **Head of Infrastructure** (SRE/ops).
+Ces postes structurent les comités et les contrôles de première ligne (run), de deuxième ligne (risque & conformité) et de
+troisième ligne (audit ponctuel).
 
-# PNG 2
-with c2:
-    st.markdown("**Tableau synthèse WHY/WHAT/HOW/WITH × Domaines**")
-    img_path2 = first_existing(TABLEAU_IMG_CANDIDATES)
-    up_img2 = st.file_uploader("Dépose l’image (optionnel)", type=["png","jpg","jpeg"], key="up_png2")
-    if up_img2 is not None:
-        tmp2 = Path(tempfile.gettempdir()) / f"upload_tableau_{datetime.now().timestamp():.0f}.png"
-        with open(tmp2, "wb") as f: f.write(up_img2.read())
-        img_path2 = str(tmp2)
-    if img_path2:
-        st.image(img_path2, use_column_width=True, caption=Path(img_path2).name)
-    else:
-        st.warning("Image non trouvée pour ‘Tableau synthèse’.")
+**Comités & décisions.** Un **Comité SI** mensuel (CTO, CISO, DPO, Head of Infra, représentants produits) priorise les epics
+et valide les changements majeurs. Le **Change Advisory Board (CAB)** gère les mises en production à risque avec critères
+Go/NoGo, fenêtres de déploiement, et plans de rollback. Un **Comité Sécurité & Conformité** suit les vulnérabilités
+(OWASP, CVE), la posture cloud (durcissement, secrets), la conformité (ISO 27001/27701, SOC 2) et les obligations RGPD
+(base légale, registres, portabilité, purges).
 
-# PNG 3 (Suppression de compte)
-with c3:
-    st.markdown("**Processus ‘Suppression de compte’**")
-    img_path3 = first_existing(SUPPRESSION_IMG_CANDIDATES)
-    up_img3 = st.file_uploader("Dépose l’image (optionnel)", type=["png","jpg","jpeg"], key="up_png3")
-    if up_img3 is not None:
-        tmp3 = Path(tempfile.gettempdir()) / f"upload_suppression_{datetime.now().timestamp():.0f}.png"
-        with open(tmp3, "wb") as f: f.write(up_img3.read())
-        img_path3 = str(tmp3)
-    if img_path3:
-        st.image(img_path3, use_column_width=True, caption=Path(img_path3).name)
-    else:
-        st.warning("Image non trouvée pour ‘Suppression de compte’.")
+**Cadre & pratiques.** Odoo applique un **DevSecOps** en intégration continue (tests, revues, SAST/DAST), une séparation des
+environnements (dev/stage/prod), une **segmentation réseau** (DMZ/WAF → App → Data), des **backups immuables** avec
+objectifs **RTO/RPO** documentés, et une **observabilité** bout-en-bout (traces, métriques, logs). Les référentiels de
+gouvernance utilisés combinent **ITIL 4** (service mgmt), **COBIT** (contrôles), **TOGAF/IAF** (cartes d’architecture)
+et **ISO 27001/27701** (SMSI & vie privée).
 
-    st.markdown("---")
-    st.markdown(
-        """
-**Texte associé**  
-- « Création de compte » : contrôles d’entrée (reCAPTCHA score, listes, MX, lien signé, activation contrôlée).  
-- **Tableau synthèse** : cadrage WHY/WHAT/HOW/WITH sur 6 domaines (Business, Information, IS, Infra, Governance, Security).
-        """
-    )
+**Droits & traçabilité.** Les accès suivent un **RBAC** avec **séparation des tâches (SoD)**, un cycle **JML** (Joiner-Mover-Leaver)
+outillé et des recertifications périodiques. Les journaux critiques sont **signés/horodatés**; les opérations sensibles
+sont à **quatre yeux**. Les intégrations (banque, e-commerce, WMS/TMS) reposent sur des **API REST & webhooks** filtrés
+(authentification, rate-limit, allow-list, schémas).
+
+**Indicateurs de pilotage.** Côté exploitation, les objectifs typiques sont **Disponibilité ≥ 99,9 %**, **MTTR < 2 h**,
+**SLO latence P95 < 400 ms**, **couverture de tests ≥ 80–85 %**, avec un **cycle de release annuel** (Odoo vX + patch mensuel).
+Un **tableau de bord** remonte SLA, incidents P1/P2, dettes techniques, vulnérabilités, conformités et coûts (CAPEX/OPEX),
+pour arbitrer **valeur/risque/coût** à chaque itération.
+            """
+        )
+
+    # --- t0b : Tableau Architecture/Gouvernance/Sécurité (image)
+    with t0b:
+        st.markdown("#### Tableau ‘Architecture • Gouvernance • Sécurité’")
+        img_path2 = first_existing(TABLEAU_IMG_CANDIDATES)
+        up_img2 = st.file_uploader("Dépose l’image (optionnel)", type=["png","jpg","jpeg"], key="up_png_t0b")
+        if up_img2 is not None:
+            tmp2 = Path(tempfile.gettempdir()) / f"upload_tableau_{datetime.now().timestamp():.0f}.png"
+            with open(tmp2, "wb") as f: f.write(up_img2.read())
+            img_path2 = str(tmp2)
+        if img_path2:
+            st.image(img_path2, use_column_width=True, caption=Path(img_path2).name)
+        else:
+            st.warning("Image non trouvée pour le tableau ‘Architecture • Gouvernance • Sécurité’.")
+        st.markdown("<p class='small'>Repère : WHY/WHAT/HOW/WITH × Domaines (Business, Information, IS, Infra, Governance, Security).</p>", unsafe_allow_html=True)
+
+    # --- t0c : Création de compte (image)
+    with t0c:
+        st.markdown("#### Processus ‘Création de compte’ (PNG)")
+        img_path1 = first_existing(CREATION_IMG_CANDIDATES)
+        up_img1 = st.file_uploader("Dépose l’image (optionnel)", type=["png","jpg","jpeg"], key="up_png_t0c")
+        if up_img1 is not None:
+            tmp1 = Path(tempfile.gettempdir()) / f"upload_creation_{datetime.now().timestamp():.0f}.png"
+            with open(tmp1, "wb") as f: f.write(up_img1.read())
+            img_path1 = str(tmp1)
+        if img_path1:
+            st.image(img_path1, use_column_width=True, caption=Path(img_path1).name)
+        else:
+            st.warning("Image non trouvée pour ‘Création de compte’.")
+        st.markdown(
+            """
+**Contrôles clés** : reCAPTCHA & réputation e-mail, vérification MX, lien d’activation signé, time-box,
+double opt-in, verrouillage anti-bruteforce, journalisation signée (création/activation).
+            """
+        )
+
+    # --- t0d : Suppression de compte (image)
+    with t0d:
+        st.markdown("#### Processus ‘Suppression de compte’ (PNG)")
+        img_path3 = first_existing(SUPPRESSION_IMG_CANDIDATES)
+        up_img3 = st.file_uploader("Dépose l’image (optionnel)", type=["png","jpg","jpeg"], key="up_png_t0d")
+        if up_img3 is not None:
+            tmp3 = Path(tempfile.gettempdir()) / f"upload_suppression_{datetime.now().timestamp():.0f}.png"
+            with open(tmp3, "wb") as f: f.write(up_img3.read())
+            img_path3 = str(tmp3)
+        if img_path3:
+            st.image(img_path3, use_column_width=True, caption=Path(img_path3).name)
+        else:
+            st.warning("Image non trouvée pour ‘Suppression de compte’.")
+        st.markdown(
+            """
+**Points RGPD** : droit à l’effacement (sous réserve des obligations légales de conservation),
+pseudonymisation des traces, purge des tokens/sessions, rupture des consentements, cycle JML en sortie.
+            """
+        )
 
 # ===========================================================================
 # DAY 1
@@ -700,15 +737,8 @@ with d4:
             # Artefacts PNG
             creation_path = first_existing(CREATION_IMG_CANDIDATES)
             tableau_path  = first_existing(TABLEAU_IMG_CANDIDATES)
-            creation_bytes = None; tableau_bytes = None
-            try:
-                if creation_path:
-                    with open(creation_path, "rb") as f: creation_bytes = f.read()
-            except Exception: pass
-            try:
-                if tableau_path:
-                    with open(tableau_path, "rb") as f: tableau_bytes = f.read()
-            except Exception: pass
+            creation_bytes = fetch_bytes(creation_path) if creation_path else None
+            tableau_bytes  = fetch_bytes(tableau_path)  if tableau_path  else None
 
             sections = [
                 {"title":"1) Contexte & objectifs",
