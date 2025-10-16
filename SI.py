@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Odoo — Management & Audit des SI (PhD) — v3.0 (3 onglets épurés)
+# Odoo — Management & Audit des SI — v3.0 (3 onglets épurés)
 # Day 1: Gouvernance | Day 2: Artefacts (Tableau + Création/Suppression) | Day 3: Risques + IA + SLA
 # Lancer :  streamlit run app_odoo_si_phd.py
 
@@ -236,7 +236,7 @@ def first_existing(paths: list[str]) -> str | None:
 # ---------------------------------------------------------------------------
 # HEADER
 # ---------------------------------------------------------------------------
-st.markdown("<h1>🧭 Odoo — Management & Audit des SI (PhD)</h1>", unsafe_allow_html=True)
+st.markdown("<h1>🧭 Odoo — Management & Audit des SI</h1>", unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
 # 3 ONGLETS PRINCIPAUX
@@ -659,3 +659,4 @@ with d3:
 # ---------------------------------------------------------------------------
 st.markdown("<hr/>", unsafe_allow_html=True)
 st.caption("© Odoo — SI — v3.0")
+
