@@ -14,7 +14,7 @@ import plotly.graph_objects as go
 # ---------------------------------------------------------------------------
 # CONFIG + THEME
 # ---------------------------------------------------------------------------
-st.set_page_config(page_title="Odoo — SI (PhD)", page_icon="🧭", layout="wide")
+st.set_page_config(page_title="Odoo — SI ", page_icon="🧭", layout="wide")
 st.markdown("""
 <style>
 :root { --bg:#0a0f1d; --panel:#0f172a; --muted:#a5b4c2; --border:#1e293b; --accent:#38bdf8; --fg:#e5e7eb; }
@@ -217,6 +217,12 @@ SUPPRESSION_IMG_CANDIDATES = [
     "/mnt/data/suppression.png",
 ]
 
+# Image de référence concurrence (évite /mnt/data par défaut)
+COMPETITION_IMG_CANDIDATES = [
+    "https://anibis75.github.io/vernimmen/frontrunners_erp.png",
+    r"C:\Users\azad1\Documents\Skema\SI\frontrunners_erp.png",
+]
+
 def is_url(s: str) -> bool:
     return isinstance(s, str) and s.startswith(("http://", "https://"))
 
@@ -243,8 +249,10 @@ d1, d2, d3 = st.tabs([
 
 # ===================== Day 1 — GOUVERNANCE =====================
 with d1:
-    g2, g1 = st.tabs(["Business Case", "Governance"])
-    # ---- Sous-onglet 1 : Governance (contenu existant inchangé) ----
+    # 3 sous-onglets
+    g2, g1, g3 = st.tabs(["Business Case", "Governance", "Analyse concurrence"])
+
+    # ---- Sous-onglet 1 : Governance ----
     with g1:
         st.markdown("### Gouvernance du Système d’Information — Odoo")
         st.markdown("""
@@ -265,7 +273,6 @@ Tableau de bord : SLA, incidents P1/P2, dette technique, vulnérabilités, confo
     # ---- Sous-onglet 2 : Business Case ----
     with g2:
         st.markdown("### Business Case — Odoo (marché, offres, go-to-market, unit economics)")
-        # KPI cards
         c1,c2,c3,c4 = st.columns(4)
         c1.markdown("<div class='badge OK'>Positionnement: ERP modulaire (PME→ETI)</div>", unsafe_allow_html=True)
         c2.markdown("<div class='badge OK'>Modèle: SaaS + Open Core</div>", unsafe_allow_html=True)
@@ -279,7 +286,7 @@ Tableau de bord : SLA, incidents P1/P2, dette technique, vulnérabilités, confo
         st.dataframe(MODULES, use_container_width=True, hide_index=True)
 
         st.markdown("#### 3) Go-to-Market — acquisition → activation → rétention")
-        st.plotly_chart(fig_funnel(FUNNEL), use_container_width=True)
+        st.plotly_chart(fig_funnel(FUNNEL), use_container_width=True, key="funnel_d1")
         st.markdown("""
 - **Acquisition** : SEO produit, docs, tutoriels, communauté, marketplace apps, événements.
 - **Activation** : essai guidé, data import wizard, modèles compta locaux, e-commerce prêt à l’emploi.
@@ -295,14 +302,156 @@ Tableau de bord : SLA, incidents P1/P2, dette technique, vulnérabilités, confo
 
         st.markdown("#### 5) Unit economics (CAC / LTV) — par région")
         st.dataframe(UNIT_ECO, use_container_width=True, hide_index=True)
-        st.plotly_chart(fig_unit_heat(UNIT_ECO), use_container_width=True)
+        st.plotly_chart(fig_unit_heat(UNIT_ECO), use_container_width=True, key="unitheat_d1")
 
         st.markdown("#### 6) Mix de revenus par service")
-        st.plotly_chart(fig_rev_mix(REV_MIX), use_container_width=True)
+        st.plotly_chart(fig_rev_mix(REV_MIX), use_container_width=True, key="revmix_d1")
 
-        # ===== 7) Localisation géographique — Data residency Odoo (OFFICIEL) =====
         st.markdown("### 🌍 Data residency & hébergement cloud — Odoo (officiel 2025)")
+        DC = pd.DataFrame([
+            ["Saint-Ghislain 🇧🇪", 50.47, 4.11, "Europe (UE)", "Google Cloud / OVHcloud", "Odoo.sh + Odoo Online (EU)"],
+            ["Iowa 🇺🇸", 41.88, -93.09, "Amériques (US)", "Google Cloud", "Odoo.sh + Odoo Online (US/CA)"],
+            ["Dammam 🇸🇦", 26.43, 50.10, "Moyen-Orient", "Google Cloud", "Odoo.sh + Odoo Online (MEA)"],
+            ["Mumbai 🇮🇳", 19.08, 72.88, "Asie du Sud", "Google Cloud", "Odoo.sh + Odoo Online (IN/SA)"],
+            ["Singapore 🇸🇬", 1.35, 103.82, "Asie du Sud-Est", "Google Cloud", "Odoo.sh + Odoo Online (APAC)"],
+            ["Sydney 🇦🇺", -33.86, 151.21, "Océanie", "Google Cloud", "Odoo.sh + Odoo Online (AU/NZ)"],
+        ], columns=["Site","Latitude","Longitude","Région","Provider","Usage principal"])
+        fig_map = px.scatter_geo(
+            DC, lat="Latitude", lon="Longitude", text="Site", hover_name="Région",
+            hover_data={"Provider":True, "Usage principal":True, "Latitude":False, "Longitude":False},
+            size=[15]*len(DC), projection="natural earth", template="plotly_dark", color="Région",
+            title="Localisation officielle des datacenters Odoo (Privacy Policy 2025)"
+        )
+        fig_map.update_traces(marker=dict(line=dict(width=1, color="#e5e7eb")))
+        fig_map.update_layout(
+            geo=dict(showland=True, landcolor="#1e293b", showocean=True, oceancolor="#0a192f",
+                     showcountries=True, countrycolor="#555", showframe=False),
+            height=520, margin=dict(l=0, r=0, t=60, b=0),
+            legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5,
+                        font=dict(size=11, color="white"))
+        )
+        st.plotly_chart(fig_map, use_container_width=True, key="map_d1_g2")
+        st.markdown("""
+<div class='small'>
+📄 <b>Sources officielles :</b><br>
+• <a href="https://www.odoo.com/privacy" target="_blank">Odoo Privacy Policy – Data Location</a><br>
+• <a href="https://www.odoo.sh/faq" target="_blank">Odoo.sh FAQ – Hosting zones</a>
+</div>""", unsafe_allow_html=True)
 
+        st.markdown("#### 7) Photo CEO (Fabien Pinckaers)")
+        ceo_img = first_existing(CEO_IMG_CANDIDATES)
+        up_ceo = st.file_uploader("", type=["png","jpg","jpeg"], key="up_ceo_biz")
+        if up_ceo is not None:
+            tmp = Path(tempfile.gettempdir()) / f"ceo_{datetime.now().timestamp():.0f}.png"
+            with open(tmp, "wb") as f: f.write(up_ceo.read())
+            ceo_img = str(tmp)
+        if ceo_img:
+            st.image(ceo_img, width=240, caption=Path(ceo_img).name)
+
+    # ---- Sous-onglet 3 : Analyse concurrence ----
+    with g3:
+        st.markdown("### 🔎 Analyse concurrence — ERP PME/ETI (mapping interactif)")
+        st.caption("Référence visuelle + mapping dynamique Usability × User-Recommended. Ajuste les pondérations pour le score composite.")
+
+        # 1) Image de référence robuste (plus de /mnt/data par défaut)
+        img_path = first_existing(COMPETITION_IMG_CANDIDATES)
+        up_img = st.file_uploader("Remplacer l’image (optionnel)", type=["png","jpg","jpeg"], key="up_comp_img")
+        if up_img is not None:
+            tmpi = Path(tempfile.gettempdir()) / f"competition_{datetime.now().timestamp():.0f}.png"
+            with open(tmpi, "wb") as f: f.write(up_img.read())
+            img_path = str(tmpi)
+        if img_path:
+            st.image(img_path, caption="FrontRunners® ERP (réf. visuelle)", use_container_width=True)
+        else:
+            st.info("Image non trouvée. Dépose un PNG/JPG ci-dessus ou mets à jour COMPETITION_IMG_CANDIDATES.")
+
+        # 2) Données démo (usability/recommended ~ échelle 3.2→4.8)
+        data = pd.DataFrame([
+            # Nom, Usability, Recommended, ARPA€/mois, Modules, OpenSource(1/0), CloudMaturity(1–5), Part marché PME (%)
+            ["Odoo",                    3.95, 4.05, 29,  45, 1, 5, 8.5],
+            ["ERPNext",                 4.10, 4.20,  0,  35, 1, 4, 2.1],
+            ["Microsoft Dynamics 365",  4.40, 4.10, 65,  60, 0, 5, 12.4],
+            ["NetSuite",                4.15, 3.95, 79,  55, 0, 5, 6.8],
+            ["SAP Business One",        3.85, 3.75, 59,  50, 0, 4, 5.9],
+            ["Priority ERP",            4.05, 4.25, 45,  40, 0, 4, 1.7],
+        ], columns=["Vendor","Usability","Recommended","ARPA","Modules","OpenSrc","CloudM","SharePME"])
+
+        # 3) Pondérations & filtres
+        c1,c2,c3,c4 = st.columns([1,1,1,1])
+        with c1:
+            w_u = st.slider("Poids Usability", 0.0, 2.0, 1.0, 0.1)
+        with c2:
+            w_r = st.slider("Poids Recommended", 0.0, 2.0, 1.0, 0.1)
+        with c3:
+            w_c = st.slider("Poids Cloud Maturity", 0.0, 2.0, 0.6, 0.1)
+        with c4:
+            only_open = st.toggle("Filtrer Open Source", value=False)
+
+        dfc = data.copy()
+        if only_open:
+            dfc = dfc[dfc["OpenSrc"] == 1]
+
+        # 4) Score composite (0–100) + classement
+        dfc["Score"] = (
+            w_u * (dfc["Usability"] - 3.2)/(4.8-3.2) +
+            w_r * (dfc["Recommended"] - 3.2)/(4.8-3.2) +
+            w_c * (dfc["CloudM"] - 1)/(5-1)
+        ) / max(w_u + w_r + w_c, 1e-6) * 100
+        dfc = dfc.sort_values("Score", ascending=False)
+
+        # 5) Mapping interactif
+        fig_comp = px.scatter(
+            dfc, x="Usability", y="Recommended", size="SharePME",
+            color=dfc["OpenSrc"].map({1:"Open-source",0:"Propriétaire"}),
+            hover_data=["Vendor","ARPA","Modules","CloudM","Score"],
+            text="Vendor", size_max=60, template="plotly_white",
+            title="Positionnement concurrentiel — Usability × User-Recommended"
+        )
+        fig_comp.update_traces(textposition="top center")
+        fig_comp.update_layout(
+            height=540, xaxis=dict(range=[3.2,4.8]), yaxis=dict(range=[3.2,4.8]),
+            legend_title="Modèle", margin=dict(l=0,r=0,t=60,b=0)
+        )
+        st.plotly_chart(fig_comp, use_container_width=True, key="comp_scatter_d1_g3")
+
+# ---- Top 5 sans images ----
+        st.markdown("#### 🏆 Top 5 (score composite)")
+
+        top5 = dfc.head(5).reset_index(drop=True)
+        cols = st.columns(5)
+
+        for i, row in top5.iterrows():
+            with cols[i]:
+                st.markdown(
+                    f"""
+                    <div style='text-align:center; font-weight:600; color:#cbd5e1; font-size:1.1rem; margin-bottom:4px;'>
+                        {row['Vendor']}
+                    </div>
+                    <div style='font-weight:bold; background:#013220; color:white; border-radius:8px; display:inline-block; padding:4px 10px;'>
+                        Score {row['Score']:.1f}
+                    </div>
+                    <div style='font-size:0.9rem; color:#94a3b8; margin-top:4px;'>
+                        ARPA: {row['ARPA']} €/mois • Modules: {row['Modules']} • CloudM: {row['CloudM']}
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+        # 7) Tableau comparatif + export
+        st.markdown("#### Tableau comparatif")
+        st.dataframe(
+            dfc[["Vendor","Usability","Recommended","ARPA","Modules","OpenSrc","CloudM","SharePME","Score"]],
+            use_container_width=True, hide_index=True
+        )
+        st.download_button("⬇️ Export CSV — Concurrence",
+                           data=dfc.to_csv(index=False).encode("utf-8"),
+                           file_name="odoo_competition_mapping.csv",
+                           mime="text/csv")
+
+
+
+        # ===== Carte data residency (duplicat, clé différente) =====
+        st.markdown("### 🌍 Data residency & hébergement cloud — Odoo (officiel 2025)")
         DC = pd.DataFrame([
             ["Saint-Ghislain 🇧🇪", 50.47, 4.11, "Europe (UE)", "Google Cloud / OVHcloud", "Odoo.sh + Odoo Online (EU)"],
             ["Iowa 🇺🇸", 41.88, -93.09, "Amériques (US)", "Google Cloud", "Odoo.sh + Odoo Online (US/CA)"],
@@ -313,10 +462,7 @@ Tableau de bord : SLA, incidents P1/P2, dette technique, vulnérabilités, confo
         ], columns=["Site","Latitude","Longitude","Région","Provider","Usage principal"])
 
         fig_map = px.scatter_geo(
-            DC,
-            lat="Latitude",
-            lon="Longitude",
-            text="Site",
+            DC, lat="Latitude", lon="Longitude", text="Site",
             hover_name="Région",
             hover_data={"Provider":True, "Usage principal":True, "Latitude":False, "Longitude":False},
             size=[15]*len(DC),
@@ -333,7 +479,7 @@ Tableau de bord : SLA, incidents P1/P2, dette technique, vulnérabilités, confo
             legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5,
                         font=dict(size=11, color="white"))
         )
-        st.plotly_chart(fig_map, use_container_width=True)
+        st.plotly_chart(fig_map, use_container_width=True, key="map_d1_g3")
 
         st.markdown("""
 <div class='small'>
@@ -348,7 +494,7 @@ Mise à jour confirmée : <i>septembre 2025</i>.
 
         st.markdown("#### 7) Photo CEO (Fabien Pinckaers)")
         ceo_img = first_existing(CEO_IMG_CANDIDATES)
-        up_ceo = st.file_uploader("", type=["png","jpg","jpeg"], key="up_ceo_biz")
+        up_ceo = st.file_uploader("", type=["png","jpg","jpeg"], key="up_ceo_biz_g3")
         if up_ceo is not None:
             tmp = Path(tempfile.gettempdir()) / f"ceo_{datetime.now().timestamp():.0f}.png"
             with open(tmp, "wb") as f: f.write(up_ceo.read())
@@ -451,7 +597,7 @@ with d3:
         b2.markdown(f"<div class='badge WARN'>MTTR estimé: {mttr_h:.1f} h</div>", unsafe_allow_html=True)
         b3.markdown(f"<div class='badge OK'>Dispo estimée: {avail:.2f} %</div>", unsafe_allow_html=True)
 
-        st.plotly_chart(fig_cyber_heatmap(CYBER_RISKS), use_container_width=True)
+        st.plotly_chart(fig_cyber_heatmap(CYBER_RISKS), use_container_width=True, key="heatmap_risks_d3")
         st.markdown("##### Top risques (par score)")
         st.dataframe(CYBER_RISKS.sort_values("Score", ascending=False), use_container_width=True, hide_index=True)
         st.download_button("⬇️ Export CSV — RCM Cyber",
@@ -474,7 +620,7 @@ with d3:
         _df = _df[(_df["ROI 12m (k€)"] >= min_roi) & (_df["TTV (mois)"] <= max_ttv)]
         _df = _df.sort_values(["Score priorité","ROI 12m (k€)"], ascending=[False,False])
 
-        st.plotly_chart(fig_ai_matrix(_df), use_container_width=True)
+        st.plotly_chart(fig_ai_matrix(_df), use_container_width=True, key="ai_matrix_d3")
         st.markdown("#### Backlog priorisé")
         st.dataframe(
             _df[["ID","Use case","Module","Données","Modèle","CAPEX (k€)","OPEX/an (k€)","Gains/an (k€)","ROI 12m (k€)","Impact","Complexité","TTV (mois)","Owner","Score priorité"]],
@@ -505,11 +651,11 @@ with d3:
         with c3:
             budget = error_budget_minutes(target, days)
         st.markdown(f"<div class='badge WARN'>Error budget : {budget} min / {days} j</div>", unsafe_allow_html=True)
-        st.plotly_chart(fig_sla_bar(), use_container_width=True)
-        st.plotly_chart(fig_latency_error(), use_container_width=True)
+        st.plotly_chart(fig_sla_bar(), use_container_width=True, key="sla_bar_d3")
+        st.plotly_chart(fig_latency_error(), use_container_width=True, key="lat_err_d3")
 
 # ---------------------------------------------------------------------------
 # FOOTER
 # ---------------------------------------------------------------------------
 st.markdown("<hr/>", unsafe_allow_html=True)
-st.caption("© Odoo — SI (PhD) — v3.0")
+st.caption("© Odoo — SI — v3.0")
